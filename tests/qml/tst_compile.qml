@@ -8,7 +8,7 @@ TestCase {
     name: "Compile"
 
     function compile(path) {
-        var component = Qt.createComponent(Qt.resolvedUrl("../qml/" + path))
+        var component = Qt.createComponent(Qt.resolvedUrl("../../qml/" + path))
         if (component.status !== Component.Ready)
             fail(path + ": " + component.errorString())
     }

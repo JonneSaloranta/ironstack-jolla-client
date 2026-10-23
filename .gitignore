@@ -8,7 +8,11 @@ moc_*
 *.pro.user
 documentation.list
 installroot/
-tests/tst-harbour-ironstack
+tests/**/Makefile
 tests/Makefile
-tests/*.o
-tests/.qmake.stash
+tests/**/*.o
+tests/**/*.moc
+tests/**/moc_*
+tests/qml/tst-qml
+tests/cpp/tst-cpp
+tests/**/target_wrapper.sh

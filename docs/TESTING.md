@@ -1,11 +1,28 @@
 # Testing
 
-QML tests live in `tests/` and run headless inside the SDK build engine -
-no emulator or device needed.
+Tests live in `tests/` and run headless inside the SDK build engine - no
+emulator or device needed.
 
 ```bash
-sfdk build-shell bash -c 'cd tests && qmake -qt=5 && make -s && ./tst-harbour-ironstack -platform minimal'
+sfdk build-shell bash -c 'cd tests && qmake -qt=5 && make -s \
+    && ./cpp/tst-cpp && ./qml/tst-qml -platform minimal'
 ```
+
+### C++ (`tests/cpp`)
+
+`tst_apiclient.cpp` runs `ApiClient` and `Settings` against a small fake
+HTTP server on localhost:
+
+- the API key goes only to the configured server - an absolute URL on
+  another host, port or scheme is refused before any connection is made
+- the Bearer header, request path and JSON body
+- error messages for 400 (DRF validation shapes), 401, 403, 404, 429, 5xx
+  and an unreachable server
+- `unauthorized()` fires for the saved key only, not for a key being tried
+  on the login page
+- base URL normalization, logout
+
+### QML (`tests/qml`)
 
 - `tst_compile.qml` compiles every QML file of the app. This catches syntax
   errors, unknown types, and properties that don't exist in the Qt/Silica
@@ -14,15 +31,16 @@ sfdk build-shell bash -c 'cd tests && qmake -qt=5 && make -s && ./tst-harbour-ir
 - `tst_store.qml` unit-tests the pure JavaScript helpers in
   `qml/js/store.js` (unit conversion, formatting, caches).
 
-A new page or component must be added to `tst_compile.qml`.
+A new page or component must be added to `tests/qml/tst_compile.qml`.
 
 ## One-time setup
 
-The test runner links against QtQuickTest, whose development package is not
-in the build target by default:
+The test runners link against QtTest and QtQuickTest, whose development
+packages are not in the build target by default:
 
 ```bash
-sfdk tools package-install SailfishOS-5.1.0.11-i486 qt5-qtdeclarative-qtquicktest-devel
+sfdk tools package-install SailfishOS-5.1.0.11-i486 \
+    qt5-qttest-devel qt5-qtdeclarative-qtquicktest-devel
 sfdk build-requires reset     # sync the build snapshot with the target
 ```
 
