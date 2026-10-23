@@ -133,7 +133,8 @@ QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply 
     case 0:
         if (reply->error() == QNetworkReply::OperationCanceledError)
             return tr("The server did not answer in time.");
-        return tr("Could not reach the server: %1").arg(reply->errorString());
+        qWarning("ApiClient: %s", qPrintable(reply->errorString()));
+        return tr("Can't reach the server.");
     case 401:
         return tr("The API key was not accepted. It may have been revoked.");
     case 403:

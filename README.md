@@ -10,9 +10,15 @@ REST API (`/api/v1/`) with a per-user API key.
 - Connect with a server address and API key
 - Dashboard: last 7 days, workout in progress, recent PRs
 - Programs and workouts, start a session from a workout or freeform
-- Log, edit and delete sets (weight, reps, RPE, RIR, warm-up, failure),
-  prefilled from the previous set or the program target
-- Add exercises mid-session, finish or abandon a session
+- Training mode: one exercise at a time, big +/- steppers, one tap to log
+  a set, prefilled from the previous set, last time or the program target;
+  moves on to the next exercise by itself, swipe to go anywhere
+- Works without a connection: sets and finishing a workout are saved on
+  the phone and sent when the server can be reached; a workout in
+  progress can be opened and continued offline
+- Full view of a session for corrections: edit and delete sets, add
+  exercises, finish or abandon
+- Rest timer with a notification, also with the screen off
 - History and personal records
 - Cover shows the workout in progress and its duration
 - Metric or imperial display, following the IronStack profile setting

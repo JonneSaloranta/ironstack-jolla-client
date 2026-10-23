@@ -1,5 +1,6 @@
 #include "settings.h"
 
+#include <QJsonDocument>
 #include <QStandardPaths>
 
 // Sailjail only lets the app write under ~/.config/<org>/<app>/, while
@@ -15,6 +16,9 @@ Settings::Settings(QObject *parent)
     : QObject(parent)
     , m_settings(settingsPath(), QSettings::IniFormat)
 {
+    m_activeSessionId = m_settings.value(QStringLiteral("session/id"), -1).toInt();
+    m_activeSessionName = m_settings.value(QStringLiteral("session/name")).toString();
+    m_activeSessionStarted = m_settings.value(QStringLiteral("session/started")).toString();
 }
 
 QString Settings::baseUrl() const
@@ -90,11 +94,14 @@ void Settings::setRestEndsAt(double endsAt)
     emit restEndsAtChanged();
 }
 
+// The session in progress is remembered across restarts, so "Continue
+// workout" is there even when the app starts without a connection.
 void Settings::setActiveSessionId(int id)
 {
     if (id == m_activeSessionId)
         return;
     m_activeSessionId = id;
+    m_settings.setValue(QStringLiteral("session/id"), id);
     emit activeSessionChanged();
 }
 
@@ -103,6 +110,7 @@ void Settings::setActiveSessionName(const QString &name)
     if (name == m_activeSessionName)
         return;
     m_activeSessionName = name;
+    m_settings.setValue(QStringLiteral("session/name"), name);
     emit activeSessionChanged();
 }
 
@@ -111,6 +119,7 @@ void Settings::setActiveSessionStarted(const QString &started)
     if (started == m_activeSessionStarted)
         return;
     m_activeSessionStarted = started;
+    m_settings.setValue(QStringLiteral("session/started"), started);
     emit activeSessionChanged();
 }
 
@@ -120,12 +129,31 @@ void Settings::clearActiveSession()
     m_activeSessionId = -1;
     m_activeSessionName.clear();
     m_activeSessionStarted.clear();
+    m_settings.remove(QStringLiteral("session"));
     emit activeSessionChanged();
+}
+
+QVariant Settings::cached(const QString &key) const
+{
+    const QByteArray json = m_settings.value(QStringLiteral("cache/") + key).toByteArray();
+    return json.isEmpty() ? QVariant() : QJsonDocument::fromJson(json).toVariant();
+}
+
+void Settings::setCached(const QString &key, const QJSValue &value)
+{
+    setCachedVariant(key, value.toVariant());
+}
+
+void Settings::setCachedVariant(const QString &key, const QVariant &value)
+{
+    m_settings.setValue(QStringLiteral("cache/") + key,
+                        QJsonDocument::fromVariant(value).toJson(QJsonDocument::Compact));
 }
 
 void Settings::logout()
 {
     clearActiveSession();
+    m_settings.remove(QStringLiteral("cache"));
     setApiKey(QString());
 }
 

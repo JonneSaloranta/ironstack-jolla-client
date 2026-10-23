@@ -70,7 +70,10 @@ Page {
                 Button {
                     text: qsTr("Log out")
                     onClicked: {
-                        remorse.execute(qsTr("Logging out"), function() {
+                        remorse.execute(syncQueue.count > 0
+                                        ? qsTr("Logging out, %n unsynced change(s) lost", "", syncQueue.count)
+                                        : qsTr("Logging out"), function() {
+                            syncQueue.clear()
                             settings.logout()
                             pageStack.replaceAbove(null, Qt.resolvedUrl("LoginPage.qml"))
                         })

@@ -39,7 +39,7 @@ Page {
                 return
             }
             pageStack.replaceAbove(pageStack.find(function(p) { return p.objectName === "dashboard" }) || null,
-                                   Qt.resolvedUrl("SessionPage.qml"), { sessionId: data.id })
+                                   Qt.resolvedUrl("TrainingPage.qml"), { sessionId: data.id })
         })
     }
 

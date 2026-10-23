@@ -8,13 +8,27 @@ Page {
     objectName: "dashboard"
 
     property var summary: null
-    property var activeSession: null
     property var recentRecords: []
+    property bool recordsLoaded: false
     property string errorText: ""
+    property bool offline: false
     property bool loading: false
+
+    // The session in progress, as far as the app knows - remembered across
+    // restarts, so it can be continued without a connection.
+    readonly property bool hasActiveSession: settings.activeSessionId >= 0
+
+    function failed(status, error) {
+        // One calm line for "no connection" instead of an error per request.
+        if (Store.isOffline(status))
+            offline = true
+        else
+            errorText = error
+    }
 
     function refresh() {
         errorText = ""
+        offline = false
         loading = true
         var pending = 4
         function settle() {
@@ -27,7 +41,7 @@ Page {
             if (ok)
                 settings.unitSystem = data.unit_system || "metric"
             else
-                page.errorText = error
+                page.failed(status, error)
             settle()
         })
 
@@ -35,25 +49,26 @@ Page {
             if (ok)
                 page.summary = data
             else
-                page.errorText = error
+                page.failed(status, error)
             settle()
         })
 
         // Newest first; an in-progress session is always among the most
         // recent ones (see IronStack issue #17 for a status filter).
         api.request("GET", "sessions/", null, function(ok, status, data, error) {
-            page.activeSession = null
             if (ok) {
                 var results = data.results || []
+                var active = null
                 for (var i = 0; i < results.length; i++) {
-                    if (results[i].is_in_progress) {
-                        page.activeSession = results[i]
+                    // Finishing it may be waiting in the sync queue.
+                    if (results[i].is_in_progress && Store.pendingSessionEnd(syncQueue.items, results[i].id) === "") {
+                        active = results[i]
                         break
                     }
                 }
-                updateActiveSession()
+                updateActiveSession(active)
             } else {
-                page.errorText = error
+                page.failed(status, error)
             }
             settle()
         })
@@ -63,17 +78,17 @@ Page {
                 var results = (data.results || []).slice(0, 5)
                 Store.ensureExercises(api, results.map(function(r) { return r.exercise }), function() {
                     page.recentRecords = results
+                    page.recordsLoaded = true
                     settle()
                 })
             } else {
-                page.errorText = error
+                page.failed(status, error)
                 settle()
             }
         })
     }
 
-    function updateActiveSession() {
-        var session = page.activeSession
+    function updateActiveSession(session) {
         if (!session) {
             settings.clearActiveSession()
             return
@@ -90,7 +105,7 @@ Page {
     }
 
     function openSession(id) {
-        pageStack.push(Qt.resolvedUrl("SessionPage.qml"), { sessionId: id })
+        pageStack.push(Qt.resolvedUrl("TrainingPage.qml"), { sessionId: id })
     }
 
     function startFreeform() {
@@ -106,6 +121,15 @@ Page {
     onStatusChanged: {
         if (status === PageStatus.Active)
             refresh()
+    }
+
+    // Sets and finished workouts synced in the background change the stats.
+    Connections {
+        target: syncQueue
+        onItemsChanged: {
+            if (syncQueue.count === 0 && page.status === PageStatus.Active)
+                page.refresh()
+        }
     }
 
     SilicaFlickable {
@@ -146,11 +170,23 @@ Page {
                 text: page.errorText
             }
 
+            Label {
+                visible: page.offline && syncQueue.count === 0
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryHighlightColor
+                text: qsTr("No connection to the server. Workouts can still be logged and are sent later.")
+            }
+
+            SyncStatus {}
+
             BackgroundItem {
-                visible: page.activeSession !== null
+                visible: page.hasActiveSession
                 width: parent.width
                 height: Theme.itemSizeLarge
-                onClicked: page.openSession(page.activeSession.id)
+                onClicked: page.openSession(settings.activeSessionId)
 
                 Column {
                     anchors.verticalCenter: parent.verticalCenter
@@ -166,14 +202,19 @@ Page {
                         truncationMode: TruncationMode.Fade
                         color: Theme.secondaryHighlightColor
                         font.pixelSize: Theme.fontSizeSmall
-                        text: settings.activeSessionName + " - "
-                              + qsTr("started %1").arg((Format.formatDate(new Date(settings.activeSessionStarted), Formatter.DateMedium) + " " + Format.formatDate(new Date(settings.activeSessionStarted), Formatter.TimeValue)))
+                        text: {
+                            var started = settings.activeSessionStarted
+                                    ? qsTr("started %1").arg(Format.formatDate(new Date(settings.activeSessionStarted),
+                                                                               Formatter.TimeValue))
+                                    : ""
+                            return [settings.activeSessionName, started].filter(function(part) { return part }).join(" - ")
+                        }
                     }
                 }
             }
 
             ButtonLayout {
-                visible: page.activeSession === null && !page.loading
+                visible: !page.hasActiveSession && !page.loading
                 Button {
                     text: qsTr("Start workout")
                     onClicked: pageStack.push(Qt.resolvedUrl("ProgramsPage.qml"))
@@ -214,7 +255,7 @@ Page {
             }
 
             Label {
-                visible: page.recentRecords.length === 0 && !page.loading
+                visible: page.recordsLoaded && page.recentRecords.length === 0 && !page.loading
                 x: Theme.horizontalPageMargin
                 color: Theme.secondaryColor
                 text: qsTr("No records yet")

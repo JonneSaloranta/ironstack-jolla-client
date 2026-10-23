@@ -179,6 +179,11 @@ function loadRecentSessions(api, done) {
     })
 }
 
+// True for an error that means "no connection" rather than a real refusal.
+function isOffline(status) {
+    return status === 0
+}
+
 function invalidateRecentSessions() {
     recentSessions = null
 }
@@ -189,4 +194,106 @@ function recordLabel(record, repMaxText) {
     if (record.rep_count)
         return record.record_type_display + " (" + repMaxText.replace("%1", record.rep_count) + ")"
     return record.record_type_display
+}
+
+// --- session logic shared by the training page and the full view -------
+
+// Same rule as IronStack's apps.workouts.services.is_performed_exercise_complete:
+// a prescribed exercise is done once it has its set_count of sets (warm-ups
+// don't count here), a freeform addition once it has any set at all.
+function isExerciseComplete(pe) {
+    var sets = pe.sets || []
+    if (pe.set_count)
+        return sets.filter(function(s) { return !s.is_warmup }).length >= pe.set_count
+    return sets.length > 0
+}
+
+// Index of the first exercise with sets left to log, or -1 when all are done.
+function firstIncompleteIndex(exercises) {
+    for (var i = 0; i < exercises.length; i++) {
+        if (!isExerciseComplete(exercises[i]))
+            return i
+    }
+    return -1
+}
+
+// The session's exercises with sets still waiting in the sync queue
+// appended, marked `pending: true`, so a set logged offline shows up right
+// away. `queueItems` is syncQueue.items.
+function mergePendingSets(session, queueItems) {
+    if (!session)
+        return []
+    return session.performed_exercises.map(function(pe) {
+        var sets = (pe.sets || []).slice()
+        var highest = sets.reduce(function(max, s) { return Math.max(max, s.set_number) }, 0)
+        queueItems.forEach(function(item) {
+            if (item.method !== "POST" || item.path !== "sets/" || !item.body
+                    || item.body.performed_exercise !== pe.id)
+                return
+            highest++
+            sets.push({
+                id: "pending-" + item.id,
+                pending: true,
+                set_number: highest,
+                weight: item.body.weight,
+                reps: item.body.reps,
+                rpe: item.body.rpe,
+                rir: item.body.rir,
+                is_warmup: !!item.body.is_warmup,
+                is_failure: !!item.body.is_failure,
+                notes: item.body.notes || ""
+            })
+        })
+        var copy = {}
+        for (var key in pe)
+            copy[key] = pe[key]
+        copy.sets = sets
+        return copy
+    })
+}
+
+// "completed"/"abandoned" when ending this session is waiting in the queue,
+// otherwise "".
+function pendingSessionEnd(queueItems, sessionId) {
+    for (var i = queueItems.length - 1; i >= 0; i--) {
+        var item = queueItems[i]
+        if (item.method === "PATCH" && item.path === "sessions/" + sessionId + "/" && item.body)
+            return item.body.status || ""
+    }
+    return ""
+}
+
+// Default values for the next set of `pe`, in order of preference: the last
+// set logged for it in this session, the same set from last time, the
+// plan's target. Never more than a default - the user confirms every set.
+// `before` is a previousPerformance() result or null.
+function prefill(pe, before) {
+    var sets = pe.sets || []
+    var last = sets.length > 0 ? sets[sets.length - 1] : null
+    var working = sets.filter(function(s) { return !s.is_warmup }).length
+    var beforeSet = before && before.sets.length > 0
+            ? before.sets[Math.min(working, before.sets.length - 1)] : null
+    // After warm-ups only, last time's working set is the better guess.
+    if (last && !(last.is_warmup && beforeSet))
+        return { weightKg: last.weight, reps: last.reps, rpe: last.rpe, rir: last.rir, source: "set" }
+    if (beforeSet)
+        return { weightKg: beforeSet.weight, reps: beforeSet.reps, rpe: null, rir: null,
+                 source: "previous", date: before.startedAt }
+    return { weightKg: pe.target_weight, reps: pe.max_reps || pe.min_reps || null, rpe: null, rir: null,
+             source: pe.target_weight ? "target" : "" }
+}
+
+function targetText(pe, unitSystem) {
+    if (!pe.set_count)
+        return ""
+    var reps = pe.min_reps && pe.max_reps && pe.min_reps !== pe.max_reps
+            ? pe.min_reps + "-" + pe.max_reps : (pe.max_reps || pe.min_reps || "?")
+    var text = pe.set_count + " x " + reps
+    if (pe.target_weight)
+        text += " @ " + formatWeight(pe.target_weight, unitSystem)
+    return text
+}
+
+function workingSetCount(pe) {
+    return (pe.sets || []).filter(function(s) { return !s.is_warmup }).length
 }

@@ -19,9 +19,14 @@ TestCase {
     function test_components_data() {
         return [
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
+            { tag: "ExercisePanel", path: "components/ExercisePanel.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },
             { tag: "RestTimer", path: "components/RestTimer.qml" },
-            { tag: "StatItem", path: "components/StatItem.qml" }
+            { tag: "SessionController", path: "components/SessionController.qml" },
+            { tag: "SetItem", path: "components/SetItem.qml" },
+            { tag: "StatItem", path: "components/StatItem.qml" },
+            { tag: "Stepper", path: "components/Stepper.qml" },
+            { tag: "SyncStatus", path: "components/SyncStatus.qml" }
         ]
     }
     function test_components(data) { compile(data.path) }
@@ -30,7 +35,7 @@ TestCase {
         return [
             "DashboardPage", "ExercisePickerPage", "HistoryPage", "LogSetDialog",
             "LoginPage", "ProgramPage", "ProgramsPage", "RecordsPage",
-            "SessionPage", "SettingsPage", "WorkoutPage"
+            "SessionPage", "SettingsPage", "TrainingPage", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

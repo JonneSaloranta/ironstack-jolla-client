@@ -3,119 +3,37 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
 
+// The full view of a session: every exercise with all its sets. The place
+// for reviewing a workout and correcting mistakes (edit/delete); logging
+// during a workout happens in TrainingPage.
 Page {
     id: page
 
-    property int sessionId
-    property var session: null
-    property string title: ""
-    property bool loading: false
-    property string errorText: ""
+    property alias sessionId: controller.sessionId
     property real elapsed: 0
-    // exercise id -> Store.previousPerformance() result (or null)
-    property var previous: ({})
 
-    readonly property bool inProgress: session !== null && session.is_in_progress
+    readonly property bool inProgress: controller.inProgress
 
-    function load() {
-        loading = true
-        api.request("GET", "sessions/" + sessionId + "/", null, function(ok, status, data, error) {
-            loading = false
-            if (!ok) {
-                page.errorText = error
-                return
-            }
-            page.errorText = ""
-            page.session = data
-            if (data.is_in_progress)
-                loadPrevious()
-            if (data.workout) {
-                api.request("GET", "workouts/" + data.workout + "/", null, function(ok2, status2, workout) {
-                    page.title = ok2 ? workout.name : qsTr("Workout")
-                    syncCover()
-                })
-            } else {
-                page.title = qsTr("Freeform workout")
-                syncCover()
-            }
-        })
-    }
-
-    function loadPrevious() {
-        Store.loadRecentSessions(api, function(sessions) {
-            var map = {}
-            page.session.performed_exercises.forEach(function(pe) {
-                map[pe.exercise] = Store.previousPerformance(sessions, pe.exercise, page.sessionId)
-            })
-            page.previous = map
-        })
-    }
-
-    function syncCover() {
-        if (!session)
-            return
-        if (session.is_in_progress) {
-            settings.activeSessionId = session.id
-            settings.activeSessionName = title
-            settings.activeSessionStarted = session.started_at
-        } else if (settings.activeSessionId === session.id) {
-            settings.clearActiveSession()
+    SessionController {
+        id: controller
+        onEnded: {
+            if (status === "abandoned")
+                pageStack.pop()
         }
     }
 
-    function targetText(pe) {
-        if (!pe.set_count)
-            return ""
-        var reps = pe.min_reps && pe.max_reps && pe.min_reps !== pe.max_reps
-                ? pe.min_reps + "-" + pe.max_reps : (pe.max_reps || pe.min_reps || "?")
-        var text = qsTr("Target") + ": " + pe.set_count + " x " + reps
-        if (pe.target_weight)
-            text += " @ " + Store.formatWeight(pe.target_weight, settings.unitSystem)
-        return text
-    }
-
-    function workingSetCount(pe) {
-        return pe.sets.filter(function(s) { return !s.is_warmup }).length
-    }
-
-    // Prefill, in order: the last set logged for this exercise in this
-    // session, the same set from last time, the plan's target. Never
-    // logged without the user confirming the dialog.
     function openLogDialog(pe) {
-        var last = pe.sets.length > 0 ? pe.sets[pe.sets.length - 1] : null
-        var props = {
+        var p = controller.prefill(pe)
+        var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), {
             exerciseName: pe.exercise_name,
-            incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5
-        }
-        var before = previous[pe.exercise]
-        var beforeSet = before ? before.sets[Math.min(workingSetCount(pe), before.sets.length - 1)] : null
-        // After warm-ups only, last time's working set is the better guess.
-        if (last && !(last.is_warmup && beforeSet)) {
-            props.initialWeightKg = last.weight
-            props.initialReps = last.reps
-            props.initialRpe = last.rpe
-            props.initialRir = last.rir
-            props.hint = qsTr("Prefilled from your previous set.")
-        } else if (beforeSet) {
-            props.initialWeightKg = beforeSet.weight
-            props.initialReps = beforeSet.reps
-            props.hint = qsTr("Prefilled from last time (%1).").arg(Format.formatDate(new Date(before.startedAt), Formatter.DateMedium))
-        } else {
-            props.initialWeightKg = pe.target_weight
-            props.initialReps = pe.max_reps || pe.min_reps || null
-            props.hint = pe.target_weight ? qsTr("Prefilled from the program target.") : ""
-        }
-        var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), props)
-        dialog.accepted.connect(function() {
-            var warmup = dialog.isWarmup
-            api.request("POST", "sets/", setPayload(dialog, { performed_exercise: pe.id,
-                                                              target_reps: pe.max_reps || null }),
-                        function(ok, status, data, error) {
-                if (ok && !warmup && settings.restSeconds > 0)
-                    settings.restEndsAt = Date.now() + settings.restSeconds * 1000
-                handleWrite(ok, status, data, error)
-            })
+            incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
+            initialWeightKg: p.weightKg,
+            initialReps: p.reps,
+            initialRpe: p.rpe,
+            initialRir: p.rir,
+            hint: hintFor(p)
         })
+        dialog.accepted.connect(function() { controller.logSet(pe, dialogValues(dialog)) })
     }
 
     function openEditDialog(pe, set) {
@@ -131,63 +49,48 @@ Page {
             initialFailure: set.is_failure,
             initialNotes: set.notes || ""
         })
-        dialog.accepted.connect(function() {
-            api.request("PATCH", "sets/" + set.id + "/", setPayload(dialog, {}), handleWrite)
-        })
+        dialog.accepted.connect(function() { controller.updateSet(set, dialogValues(dialog)) })
     }
 
-    function setPayload(dialog, extra) {
-        extra.weight = dialog.weightKg
-        extra.reps = dialog.reps
-        extra.rpe = dialog.rpe
-        extra.rir = dialog.rir
-        extra.is_warmup = dialog.isWarmup
-        extra.is_failure = dialog.isFailure
-        extra.notes = dialog.notes
-        return extra
+    function dialogValues(dialog) {
+        return {
+            weightKg: dialog.weightKg,
+            reps: dialog.reps,
+            rpe: dialog.rpe,
+            rir: dialog.rir,
+            isWarmup: dialog.isWarmup,
+            isFailure: dialog.isFailure,
+            notes: dialog.notes
+        }
     }
 
-    function handleWrite(ok, status, data, error) {
-        if (!ok)
-            page.errorText = error
-        load()
-    }
-
-    function deleteSet(set) {
-        api.request("DELETE", "sets/" + set.id + "/", null, handleWrite)
+    function hintFor(p) {
+        if (p.source === "set")
+            return qsTr("Prefilled from your previous set.")
+        if (p.source === "previous")
+            return qsTr("Prefilled from last time (%1).").arg(Format.formatDate(new Date(p.date), Formatter.DateMedium))
+        if (p.source === "target")
+            return qsTr("Prefilled from the program target.")
+        return ""
     }
 
     function addExercise() {
         var picker = pageStack.push(Qt.resolvedUrl("ExercisePickerPage.qml"))
-        picker.selected.connect(function(exerciseId) {
-            api.request("POST", "performed-exercises/", { session: sessionId, exercise: exerciseId },
-                        handleWrite)
-        })
+        picker.selected.connect(function(exerciseId) { controller.addExercise(exerciseId) })
     }
 
-    function end(newStatus) {
-        api.request("PATCH", "sessions/" + sessionId + "/", { status: newStatus },
-                    function(ok, status, data, error) {
-            if (!ok) {
-                page.errorText = error
-                return
-            }
-            settings.clearActiveSession()
-            Store.invalidateRecentSessions()
-            page.session = data
-            if (newStatus === "abandoned")
-                pageStack.pop()
-        })
+    function openTraining() {
+        pageStack.replace(Qt.resolvedUrl("TrainingPage.qml"), { sessionId: controller.sessionId })
     }
 
-    Component.onCompleted: load()
+    Component.onCompleted: controller.load()
 
     Timer {
         interval: 1000
         repeat: true
         triggeredOnStart: true
         running: page.inProgress && Qt.application.active
-        onTriggered: page.elapsed = Store.elapsedSince(page.session.started_at)
+        onTriggered: page.elapsed = Store.elapsedSince(controller.session.started_at)
     }
 
     RemorsePopup {
@@ -197,22 +100,22 @@ Page {
     SilicaListView {
         id: list
         anchors.fill: parent
-        model: page.session ? page.session.performed_exercises : []
+        model: controller.exercises
 
         PullDownMenu {
-            busy: page.loading
+            busy: controller.loading
             visible: page.inProgress
             MenuItem {
                 text: qsTr("Finish workout")
-                onClicked: remorse.execute(qsTr("Finishing workout"), function() { page.end("completed") })
+                onClicked: remorse.execute(qsTr("Finishing workout"), function() { controller.end("completed") })
             }
             MenuItem {
                 text: qsTr("Add exercise")
                 onClicked: page.addExercise()
             }
             MenuItem {
-                text: qsTr("Refresh")
-                onClicked: page.load()
+                text: qsTr("Training mode")
+                onClicked: page.openTraining()
             }
         }
 
@@ -220,22 +123,30 @@ Page {
             visible: page.inProgress
             MenuItem {
                 text: qsTr("Abandon workout")
-                onClicked: remorse.execute(qsTr("Abandoning workout"), function() { page.end("abandoned") })
+                onClicked: remorse.execute(qsTr("Abandoning workout"), function() { controller.end("abandoned") })
             }
         }
 
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.title
-                description: !page.session ? ""
-                             : page.inProgress ? Store.formatDuration(page.elapsed)
-                             : (page.session.status === "completed" ? qsTr("Completed") : qsTr("Abandoned"))
-                               + " - " + (Format.formatDate(new Date(page.session.started_at), Formatter.DateMedium) + " " + Format.formatDate(new Date(page.session.started_at), Formatter.TimeValue))
+                title: controller.title
+                description: {
+                    var session = controller.session
+                    if (!session)
+                        return ""
+                    if (page.inProgress)
+                        return Store.formatDuration(page.elapsed)
+                    var status = controller.pendingEnd || session.status
+                    return (status === "completed" ? qsTr("Completed") : qsTr("Abandoned"))
+                           + " - " + Format.formatDate(new Date(session.started_at), Formatter.DateMedium)
+                           + " " + Format.formatDate(new Date(session.started_at), Formatter.TimeValue)
+                }
             }
             ErrorBanner {
-                text: page.errorText
+                text: controller.errorText
             }
+            SyncStatus {}
             RestTimer {}
         }
 
@@ -257,15 +168,16 @@ Page {
                 color: Theme.secondaryHighlightColor
                 horizontalAlignment: Text.AlignRight
                 text: {
-                    var target = page.targetText(pe)
+                    var target = Store.targetText(pe, settings.unitSystem)
                     if (!target)
                         return ""
-                    return target + " (" + qsTr("%1/%2 done").arg(page.workingSetCount(pe)).arg(pe.set_count) + ")"
+                    return qsTr("Target") + ": " + target + " ("
+                            + qsTr("%1/%2 done").arg(Store.workingSetCount(pe)).arg(pe.set_count) + ")"
                 }
             }
 
             Label {
-                property var before: page.previous[pe.exercise]
+                property var before: controller.previous[pe.exercise]
                 visible: page.inProgress && before !== undefined && before !== null
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
@@ -278,49 +190,27 @@ Page {
 
             Repeater {
                 model: pe.sets
-                delegate: ListItem {
+                delegate: SetItem {
                     id: setItem
                     width: list.width
-                    contentHeight: Theme.itemSizeSmall
-                    menu: page.inProgress ? setMenu : null
-                    onClicked: if (page.inProgress) page.openEditDialog(pe, modelData)
-
-                    function remove() {
-                        var set = modelData
-                        remorseDelete(function() { page.deleteSet(set) })
-                    }
-
-                    Label {
-                        id: numberLabel
-                        anchors.verticalCenter: parent.verticalCenter
-                        x: Theme.horizontalPageMargin
-                        width: Theme.itemSizeExtraSmall
-                        color: Theme.secondaryColor
-                        text: modelData.is_warmup ? "W" : modelData.set_number
-                    }
-                    Label {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: numberLabel.right
-                        anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin
-                        truncationMode: TruncationMode.Fade
-                        color: modelData.is_warmup ? Theme.secondaryColor : Theme.primaryColor
-                        text: Store.formatWeight(modelData.weight, settings.unitSystem) + " x " + modelData.reps
-                              + (modelData.rpe ? "  RPE " + parseFloat(modelData.rpe) : "")
-                              + (modelData.rir !== null && modelData.rir !== undefined ? "  RIR " + modelData.rir : "")
-                              + (modelData.is_failure ? "  " + qsTr("failure") : "")
-                    }
+                    set: modelData
+                    // Queued sets have no server id yet to edit or delete.
+                    menu: page.inProgress && !modelData.pending ? setMenu : null
+                    onClicked: if (page.inProgress && !modelData.pending) page.openEditDialog(pe, modelData)
 
                     Component {
                         id: setMenu
                         ContextMenu {
                             MenuItem {
                                 text: qsTr("Edit")
-                                onClicked: page.openEditDialog(pe, modelData)
+                                onClicked: page.openEditDialog(pe, setItem.set)
                             }
                             MenuItem {
                                 text: qsTr("Delete")
-                                onClicked: setItem.remove()
+                                onClicked: {
+                                    var set = setItem.set
+                                    setItem.remorseDelete(function() { controller.deleteSet(set) })
+                                }
                             }
                         }
                     }
@@ -348,7 +238,7 @@ Page {
         }
 
         ViewPlaceholder {
-            enabled: page.session !== null && page.session.performed_exercises.length === 0
+            enabled: controller.session !== null && controller.exercises.length === 0
             text: qsTr("No exercises yet")
             hintText: page.inProgress ? qsTr("Pull down to add an exercise") : ""
         }
@@ -356,7 +246,7 @@ Page {
         BusyIndicator {
             anchors.centerIn: parent
             size: BusyIndicatorSize.Large
-            running: page.loading && page.session === null
+            running: controller.loading && controller.session === null
         }
 
         VerticalScrollDecorator {}

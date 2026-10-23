@@ -293,7 +293,7 @@ private slots:
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), 0);
-        QVERIFY(result().property("error").toString().startsWith(QStringLiteral("Could not reach the server")));
+        QCOMPARE(result().property("error").toString(), QStringLiteral("Can't reach the server."));
     }
 
     void busyWhileRequestsPending()
@@ -397,6 +397,41 @@ private slots:
         }
         SyncQueue restarted(m_api, path);
         QCOMPARE(restarted.count(), 0);
+    }
+
+    void activeSessionAndCacheSurviveRestart()
+    {
+        m_settings->setActiveSessionId(42);
+        m_settings->setActiveSessionName(QStringLiteral("Workout A"));
+        QVariantMap session;
+        session.insert(QStringLiteral("id"), 42);
+        session.insert(QStringLiteral("performed_exercises"), QVariantList { QVariantMap { { QStringLiteral("id"), 7 } } });
+        m_settings->setCachedVariant(QStringLiteral("session"), session);
+
+        Settings restarted;
+        QCOMPARE(restarted.activeSessionId(), 42);
+        QCOMPARE(restarted.activeSessionName(), QStringLiteral("Workout A"));
+        const QVariantMap back = restarted.cached(QStringLiteral("session")).toMap();
+        QCOMPARE(back.value(QStringLiteral("id")).toInt(), 42);
+        QCOMPARE(back.value(QStringLiteral("performed_exercises")).toList().size(), 1);
+        QVERIFY(!restarted.cached(QStringLiteral("missing")).isValid());
+
+        restarted.clearActiveSession();
+        QCOMPARE(Settings().activeSessionId(), -1);
+        restarted.logout();
+        QVERIFY(!Settings().cached(QStringLiteral("session")).isValid());
+    }
+
+    void cacheFromJavaScript()
+    {
+        // The way QML calls it - regression: the JS object was stored empty.
+        m_engine->globalObject().setProperty(QStringLiteral("settings"), m_engine->newQObject(m_settings));
+        QQmlEngine::setObjectOwnership(m_settings, QQmlEngine::CppOwnership);
+        QJSValue result = m_engine->evaluate(QStringLiteral(
+            "settings.setCached('session', { session: { id: 3, sets: [1, 2] }, title: 'A' });"
+            "var back = settings.cached('session');"
+            "back.session.id + ':' + back.session.sets.length + ':' + back.title"));
+        QCOMPARE(result.toString(), QStringLiteral("3:2:A"));
     }
 
     void logoutClearsKeyAndSession()

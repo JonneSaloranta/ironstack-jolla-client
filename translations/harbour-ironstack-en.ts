@@ -12,10 +12,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Could not reach the server: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -37,6 +33,10 @@
     </message>
     <message>
         <source>Request failed (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -115,6 +115,80 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No connection to the server. Workouts can still be logged and are sent later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExercisePanel</name>
+    <message>
+        <source>Last time: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>From the program target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1/%2 done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n set(s)</source>
+        <translation>
+            <numerusform>%n set</numerusform>
+            <numerusform>%n sets</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>All exercises done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log set %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fewer options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RPE, RIR, warm-up, failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RPE (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RIR (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warm-up set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not counted for records, progression or analytics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Taken to failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No earlier sets - enter the weight you start with</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -336,7 +410,7 @@
     </message>
 </context>
 <context>
-    <name>SessionPage</name>
+    <name>SessionController</name>
     <message>
         <source>Workout</source>
         <translation type="unfinished"></translation>
@@ -345,6 +419,9 @@
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SessionPage</name>
     <message>
         <source>Target</source>
         <translation type="unfinished"></translation>
@@ -374,10 +451,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Abandon workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -395,10 +468,6 @@
     </message>
     <message>
         <source>%1/%2 done</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -427,6 +496,17 @@
     </message>
     <message>
         <source>Last time: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Training mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SetItem</name>
+    <message>
+        <source>failure</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -486,6 +566,70 @@
     </message>
     <message>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Logging out, %n unsynced change(s) lost</source>
+        <translation>
+            <numerusform>Logging out, %n unsynced change lost</numerusform>
+            <numerusform>Logging out, %n unsynced changes lost</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>SyncStatus</name>
+    <message>
+        <source>Sending...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n change(s) saved on this phone</source>
+        <translation>
+            <numerusform>%n change saved on this phone</numerusform>
+            <numerusform>%n changes saved on this phone</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Sent when the server can be reached. Tap to try now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TrainingPage</name>
+    <message>
+        <source>Abandon workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abandoning workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finishing workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No exercises yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No connection. Sets are saved on this phone and sent later.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

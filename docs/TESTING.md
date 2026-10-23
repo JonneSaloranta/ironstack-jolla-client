@@ -20,7 +20,12 @@ HTTP server on localhost:
   and an unreachable server
 - `unauthorized()` fires for the saved key only, not for a key being tried
   on the login page
-- base URL normalization, logout
+- base URL normalization, logout, the offline cache and the session in
+  progress surviving a restart - including calls made from JavaScript the
+  way QML makes them (twice a JS object silently became an empty JSON
+  document on the way into C++)
+- `SyncQueue`: order, nothing lost without a connection or across a
+  restart, retry on 5xx, a rejected request dropped and reported
 
 ### QML (`tests/qml`)
 
@@ -29,7 +34,9 @@ HTTP server on localhost:
   version on the device (for example `Column.bottomPadding` needs
   `import QtQuick 2.6`; Sailfish OS ships Qt 5.6).
 - `tst_store.qml` unit-tests the pure JavaScript helpers in
-  `qml/js/store.js` (unit conversion, formatting, caches).
+  `qml/js/store.js`: unit conversion, formatting, and the session rules
+  shared by training mode and the full view (when an exercise is done,
+  which one is next, what to prefill, merging queued sets in).
 
 A new page or component must be added to `tests/qml/tst_compile.qml`.
 

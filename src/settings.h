@@ -1,6 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <QJSValue>
 #include <QObject>
 #include <QSettings>
 
@@ -48,6 +49,14 @@ public:
     void setActiveSessionStarted(const QString &started);
 
     Q_INVOKABLE void clearActiveSession();
+
+    // Last data loaded from the server, kept on the phone so a workout can
+    // go on without a connection. Values are anything JSON-like.
+    Q_INVOKABLE QVariant cached(const QString &key) const;
+    // From QML: a JS object reaches a QVariant parameter wrapped as a
+    // QJSValue, which QJsonDocument can't serialize - hence QJSValue here.
+    Q_INVOKABLE void setCached(const QString &key, const QJSValue &value);
+    void setCachedVariant(const QString &key, const QVariant &value);
     Q_INVOKABLE void logout();
 
     // "https://host/" or "https://host" -> "https://host"
