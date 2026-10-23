@@ -15,13 +15,23 @@ Page {
     property string searchText: ""
 
     // The API has no search parameter yet (IronStack issue #18), so the
-    // whole library is fetched and filtered here.
-    function filtered() {
-        var term = searchText.toLowerCase()
-        if (!term)
-            return exercises
-        return exercises.filter(function(e) { return e.name.toLowerCase().indexOf(term) >= 0 })
+    // whole library is fetched and filtered here. The view keeps one
+    // ListModel that is refilled in place: swapping the view's model on
+    // every keystroke reset the list and took focus from the search field.
+    ListModel {
+        id: filteredModel
     }
+
+    function applyFilter() {
+        var term = searchText.toLowerCase()
+        filteredModel.clear()
+        for (var i = 0; i < exercises.length; i++) {
+            if (!term || exercises[i].name.toLowerCase().indexOf(term) >= 0)
+                filteredModel.append(exercises[i])
+        }
+    }
+
+    onSearchTextChanged: applyFilter()
 
     Component.onCompleted: {
         var all = []
@@ -35,13 +45,14 @@ Page {
             }
             Store.rememberExercises(all)
             exercises = all
+            applyFilter()
         })
     }
 
     SilicaListView {
         id: list
         anchors.fill: parent
-        model: page.filtered()
+        model: filteredModel
         currentIndex: -1
 
         header: Column {
@@ -63,7 +74,7 @@ Page {
         delegate: BackgroundItem {
             width: list.width
             onClicked: {
-                page.selected(modelData.id)
+                page.selected(model.id)
                 pageStack.pop()
             }
             Label {
@@ -71,7 +82,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 truncationMode: TruncationMode.Fade
-                text: Theme.highlightText(modelData.name, page.searchText, Theme.highlightColor)
+                text: Theme.highlightText(model.name, page.searchText, Theme.highlightColor)
                 textFormat: Text.StyledText
             }
         }
