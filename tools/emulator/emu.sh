@@ -11,6 +11,7 @@
 #   tools/emulator/emu.sh type "text"
 #   tools/emulator/emu.sh shot NAME          # -> screenshots/NAME.png
 #   tools/emulator/emu.sh touch < commands   # raw touch commands (see touch.c)
+#   tools/emulator/emu.sh warnings           # QML/JS warnings since the last launch
 #   tools/emulator/emu.sh sh "command"       # run a command in the emulator as root
 #
 # Coordinates are screen pixels of the emulated device (720x1600 for the
@@ -37,6 +38,7 @@ launch() {
     # Anchored patterns: an unanchored "harbour-ironstack" would also match
     # this ssh session's own command line and kill it.
     emu "pkill -f '^/usr/bin/harbour-ironstack' || true; sleep 1
+         date '+%Y-%m-%d %H:%M:%S' > /tmp/harbour-ironstack-launched
          $(as_user systemctl --user stop ironstack-e2e) 2>/dev/null || true
          $(as_user systemd-run --user --unit=ironstack-e2e --collect $env_opt \
              sailjail -p harbour-ironstack.desktop -- /usr/bin/harbour-ironstack) >/dev/null 2>&1
@@ -83,6 +85,12 @@ shot)
            string:/home/defaultuser/Pictures/$2.png >/dev/null"
     scp "${SSH_OPTS[@]}" -P 2223 "root@127.0.0.1:/home/defaultuser/Pictures/$2.png" "$SHOTS/" >/dev/null
     echo "$SHOTS/$2.png"
+    ;;
+warnings)
+    # Runtime problems the compile test can't see: bad bindings, unknown
+    # signal handlers, type errors in JS.
+    emu 'journalctl --no-pager -o cat --since "$(cat /tmp/harbour-ironstack-launched)" \
+         | grep "/usr/share/harbour-ironstack/" | sort | uniq -c' || true
     ;;
 sh) shift; emu "$@" ;;
 *) sed -n '2,20p' "$0"; exit 1 ;;
