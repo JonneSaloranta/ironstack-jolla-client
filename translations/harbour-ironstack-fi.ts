@@ -123,6 +123,13 @@
     </message>
 </context>
 <context>
+    <name>ErrorBanner</name>
+    <message>
+        <source>Try again</source>
+        <translation>Yritä uudelleen</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePanel</name>
     <message>
         <source>Last time: %1</source>
@@ -239,6 +246,14 @@
     <message>
         <source>No workouts yet</source>
         <translation>Ei vielä treenejä</translation>
+    </message>
+    <message>
+        <source>Workout</source>
+        <translation type="unfinished">Treeni</translation>
+    </message>
+    <message>
+        <source>Freeform workout</source>
+        <translation type="unfinished">Vapaa treeni</translation>
     </message>
 </context>
 <context>

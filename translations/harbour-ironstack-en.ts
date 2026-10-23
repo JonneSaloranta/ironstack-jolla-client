@@ -123,6 +123,13 @@
     </message>
 </context>
 <context>
+    <name>ErrorBanner</name>
+    <message>
+        <source>Try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExercisePanel</name>
     <message>
         <source>Last time: %1</source>
@@ -238,6 +245,14 @@
     </message>
     <message>
         <source>No workouts yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

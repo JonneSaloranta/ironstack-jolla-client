@@ -188,4 +188,12 @@ TestCase {
                 "3 x 8-12 @ 40 kg")
         compare(Store.targetText(pe(1, null, []), "metric"), "")
     }
+
+    function test_programGroup() {
+        compare(Store.programGroup({ owner: 109, is_template: false }), "own")
+        compare(Store.programGroup({ owner: 109, is_template: true }), "own")
+        compare(Store.programGroup({ owner: null, is_template: true, is_system_template: true }), "template")
+        // ownerless but not a template: not listed (the web page skips it too)
+        compare(Store.programGroup({ owner: null, is_template: false, is_system_template: true }), "")
+    }
 }

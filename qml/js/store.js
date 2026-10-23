@@ -17,13 +17,16 @@ function rememberExercises(list) {
         exerciseNames[list[i].id] = list[i].name
 }
 
-// Fetch the names of any exercise ids not yet cached, then call done().
-// The API returns only ids on prescriptions/records (see IronStack issue
-// #19), so this is one GET per unknown exercise.
-function ensureExercises(api, ids, done) {
+var workoutNames = ({})
+
+// Fetch the names of any ids not yet in `cache`, one GET per unknown id
+// (the API returns only ids on prescriptions/records/sessions - see
+// IronStack issue #19), then call done(). A failed fetch leaves the id
+// out, so the caller falls back to a placeholder.
+function ensureNames(api, cache, endpoint, ids, done) {
     var missing = []
     for (var i = 0; i < ids.length; i++) {
-        if (ids[i] && exerciseNames[ids[i]] === undefined && missing.indexOf(ids[i]) < 0)
+        if (ids[i] && cache[ids[i]] === undefined && missing.indexOf(ids[i]) < 0)
             missing.push(ids[i])
     }
     if (missing.length === 0) {
@@ -32,14 +35,22 @@ function ensureExercises(api, ids, done) {
     }
     var remaining = missing.length
     missing.forEach(function(id) {
-        api.request("GET", "exercises/" + id + "/", null, function(ok, status, data) {
+        api.request("GET", endpoint + id + "/", null, function(ok, status, data) {
             if (ok)
-                exerciseNames[data.id] = data.name
+                cache[data.id] = data.name
             remaining--
             if (remaining === 0)
                 done()
         })
     })
+}
+
+function ensureExercises(api, ids, done) {
+    ensureNames(api, exerciseNames, "exercises/", ids, done)
+}
+
+function ensureWorkouts(api, ids, done) {
+    ensureNames(api, workoutNames, "workouts/", ids, done)
 }
 
 // Follow a paginated list endpoint to the end. onPage(results) is called
@@ -296,4 +307,14 @@ function targetText(pe, unitSystem) {
 
 function workingSetCount(pe) {
     return (pe.sets || []).filter(function(s) { return !s.is_warmup }).length
+}
+
+// Which list a program from programs/ belongs in, matching IronStack's own
+// program page: "own" (the user's, or shared by their coach), "template"
+// (a built-in template), or "" - an ownerless program that isn't a
+// template, which the web page doesn't list either.
+function programGroup(program) {
+    if (program.owner !== null && program.owner !== undefined)
+        return "own"
+    return program.is_template ? "template" : ""
 }

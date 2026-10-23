@@ -33,7 +33,9 @@ Page {
 
     onSearchTextChanged: applyFilter()
 
-    Component.onCompleted: {
+    function load() {
+        loading = true
+        errorText = ""
         var all = []
         Store.fetchAll(api, "exercises/", function(results) {
             all = all.concat(results.map(function(e) { return { id: e.id, name: e.name } }))
@@ -49,6 +51,8 @@ Page {
         })
     }
 
+    Component.onCompleted: load()
+
     SilicaListView {
         id: list
         anchors.fill: parent
@@ -62,6 +66,8 @@ Page {
             }
             ErrorBanner {
                 text: page.errorText
+                showRetry: true
+                onRetry: page.load()
             }
             SearchField {
                 id: searchField

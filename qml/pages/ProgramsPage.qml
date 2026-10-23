@@ -21,9 +21,10 @@ Page {
         var templates = []
         Store.fetchAll(api, "programs/", function(results) {
             for (var i = 0; i < results.length; i++) {
-                if (results[i].is_template || results[i].is_system_template)
+                var group = Store.programGroup(results[i])
+                if (group === "template")
                     templates.push(results[i])
-                else
+                else if (group === "own")
                     own.push(results[i])
             }
         }, function(ok, error) {
@@ -62,6 +63,8 @@ Page {
             }
             ErrorBanner {
                 text: page.errorText
+                showRetry: true
+                onRetry: page.load()
             }
         }
 

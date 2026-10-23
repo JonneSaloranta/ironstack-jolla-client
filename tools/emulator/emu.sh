@@ -6,6 +6,7 @@
 #   tools/emulator/emu.sh setup              # once per emulator boot
 #   tools/emulator/emu.sh deploy             # install RPMS/*.i486.rpm and (re)launch
 #   tools/emulator/emu.sh launch [LANG]      # (re)launch, e.g. launch fi_FI.utf8
+#   tools/emulator/emu.sh wake               # screen on, unlocked
 #   tools/emulator/emu.sh tap X Y
 #   tools/emulator/emu.sh swipe X1 Y1 X2 Y2 [MS]
 #   tools/emulator/emu.sh type "text"
@@ -31,7 +32,17 @@ emu() { ssh "${SSH_OPTS[@]}" -p 2223 root@127.0.0.1 "$@"; }
 push() { scp "${SSH_OPTS[@]}" -P 2223 "$1" "root@127.0.0.1:$2" >/dev/null; }
 as_user() { echo "runuser -u defaultuser -- env $USER_ENV $*"; }
 
+# Screen on and unlocked - after a while the emulator locks itself like a
+# phone, and taps then land on the lock screen instead of the app.
+wake() {
+    emu 'dbus-send --system --print-reply --dest=com.nokia.mce /com/nokia/mce/request \
+           com.nokia.mce.request.req_display_state_on >/dev/null
+         dbus-send --system --print-reply --dest=com.nokia.mce /com/nokia/mce/request \
+           com.nokia.mce.request.req_tklock_mode_change string:unlocked >/dev/null'
+}
+
 launch() {
+    wake
     local lang=${1:-}
     local env_opt=""
     [ -n "$lang" ] && env_opt="-E LANG=$lang"
@@ -72,6 +83,7 @@ deploy)
     echo "deployed $(basename "$rpm")"
     ;;
 launch) launch "${2:-}" ;;
+wake) wake ;;
 tap) printf 'tap %d %d\nsleep 500\n' "$2" "$3" | emu /root/touch ;;
 swipe) printf 'swipe %d %d %d %d %d\nsleep 500\n' "$2" "$3" "$4" "$5" "${6:-300}" | emu /root/touch ;;
 touch) emu /root/touch ;;

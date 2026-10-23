@@ -51,6 +51,8 @@ Page {
             }
             ErrorBanner {
                 text: page.errorText
+                showRetry: true
+                onRetry: page.reload()
             }
         }
 

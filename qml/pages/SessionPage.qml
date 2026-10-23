@@ -145,6 +145,8 @@ Page {
             }
             ErrorBanner {
                 text: controller.errorText
+                showRetry: true
+                onRetry: controller.load()
             }
             SyncStatus {}
             RestTimer {}

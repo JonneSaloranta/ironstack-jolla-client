@@ -33,29 +33,36 @@ Page {
             page.errorText = ""
             page.nextUrl = data.next || ""
             var results = data.results || []
-            for (var i = 0; i < results.length; i++) {
-                var s = results[i]
-                var setCount = 0
-                var volume = 0
-                s.performed_exercises.forEach(function(pe) {
-                    pe.sets.forEach(function(set) {
-                        if (set.is_warmup)
-                            return
-                        setCount++
-                        volume += parseFloat(set.weight) * set.reps
-                    })
-                })
-                sessionsModel.append({
-                    sessionId: s.id,
-                    status: s.status,
-                    startedAt: s.started_at,
-                    endedAt: s.ended_at || "",
-                    exercises: s.performed_exercises.map(function(pe) { return pe.exercise_name }).join(", "),
-                    setCount: setCount,
-                    volume: volume
-                })
-            }
+            Store.ensureWorkouts(api, results.map(function(s) { return s.workout }), function() {
+                page.append(results)
+            })
         })
+    }
+
+    function append(results) {
+        for (var i = 0; i < results.length; i++) {
+            var s = results[i]
+            var setCount = 0
+            var volume = 0
+            s.performed_exercises.forEach(function(pe) {
+                pe.sets.forEach(function(set) {
+                    if (set.is_warmup)
+                        return
+                    setCount++
+                    volume += parseFloat(set.weight) * set.reps
+                })
+            })
+            sessionsModel.append({
+                sessionId: s.id,
+                title: s.workout ? (Store.workoutNames[s.workout] || qsTr("Workout")) : qsTr("Freeform workout"),
+                status: s.status,
+                startedAt: s.started_at,
+                endedAt: s.ended_at || "",
+                exercises: s.performed_exercises.map(function(pe) { return pe.exercise_name }).join(", "),
+                setCount: setCount,
+                volume: volume
+            })
+        }
     }
 
     function statusText(status) {
@@ -80,6 +87,8 @@ Page {
             }
             ErrorBanner {
                 text: page.errorText
+                showRetry: true
+                onRetry: page.reload()
             }
         }
 
@@ -94,22 +103,25 @@ Page {
         onAtYEndChanged: if (atYEnd && count > 0) page.loadMore()
 
         delegate: ListItem {
-            contentHeight: Theme.itemSizeLarge
+            contentHeight: rowColumn.height + 2 * Theme.paddingMedium
             onClicked: pageStack.push(Qt.resolvedUrl("SessionPage.qml"), { sessionId: model.sessionId })
 
             Column {
+                id: rowColumn
                 anchors.verticalCenter: parent.verticalCenter
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 Row {
                     width: parent.width
+                    spacing: Theme.paddingMedium
                     Label {
-                        width: parent.width - statusLabel.width
+                        width: parent.width - statusLabel.width - parent.spacing
                         truncationMode: TruncationMode.Fade
-                        text: (Format.formatDate(new Date(model.startedAt), Formatter.DateMedium) + " " + Format.formatDate(new Date(model.startedAt), Formatter.TimeValue))
+                        text: model.title
                     }
                     Label {
                         id: statusLabel
+                        anchors.baseline: parent.children[0].baseline
                         color: Theme.highlightColor
                         font.pixelSize: Theme.fontSizeSmall
                         text: page.statusText(model.status)
@@ -119,18 +131,25 @@ Page {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: model.exercises || qsTr("No exercises")
+                    color: Theme.secondaryHighlightColor
+                    text: {
+                        var parts = [Format.formatDate(new Date(model.startedAt), Formatter.DateMedium)
+                                     + " " + Format.formatDate(new Date(model.startedAt), Formatter.TimeValue)]
+                        if (model.endedAt)
+                            parts.push(Store.formatDuration((new Date(model.endedAt) - new Date(model.startedAt)) / 1000))
+                        parts.push(qsTr("%n set(s)", "", model.setCount))
+                        if (model.volume > 0)
+                            parts.push(Math.round(Store.kgToDisplay(model.volume, settings.unitSystem))
+                                       + " " + Store.weightUnit(settings.unitSystem))
+                        return parts.join(" - ")
+                    }
                 }
                 Label {
                     width: parent.width
+                    truncationMode: TruncationMode.Fade
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
-                    text: qsTr("%n set(s)", "", model.setCount)
-                          + " - " + Math.round(Store.kgToDisplay(model.volume, settings.unitSystem))
-                          + " " + Store.weightUnit(settings.unitSystem)
-                          + (model.endedAt ? " - " + Store.formatDuration(
-                                 (new Date(model.endedAt) - new Date(model.startedAt)) / 1000) : "")
+                    text: model.exercises || qsTr("No exercises")
                 }
             }
         }
