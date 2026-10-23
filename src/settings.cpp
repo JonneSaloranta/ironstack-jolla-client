@@ -1,7 +1,19 @@
 #include "settings.h"
 
+#include <QStandardPaths>
+
+// Sailjail only lets the app write under ~/.config/<org>/<app>/, while
+// QSettings' default file is ~/.config/<org>/<app>.conf - one level up,
+// outside the sandbox - so the path is given explicitly.
+static QString settingsPath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation)
+            + QStringLiteral("/harbour-ironstack.conf");
+}
+
 Settings::Settings(QObject *parent)
     : QObject(parent)
+    , m_settings(settingsPath(), QSettings::IniFormat)
 {
 }
 
