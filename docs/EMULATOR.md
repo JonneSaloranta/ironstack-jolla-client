@@ -19,9 +19,21 @@ sudo /sbin/vboxconfig
 lsmod | grep vboxdrv          # should print a line
 ```
 
-If `vboxconfig` fails to compile against a very new kernel, the installed
-VirtualBox is older than the kernel; install a newer VirtualBox from
-<https://www.virtualbox.org/wiki/Linux_Downloads> and run it again.
+If `vboxconfig` fails and `/var/log/vbox-setup.log` shows
+`fatal error: VBox/cdefs.h: No such file or directory`, the installed
+VirtualBox is too old for the running kernel (VirtualBox 7.1 doesn't build
+on Linux 7.2; 7.2.22 does). Install a newer one from
+<https://www.virtualbox.org/wiki/Linux_Downloads>, replacing the old package
+in the same transaction, then rebuild:
+
+```bash
+sudo apt install ./virtualbox-7.2_<version>~Debian~bookworm_amd64.deb virtualbox-7.1-
+sudo /sbin/vboxconfig
+```
+
+On Debian testing, the bookworm package is the one whose dependencies
+resolve (the trixie one needs `libvpx9`, which testing no longer has).
+Existing VMs, the Sailfish emulator included, are kept.
 
 The build engine runs in Docker and does not need VirtualBox - only the
 emulator does.
