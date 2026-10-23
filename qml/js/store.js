@@ -99,18 +99,8 @@ function formatWeight(kg, unitSystem) {
 }
 
 // --- time -----------------------------------------------------------------
-
-function formatDate(iso) {
-    if (!iso)
-        return "-"
-    return Qt.formatDate(new Date(iso), Qt.DefaultLocaleShortDate)
-}
-
-function formatDateTime(iso) {
-    if (!iso)
-        return "-"
-    return Qt.formatDateTime(new Date(iso), Qt.DefaultLocaleShortDate)
-}
+// Dates and times are formatted in the pages with Silica's Format.formatDate,
+// which follows the device's locale and 12/24-hour setting.
 
 function formatDuration(seconds) {
     seconds = Math.max(0, Math.floor(seconds))
@@ -191,4 +181,12 @@ function loadRecentSessions(api, done) {
 
 function invalidateRecentSessions() {
     recentSessions = null
+}
+
+// "Rep-specific PR (5RM)" - without the rep count a lifter's 1RM, 3RM and
+// 5RM records would look identical.
+function recordLabel(record, repMaxText) {
+    if (record.rep_count)
+        return record.record_type_display + " (" + repMaxText.replace("%1", record.rep_count) + ")"
+    return record.record_type_display
 }

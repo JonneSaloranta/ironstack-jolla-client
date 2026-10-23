@@ -99,7 +99,7 @@ Page {
         } else if (beforeSet) {
             props.initialWeightKg = beforeSet.weight
             props.initialReps = beforeSet.reps
-            props.hint = qsTr("Prefilled from last time (%1).").arg(Store.formatDate(before.startedAt))
+            props.hint = qsTr("Prefilled from last time (%1).").arg(Format.formatDate(new Date(before.startedAt), Formatter.DateMedium))
         } else {
             props.initialWeightKg = pe.target_weight
             props.initialReps = pe.max_reps || pe.min_reps || null
@@ -231,7 +231,7 @@ Page {
                 description: !page.session ? ""
                              : page.inProgress ? Store.formatDuration(page.elapsed)
                              : (page.session.status === "completed" ? qsTr("Completed") : qsTr("Abandoned"))
-                               + " - " + Store.formatDateTime(page.session.started_at)
+                               + " - " + (Format.formatDate(new Date(page.session.started_at), Formatter.DateMedium) + " " + Format.formatDate(new Date(page.session.started_at), Formatter.TimeValue))
             }
             ErrorBanner {
                 text: page.errorText

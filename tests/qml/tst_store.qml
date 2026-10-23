@@ -95,4 +95,11 @@ TestCase {
                 "80 kg x 5, 75 kg x 6")
         compare(Store.summarizeSets([], "metric"), "")
     }
+
+    function test_recordLabel() {
+        compare(Store.recordLabel({ record_type_display: "Rep-specific PR", rep_count: 5 }, "%1RM"),
+                "Rep-specific PR (5RM)")
+        compare(Store.recordLabel({ record_type_display: "Max weight", rep_count: null }, "%1RM"),
+                "Max weight")
+    }
 }

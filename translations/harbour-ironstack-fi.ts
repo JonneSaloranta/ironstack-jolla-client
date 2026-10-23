@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
+<?xml version='1.0' encoding='utf-8'?>
 <TS version="2.1" language="fi_FI">
 <context>
     <name>ApiClient</name>
@@ -294,6 +293,11 @@
     <message>
         <source>reps</source>
         <translation>toistoa</translation>
+    </message>
+    <message>
+        <source>%1RM</source>
+        <extracomment>Rep-max, e.g. "5RM" = best weight for 5 reps</extracomment>
+        <translation>%1RM</translation>
     </message>
 </context>
 <context>

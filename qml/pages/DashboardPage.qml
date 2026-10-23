@@ -167,7 +167,7 @@ Page {
                         color: Theme.secondaryHighlightColor
                         font.pixelSize: Theme.fontSizeSmall
                         text: settings.activeSessionName + " - "
-                              + qsTr("started %1").arg(Store.formatDateTime(settings.activeSessionStarted))
+                              + qsTr("started %1").arg((Format.formatDate(new Date(settings.activeSessionStarted), Formatter.DateMedium) + " " + Format.formatDate(new Date(settings.activeSessionStarted), Formatter.TimeValue)))
                     }
                 }
             }

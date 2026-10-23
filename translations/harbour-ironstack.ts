@@ -9,42 +9,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="114"/>
+        <location filename="../src/apiclient.cpp" line="117"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="115"/>
+        <location filename="../src/apiclient.cpp" line="118"/>
         <source>Could not reach the server: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="117"/>
+        <location filename="../src/apiclient.cpp" line="120"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="119"/>
+        <location filename="../src/apiclient.cpp" line="122"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="121"/>
+        <location filename="../src/apiclient.cpp" line="124"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="123"/>
+        <location filename="../src/apiclient.cpp" line="126"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="151"/>
+        <location filename="../src/apiclient.cpp" line="154"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="152"/>
+        <location filename="../src/apiclient.cpp" line="155"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -355,6 +355,12 @@
     <message>
         <location filename="../qml/components/RecordItem.qml" line="14"/>
         <source>reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RecordItem.qml" line="44"/>
+        <source>%1RM</source>
+        <extracomment>Rep-max, e.g. &quot;5RM&quot; = best weight for 5 reps</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

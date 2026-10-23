@@ -40,10 +40,11 @@ ListItem {
             truncationMode: TruncationMode.Fade
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text: record ? record.record_type_display
+            //: Rep-max, e.g. "5RM" = best weight for 5 reps
+            text: record ? Store.recordLabel(record, qsTr("%1RM"))
                            + (record.weight ? " - " + Store.formatWeight(record.weight, settings.unitSystem)
                                               + " x " + record.reps : "")
-                           + " - " + Store.formatDate(record.achieved_at)
+                           + " - " + Format.formatDate(new Date(record.achieved_at), Formatter.DateMedium)
                          : ""
         }
     }

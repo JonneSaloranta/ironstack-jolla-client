@@ -106,7 +106,7 @@ Page {
                     Label {
                         width: parent.width - statusLabel.width
                         truncationMode: TruncationMode.Fade
-                        text: Store.formatDateTime(model.startedAt)
+                        text: (Format.formatDate(new Date(model.startedAt), Formatter.DateMedium) + " " + Format.formatDate(new Date(model.startedAt), Formatter.TimeValue))
                     }
                     Label {
                         id: statusLabel

@@ -295,6 +295,11 @@
         <source>reps</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1RM</source>
+        <extracomment>Rep-max, e.g. &quot;5RM&quot; = best weight for 5 reps</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecordsPage</name>
