@@ -16,3 +16,4 @@ tests/**/moc_*
 tests/qml/tst-qml
 tests/cpp/tst-cpp
 tests/**/target_wrapper.sh
+screenshots/

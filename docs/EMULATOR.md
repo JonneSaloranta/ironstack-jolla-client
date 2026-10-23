@@ -38,6 +38,22 @@ Existing VMs, the Sailfish emulator included, are kept.
 The build engine runs in Docker and does not need VirtualBox - only the
 emulator does.
 
+### 1b. Network between the build engine and the emulator
+
+`sfdk deploy` copies the RPM from the Docker build engine to the emulator
+(`10.220.220.1`). The engine container uses legacy iptables for that and
+needs the host's `iptable_nat` module; without it, deploying times out with
+`ssh: connect to host 10.220.220.1 port 22: Connection timed out`.
+
+```bash
+sudo modprobe iptable_nat
+echo iptable_nat | sudo tee /etc/modules-load.d/sailfish-sdk.conf   # keep it after reboots
+sudo ufw allow in on br-sfdk-$USER                                   # if ufw is enabled
+```
+
+Until that's done, `tools/emulator/emu.sh deploy` installs the RPM over the
+emulator's host-side SSH port instead (see "Scripted testing" below).
+
 ### 2. Default build target and device
 
 ```bash
@@ -84,8 +100,10 @@ sfdk build                     # builds RPMS/harbour-ironstack-*.i486.rpm
 sfdk deploy --sdk              # installs the RPM in the emulator
 ```
 
-Then open **IronStack** from the emulator's app grid. On the first launch,
-enter `http://10.0.2.2:8000` as the server address and paste the API key.
+Then open **IronStack** from the emulator's app grid. On the very first
+launch Sailfish OS asks for the app's permissions (Internet, Notifications) -
+tap **Accept**. Then enter `http://10.0.2.2:8000` as the server address and
+paste the API key.
 
 After a code change, run `sfdk build && sfdk deploy --sdk` again and restart
 the app in the emulator (close it by swiping down from the top edge, or with
@@ -104,25 +122,54 @@ Stop the emulator with `sfdk emulator stop` when done.
 
 ## Reading logs
 
-The app's `console.log`, QML warnings and C++ `qWarning` go to the journal.
-Follow it while using the app:
+The app's `console.log`, QML warnings and C++ `qWarning` go to the journal,
+which needs root to read:
 
 ```bash
-sfdk emulator exec -t journalctl -f
+tools/emulator/emu.sh sh 'journalctl -f'
 ```
-
-Or start the app from the command line to see its output directly (close
-the copy running in the emulator first):
-
-```bash
-sfdk emulator exec -t harbour-ironstack
-```
-
-For an interactive shell inside the emulator: `sfdk emulator exec -t bash`.
 
 A QML error (a typo, a missing property) shows up there as
 `file:///usr/share/harbour-ironstack/qml/...: <message>`, usually with a blank
 or half-drawn page in the emulator.
+
+For an interactive shell inside the emulator: `sfdk emulator exec -t bash`
+(as `defaultuser`).
+
+## Scripted testing
+
+`tools/emulator/emu.sh` drives the emulator without touching it: install and
+launch the app, tap and swipe, type, take screenshots. Useful for checking a
+change end to end, or for UI screenshots.
+
+```bash
+sfdk emulator start
+tools/emulator/emu.sh setup        # once per emulator boot: touch tool + app permissions
+sfdk build
+tools/emulator/emu.sh deploy       # install the newest i486 RPM and (re)launch
+tools/emulator/emu.sh tap 360 306          # tap the server address field
+tools/emulator/emu.sh type "http://10.0.2.2:8000"
+tools/emulator/emu.sh shot login           # -> screenshots/login.png
+tools/emulator/emu.sh launch fi_FI.utf8    # relaunch in Finnish
+```
+
+- Coordinates are pixels of the emulated screen (720x1600 on the default
+  Jolla C2 model); a screenshot shows where things are.
+- Taps and swipes come from a virtual touchscreen (`tools/emulator/touch.c`,
+  built with the i486 target by `setup`). For gestures that need a pause in
+  the middle, like holding a pull-down menu open for a screenshot, pipe raw
+  commands to `emu.sh touch`:
+
+  ```bash
+  (echo "down 360 400"; for y in $(seq 420 20 720); do echo "move 360 $y"; done; echo "sleep 2000"; echo up) \
+      | tools/emulator/emu.sh touch &
+  sleep 3; tools/emulator/emu.sh shot pulley; wait
+  ```
+
+- Text goes in through VirtualBox's keyboard (`VBoxManage controlvm ...
+  keyboardputstring`), so a text field has to be focused first.
+- `setup` grants the app's sailjail permissions the way tapping "Accept" on
+  the first-launch prompt would.
 
 ## Faster QML iteration (optional)
 
@@ -153,3 +200,5 @@ Sailfish IDE > Options > Sailfish OS > Devices) and use `sfdk deploy --sdk`.
 | App says "The API key was not accepted" | The key was mistyped or revoked; create a new one |
 | App says "This API key does not have permission for that" | The key is missing a permission from the table above |
 | The app does not appear after deploy | Check `sfdk deploy --sdk` output; the RPM must be the i486 one |
+| `sfdk deploy` times out connecting to `10.220.220.1` | Load `iptable_nat` (setup step 1b), or use `tools/emulator/emu.sh deploy` |
+| App starts to a blank screen with a permission prompt behind it | Accept the sailjail prompt, or run `tools/emulator/emu.sh setup` |
