@@ -8,3 +8,7 @@ moc_*
 *.pro.user
 documentation.list
 installroot/
+tests/tst-harbour-ironstack
+tests/Makefile
+tests/*.o
+tests/.qmake.stash

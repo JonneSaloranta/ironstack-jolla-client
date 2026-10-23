@@ -43,6 +43,11 @@ sfdk check RPMS/*.rpm                             # Harbour validation
 See [docs/EMULATOR.md](docs/EMULATOR.md) for setting up and using the
 emulator to try the app, including connecting it to a local IronStack.
 
+## Tests
+
+Headless QML tests run inside the SDK build engine; see
+[docs/TESTING.md](docs/TESTING.md).
+
 ## Server-side gaps
 
 Features that need IronStack API changes are tracked as issues labelled
