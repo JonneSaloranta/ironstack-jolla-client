@@ -149,17 +149,17 @@
 <context>
     <name>ExercisePickerPage</name>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="50"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="61"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="58"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="69"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="81"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="92"/>
         <source>No matching exercises</source>
         <translation type="unfinished"></translation>
     </message>
