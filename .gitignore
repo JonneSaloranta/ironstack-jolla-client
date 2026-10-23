@@ -1,0 +1,10 @@
+RPMS/
+*.o
+*.qm
+Makefile
+moc_*
+.qmake.stash
+/harbour-ironstack
+*.pro.user
+documentation.list
+installroot/

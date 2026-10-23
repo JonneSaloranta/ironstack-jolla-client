@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-ironstack
+Exec=harbour-ironstack
+Name=IronStack
+
+[X-Sailjail]
+Permissions=Internet
+OrganizationName=org.ironstack
+ApplicationName=harbour-ironstack

@@ -1,0 +1,50 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "../js/store.js" as Store
+
+ListItem {
+    property var record
+
+    // Every record type's value is kg except rep_pr, a plain rep count
+    // (apps.records.services.display_value on the server).
+    function valueText() {
+        if (!record)
+            return ""
+        if (record.record_type === "rep_pr")
+            return parseInt(record.value, 10) + " " + qsTr("reps")
+        return Store.formatWeight(record.value, settings.unitSystem)
+    }
+
+    contentHeight: Theme.itemSizeMedium
+    width: parent ? parent.width : 0
+
+    Column {
+        anchors.verticalCenter: parent.verticalCenter
+        x: Theme.horizontalPageMargin
+        width: parent.width - 2 * Theme.horizontalPageMargin
+        Row {
+            width: parent.width
+            Label {
+                width: parent.width - valueLabel.width
+                truncationMode: TruncationMode.Fade
+                text: record ? Store.exerciseName(record.exercise) : ""
+            }
+            Label {
+                id: valueLabel
+                color: Theme.highlightColor
+                text: valueText()
+            }
+        }
+        Label {
+            width: parent.width
+            truncationMode: TruncationMode.Fade
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            text: record ? record.record_type_display
+                           + (record.weight ? " - " + Store.formatWeight(record.weight, settings.unitSystem)
+                                              + " x " + record.reps : "")
+                           + " - " + Store.formatDate(record.achieved_at)
+                         : ""
+        }
+    }
+}
