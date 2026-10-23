@@ -8,7 +8,9 @@ INCLUDEPATH += ../../src
 SOURCES += \
     tst_apiclient.cpp \
     ../../src/apiclient.cpp \
-    ../../src/settings.cpp
+    ../../src/settings.cpp \
+    ../../src/syncqueue.cpp
 HEADERS += \
     ../../src/apiclient.h \
-    ../../src/settings.h
+    ../../src/settings.h \
+    ../../src/syncqueue.h

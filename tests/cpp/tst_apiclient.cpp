@@ -9,6 +9,7 @@
 
 #include "apiclient.h"
 #include "settings.h"
+#include "syncqueue.h"
 
 // Minimal HTTP/1.1 server on localhost: records each request and answers
 // with a configured status and JSON body.
@@ -27,6 +28,8 @@ public:
     quint16 port() const { return m_server.serverPort(); }
 
     int status = 200;
+    // Per-request statuses, used up first (then `status`).
+    QList<int> statuses;
     QByteArray body = "{}";
     QList<QByteArray> requests;
 
@@ -56,7 +59,8 @@ private:
 
         requests << buffer;
         m_buffers.remove(socket);
-        QByteArray response = "HTTP/1.1 " + QByteArray::number(status) + " Status\r\n"
+        const int code = statuses.isEmpty() ? status : statuses.takeFirst();
+        QByteArray response = "HTTP/1.1 " + QByteArray::number(code) + " Status\r\n"
                 "Content-Type: application/json\r\n"
                 "Content-Length: " + QByteArray::number(body.size()) + "\r\n"
                 "Connection: close\r\n\r\n" + body;
@@ -301,6 +305,98 @@ private slots:
         WAIT_FOR_RESULT();
         QVERIFY(!m_api->busy());
         QCOMPARE(spy.count(), 2);
+    }
+
+    // --- SyncQueue ------------------------------------------------------
+
+    void queueSendsInOrder()
+    {
+        QTemporaryDir dir;
+        SyncQueue queue(m_api, dir.path() + QStringLiteral("/pending.json"));
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        m_server->status = 201;
+        QVariantMap first;
+        first.insert(QStringLiteral("reps"), 1);
+        QVariantMap second;
+        second.insert(QStringLiteral("reps"), 2);
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), first);
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), second);
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 2, 5000);
+        QCOMPARE(queue.count(), 0);
+        QVERIFY(m_server->requests.at(0).endsWith("{\"reps\":1}"));
+        QVERIFY(m_server->requests.at(1).endsWith("{\"reps\":2}"));
+    }
+
+    void queueSurvivesNoConnection()
+    {
+        // Offline: nothing is lost, it's on disk for the next app start,
+        // and goes out once the server is reachable.
+        QTemporaryDir dir;
+        const QString path = dir.path() + QStringLiteral("/pending.json");
+        const QString serverUrl = m_server->baseUrl();
+        m_settings->setBaseUrl(QStringLiteral("http://127.0.0.1:1"));
+        {
+            SyncQueue queue(m_api, path);
+            queue.enqueueVariant(QStringLiteral("PATCH"), QStringLiteral("sessions/5/"),
+                                 QVariantMap { { QStringLiteral("status"), QStringLiteral("completed") } });
+            QTRY_VERIFY_WITH_TIMEOUT(!queue.lastError().isEmpty(), 5000);
+            QCOMPARE(queue.count(), 1);
+        }
+        m_settings->setBaseUrl(serverUrl);
+        SyncQueue restarted(m_api, path);
+        QCOMPARE(restarted.count(), 1);
+        QSignalSpy synced(&restarted, &SyncQueue::itemSynced);
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 1, 5000);
+        QCOMPARE(restarted.count(), 0);
+        QVERIFY(m_server->requests.first().startsWith("PATCH /api/v1/sessions/5/ HTTP/1.1"));
+        QVERIFY(restarted.lastError().isEmpty());
+    }
+
+    void queueDropsRejectedAndContinues()
+    {
+        // A 400 (say, the session was already finished elsewhere) will never
+        // succeed - report it and move on to the next item.
+        QTemporaryDir dir;
+        SyncQueue queue(m_api, dir.path() + QStringLiteral("/pending.json"));
+        QSignalSpy failed(&queue, &SyncQueue::itemFailed);
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        m_server->statuses = { 400, 201 };
+        m_server->body = "{\"detail\": \"This session is no longer in progress.\"}";
+        const int rejected = queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 1, 5000);
+        QCOMPARE(failed.count(), 1);
+        QCOMPARE(failed.first().at(0).toInt(), rejected);
+        QCOMPARE(failed.first().at(3).toInt(), 400);
+        QCOMPARE(failed.first().at(4).toString(), QStringLiteral("This session is no longer in progress."));
+        QCOMPARE(queue.count(), 0);
+    }
+
+    void queueRetriesServerErrors()
+    {
+        QTemporaryDir dir;
+        SyncQueue queue(m_api, dir.path() + QStringLiteral("/pending.json"));
+        queue.setRetryInterval(50);
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        m_server->statuses = { 503, 502, 201 };
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 1, 5000);
+        QCOMPARE(m_server->requests.size(), 3);
+    }
+
+    void queueClear()
+    {
+        QTemporaryDir dir;
+        const QString path = dir.path() + QStringLiteral("/pending.json");
+        m_settings->setBaseUrl(QStringLiteral("http://127.0.0.1:1"));
+        {
+            SyncQueue queue(m_api, path);
+            queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+            queue.clear();
+            QCOMPARE(queue.count(), 0);
+        }
+        SyncQueue restarted(m_api, path);
+        QCOMPARE(restarted.count(), 0);
     }
 
     void logoutClearsKeyAndSession()

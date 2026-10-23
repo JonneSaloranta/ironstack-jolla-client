@@ -30,6 +30,34 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
                             const QString &method, const QString &path,
                             const QJSValue &body, const QJSValue &callback)
 {
+    // Taken as a QJSValue: a JS object passed to a QVariant parameter
+    // arrives as a QVariant wrapping a QJSValue, which QJsonDocument
+    // silently turns into an empty body.
+    const QVariant variantBody = (body.isUndefined() || body.isNull()) ? QVariant() : body.toVariant();
+    sendWith(baseUrl, apiKey, method, path, variantBody, jsHandler(callback));
+}
+
+void ApiClient::send(const QString &method, const QString &path, const QVariant &body, Handler handler)
+{
+    sendWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, handler);
+}
+
+ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
+{
+    return [this, callback](bool ok, int status, const QVariant &data, const QString &error) {
+        QJSValue cb(callback);
+        if (!cb.isCallable())
+            return;
+        QJSValue jsData = m_engine ? m_engine->toScriptValue(data) : QJSValue();
+        QJSValue result = cb.call(QJSValueList() << ok << status << jsData << error);
+        if (result.isError())
+            qWarning("ApiClient callback error: %s", qPrintable(result.toString()));
+    };
+}
+
+void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
+                         const QString &path, const QVariant &body, Handler handler)
+{
     const QString base = Settings::normalizeBaseUrl(baseUrl);
     const QUrl root(base + QStringLiteral("/api/v1/"));
 
@@ -39,9 +67,8 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
         // Never send the key anywhere but the configured server.
         if (url.scheme() != root.scheme() || url.host() != root.host()
                 || url.port(-1) != root.port(-1)) {
-            QJSValue cb(callback);
-            if (cb.isCallable())
-                cb.call(QJSValueList() << false << 0 << QJSValue() << tr("Refused to follow a link to another server."));
+            if (handler)
+                handler(false, 0, QVariant(), tr("Refused to follow a link to another server."));
             return;
         }
     } else {
@@ -53,12 +80,9 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
     req.setRawHeader("Accept", "application/json");
     req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
 
-    // Taken as a QJSValue: a JS object passed to a QVariant parameter
-    // arrives as a QVariant wrapping a QJSValue, which QJsonDocument
-    // silently turns into an empty body.
     QByteArray payload;
-    if (!body.isUndefined() && !body.isNull()) {
-        payload = QJsonDocument::fromVariant(body.toVariant()).toJson(QJsonDocument::Compact);
+    if (body.isValid()) {
+        payload = QJsonDocument::fromVariant(body).toJson(QJsonDocument::Compact);
         req.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
     }
 
@@ -68,9 +92,8 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
     buffer->open(QIODevice::ReadOnly);
     QNetworkReply *reply = m_network->sendCustomRequest(req, method.toUpper().toLatin1(), buffer);
     buffer->setParent(reply);
-    m_callbacks.insert(reply, callback);
-    m_usesSavedKey.insert(reply, base == m_settings->baseUrl() && apiKey == m_settings->apiKey());
-    if (m_callbacks.size() == 1)
+    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey() });
+    if (m_pending.size() == 1)
         emit busyChanged();
 
     QTimer *timer = new QTimer(reply);
@@ -84,9 +107,8 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
 void ApiClient::finish(QNetworkReply *reply)
 {
     reply->deleteLater();
-    QJSValue callback = m_callbacks.take(reply);
-    const bool usesSavedKey = m_usesSavedKey.take(reply);
-    if (m_callbacks.isEmpty())
+    const Pending pending = m_pending.take(reply);
+    if (m_pending.isEmpty())
         emit busyChanged();
 
     const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
@@ -98,15 +120,11 @@ void ApiClient::finish(QNetworkReply *reply)
     const bool ok = status >= 200 && status < 300;
     const QString error = ok ? QString() : errorMessage(status, data, reply);
 
-    if (status == 401 && usesSavedKey)
+    if (status == 401 && pending.usesSavedKey)
         emit unauthorized();
 
-    if (!callback.isCallable())
-        return;
-    QJSValue jsData = m_engine ? m_engine->toScriptValue(data) : QJSValue();
-    QJSValue result = callback.call(QJSValueList() << ok << status << jsData << error);
-    if (result.isError())
-        qWarning("ApiClient callback error: %s", qPrintable(result.toString()));
+    if (pending.handler)
+        pending.handler(ok, status, data, error);
 }
 
 QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply *reply)
