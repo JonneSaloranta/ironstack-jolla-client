@@ -11,6 +11,10 @@ import "../js/store.js" as Store
 Page {
     id: page
 
+    // Built for one hand in portrait: the steppers and the log button sit
+    // where a thumb reaches, which a 720 px tall landscape screen can't fit.
+    allowedOrientations: Orientation.Portrait
+
     property alias sessionId: controller.sessionId
     property real elapsed: 0
     property bool positioned: false

@@ -170,6 +170,28 @@ tools/emulator/emu.sh launch fi_FI.utf8    # relaunch in Finnish
   keyboardputstring`), so a text field has to be focused first.
 - `setup` grants the app's sailjail permissions the way tapping "Accept" on
   the first-launch prompt would.
+- `emu.sh warnings` lists the QML/JS warnings logged since the last launch -
+  binding errors and the like that the compile test can't see. Worth a
+  look after every UI change.
+
+### Checking themes, text size and orientation
+
+A change to a page should be looked at in the settings users actually run:
+
+```bash
+tools/emulator/emu.sh ambience airy        # light theme; "ruska" is the dark default
+tools/emulator/emu.sh fontsize gigantic    # normal, large, huge, gigantic
+tools/emulator/emu.sh launch               # relaunch to pick them up
+```
+
+Landscape: stop the emulator, `sfdk emulator set orientation=landscape`, and
+start it again. Every page except training mode follows the device's
+orientation; training mode stays portrait on purpose (its controls are laid
+out for a thumb). Put the emulator back with `orientation=portrait`,
+`ambience ruska` and `fontsize normal` afterwards.
+
+Last checked (0.1, Sailfish OS 5.1, Jolla C2 model): dark and light themes,
+gigantic text and landscape all render without clipped or overlapping text.
 
 ## Faster QML iteration (optional)
 

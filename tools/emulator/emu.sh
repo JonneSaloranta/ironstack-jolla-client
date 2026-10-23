@@ -7,6 +7,8 @@
 #   tools/emulator/emu.sh deploy             # install RPMS/*.i486.rpm and (re)launch
 #   tools/emulator/emu.sh launch [LANG]      # (re)launch, e.g. launch fi_FI.utf8
 #   tools/emulator/emu.sh wake               # screen on, unlocked
+#   tools/emulator/emu.sh ambience NAME      # e.g. airy (light), ruska (dark, default)
+#   tools/emulator/emu.sh fontsize SIZE      # normal, large, huge, gigantic (Settings > Display > Text size)
 #   tools/emulator/emu.sh tap X Y
 #   tools/emulator/emu.sh swipe X1 Y1 X2 Y2 [MS]
 #   tools/emulator/emu.sh type "text"
@@ -84,6 +86,15 @@ deploy)
     ;;
 launch) launch "${2:-}" ;;
 wake) wake ;;
+fontsize)
+    emu "$(as_user dconf write /desktop/jolla/theme/font/sizeCategory "\"'$2'\"") 2>/dev/null"
+    ;;
+ambience)
+    # Light ambiences (darkonlight): airy, glacial.
+    emu "$(as_user dbus-send --session --print-reply --dest=com.jolla.ambienced /com/jolla/ambienced \
+          com.jolla.ambienced.setAmbience "string:file:///usr/share/ambience/$2/$2.ambience") >/dev/null"
+    sleep 3
+    ;;
 tap) printf 'tap %d %d\nsleep 500\n' "$2" "$3" | emu /root/touch ;;
 swipe) printf 'swipe %d %d %d %d %d\nsleep 500\n' "$2" "$3" "$4" "$5" "${6:-300}" | emu /root/touch ;;
 touch) emu /root/touch ;;

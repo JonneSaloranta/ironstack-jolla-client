@@ -187,10 +187,11 @@ Page {
             BackgroundItem {
                 visible: page.hasActiveSession
                 width: parent.width
-                height: Theme.itemSizeLarge
+                height: Math.max(Theme.itemSizeLarge, continueColumn.height + 2 * Theme.paddingMedium)
                 onClicked: page.openSession(settings.activeSessionId)
 
                 Column {
+                    id: continueColumn
                     anchors.verticalCenter: parent.verticalCenter
                     x: Theme.horizontalPageMargin
                     width: parent.width - 2 * Theme.horizontalPageMargin

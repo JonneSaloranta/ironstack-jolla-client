@@ -10,6 +10,8 @@ ApplicationWindow {
                                      : Qt.resolvedUrl("pages/LoginPage.qml")
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+    // Silica pages are portrait-only unless told otherwise.
+    _defaultPageOrientations: defaultAllowedOrientations
 
     Connections {
         target: api

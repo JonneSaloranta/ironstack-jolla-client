@@ -82,12 +82,14 @@ Page {
         }
 
         delegate: ListItem {
-            contentHeight: Theme.itemSizeMedium
+            // Grows with the text size setting instead of clipping it.
+            contentHeight: Math.max(Theme.itemSizeMedium, textColumn.height + 2 * Theme.paddingMedium)
             onClicked: pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), {
                 program: JSON.parse(model.json)
             })
 
             Column {
+                id: textColumn
                 anchors.verticalCenter: parent.verticalCenter
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin

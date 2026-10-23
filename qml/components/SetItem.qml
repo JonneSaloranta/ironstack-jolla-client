@@ -9,7 +9,7 @@ ListItem {
 
     property var set
 
-    contentHeight: Theme.itemSizeSmall
+    contentHeight: Math.max(Theme.itemSizeSmall, setLabel.height + 2 * Theme.paddingSmall)
 
     Label {
         id: numberLabel
@@ -21,6 +21,7 @@ ListItem {
     }
 
     Label {
+        id: setLabel
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: numberLabel.right
         anchors.right: pendingIcon.visible ? pendingIcon.left : parent.right
