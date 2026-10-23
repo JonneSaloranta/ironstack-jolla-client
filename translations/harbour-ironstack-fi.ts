@@ -249,11 +249,11 @@
     </message>
     <message>
         <source>Workout</source>
-        <translation type="unfinished">Treeni</translation>
+        <translation>Treeni</translation>
     </message>
     <message>
         <source>Freeform workout</source>
-        <translation type="unfinished">Vapaa treeni</translation>
+        <translation>Vapaa treeni</translation>
     </message>
 </context>
 <context>
