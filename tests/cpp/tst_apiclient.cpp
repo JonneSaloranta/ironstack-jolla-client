@@ -144,7 +144,7 @@ private slots:
     void sendsKeyToApiPath()
     {
         m_server->body = "{\"unit_system\": \"metric\"}";
-        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
 
         QCOMPARE(result().property("ok").toBool(), true);
@@ -163,7 +163,8 @@ private slots:
         QVariantMap body;
         body.insert(QStringLiteral("weight"), 82.5);
         body.insert(QStringLiteral("reps"), 5);
-        m_api->request(QStringLiteral("POST"), QStringLiteral("sets/"), body, makeCallback());
+        m_api->request(QStringLiteral("POST"), QStringLiteral("sets/"), m_engine->toScriptValue(body),
+                       makeCallback());
         WAIT_FOR_RESULT();
 
         QCOMPARE(result().property("ok").toBool(), true);
@@ -173,12 +174,34 @@ private slots:
         QVERIFY(request.endsWith("{\"reps\":5,\"weight\":82.5}"));
     }
 
+    void sendsBodyBuiltInJavaScript()
+    {
+        // QML passes a JS object, not a QVariantMap - the case every page
+        // actually hits. Regression: the body arrived empty, so starting a
+        // workout created a freeform session instead.
+        m_server->status = 201;
+        m_engine->globalObject().setProperty(QStringLiteral("api"), m_engine->newQObject(m_api));
+        QQmlEngine::setObjectOwnership(m_api, QQmlEngine::CppOwnership);
+        QJSValue call = m_engine->evaluate(QStringLiteral(
+            "(function(cb) { api.request('POST', 'sessions/', { workout: 66, notes: 'x', rpe: null }, cb) })"));
+        call.call(QJSValueList() << makeCallback());
+        WAIT_FOR_RESULT();
+        QVERIFY(m_server->requests.first().endsWith("{\"notes\":\"x\",\"rpe\":null,\"workout\":66}"));
+
+        // and no body at all for null
+        m_server->requests.clear();
+        call = m_engine->evaluate(QStringLiteral("(function(cb) { api.request('GET', 'profile/', null, cb) })"));
+        call.call(QJSValueList() << makeCallback());
+        WAIT_FOR_RESULT();
+        QVERIFY(m_server->requests.first().endsWith("\r\n\r\n"));
+    }
+
     void followsSameServerAbsoluteUrl()
     {
         // A paginated response's "next" is an absolute URL on the same server.
         m_server->body = "{\"results\": []}";
         m_api->request(QStringLiteral("GET"), m_server->baseUrl() + QStringLiteral("/api/v1/sessions/?page=2"),
-                       QVariant(), makeCallback());
+                       QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), true);
         QVERIFY(m_server->requests.first().startsWith("GET /api/v1/sessions/?page=2 HTTP/1.1"));
@@ -198,7 +221,7 @@ private slots:
         QFETCH(QString, url);
         if (url.contains(QStringLiteral("%1")))
             url = url.arg(m_server->port());
-        m_api->request(QStringLiteral("GET"), url, QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), url, QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), 0);
@@ -233,7 +256,7 @@ private slots:
         QFETCH(QString, expected);
         m_server->status = status;
         m_server->body = body;
-        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), status);
@@ -248,11 +271,11 @@ private slots:
         QSignalSpy spy(m_api, &ApiClient::unauthorized);
 
         m_api->requestWith(m_server->baseUrl(), QStringLiteral("isk_typed"), QStringLiteral("GET"),
-                           QStringLiteral("profile/"), QVariant(), makeCallback());
+                           QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(spy.count(), 0);
 
-        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(spy.count(), 1);
         QCOMPARE(result().property("error").toString(),
@@ -262,7 +285,7 @@ private slots:
     void unreachableServer()
     {
         m_settings->setBaseUrl(QStringLiteral("http://127.0.0.1:1"));
-        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), 0);
@@ -273,7 +296,7 @@ private slots:
     {
         QSignalSpy spy(m_api, &ApiClient::busyChanged);
         QVERIFY(!m_api->busy());
-        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QVariant(), makeCallback());
+        m_api->request(QStringLiteral("GET"), QStringLiteral("profile/"), QJSValue(QJSValue::NullValue), makeCallback());
         QVERIFY(m_api->busy());
         WAIT_FOR_RESULT();
         QVERIFY(!m_api->busy());

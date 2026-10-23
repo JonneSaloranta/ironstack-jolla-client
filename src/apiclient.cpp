@@ -21,14 +21,14 @@ ApiClient::ApiClient(Settings *settings, QObject *parent)
 }
 
 void ApiClient::request(const QString &method, const QString &path,
-                        const QVariant &body, const QJSValue &callback)
+                        const QJSValue &body, const QJSValue &callback)
 {
     requestWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, callback);
 }
 
 void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
                             const QString &method, const QString &path,
-                            const QVariant &body, const QJSValue &callback)
+                            const QJSValue &body, const QJSValue &callback)
 {
     const QString base = Settings::normalizeBaseUrl(baseUrl);
     const QUrl root(base + QStringLiteral("/api/v1/"));
@@ -53,9 +53,12 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
     req.setRawHeader("Accept", "application/json");
     req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
 
+    // Taken as a QJSValue: a JS object passed to a QVariant parameter
+    // arrives as a QVariant wrapping a QJSValue, which QJsonDocument
+    // silently turns into an empty body.
     QByteArray payload;
-    if (body.isValid() && !body.isNull()) {
-        payload = QJsonDocument::fromVariant(body).toJson(QJsonDocument::Compact);
+    if (!body.isUndefined() && !body.isNull()) {
+        payload = QJsonDocument::fromVariant(body.toVariant()).toJson(QJsonDocument::Compact);
         req.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
     }
 

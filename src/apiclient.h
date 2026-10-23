@@ -30,13 +30,13 @@ public:
     // path is relative to /api/v1/ ("sessions/") or an absolute URL on the
     // same server (a paginated response's "next").
     Q_INVOKABLE void request(const QString &method, const QString &path,
-                             const QVariant &body, const QJSValue &callback);
+                             const QJSValue &body, const QJSValue &callback);
 
     // Same as request(), but against credentials that are not saved yet -
     // the login page tests a key before storing it.
     Q_INVOKABLE void requestWith(const QString &baseUrl, const QString &apiKey,
                                  const QString &method, const QString &path,
-                                 const QVariant &body, const QJSValue &callback);
+                                 const QJSValue &body, const QJSValue &callback);
 
 signals:
     void busyChanged();
