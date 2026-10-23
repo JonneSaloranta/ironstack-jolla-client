@@ -3,6 +3,10 @@ TARGET = harbour-ironstack
 CONFIG += sailfishapp
 QT += network
 
+# Passed in by the spec file (%qmake5 VERSION=%{version}).
+isEmpty(VERSION): VERSION = 0.0.0
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+
 SOURCES += \
     src/main.cpp \
     src/apiclient.cpp \

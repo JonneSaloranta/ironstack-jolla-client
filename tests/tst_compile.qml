@@ -20,6 +20,7 @@ TestCase {
         return [
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },
+            { tag: "RestTimer", path: "components/RestTimer.qml" },
             { tag: "StatItem", path: "components/StatItem.qml" }
         ]
     }
@@ -29,7 +30,7 @@ TestCase {
         return [
             "DashboardPage", "ExercisePickerPage", "HistoryPage", "LogSetDialog",
             "LoginPage", "ProgramPage", "ProgramsPage", "RecordsPage",
-            "SessionPage", "WorkoutPage"
+            "SessionPage", "SettingsPage", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

@@ -22,7 +22,7 @@ personal records.
 %setup -q -n %{name}-%{version}
 
 %build
-%qmake5
+%qmake5 VERSION=%{version}
 %make_build
 
 %install

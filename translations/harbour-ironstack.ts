@@ -52,12 +52,17 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="43"/>
+        <location filename="../qml/cover/CoverPage.qml" line="48"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="60"/>
+        <location filename="../qml/cover/CoverPage.qml" line="75"/>
+        <source>rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="84"/>
         <source>No workout in progress</source>
         <translation type="unfinished"></translation>
     </message>
@@ -77,7 +82,7 @@
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="118"/>
-        <source>Server settings</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -377,111 +382,212 @@
     </message>
 </context>
 <context>
+    <name>RestTimer</name>
+    <message>
+        <location filename="../qml/components/RestTimer.qml" line="46"/>
+        <source>rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RestTimer.qml" line="57"/>
+        <source>+30 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/RestTimer.qml" line="62"/>
+        <source>Skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SessionPage</name>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="30"/>
+        <location filename="../qml/pages/SessionPage.qml" line="34"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="34"/>
+        <location filename="../qml/pages/SessionPage.qml" line="38"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="57"/>
+        <location filename="../qml/pages/SessionPage.qml" line="71"/>
         <source>Target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="79"/>
+        <location filename="../qml/pages/SessionPage.qml" line="98"/>
         <source>Prefilled from your previous set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="80"/>
+        <location filename="../qml/pages/SessionPage.qml" line="102"/>
+        <source>Prefilled from last time (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SessionPage.qml" line="106"/>
         <source>Prefilled from the program target.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="92"/>
+        <location filename="../qml/pages/SessionPage.qml" line="123"/>
         <source>set %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="174"/>
+        <location filename="../qml/pages/SessionPage.qml" line="206"/>
         <source>Finish workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="175"/>
+        <location filename="../qml/pages/SessionPage.qml" line="207"/>
         <source>Finishing workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="178"/>
-        <location filename="../qml/pages/SessionPage.qml" line="300"/>
+        <location filename="../qml/pages/SessionPage.qml" line="210"/>
+        <location filename="../qml/pages/SessionPage.qml" line="345"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="182"/>
+        <location filename="../qml/pages/SessionPage.qml" line="214"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="190"/>
+        <location filename="../qml/pages/SessionPage.qml" line="222"/>
         <source>Abandon workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="191"/>
+        <location filename="../qml/pages/SessionPage.qml" line="223"/>
         <source>Abandoning workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="201"/>
+        <location filename="../qml/pages/SessionPage.qml" line="233"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="201"/>
+        <location filename="../qml/pages/SessionPage.qml" line="233"/>
         <source>Abandoned</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="230"/>
+        <location filename="../qml/pages/SessionPage.qml" line="263"/>
         <source>%1/%2 done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="266"/>
+        <location filename="../qml/pages/SessionPage.qml" line="276"/>
+        <source>Last time: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SessionPage.qml" line="311"/>
         <source>failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="273"/>
+        <location filename="../qml/pages/SessionPage.qml" line="318"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="277"/>
+        <location filename="../qml/pages/SessionPage.qml" line="322"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="288"/>
+        <location filename="../qml/pages/SessionPage.qml" line="333"/>
         <source>Log set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="307"/>
+        <location filename="../qml/pages/SessionPage.qml" line="352"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="308"/>
+        <location filename="../qml/pages/SessionPage.qml" line="353"/>
         <source>Pull down to add an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="17"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="21"/>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
+        <source>Rest timer after a set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="31"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="41"/>
+        <source>Starts when you log a working set. You get a notification when the rest is over, also with the screen off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="52"/>
+        <source>Weights are shown in %1, following the unit setting of your IronStack profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="57"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="67"/>
+        <source>Change server or key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
+        <source>Log out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="73"/>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="82"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -502,8 +608,18 @@
 <context>
     <name>harbour-ironstack</name>
     <message>
-        <location filename="../qml/harbour-ironstack.qml" line="20"/>
+        <location filename="../qml/harbour-ironstack.qml" line="22"/>
         <source>The API key was not accepted. It may have been revoked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-ironstack.qml" line="66"/>
+        <source>Rest is over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-ironstack.qml" line="67"/>
+        <source>Time for the next set</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

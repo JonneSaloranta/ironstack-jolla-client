@@ -57,6 +57,27 @@ void Settings::setUnitSystem(const QString &system)
     emit unitSystemChanged();
 }
 
+int Settings::restSeconds() const
+{
+    return m_settings.value(QStringLiteral("training/restSeconds"), 90).toInt();
+}
+
+void Settings::setRestSeconds(int seconds)
+{
+    if (seconds == restSeconds())
+        return;
+    m_settings.setValue(QStringLiteral("training/restSeconds"), seconds);
+    emit restSecondsChanged();
+}
+
+void Settings::setRestEndsAt(double endsAt)
+{
+    if (endsAt == m_restEndsAt)
+        return;
+    m_restEndsAt = endsAt;
+    emit restEndsAtChanged();
+}
+
 void Settings::setActiveSessionId(int id)
 {
     if (id == m_activeSessionId)
@@ -83,6 +104,7 @@ void Settings::setActiveSessionStarted(const QString &started)
 
 void Settings::clearActiveSession()
 {
+    setRestEndsAt(0);
     m_activeSessionId = -1;
     m_activeSessionName.clear();
     m_activeSessionStarted.clear();

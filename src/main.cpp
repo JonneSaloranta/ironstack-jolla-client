@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setOrganizationName(QStringLiteral("org.ironstack"));
     app->setApplicationName(QStringLiteral("harbour-ironstack"));
+    app->setApplicationVersion(QStringLiteral(APP_VERSION));
 
     Settings settings;
     ApiClient api(&settings);

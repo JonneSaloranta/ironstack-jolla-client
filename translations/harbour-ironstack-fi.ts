@@ -50,6 +50,10 @@
         <source>No workout in progress</source>
         <translation>Ei käynnissä olevaa treeniä</translation>
     </message>
+    <message>
+        <source>rest</source>
+        <translation>lepo</translation>
+    </message>
 </context>
 <context>
     <name>DashboardPage</name>
@@ -60,10 +64,6 @@
     <message>
         <source>Freeform workout</source>
         <translation>Vapaa treeni</translation>
-    </message>
-    <message>
-        <source>Server settings</source>
-        <translation>Palvelinasetukset</translation>
     </message>
     <message>
         <source>Personal records</source>
@@ -112,6 +112,10 @@
     <message>
         <source>No records yet</source>
         <translation>Ei vielä ennätyksiä</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
     </message>
 </context>
 <context>
@@ -312,6 +316,21 @@
     </message>
 </context>
 <context>
+    <name>RestTimer</name>
+    <message>
+        <source>rest</source>
+        <translation>lepo</translation>
+    </message>
+    <message>
+        <source>+30 s</source>
+        <translation>+30 s</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation>Ohita</translation>
+    </message>
+</context>
+<context>
     <name>SessionPage</name>
     <message>
         <source>Workout</source>
@@ -397,6 +416,73 @@
         <source>Pull down to add an exercise</source>
         <translation>Lisää liike vetämällä alas</translation>
     </message>
+    <message>
+        <source>Prefilled from last time (%1).</source>
+        <translation>Esitäytetty edellisestä kerrasta (%1).</translation>
+    </message>
+    <message>
+        <source>Last time: %1</source>
+        <translation>Viime kerralla: %1</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Training</source>
+        <translation>Treeni</translation>
+    </message>
+    <message>
+        <source>Rest timer after a set</source>
+        <translation>Palautumisajastin sarjan jälkeen</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Pois</translation>
+    </message>
+    <message>
+        <source>Starts when you log a working set. You get a notification when the rest is over, also with the screen off.</source>
+        <translation>Käynnistyy, kun kirjaat työsarjan. Saat ilmoituksen, kun lepo on ohi, myös näytön ollessa pimeänä.</translation>
+    </message>
+    <message>
+        <source>Weights are shown in %1, following the unit setting of your IronStack profile.</source>
+        <translation>Painot näytetään yksikössä %1 IronStack-profiilisi yksikköasetuksen mukaan.</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation>Palvelin</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Osoite</translation>
+    </message>
+    <message>
+        <source>Change server or key</source>
+        <translation>Vaihda palvelin tai avain</translation>
+    </message>
+    <message>
+        <source>Log out</source>
+        <translation>Kirjaudu ulos</translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation>Kirjaudutaan ulos</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Tietoja</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versio</translation>
+    </message>
+    <message>
+        <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
+        <translation>IronStack Sailfish OS:lle on vapaa ohjelmisto GNU AGPL v3 -lisenssillä.</translation>
+    </message>
 </context>
 <context>
     <name>WorkoutPage</name>
@@ -414,6 +500,14 @@
     <message>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation>API-avainta ei hyväksytty. Se on ehkä peruttu.</translation>
+    </message>
+    <message>
+        <source>Rest is over</source>
+        <translation>Lepo on ohi</translation>
+    </message>
+    <message>
+        <source>Time for the next set</source>
+        <translation>Seuraavan sarjan aika</translation>
     </message>
 </context>
 </TS>

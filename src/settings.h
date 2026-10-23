@@ -14,6 +14,12 @@ class Settings : public QObject
     Q_PROPERTY(QString apiKey READ apiKey WRITE setApiKey NOTIFY apiKeyChanged)
     Q_PROPERTY(bool configured READ configured NOTIFY configuredChanged)
     Q_PROPERTY(QString unitSystem READ unitSystem WRITE setUnitSystem NOTIFY unitSystemChanged)
+    // Rest timer length after logging a set; 0 turns the timer off.
+    Q_PROPERTY(int restSeconds READ restSeconds WRITE setRestSeconds NOTIFY restSecondsChanged)
+    // When the running rest period ends, in ms since the epoch; 0 = no rest
+    // running. Runtime only, shared by the session page, the cover and the
+    // end-of-rest notification.
+    Q_PROPERTY(double restEndsAt READ restEndsAt WRITE setRestEndsAt NOTIFY restEndsAtChanged)
 
     Q_PROPERTY(int activeSessionId READ activeSessionId WRITE setActiveSessionId NOTIFY activeSessionChanged)
     Q_PROPERTY(QString activeSessionName READ activeSessionName WRITE setActiveSessionName NOTIFY activeSessionChanged)
@@ -29,6 +35,10 @@ public:
     bool configured() const;
     QString unitSystem() const;
     void setUnitSystem(const QString &system);
+    int restSeconds() const;
+    void setRestSeconds(int seconds);
+    double restEndsAt() const { return m_restEndsAt; }
+    void setRestEndsAt(double endsAt);
 
     int activeSessionId() const { return m_activeSessionId; }
     void setActiveSessionId(int id);
@@ -48,6 +58,8 @@ signals:
     void apiKeyChanged();
     void configuredChanged();
     void unitSystemChanged();
+    void restSecondsChanged();
+    void restEndsAtChanged();
     void activeSessionChanged();
 
 private:
@@ -55,6 +67,7 @@ private:
     int m_activeSessionId = -1;
     QString m_activeSessionName;
     QString m_activeSessionStarted;
+    double m_restEndsAt = 0;
 };
 
 #endif

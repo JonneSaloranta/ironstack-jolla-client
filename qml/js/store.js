@@ -133,3 +133,62 @@ function formatHoursMinutes(seconds) {
     var m = Math.floor((seconds % 3600) / 60)
     return h + ":" + (m < 10 ? "0" + m : m)
 }
+
+// --- previous performance -------------------------------------------------
+// The working sets from the most recent completed session (other than
+// currentSessionId) that included exerciseId, or null. `sessions` is a
+// newest-first list as returned by sessions/. Only what's in that list is
+// searched - a dedicated endpoint is IronStack issue #20.
+function previousPerformance(sessions, exerciseId, currentSessionId) {
+    for (var i = 0; i < sessions.length; i++) {
+        var session = sessions[i]
+        if (session.id === currentSessionId || session.status !== "completed")
+            continue
+        var performed = session.performed_exercises || []
+        for (var j = 0; j < performed.length; j++) {
+            if (performed[j].exercise !== exerciseId)
+                continue
+            var working = (performed[j].sets || []).filter(function(s) { return !s.is_warmup })
+            if (working.length > 0)
+                return { sessionId: session.id, startedAt: session.started_at, sets: working }
+        }
+    }
+    return null
+}
+
+// "3 x 5 @ 80 kg" when every set matches, otherwise each set listed:
+// "80 kg x 5, 80 kg x 5, 75 kg x 6".
+function summarizeSets(sets, unitSystem) {
+    if (!sets || sets.length === 0)
+        return ""
+    var same = sets.every(function(s) {
+        return parseFloat(s.weight) === parseFloat(sets[0].weight) && s.reps === sets[0].reps
+    })
+    if (same)
+        return sets.length + " x " + sets[0].reps + " @ " + formatWeight(sets[0].weight, unitSystem)
+    return sets.map(function(s) { return formatWeight(s.weight, unitSystem) + " x " + s.reps }).join(", ")
+}
+
+var recentSessions = null
+var recentSessionsLoadedAt = 0
+var RECENT_SESSIONS_MAX_AGE_MS = 5 * 60 * 1000
+
+// Newest page of sessions, cached for a few minutes; finishing a session
+// calls invalidateRecentSessions() so the next one sees it.
+function loadRecentSessions(api, done) {
+    if (recentSessions !== null && Date.now() - recentSessionsLoadedAt < RECENT_SESSIONS_MAX_AGE_MS) {
+        done(recentSessions)
+        return
+    }
+    api.request("GET", "sessions/", null, function(ok, status, data) {
+        if (ok) {
+            recentSessions = data.results || []
+            recentSessionsLoadedAt = Date.now()
+        }
+        done(recentSessions || [])
+    })
+}
+
+function invalidateRecentSessions() {
+    recentSessions = null
+}

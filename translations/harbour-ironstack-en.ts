@@ -50,6 +50,10 @@
         <source>No workout in progress</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>rest</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DashboardPage</name>
@@ -59,10 +63,6 @@
     </message>
     <message>
         <source>Freeform workout</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Server settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -111,6 +111,10 @@
     </message>
     <message>
         <source>No records yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -312,6 +316,21 @@
     </message>
 </context>
 <context>
+    <name>RestTimer</name>
+    <message>
+        <source>rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+30 s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SessionPage</name>
     <message>
         <source>Workout</source>
@@ -397,6 +416,73 @@
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Prefilled from last time (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last time: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rest timer after a set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starts when you log a working set. You get a notification when the rest is over, also with the screen off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weights are shown in %1, following the unit setting of your IronStack profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change server or key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WorkoutPage</name>
@@ -413,6 +499,14 @@
     <name>harbour-ironstack</name>
     <message>
         <source>The API key was not accepted. It may have been revoked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rest is over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time for the next set</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

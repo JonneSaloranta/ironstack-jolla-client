@@ -12,6 +12,8 @@ Page {
     property bool loading: false
     property string errorText: ""
     property real elapsed: 0
+    // exercise id -> Store.previousPerformance() result (or null)
+    property var previous: ({})
 
     readonly property bool inProgress: session !== null && session.is_in_progress
 
@@ -25,6 +27,8 @@ Page {
             }
             page.errorText = ""
             page.session = data
+            if (data.is_in_progress)
+                loadPrevious()
             if (data.workout) {
                 api.request("GET", "workouts/" + data.workout + "/", null, function(ok2, status2, workout) {
                     page.title = ok2 ? workout.name : qsTr("Workout")
@@ -34,6 +38,16 @@ Page {
                 page.title = qsTr("Freeform workout")
                 syncCover()
             }
+        })
+    }
+
+    function loadPrevious() {
+        Store.loadRecentSessions(api, function(sessions) {
+            var map = {}
+            page.session.performed_exercises.forEach(function(pe) {
+                map[pe.exercise] = Store.previousPerformance(sessions, pe.exercise, page.sessionId)
+            })
+            page.previous = map
         })
     }
 
@@ -64,26 +78,43 @@ Page {
         return pe.sets.filter(function(s) { return !s.is_warmup }).length
     }
 
-    // Prefill: the last set logged for this exercise in this session,
-    // otherwise the plan's target. Never logged without the user
-    // confirming the dialog.
+    // Prefill, in order: the last set logged for this exercise in this
+    // session, the same set from last time, the plan's target. Never
+    // logged without the user confirming the dialog.
     function openLogDialog(pe) {
         var last = pe.sets.length > 0 ? pe.sets[pe.sets.length - 1] : null
         var props = {
             exerciseName: pe.exercise_name,
-            incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
-            initialWeightKg: last ? last.weight : pe.target_weight,
-            initialReps: last ? last.reps : (pe.max_reps || pe.min_reps || null),
-            initialRpe: last ? last.rpe : null,
-            initialRir: last ? last.rir : null,
-            hint: last ? qsTr("Prefilled from your previous set.")
-                       : (pe.target_weight ? qsTr("Prefilled from the program target.") : "")
+            incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5
+        }
+        var before = previous[pe.exercise]
+        var beforeSet = before ? before.sets[Math.min(workingSetCount(pe), before.sets.length - 1)] : null
+        // After warm-ups only, last time's working set is the better guess.
+        if (last && !(last.is_warmup && beforeSet)) {
+            props.initialWeightKg = last.weight
+            props.initialReps = last.reps
+            props.initialRpe = last.rpe
+            props.initialRir = last.rir
+            props.hint = qsTr("Prefilled from your previous set.")
+        } else if (beforeSet) {
+            props.initialWeightKg = beforeSet.weight
+            props.initialReps = beforeSet.reps
+            props.hint = qsTr("Prefilled from last time (%1).").arg(Store.formatDate(before.startedAt))
+        } else {
+            props.initialWeightKg = pe.target_weight
+            props.initialReps = pe.max_reps || pe.min_reps || null
+            props.hint = pe.target_weight ? qsTr("Prefilled from the program target.") : ""
         }
         var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), props)
         dialog.accepted.connect(function() {
+            var warmup = dialog.isWarmup
             api.request("POST", "sets/", setPayload(dialog, { performed_exercise: pe.id,
                                                               target_reps: pe.max_reps || null }),
-                        handleWrite)
+                        function(ok, status, data, error) {
+                if (ok && !warmup && settings.restSeconds > 0)
+                    settings.restEndsAt = Date.now() + settings.restSeconds * 1000
+                handleWrite(ok, status, data, error)
+            })
         })
     }
 
@@ -142,6 +173,7 @@ Page {
                 return
             }
             settings.clearActiveSession()
+            Store.invalidateRecentSessions()
             page.session = data
             if (newStatus === "abandoned")
                 pageStack.pop()
@@ -204,6 +236,7 @@ Page {
             ErrorBanner {
                 text: page.errorText
             }
+            RestTimer {}
         }
 
         delegate: Column {
@@ -229,6 +262,18 @@ Page {
                         return ""
                     return target + " (" + qsTr("%1/%2 done").arg(page.workingSetCount(pe)).arg(pe.set_count) + ")"
                 }
+            }
+
+            Label {
+                property var before: page.previous[pe.exercise]
+                visible: page.inProgress && before !== undefined && before !== null
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.secondaryColor
+                horizontalAlignment: Text.AlignRight
+                wrapMode: Text.Wrap
+                text: visible ? qsTr("Last time: %1").arg(Store.summarizeSets(before.sets, settings.unitSystem)) : ""
             }
 
             Repeater {

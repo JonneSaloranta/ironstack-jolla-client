@@ -115,8 +115,8 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
-                text: qsTr("Server settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("LoginPage.qml"))
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }
             MenuItem {
                 text: qsTr("Personal records")
