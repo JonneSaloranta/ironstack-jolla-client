@@ -6,6 +6,6 @@ Exec=harbour-ironstack
 Name=IronStack
 
 [X-Sailjail]
-Permissions=Internet;Notifications
+Permissions=Internet
 OrganizationName=org.ironstack
 ApplicationName=harbour-ironstack

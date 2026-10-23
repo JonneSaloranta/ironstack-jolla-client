@@ -52,15 +52,14 @@ setup)
         "gcc -O2 -std=gnu99 -o $HOME/.cache/harbour-ironstack-emu/touch $HOME/.cache/harbour-ironstack-emu/touch.c")
     push "$HOME/.cache/harbour-ironstack-emu/touch" /root/touch
     # Grant the app's sailjail permissions (what tapping "Accept" on the
-    # first-launch prompt does) and keep the screen on.
-    emu 'F=/home/.system/var/lib/sailjail/settings/user-100000.settings
+    # first-launch prompt does).
+    perms=$(sed -n 's/^Permissions=//p' "$ROOT/harbour-ironstack.desktop");
+    perms="${perms%;};"
+    emu "F=/home/.system/var/lib/sailjail/settings/user-100000.settings
          systemctl stop sailjaild
-         if grep -q "^\[harbour-ironstack\]" $F 2>/dev/null; then
-             sed -i "/^\[harbour-ironstack\]/,/^\[/{s/^Allowed=.*/Allowed=1/;s/^Agreed=.*/Agreed=1/;s/^Granted=.*/Granted=Internet;Notifications;/}" $F
-         else
-             printf "[harbour-ironstack]\nAllowed=1\nAgreed=1\nAutogrant=0\nGranted=Internet;Notifications;\nPermissions=Internet;Notifications;\n" >> $F
-         fi
-         systemctl start sailjaild'
+         sed -i '/^\[harbour-ironstack\]/,/^Permissions=/d' \$F 2>/dev/null || true
+         printf '[harbour-ironstack]\nAllowed=1\nAgreed=1\nAutogrant=0\nGranted=$perms\nPermissions=$perms\n' >> \$F
+         systemctl start sailjaild"
     echo "ready"
     ;;
 deploy)

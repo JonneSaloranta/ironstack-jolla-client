@@ -101,7 +101,7 @@ sfdk deploy --sdk              # installs the RPM in the emulator
 ```
 
 Then open **IronStack** from the emulator's app grid. On the very first
-launch Sailfish OS asks for the app's permissions (Internet, Notifications) -
+launch Sailfish OS asks for the app's permission (Internet) -
 tap **Accept**. Then enter `http://10.0.2.2:8000` as the server address and
 paste the API key.
 
