@@ -53,10 +53,8 @@ ApplicationWindow {
 
     // Without this the device may suspend during a rest with the screen
     // off, and the timer would only fire on the next wake-up.
-    Binding {
-        target: KeepAlive
-        property: "enabled"
-        value: settings.restEndsAt > 0
+    KeepAlive {
+        enabled: settings.restEndsAt > 0
     }
 
     Notification {
