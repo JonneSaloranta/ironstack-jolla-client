@@ -1,28 +1,35 @@
 .pragma library
 
 // Shared, app-wide state and formatting helpers. A .pragma library script
-// is one instance for every page that imports it, so the exercise-name
+// is one instance for every page that imports it, so the workout-name
 // cache survives page pushes/pops.
+.import "content.js" as Content
 
 var LB_PER_KG = 2.20462262
 
-var exerciseNames = ({})
+// --- built-in content names ------------------------------------------------
+// IronStack stores built-in exercises, programs and workouts in English and
+// the web translates their names when showing them; the API returns them
+// as stored. content.js carries the same translations (see
+// tools/content-i18n/generate.py). A name with no translation - a user's
+// own exercise, say - is shown as typed, the same as on the web.
 
-function exerciseName(id) {
-    return exerciseNames[id] || ("#" + id)
+function contentLanguage() {
+    return Qt.locale().name.split("_")[0]
 }
 
-function rememberExercises(list) {
-    for (var i = 0; i < list.length; i++)
-        exerciseNames[list[i].id] = list[i].name
+function contentName(name, language) {
+    if (!name)
+        return name
+    var names = Content.catalog[language || contentLanguage()]
+    return (names && names[name]) || name
 }
 
 var workoutNames = ({})
 
 // Fetch the names of any ids not yet in `cache`, one GET per unknown id
-// (the API returns only ids on prescriptions/records/sessions - see
-// IronStack issue #19), then call done(). A failed fetch leaves the id
-// out, so the caller falls back to a placeholder.
+// (a session carries only its workout's id), then call done(). A failed
+// fetch leaves the id out, so the caller falls back to a placeholder.
 function ensureNames(api, cache, endpoint, ids, done) {
     var missing = []
     for (var i = 0; i < ids.length; i++) {
@@ -43,10 +50,6 @@ function ensureNames(api, cache, endpoint, ids, done) {
                 done()
         })
     })
-}
-
-function ensureExercises(api, ids, done) {
-    ensureNames(api, exerciseNames, "exercises/", ids, done)
 }
 
 function ensureWorkouts(api, ids, done) {
@@ -136,25 +139,16 @@ function formatHoursMinutes(seconds) {
 }
 
 // --- previous performance -------------------------------------------------
-// The working sets from the most recent completed session (other than
-// currentSessionId) that included exerciseId, or null. `sessions` is a
-// newest-first list as returned by sessions/. Only what's in that list is
-// searched - a dedicated endpoint is IronStack issue #20.
-function previousPerformance(sessions, exerciseId, currentSessionId) {
-    for (var i = 0; i < sessions.length; i++) {
-        var session = sessions[i]
-        if (session.id === currentSessionId || session.status !== "completed")
-            continue
-        var performed = session.performed_exercises || []
-        for (var j = 0; j < performed.length; j++) {
-            if (performed[j].exercise !== exerciseId)
-                continue
-            var working = (performed[j].sets || []).filter(function(s) { return !s.is_warmup })
-            if (working.length > 0)
-                return { sessionId: session.id, startedAt: session.started_at, sets: working }
-        }
-    }
-    return null
+// exercises/<id>/last-performance/ (the sets from the most recent completed
+// session that included the exercise) as {sessionId, startedAt, sets} with
+// the warm-ups left out, or null when there's nothing to show.
+function lastTime(data) {
+    if (!data || !data.session)
+        return null
+    var working = (data.sets || []).filter(function(s) { return !s.is_warmup })
+    if (working.length === 0)
+        return null
+    return { sessionId: data.session, startedAt: data.started_at, sets: working }
 }
 
 // "3 x 5 @ 80 kg" when every set matches, otherwise each set listed:
@@ -170,33 +164,17 @@ function summarizeSets(sets, unitSystem) {
     return sets.map(function(s) { return formatWeight(s.weight, unitSystem) + " x " + s.reps }).join(", ")
 }
 
-var recentSessions = null
-var recentSessionsLoadedAt = 0
-var RECENT_SESSIONS_MAX_AGE_MS = 5 * 60 * 1000
-
-// Newest page of sessions, cached for a few minutes; finishing a session
-// calls invalidateRecentSessions() so the next one sees it.
-function loadRecentSessions(api, done) {
-    if (recentSessions !== null && Date.now() - recentSessionsLoadedAt < RECENT_SESSIONS_MAX_AGE_MS) {
-        done(recentSessions)
-        return
-    }
-    api.request("GET", "sessions/", null, function(ok, status, data) {
-        if (ok) {
-            recentSessions = data.results || []
-            recentSessionsLoadedAt = Date.now()
-        }
-        done(recentSessions || [])
-    })
+// A shallow copy of an object, for assigning a changed map to a property.
+function copy(object) {
+    var result = {}
+    for (var key in object)
+        result[key] = object[key]
+    return result
 }
 
 // True for an error that means "no connection" rather than a real refusal.
 function isOffline(status) {
     return status === 0
-}
-
-function invalidateRecentSessions() {
-    recentSessions = null
 }
 
 // "Rep-specific PR (5RM)" - without the rep count a lifter's 1RM, 3RM and
@@ -274,24 +252,61 @@ function pendingSessionEnd(queueItems, sessionId) {
     return ""
 }
 
-// Default values for the next set of `pe`, in order of preference: the last
-// set logged for it in this session, the same set from last time, the
-// plan's target. Never more than a default - the user confirms every set.
-// `before` is a previousPerformance() result or null.
-function prefill(pe, before) {
+// Default values for the next set of `pe`, in the same order as the
+// IronStack web (apps.workouts.views._build_set_form): the last set logged
+// for it in this session; otherwise the smart suggestion
+// (performed-exercises/<id>/suggestion/) over the plan's target, reps from
+// the bottom of the range. Last time's sets fill in only when that leaves
+// no weight - the web leaves it empty then. Never more than a default -
+// the user confirms every set.
+// `before` is a lastTime() result or null, `suggestion` the API's
+// suggestion (every field null without a prescription) or null.
+function prefill(pe, before, suggestion) {
     var sets = pe.sets || []
     var last = sets.length > 0 ? sets[sets.length - 1] : null
-    var working = sets.filter(function(s) { return !s.is_warmup }).length
-    var beforeSet = before && before.sets.length > 0
-            ? before.sets[Math.min(working, before.sets.length - 1)] : null
-    // After warm-ups only, last time's working set is the better guess.
-    if (last && !(last.is_warmup && beforeSet))
-        return { weightKg: last.weight, reps: last.reps, rpe: last.rpe, rir: last.rir, source: "set" }
-    if (beforeSet)
-        return { weightKg: beforeSet.weight, reps: beforeSet.reps, rpe: null, rir: null,
-                 source: "previous", date: before.startedAt }
-    return { weightKg: pe.target_weight, reps: pe.max_reps || pe.min_reps || null, rpe: null, rir: null,
-             source: pe.target_weight ? "target" : "" }
+    var first = firstSetDefault(pe, before, suggestion)
+    if (!last)
+        return first
+    // After warm-ups only, the first working set's default is a better
+    // guess than repeating the warm-up.
+    if (workingSetCount(pe) === 0 && present(first.weightKg))
+        return first
+    return { weightKg: last.weight, reps: last.reps, rpe: last.rpe, rir: last.rir, source: "set" }
+}
+
+function present(value) {
+    return value !== null && value !== undefined && value !== ""
+}
+
+function firstSetDefault(pe, before, suggestion) {
+    var result = { weightKg: pe.target_weight, reps: pe.min_reps || pe.max_reps || null,
+                   rpe: null, rir: null, source: present(pe.target_weight) ? "target" : "" }
+    if (suggestion && present(suggestion.weight)) {
+        result.weightKg = suggestion.weight
+        result.source = "suggestion"
+    }
+    if (suggestion && present(suggestion.min_reps))
+        result.reps = suggestion.min_reps
+    if (!present(result.weightKg) && before && before.sets.length > 0) {
+        result.weightKg = before.sets[0].weight
+        result.reps = result.reps || before.sets[0].reps
+        result.source = "previous"
+        result.date = before.startedAt
+    }
+    return result
+}
+
+// "Suggested: 52.5 kg x 5-6", or "" when there's no suggested weight.
+function suggestionText(suggestion, unitSystem, template) {
+    if (!suggestion || !present(suggestion.weight))
+        return ""
+    var text = formatWeight(suggestion.weight, unitSystem)
+    if (present(suggestion.min_reps)) {
+        text += " x " + suggestion.min_reps
+        if (present(suggestion.max_reps) && suggestion.max_reps !== suggestion.min_reps)
+            text += "-" + suggestion.max_reps
+    }
+    return template.replace("%1", text)
 }
 
 function targetText(pe, unitSystem) {

@@ -25,7 +25,7 @@ Page {
     function openLogDialog(pe) {
         var p = controller.prefill(pe)
         var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), {
-            exerciseName: pe.exercise_name,
+            exerciseName: Store.contentName(pe.exercise_name),
             incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
             initialWeightKg: p.weightKg,
             initialReps: p.reps,
@@ -38,7 +38,7 @@ Page {
 
     function openEditDialog(pe, set) {
         var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), {
-            exerciseName: pe.exercise_name + " - " + qsTr("set %1").arg(set.set_number),
+            exerciseName: Store.contentName(pe.exercise_name) + " - " + qsTr("set %1").arg(set.set_number),
             editing: true,
             incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
             initialWeightKg: set.weight,
@@ -69,6 +69,8 @@ Page {
             return qsTr("Prefilled from your previous set.")
         if (p.source === "previous")
             return qsTr("Prefilled from last time (%1).").arg(Format.formatDate(new Date(p.date), Formatter.DateMedium))
+        if (p.source === "suggestion")
+            return qsTr("Prefilled with the smart suggestion.")
         if (p.source === "target")
             return qsTr("Prefilled from the program target.")
         return ""
@@ -159,7 +161,7 @@ Page {
             bottomPadding: Theme.paddingLarge
 
             SectionHeader {
-                text: pe.exercise_name
+                text: Store.contentName(pe.exercise_name)
             }
 
             Label {
@@ -188,6 +190,13 @@ Page {
                 horizontalAlignment: Text.AlignRight
                 wrapMode: Text.Wrap
                 text: visible ? qsTr("Last time: %1").arg(Store.summarizeSets(before.sets, settings.unitSystem)) : ""
+            }
+
+            SuggestionLabel {
+                visible: page.inProgress && headline !== "" && Store.workingSetCount(pe) === 0
+                suggestion: controller.suggestions[pe.id] || null
+                pe: modelData
+                alignment: Text.AlignRight
             }
 
             Repeater {

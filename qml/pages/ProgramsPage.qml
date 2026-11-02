@@ -41,7 +41,7 @@ Page {
     function append(program, section) {
         programsModel.append({
             programId: program.id,
-            name: program.name,
+            name: Store.contentName(program.name),
             description: program.description || "",
             workoutCount: (program.workouts || []).length,
             section: section,

@@ -203,6 +203,7 @@ Page {
                 index_: index
                 count: rows.count
                 previous: pe ? (controller.previous[pe.exercise] || null) : null
+                suggestion: pe ? (controller.suggestions[pe.id] || null) : null
                 prefillValues: pe ? controller.prefill(pe) : null
                 inProgress: controller.inProgress
                 allDone: page.allDone

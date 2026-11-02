@@ -12,6 +12,7 @@ Item {
     property int index_: 0
     property int count: 0
     property var previous: null
+    property var suggestion: null
     property var prefillValues: null
     property bool inProgress: true
     property bool allDone: false
@@ -76,16 +77,15 @@ Item {
     }
 
     function hintText() {
+        var lines = []
+        if (previous)
+            lines.push(qsTr("Last time: %1").arg(Store.summarizeSets(previous.sets, unitSystem)))
         var p = prefillValues
-        if (!p)
-            return ""
-        if (p.source === "previous" && previous)
-            return qsTr("Last time: %1").arg(Store.summarizeSets(previous.sets, unitSystem))
-        if (p.source === "target")
-            return qsTr("From the program target")
-        if (!p.weightKg && pe.sets.length === 0)
-            return qsTr("No earlier sets - enter the weight you start with")
-        return ""
+        if (p && p.source === "target")
+            lines.push(qsTr("From the program target"))
+        else if (p && !p.weightKg && pe.sets.length === 0 && !previous)
+            lines.push(qsTr("No earlier sets - enter the weight you start with"))
+        return lines.join("\n")
     }
 
     // What to do, and what's been done, at the top...
@@ -117,7 +117,7 @@ Item {
                 maximumLineCount: 2
                 font.pixelSize: Theme.fontSizeLarge
                 color: Theme.highlightColor
-                text: panel.pe ? panel.pe.exercise_name : ""
+                text: panel.pe ? Store.contentName(panel.pe.exercise_name) : ""
             }
             IconButton {
                 id: nextButton
@@ -144,6 +144,11 @@ Item {
                         : qsTr("%n set(s)", "", panel.pe.sets.length)
                 return (target ? target + "  -  " : "") + progress
             }
+        }
+
+        SuggestionLabel {
+            suggestion: panel.suggestion
+            pe: panel.pe
         }
 
         Label {

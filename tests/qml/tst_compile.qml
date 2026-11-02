@@ -25,6 +25,7 @@ TestCase {
             { tag: "SessionController", path: "components/SessionController.qml" },
             { tag: "SetItem", path: "components/SetItem.qml" },
             { tag: "StatItem", path: "components/StatItem.qml" },
+            { tag: "SuggestionLabel", path: "components/SuggestionLabel.qml" },
             { tag: "Stepper", path: "components/Stepper.qml" },
             { tag: "SyncStatus", path: "components/SyncStatus.qml" }
         ]

@@ -53,9 +53,7 @@ Page {
             settle()
         })
 
-        // Newest first; an in-progress session is always among the most
-        // recent ones (see IronStack issue #17 for a status filter).
-        api.request("GET", "sessions/", null, function(ok, status, data, error) {
+        api.request("GET", "sessions/?status=in_progress", null, function(ok, status, data, error) {
             if (ok) {
                 var results = data.results || []
                 var active = null
@@ -75,16 +73,12 @@ Page {
 
         api.request("GET", "records/", null, function(ok, status, data, error) {
             if (ok) {
-                var results = (data.results || []).slice(0, 5)
-                Store.ensureExercises(api, results.map(function(r) { return r.exercise }), function() {
-                    page.recentRecords = results
-                    page.recordsLoaded = true
-                    settle()
-                })
+                page.recentRecords = (data.results || []).slice(0, 5)
+                page.recordsLoaded = true
             } else {
                 page.failed(status, error)
-                settle()
             }
+            settle()
         })
     }
 
@@ -97,7 +91,7 @@ Page {
         settings.activeSessionStarted = session.started_at
         if (session.workout) {
             api.request("GET", "workouts/" + session.workout + "/", null, function(ok, status, data) {
-                settings.activeSessionName = ok ? data.name : qsTr("Workout")
+                settings.activeSessionName = ok ? Store.contentName(data.name) : qsTr("Workout")
             })
         } else {
             settings.activeSessionName = qsTr("Freeform workout")

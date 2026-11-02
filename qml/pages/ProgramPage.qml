@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "../js/store.js" as Store
 
 Page {
     id: page
@@ -18,7 +19,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.program ? page.program.name : ""
+                title: page.program ? Store.contentName(page.program.name) : ""
                 description: page.program && page.program.is_continuous ? qsTr("Continuous program") : ""
             }
             Label {
@@ -46,7 +47,7 @@ Page {
                 Label {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
-                    text: modelData.name
+                    text: Store.contentName(modelData.name)
                 }
                 Label {
                     width: parent.width

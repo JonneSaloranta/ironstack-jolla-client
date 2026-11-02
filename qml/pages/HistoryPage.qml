@@ -54,11 +54,12 @@ Page {
             })
             sessionsModel.append({
                 sessionId: s.id,
-                title: s.workout ? (Store.workoutNames[s.workout] || qsTr("Workout")) : qsTr("Freeform workout"),
+                title: s.workout ? (Store.contentName(Store.workoutNames[s.workout]) || qsTr("Workout"))
+                                  : qsTr("Freeform workout"),
                 status: s.status,
                 startedAt: s.started_at,
                 endedAt: s.ended_at || "",
-                exercises: s.performed_exercises.map(function(pe) { return pe.exercise_name }).join(", "),
+                exercises: s.performed_exercises.map(function(pe) { return Store.contentName(pe.exercise_name) }).join(", "),
                 setCount: setCount,
                 volume: volume
             })

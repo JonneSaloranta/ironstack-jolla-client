@@ -29,11 +29,8 @@ Page {
             }
             page.errorText = ""
             page.nextUrl = data.next || ""
-            var results = data.results || []
-            Store.ensureExercises(api, results.map(function(r) { return r.exercise }), function() {
-                loading = false
-                page.records = page.records.concat(results)
-            })
+            loading = false
+            page.records = page.records.concat(data.results || [])
         })
     }
 

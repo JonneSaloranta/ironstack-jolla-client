@@ -7,7 +7,6 @@ Page {
     id: page
 
     property var workout
-    property bool namesLoaded: false
     property bool starting: false
     property string errorText: ""
 
@@ -43,15 +42,9 @@ Page {
         })
     }
 
-    Component.onCompleted: {
-        Store.ensureExercises(api, workout.prescriptions.map(function(p) { return p.exercise }), function() {
-            page.namesLoaded = true
-        })
-    }
-
     SilicaListView {
         anchors.fill: parent
-        model: page.namesLoaded ? page.workout.prescriptions : []
+        model: page.workout.prescriptions
 
         PullDownMenu {
             busy: page.starting
@@ -65,7 +58,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.workout ? page.workout.name : ""
+                title: page.workout ? Store.contentName(page.workout.name) : ""
             }
             ErrorBanner {
                 text: page.errorText
@@ -94,7 +87,7 @@ Page {
                 Label {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
-                    text: Store.exerciseName(modelData.exercise)
+                    text: Store.contentName(modelData.exercise_name)
                 }
                 Label {
                     width: parent.width
@@ -121,7 +114,7 @@ Page {
         BusyIndicator {
             anchors.centerIn: parent
             size: BusyIndicatorSize.Large
-            running: !page.namesLoaded || page.starting
+            running: page.starting
         }
 
         VerticalScrollDecorator {}

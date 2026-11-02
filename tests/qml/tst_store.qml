@@ -49,43 +49,37 @@ TestCase {
         compare(Store.formatHoursMinutes(3900), "1:05")
     }
 
-    function test_exerciseNameCache() {
-        compare(Store.exerciseName(987654), "#987654")
-        Store.rememberExercises([{ id: 987654, name: "Squat" }])
-        compare(Store.exerciseName(987654), "Squat")
+    function test_contentName() {
+        // built-in names as the web shows them, custom names as typed
+        compare(Store.contentName("Skull Crusher", "fi"), "Ojentajapunnerrus tangolla")
+        compare(Store.contentName("Workout A", "fi"), "Treeni A")
+        compare(Store.contentName("5x5 Strength (A/B)", "fi"), "5x5-voima (A/B)")
+        compare(Store.contentName("My own lift", "fi"), "My own lift")
+        compare(Store.contentName("Skull Crusher", "en"), "Skull Crusher")
+        compare(Store.contentName("", "fi"), "")
+        compare(Store.contentName(undefined, "fi"), undefined)
+        // without a language: the device's, like the rest of the UI
+        compare(Store.contentLanguage(), Qt.locale().name.split("_")[0])
+        compare(Store.contentName("Skull Crusher"), Store.contentName("Skull Crusher", Store.contentLanguage()))
     }
 
-    function session(id, status, performed) {
-        return { id: id, status: status, started_at: "2026-10-0" + id + "T10:00:00Z",
-                 performed_exercises: performed }
-    }
     function set(weight, reps, warmup) {
         return { weight: weight, reps: reps, is_warmup: !!warmup }
     }
 
-    function test_previousPerformance_newestCompletedWins() {
-        var sessions = [
-            session(3, "in_progress", [{ exercise: 7, sets: [set("90.00", 5)] }]),
-            session(2, "completed", [{ exercise: 7, sets: [set("40.00", 5, true), set("85.00", 5)] }]),
-            session(1, "completed", [{ exercise: 7, sets: [set("80.00", 5)] }])
-        ]
-        var previous = Store.previousPerformance(sessions, 7, 3)
-        compare(previous.sessionId, 2)
+    function test_lastTime() {
+        var data = { session: 2, started_at: "2026-10-02T10:00:00Z",
+                     sets: [set("40.00", 5, true), set("85.00", 5)] }
+        var before = Store.lastTime(data)
+        compare(before.sessionId, 2)
+        compare(before.startedAt, "2026-10-02T10:00:00Z")
         // warm-ups are dropped
-        compare(previous.sets.length, 1)
-        compare(previous.sets[0].weight, "85.00")
-    }
-
-    function test_previousPerformance_skipsCurrentAbandonedAndEmpty() {
-        var sessions = [
-            session(4, "completed", [{ exercise: 7, sets: [set("99.00", 1)] }]),
-            session(3, "abandoned", [{ exercise: 7, sets: [set("95.00", 5)] }]),
-            session(2, "completed", [{ exercise: 7, sets: [set("20.00", 10, true)] }]),
-            session(1, "completed", [{ exercise: 9, sets: [set("60.00", 8)] }])
-        ]
-        compare(Store.previousPerformance(sessions, 7, 4), null)
-        compare(Store.previousPerformance(sessions, 9, 4).sessionId, 1)
-        compare(Store.previousPerformance([], 9, 4), null)
+        compare(before.sets.length, 1)
+        compare(before.sets[0].weight, "85.00")
+        // never done, or warm-ups only: nothing to show
+        compare(Store.lastTime({ session: null, started_at: null, sets: [] }), null)
+        compare(Store.lastTime({ session: 3, started_at: "x", sets: [set("20.00", 10, true)] }), null)
+        compare(Store.lastTime(null), null)
     }
 
     function test_summarizeSets() {
@@ -156,30 +150,57 @@ TestCase {
         compare(Store.pendingSessionEnd([], 9), "")
     }
 
+    function suggestion(weight, minReps, maxReps) {
+        return { weight: weight, min_reps: minReps, max_reps: maxReps, method: "linear",
+                 action: "increase", confidence: "high", reason: "Hit every rep" }
+    }
+    property var noSuggestion: ({ weight: null, min_reps: null, max_reps: null, method: null,
+                                  action: null, confidence: null, reason: null })
+
     function test_prefill() {
         var before = { startedAt: "2026-10-01T10:00:00Z", sets: [set("80.00", 5), set("82.50", 5)] }
-        // nothing logged yet: last time's first set
-        var p = Store.prefill(pe(1, 3, []), before)
-        compare(p.source, "previous")
-        compare(p.weightKg, "80.00")
-        // after one working set: the last set this session
-        p = Store.prefill(pe(1, 3, [set("81.00", 4)]), before)
+        // first set: the suggestion, with the bottom of its rep range
+        var p = Store.prefill(pe(1, 3, [], { target_weight: "70.00" }), before, suggestion("82.50", 5, 6))
+        compare(p.source, "suggestion")
+        compare(p.weightKg, "82.50")
+        compare(p.reps, 5)
+        // after one working set: the last set this session, suggestion or not
+        p = Store.prefill(pe(1, 3, [set("81.00", 4)]), before, suggestion("82.50", 5, 6))
         compare(p.source, "set")
         compare(p.weightKg, "81.00")
         compare(p.reps, 4)
-        // after warm-ups only: last time's first working set, not the warm-up
-        p = Store.prefill(pe(1, 3, [set("40.00", 5, true)]), before)
-        compare(p.source, "previous")
-        compare(p.weightKg, "80.00")
-        // no history: the plan's target
-        p = Store.prefill(pe(1, 3, [], { target_weight: "70.00", max_reps: 6 }), null)
+        // after warm-ups only: the first working set's default, not the warm-up
+        p = Store.prefill(pe(1, 3, [set("40.00", 5, true)]), before, suggestion("82.50", 5, 6))
+        compare(p.source, "suggestion")
+        compare(p.weightKg, "82.50")
+        // no suggested weight: the plan's target, reps from min_reps (as the web)
+        p = Store.prefill(pe(1, 3, [], { target_weight: "70.00", min_reps: 6, max_reps: 8 }), before, noSuggestion)
         compare(p.source, "target")
         compare(p.weightKg, "70.00")
         compare(p.reps, 6)
+        // no suggestion or target: last time's first working set
+        p = Store.prefill(pe(1, 3, []), before, null)
+        compare(p.source, "previous")
+        compare(p.weightKg, "80.00")
+        compare(p.date, "2026-10-01T10:00:00Z")
+        // warm-ups only and nothing better: repeat the warm-up
+        p = Store.prefill(pe(1, 3, [set("40.00", 5, true)]), null, null)
+        compare(p.source, "set")
+        compare(p.weightKg, "40.00")
         // nothing at all
-        p = Store.prefill(pe(1, null, [], { min_reps: null, max_reps: null }), null)
+        p = Store.prefill(pe(1, null, [], { min_reps: null, max_reps: null }), null, null)
         compare(p.source, "")
         compare(p.reps, null)
+    }
+
+    function test_suggestionText() {
+        compare(Store.suggestionText(suggestion("52.50", 5, 5), "metric", "Suggested: %1"),
+                "Suggested: 52.5 kg x 5")
+        compare(Store.suggestionText(suggestion("40.00", 8, 12), "metric", "Suggested: %1"),
+                "Suggested: 40 kg x 8-12")
+        compare(Store.suggestionText(suggestion("40.00", null, null), "metric", "%1"), "40 kg")
+        compare(Store.suggestionText(noSuggestion, "metric", "%1"), "")
+        compare(Store.suggestionText(null, "metric", "%1"), "")
     }
 
     function test_targetText() {

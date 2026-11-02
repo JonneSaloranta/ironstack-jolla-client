@@ -14,8 +14,10 @@ Page {
 
     property string searchText: ""
 
-    // The API has no search parameter yet (IronStack issue #18), so the
-    // whole library is fetched and filtered here. The view keeps one
+    // The whole library is fetched once and searched here, matching both
+    // the name as shown (translated, see Store.contentName) and as stored.
+    // The API's own ?search= would match the IronStack profile's language,
+    // which isn't necessarily the one this phone shows. The view keeps one
     // ListModel that is refilled in place: swapping the view's model on
     // every keystroke reset the list and took focus from the search field.
     ListModel {
@@ -26,7 +28,8 @@ Page {
         var term = searchText.toLowerCase()
         filteredModel.clear()
         for (var i = 0; i < exercises.length; i++) {
-            if (!term || exercises[i].name.toLowerCase().indexOf(term) >= 0)
+            if (!term || exercises[i].name.toLowerCase().indexOf(term) >= 0
+                    || exercises[i].storedName.toLowerCase().indexOf(term) >= 0)
                 filteredModel.append(exercises[i])
         }
     }
@@ -37,15 +40,17 @@ Page {
         loading = true
         errorText = ""
         var all = []
-        Store.fetchAll(api, "exercises/", function(results) {
-            all = all.concat(results.map(function(e) { return { id: e.id, name: e.name } }))
+        Store.fetchAll(api, "exercises/?page_size=100", function(results) {
+            all = all.concat(results.map(function(e) {
+                return { id: e.id, name: Store.contentName(e.name), storedName: e.name }
+            }))
         }, function(ok, error) {
             loading = false
             if (!ok) {
                 errorText = error
                 return
             }
-            Store.rememberExercises(all)
+            all.sort(function(a, b) { return a.name.localeCompare(b.name) })
             exercises = all
             applyFilter()
         })

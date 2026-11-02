@@ -18,8 +18,10 @@ QtObject {
     property string errorText: ""
     // Showing the copy saved on the phone because the server can't be reached.
     property bool offline: false
-    // exercise id -> Store.previousPerformance() result (or null)
+    // exercise id -> Store.lastTime() result (or null)
     property var previous: ({})
+    // performed exercise id -> performed-exercises/<id>/suggestion/
+    property var suggestions: ({})
 
     // The session's exercises with queued sets merged in.
     readonly property var exercises: Store.mergePendingSets(session, syncQueue.items)
@@ -43,6 +45,7 @@ QtObject {
                         session = saved.session
                         title = saved.title
                         previous = saved.previous || {}
+                        suggestions = saved.suggestions || {}
                     }
                     return
                 }
@@ -52,12 +55,14 @@ QtObject {
             offline = false
             errorText = ""
             session = data
-            if (data.is_in_progress)
+            if (data.is_in_progress) {
                 loadPrevious()
+                loadSuggestions()
+            }
             if (data.workout) {
                 api.request("GET", "workouts/" + data.workout + "/", null, function(ok2, status2, workout) {
                     if (ok2 || title === "")
-                        title = ok2 ? workout.name : qsTr("Workout")
+                        title = ok2 ? Store.contentName(workout.name) : qsTr("Workout")
                     syncCover()
                     save()
                 })
@@ -71,17 +76,41 @@ QtObject {
 
     function save() {
         if (session && session.is_in_progress)
-            settings.setCached("session", { session: session, title: title, previous: previous })
+            settings.setCached("session", { session: session, title: title, previous: previous,
+                                            suggestions: suggestions })
     }
 
+    // Last time's sets for each exercise not looked up yet. Copies of the
+    // maps are assigned so bindings see the change.
     function loadPrevious() {
-        Store.loadRecentSessions(api, function(sessions) {
-            var map = {}
-            session.performed_exercises.forEach(function(pe) {
-                map[pe.exercise] = Store.previousPerformance(sessions, pe.exercise, sessionId)
+        session.performed_exercises.forEach(function(pe) {
+            if (previous.hasOwnProperty(pe.exercise))
+                return
+            api.request("GET", "exercises/" + pe.exercise + "/last-performance/", null, function(ok, status, data) {
+                if (!ok)
+                    return
+                var map = Store.copy(previous)
+                map[pe.exercise] = Store.lastTime(data)
+                previous = map
+                save()
             })
-            previous = map
-            save()
+        })
+    }
+
+    // The web's smart suggestion is for an exercise's first set, so it's
+    // fetched for exercises with nothing logged yet, once each.
+    function loadSuggestions() {
+        session.performed_exercises.forEach(function(pe) {
+            if (suggestions.hasOwnProperty(pe.id) || Store.workingSetCount(pe) > 0)
+                return
+            api.request("GET", "performed-exercises/" + pe.id + "/suggestion/", null, function(ok, status, data) {
+                if (!ok)
+                    return
+                var map = Store.copy(suggestions)
+                map[pe.id] = data
+                suggestions = map
+                save()
+            })
         })
     }
 
@@ -98,7 +127,7 @@ QtObject {
     }
 
     function prefill(pe) {
-        return Store.prefill(pe, previous[pe.exercise] || null)
+        return Store.prefill(pe, previous[pe.exercise] || null, suggestions[pe.id] || null)
     }
 
     // values: { weightKg, reps, rpe, rir, isWarmup, isFailure, notes }
@@ -143,7 +172,6 @@ QtObject {
     function end(status) {
         syncQueue.enqueue("PATCH", "sessions/" + sessionId + "/", { status: status })
         settings.clearActiveSession()
-        Store.invalidateRecentSessions()
         ended(status)
     }
 
