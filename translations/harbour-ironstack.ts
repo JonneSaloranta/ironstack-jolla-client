@@ -2,6 +2,176 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>ActivitiesPage</name>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="73"/>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="75"/>
+        <source>New activity type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="86"/>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="95"/>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="118"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/ActivitiesPage.qml" line="124"/>
+        <source>%n logged</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="124"/>
+        <source>No activities yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivitiesPage.qml" line="131"/>
+        <source>No activity types yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ActivityDialog</name>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="52"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="53"/>
+        <source>Edit activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="53"/>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="58"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="72"/>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="78"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="85"/>
+        <source>Start time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="101"/>
+        <source>Duration (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="111"/>
+        <source>Distance (mi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="111"/>
+        <source>Distance (km)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="121"/>
+        <source>Calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityDialog.qml" line="130"/>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ActivityHistoryPage</name>
+    <message numerus="yes">
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="21"/>
+        <source>%n logged</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="22"/>
+        <source>total duration %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="24"/>
+        <source>total distance %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="26"/>
+        <source>total calories %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="77"/>
+        <source>Deactivate type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="78"/>
+        <source>Deactivating type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="90"/>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="119"/>
+        <source>Duration trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="123"/>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="131"/>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="140"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="144"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ActivityHistoryPage.qml" line="186"/>
+        <source>No activities logged yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ApiClient</name>
     <message>
         <location filename="../src/apiclient.cpp" line="74"/>
@@ -950,53 +1120,71 @@
 <context>
     <name>MenuPage</name>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="21"/>
+        <location filename="../qml/pages/MenuPage.qml" line="22"/>
         <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="22"/>
+        <location filename="../qml/pages/MenuPage.qml" line="23"/>
         <source>Programs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="23"/>
+        <location filename="../qml/pages/MenuPage.qml" line="24"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="24"/>
+        <location filename="../qml/pages/MenuPage.qml" line="25"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="25"/>
+        <location filename="../qml/pages/MenuPage.qml" line="26"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="26"/>
+        <location filename="../qml/pages/MenuPage.qml" line="27"/>
         <source>Body tracking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="33"/>
-        <source>Training</source>
+        <location filename="../qml/pages/MenuPage.qml" line="28"/>
+        <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="35"/>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="37"/>
         <source>Body and activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="36"/>
+        <location filename="../qml/pages/MenuPage.qml" line="38"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="43"/>
+        <location filename="../qml/pages/MenuPage.qml" line="45"/>
         <source>IronStack</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NameDialog</name>
+    <message>
+        <location filename="../qml/pages/NameDialog.qml" line="19"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NameDialog.qml" line="25"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

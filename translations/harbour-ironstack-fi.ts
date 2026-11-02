@@ -2,6 +2,145 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fi_FI">
 <context>
+    <name>ActivitiesPage</name>
+    <message>
+        <source>New activity type</source>
+        <translation>Uusi aktiviteettityyppi</translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation>Kirjaa aktiviteetti</translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation>Aktiviteetit</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n logged</source>
+        <translation>
+            <numerusform>%n kirjattu</numerusform>
+            <numerusform>%n kirjattu</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No activities yet</source>
+        <translation>Ei aktiviteetteja vielä</translation>
+    </message>
+    <message>
+        <source>No activity types yet.</source>
+        <translation>Aktiviteettityyppejä ei ole vielä.</translation>
+    </message>
+</context>
+<context>
+    <name>ActivityDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit activity</source>
+        <translation>Muokkaa aktiviteettia</translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation>Kirjaa aktiviteetti</translation>
+    </message>
+    <message>
+        <source>Activity</source>
+        <translation>Aktiviteetti</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Päivämäärä</translation>
+    </message>
+    <message>
+        <source>Start time</source>
+        <translation>Aloitusaika</translation>
+    </message>
+    <message>
+        <source>Duration (minutes)</source>
+        <translation>Kesto (minuuttia)</translation>
+    </message>
+    <message>
+        <source>Distance (mi)</source>
+        <translation>Matka (mi)</translation>
+    </message>
+    <message>
+        <source>Distance (km)</source>
+        <translation>Matka (km)</translation>
+    </message>
+    <message>
+        <source>Calories</source>
+        <translation>Kalorit</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+</context>
+<context>
+    <name>ActivityHistoryPage</name>
+    <message numerus="yes">
+        <source>%n logged</source>
+        <translation>
+            <numerusform>%n kirjattu</numerusform>
+            <numerusform>%n kirjattu</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>total duration %1</source>
+        <translation>kokonaiskesto %1</translation>
+    </message>
+    <message>
+        <source>total distance %1</source>
+        <translation>kokonaismatka %1</translation>
+    </message>
+    <message>
+        <source>total calories %1</source>
+        <translation>kalorit yhteensä %1</translation>
+    </message>
+    <message>
+        <source>Deactivate type</source>
+        <translation>Poista tyyppi käytöstä</translation>
+    </message>
+    <message>
+        <source>Deactivating type</source>
+        <translation>Poistetaan tyyppi käytöstä</translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation>Kirjaa aktiviteetti</translation>
+    </message>
+    <message>
+        <source>Duration trend</source>
+        <translation>Kesto ajan myötä</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation>Aktiviteetit</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>No activities logged yet.</source>
+        <translation>Aktiviteetteja ei ole vielä kirjattu.</translation>
+    </message>
+</context>
+<context>
     <name>ApiClient</name>
     <message>
         <source>Refused to follow a link to another server.</source>
@@ -808,6 +947,21 @@
     <message>
         <source>Body and activity</source>
         <translation>Keho ja liikunta</translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation>Aktiviteetit</translation>
+    </message>
+</context>
+<context>
+    <name>NameDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
     </message>
 </context>
 <context>

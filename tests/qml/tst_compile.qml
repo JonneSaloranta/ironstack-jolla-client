@@ -38,8 +38,8 @@ TestCase {
 
     function test_pages_data() {
         return [
-            "DashboardPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "HistoryPage", "LogSetDialog",
-            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "RecordsPage",
+            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "DashboardPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "HistoryPage", "LogSetDialog",
+            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "RecordsPage",
             "SessionPage", "SettingsPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }

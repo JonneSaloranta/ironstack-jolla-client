@@ -227,6 +227,28 @@ TestCase {
         verify(!Store.isBodyWeightType({ name: "Waist", owner: null }))
     }
 
+    function test_formatMinutes() {
+        compare(Store.formatMinutes(4500), "1h 15min")
+        compare(Store.formatMinutes(3600), "1h")
+        compare(Store.formatMinutes(2700), "45min")
+        compare(Store.formatMinutes(20), "<1min")
+        compare(Store.formatMinutes(NaN), "")
+    }
+
+    function test_activitySummary() {
+        var summary = Store.activitySummary([
+            { duration: "00:30:00", distance: "5000.00", calories: null },
+            { duration: "01:00:00", distance: null, calories: 400 }
+        ])
+        compare(summary.count, 2)
+        compare(summary.duration, 5400)
+        compare(summary.distance, 5000)
+        compare(summary.calories, 400)
+        var none = Store.activitySummary([{ duration: "00:10:00", distance: null, calories: null }])
+        compare(none.distance, null)
+        compare(none.calories, null)
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

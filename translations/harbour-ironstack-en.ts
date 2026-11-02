@@ -2,6 +2,145 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>ActivitiesPage</name>
+    <message>
+        <source>New activity type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n logged</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No activities yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No activity types yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ActivityDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duration (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Distance (mi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Distance (km)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ActivityHistoryPage</name>
+    <message numerus="yes">
+        <source>%n logged</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>total duration %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>total distance %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>total calories %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivate type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivating type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duration trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No activities logged yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ApiClient</name>
     <message>
         <source>Refused to follow a link to another server.</source>
@@ -807,6 +946,21 @@
     </message>
     <message>
         <source>Body and activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NameDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

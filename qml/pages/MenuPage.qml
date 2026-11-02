@@ -12,6 +12,7 @@ Page {
         ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
         ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
         ListElement { section: "body"; title: "Body tracking"; icon: "image://theme/icon-m-person"; target: "MeasurementsPage.qml" }
+        ListElement { section: "body"; title: "Activities"; icon: "image://theme/icon-m-location"; target: "ActivitiesPage.qml" }
         ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
     }
 
@@ -24,6 +25,7 @@ Page {
         case "Personal records": return qsTr("Personal records")
         case "Settings": return qsTr("Settings")
         case "Body tracking": return qsTr("Body tracking")
+        case "Activities": return qsTr("Activities")
         }
         return title
     }

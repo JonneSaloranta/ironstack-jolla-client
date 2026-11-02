@@ -120,6 +120,7 @@ var lookups = { muscleGroups: null, equipment: null }
 var exercisesChanged = false
 // Same for body measurements and their types.
 var measurementsChanged = false
+var activitiesChanged = false
 
 function ensureLookups(api, done) {
     var kinds = [["muscleGroups", "muscle-groups/"], ["equipment", "equipment/"]]
@@ -364,6 +365,40 @@ function bmiCategory(value) {
     if (value < 30)
         return "overweight"
     return "obese"
+}
+
+// --- activities --------------------------------------------------------------
+
+// "1h 15min", "45min" or "<1min", rounded to the minute - the web's
+// `duration` filter (apps/core/templatetags/core_extras.py).
+function formatMinutes(seconds) {
+    if (isNaN(seconds) || seconds === null)
+        return ""
+    var total = Math.round(seconds / 60)
+    var hours = Math.floor(total / 60)
+    var minutes = total % 60
+    if (hours && minutes)
+        return hours + "h " + minutes + "min"
+    if (hours)
+        return hours + "h"
+    if (minutes)
+        return minutes + "min"
+    return "<1min"
+}
+
+// The web's summary of one type's activities: count, total seconds, and
+// total meters and calories - null when none of them has one.
+function activitySummary(activities) {
+    var summary = { count: 0, duration: 0, distance: null, calories: null }
+    ;(activities || []).forEach(function(a) {
+        summary.count++
+        summary.duration += parseDuration(a.duration) || 0
+        if (present(a.distance))
+            summary.distance = round((summary.distance || 0) + parseNumber(a.distance), 2)
+        if (present(a.calories))
+            summary.calories = (summary.calories || 0) + a.calories
+    })
+    return summary
 }
 
 // --- durations as DRF sends them: "[DD ]HH:MM:SS[.uuuuuu]" ----------------
