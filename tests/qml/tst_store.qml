@@ -44,6 +44,16 @@ TestCase {
         compare(Store.formatDuration(-5), "0:00")
     }
 
+    function test_parseDateAndIsToday() {
+        var day = Store.parseDate("2026-11-02")
+        compare(day.getFullYear(), 2026)
+        compare(day.getMonth(), 10)
+        compare(day.getDate(), 2)
+        compare(day.getHours(), 0)
+        verify(Store.isToday("2026-11-02", new Date(2026, 10, 2, 23, 59)))
+        verify(!Store.isToday("2026-11-02", new Date(2026, 10, 3, 0, 1)))
+    }
+
     function test_formatHoursMinutes() {
         compare(Store.formatHoursMinutes(0), "0:00")
         compare(Store.formatHoursMinutes(3900), "1:05")

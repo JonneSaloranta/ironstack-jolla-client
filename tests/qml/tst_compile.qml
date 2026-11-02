@@ -18,6 +18,7 @@ TestCase {
 
     function test_components_data() {
         return [
+            { tag: "AchievementItem", path: "components/AchievementItem.qml" },
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
             { tag: "ExercisePanel", path: "components/ExercisePanel.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },

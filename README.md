@@ -8,7 +8,8 @@ REST API (`/api/v1/`) with a per-user API key.
 ## Features (0.1)
 
 - Connect with a server address and API key
-- Dashboard: last 7 days, workout in progress, recent PRs
+- Dashboard: workout in progress or up next, last 7 days, recent PRs,
+  achievements
 - Programs and workouts, start a session from a workout or freeform
 - Training mode: one exercise at a time, big +/- steppers, one tap to log
   a set, prefilled from the previous set, last time or the program target;
@@ -16,6 +17,10 @@ REST API (`/api/v1/`) with a per-user API key.
 - Works without a connection: sets and finishing a workout are saved on
   the phone and sent when the server can be reached; a workout in
   progress can be opened and continued offline
+- Smart weight suggestion and last time's sets for each exercise, as on
+  the web
+- Built-in exercise, program and workout names in the phone's language,
+  with the same translations as the web
 - Full view of a session for corrections: edit and delete sets, add
   exercises, finish or abandon
 - Rest timer with a notification, also with the screen off

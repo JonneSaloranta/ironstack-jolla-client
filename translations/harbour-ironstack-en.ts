@@ -121,6 +121,22 @@
         <source>No connection to the server. Workouts can still be logged and are sent later.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Up next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose another workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Achievements</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ErrorBanner</name>
@@ -517,6 +533,10 @@
         <source>Training mode</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Prefilled with the smart suggestion.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetItem</name>
@@ -589,6 +609,25 @@
             <numerusform>Logging out, %n unsynced change lost</numerusform>
             <numerusform>Logging out, %n unsynced changes lost</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SuggestionLabel</name>
+    <message>
+        <source>Low confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Medium confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>High confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suggested: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

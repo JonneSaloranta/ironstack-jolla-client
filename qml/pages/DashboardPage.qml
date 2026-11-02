@@ -10,6 +10,10 @@ Page {
     property var summary: null
     property var recentRecords: []
     property bool recordsLoaded: false
+    // up-next/: {program, workout, day}, all null before any workout from
+    // a program has been completed.
+    property var upNext: null
+    property var achievements: []
     property string errorText: ""
     property bool offline: false
     property bool loading: false
@@ -30,7 +34,7 @@ Page {
         errorText = ""
         offline = false
         loading = true
-        var pending = 4
+        var pending = 6
         function settle() {
             pending--
             if (pending === 0)
@@ -71,6 +75,24 @@ Page {
             settle()
         })
 
+        api.request("GET", "up-next/", null, function(ok, status, data, error) {
+            if (ok)
+                page.upNext = data && data.workout ? data : null
+            else
+                page.failed(status, error)
+            settle()
+        })
+
+        api.request("GET", "analytics/achievements/", null, function(ok, status, data, error) {
+            if (ok) {
+                achievementTimer.index = 0
+                page.achievements = data || []
+            }
+            else
+                page.failed(status, error)
+            settle()
+        })
+
         api.request("GET", "records/", null, function(ok, status, data, error) {
             if (ok) {
                 page.recentRecords = (data.results || []).slice(0, 5)
@@ -100,6 +122,25 @@ Page {
 
     function openSession(id) {
         pageStack.push(Qt.resolvedUrl("TrainingPage.qml"), { sessionId: id })
+    }
+
+    // "Today" or the weekday, like the web's up-next card.
+    function dayText(iso) {
+        if (!iso)
+            return ""
+        if (Store.isToday(iso, new Date()))
+            return qsTr("Today")
+        return Qt.locale().dayName(Store.parseDate(iso).getDay(), Locale.LongFormat)
+    }
+
+    function startWorkout(workoutId) {
+        api.request("POST", "sessions/", { workout: workoutId }, function(ok, status, data, error) {
+            if (!ok) {
+                page.errorText = error
+                return
+            }
+            openSession(data.id)
+        })
     }
 
     function startFreeform() {
@@ -210,15 +251,63 @@ Page {
                 }
             }
 
+            SectionHeader {
+                visible: upNextItem.visible
+                text: qsTr("Up next")
+            }
+
+            // The next workout in the program last trained from - a
+            // shortcut, nothing more; tapping shows what's in it.
+            BackgroundItem {
+                id: upNextItem
+                visible: !page.hasActiveSession && page.upNext !== null
+                width: parent.width
+                height: Math.max(Theme.itemSizeMedium, upNextColumn.height + 2 * Theme.paddingMedium)
+                onClicked: pageStack.push(Qt.resolvedUrl("WorkoutPage.qml"), { workout: page.upNext.workout })
+
+                Column {
+                    id: upNextColumn
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    Label {
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        color: upNextItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        text: page.upNext ? Store.contentName(page.upNext.workout.name) : ""
+                    }
+                    Label {
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.secondaryColor
+                        text: page.upNext
+                              ? [Store.contentName(page.upNext.program.name), page.dayText(page.upNext.day)]
+                                .filter(function(part) { return part }).join(" · ")
+                              : ""
+                    }
+                }
+            }
+
             ButtonLayout {
                 visible: !page.hasActiveSession && !page.loading
                 Button {
                     text: qsTr("Start workout")
-                    onClicked: pageStack.push(Qt.resolvedUrl("ProgramsPage.qml"))
+                    onClicked: {
+                        if (page.upNext)
+                            page.startWorkout(page.upNext.workout.id)
+                        else
+                            pageStack.push(Qt.resolvedUrl("ProgramsPage.qml"))
+                    }
                 }
                 Button {
                     text: qsTr("Freeform workout")
                     onClicked: page.startFreeform()
+                }
+                Button {
+                    visible: page.upNext !== null
+                    text: qsTr("Choose another workout")
+                    onClicked: pageStack.push(Qt.resolvedUrl("ProgramsPage.qml"))
                 }
             }
 
@@ -263,6 +352,42 @@ Page {
                 delegate: RecordItem {
                     record: modelData
                 }
+            }
+
+            // Shared across everyone on the server; people who opted out
+            // are already left out. One at a time, moving on every 4.5 s
+            // like the web's carousel, or on a tap.
+            SectionHeader {
+                visible: page.achievements.length > 0
+                text: page.achievements.length > 1
+                      ? qsTr("Achievements") + " " + (achievementTimer.index + 1) + "/" + page.achievements.length
+                      : qsTr("Achievements")
+            }
+
+            BackgroundItem {
+                visible: page.achievements.length > 0
+                width: parent.width
+                height: achievementItem.height
+                onClicked: achievementTimer.next()
+
+                AchievementItem {
+                    id: achievementItem
+                    achievement: page.achievements[achievementTimer.index] || null
+                }
+            }
+
+            Timer {
+                id: achievementTimer
+                property int index: 0
+                function next() {
+                    index = (index + 1) % Math.max(1, page.achievements.length)
+                    restart()
+                }
+                interval: 4500
+                repeat: true
+                running: page.achievements.length > 1 && page.status === PageStatus.Active
+                         && Qt.application.active
+                onTriggered: next()
             }
         }
 

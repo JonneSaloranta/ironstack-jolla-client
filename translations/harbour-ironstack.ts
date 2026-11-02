@@ -4,47 +4,47 @@
 <context>
     <name>ApiClient</name>
     <message>
-        <location filename="../src/apiclient.cpp" line="71"/>
+        <location filename="../src/apiclient.cpp" line="73"/>
         <source>Refused to follow a link to another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="135"/>
+        <location filename="../src/apiclient.cpp" line="139"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="137"/>
+        <location filename="../src/apiclient.cpp" line="141"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="139"/>
+        <location filename="../src/apiclient.cpp" line="143"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="141"/>
+        <location filename="../src/apiclient.cpp" line="145"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="143"/>
+        <location filename="../src/apiclient.cpp" line="147"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="145"/>
+        <location filename="../src/apiclient.cpp" line="149"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="173"/>
+        <location filename="../src/apiclient.cpp" line="177"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="174"/>
+        <location filename="../src/apiclient.cpp" line="178"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -70,84 +70,105 @@
 <context>
     <name>DashboardPage</name>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="100"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="116"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="103"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="226"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="119"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="304"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="142"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="132"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="177"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="146"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="181"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="150"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="185"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="154"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="189"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="182"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="217"/>
         <source>No connection to the server. Workouts can still be logged and are sent later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="199"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="234"/>
         <source>Continue workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="210"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="245"/>
         <source>started %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="222"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="256"/>
+        <source>Up next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="295"/>
         <source>Start workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="232"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="309"/>
+        <source>Choose another workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="315"/>
         <source>Last 7 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="241"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="324"/>
         <source>workouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="246"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="329"/>
         <source>time (h:min)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="252"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="335"/>
         <source>volume (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="257"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="340"/>
         <source>Recent personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="264"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="347"/>
         <source>No records yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="363"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="364"/>
+        <source>Achievements</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -162,7 +183,7 @@
 <context>
     <name>ExercisePanel</name>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="83"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="82"/>
         <source>Last time: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -189,58 +210,58 @@
         </translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="166"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="171"/>
         <source>All exercises done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="248"/>
-        <location filename="../qml/components/ExercisePanel.qml" line="249"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="253"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="254"/>
         <source>reps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="262"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="267"/>
         <source>Log set %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="277"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="282"/>
         <source>Fewer options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="277"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="282"/>
         <source>RPE, RIR, warm-up, failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="291"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="296"/>
         <source>RPE (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="299"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="304"/>
         <source>RIR (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="307"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="312"/>
         <source>Warm-up set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="308"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="313"/>
         <source>Not counted for records, progression or analytics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="312"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="317"/>
         <source>Taken to failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="212"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="217"/>
         <source>Finish workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -248,17 +269,17 @@
 <context>
     <name>ExercisePickerPage</name>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="65"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="70"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="75"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="80"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="98"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="103"/>
         <source>No matching exercises</source>
         <translation type="unfinished"></translation>
     </message>
@@ -266,32 +287,32 @@
 <context>
     <name>HistoryPage</name>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="70"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="71"/>
         <source>In progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="72"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="73"/>
         <source>Abandoned</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="86"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="87"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="98"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="99"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="152"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="153"/>
         <source>No exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/HistoryPage.qml" line="140"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="141"/>
         <source>%n set(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -303,12 +324,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="57"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="58"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/HistoryPage.qml" line="159"/>
+        <location filename="../qml/pages/HistoryPage.qml" line="160"/>
         <source>No workouts yet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -402,19 +423,19 @@
 <context>
     <name>ProgramPage</name>
     <message>
-        <location filename="../qml/pages/ProgramPage.qml" line="22"/>
+        <location filename="../qml/pages/ProgramPage.qml" line="23"/>
         <source>Continuous program</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/ProgramPage.qml" line="55"/>
+        <location filename="../qml/pages/ProgramPage.qml" line="56"/>
         <source>%n exercise(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramPage.qml" line="64"/>
+        <location filename="../qml/pages/ProgramPage.qml" line="65"/>
         <source>No workouts in this program</source>
         <translation type="unfinished"></translation>
     </message>
@@ -476,22 +497,22 @@
 <context>
     <name>RecordsPage</name>
     <message>
-        <location filename="../qml/pages/RecordsPage.qml" line="50"/>
+        <location filename="../qml/pages/RecordsPage.qml" line="47"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecordsPage.qml" line="62"/>
+        <location filename="../qml/pages/RecordsPage.qml" line="59"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecordsPage.qml" line="75"/>
+        <location filename="../qml/pages/RecordsPage.qml" line="72"/>
         <source>No records yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecordsPage.qml" line="76"/>
+        <location filename="../qml/pages/RecordsPage.qml" line="73"/>
         <source>Records are detected automatically from the sets you log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -517,12 +538,12 @@
 <context>
     <name>SessionController</name>
     <message>
-        <location filename="../qml/components/SessionController.qml" line="60"/>
+        <location filename="../qml/components/SessionController.qml" line="65"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SessionController.qml" line="65"/>
+        <location filename="../qml/components/SessionController.qml" line="70"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -530,7 +551,7 @@
 <context>
     <name>SessionPage</name>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="176"/>
+        <location filename="../qml/pages/SessionPage.qml" line="178"/>
         <source>Target</source>
         <translation type="unfinished"></translation>
     </message>
@@ -545,7 +566,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="73"/>
+        <location filename="../qml/pages/SessionPage.qml" line="75"/>
         <source>Prefilled from the program target.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -555,78 +576,83 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="109"/>
+        <location filename="../qml/pages/SessionPage.qml" line="73"/>
+        <source>Prefilled with the smart suggestion.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SessionPage.qml" line="111"/>
         <source>Finish workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="110"/>
+        <location filename="../qml/pages/SessionPage.qml" line="112"/>
         <source>Finishing workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="113"/>
-        <location filename="../qml/pages/SessionPage.qml" line="237"/>
+        <location filename="../qml/pages/SessionPage.qml" line="115"/>
+        <location filename="../qml/pages/SessionPage.qml" line="246"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="117"/>
+        <location filename="../qml/pages/SessionPage.qml" line="119"/>
         <source>Training mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="125"/>
+        <location filename="../qml/pages/SessionPage.qml" line="127"/>
         <source>Abandon workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="126"/>
+        <location filename="../qml/pages/SessionPage.qml" line="128"/>
         <source>Abandoning workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="141"/>
+        <location filename="../qml/pages/SessionPage.qml" line="143"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="141"/>
+        <location filename="../qml/pages/SessionPage.qml" line="143"/>
         <source>Abandoned</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="177"/>
+        <location filename="../qml/pages/SessionPage.qml" line="179"/>
         <source>%1/%2 done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="190"/>
+        <location filename="../qml/pages/SessionPage.qml" line="192"/>
         <source>Last time: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="207"/>
+        <location filename="../qml/pages/SessionPage.qml" line="216"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="211"/>
+        <location filename="../qml/pages/SessionPage.qml" line="220"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="225"/>
+        <location filename="../qml/pages/SessionPage.qml" line="234"/>
         <source>Log set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="244"/>
+        <location filename="../qml/pages/SessionPage.qml" line="253"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="245"/>
+        <location filename="../qml/pages/SessionPage.qml" line="254"/>
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>
@@ -720,6 +746,29 @@
     </message>
 </context>
 <context>
+    <name>SuggestionLabel</name>
+    <message>
+        <location filename="../qml/components/SuggestionLabel.qml" line="18"/>
+        <source>Low confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SuggestionLabel.qml" line="20"/>
+        <source>Medium confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SuggestionLabel.qml" line="22"/>
+        <source>High confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SuggestionLabel.qml" line="26"/>
+        <source>Suggested: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SyncStatus</name>
     <message>
         <location filename="../qml/components/SyncStatus.qml" line="33"/>
@@ -758,7 +807,7 @@
     </message>
     <message>
         <location filename="../qml/pages/TrainingPage.qml" line="120"/>
-        <location filename="../qml/pages/TrainingPage.qml" line="215"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="216"/>
         <source>Finishing workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -778,12 +827,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/TrainingPage.qml" line="220"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="221"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/TrainingPage.qml" line="221"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="222"/>
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>
@@ -791,13 +840,13 @@
 <context>
     <name>WorkoutPage</name>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="30"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="29"/>
         <source>Finish or abandon the workout in progress first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="59"/>
-        <location filename="../qml/pages/WorkoutPage.qml" line="115"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="52"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="108"/>
         <source>Start workout</source>
         <translation type="unfinished"></translation>
     </message>

@@ -131,6 +131,20 @@ function elapsedSince(iso) {
     return (Date.now() - new Date(iso).getTime()) / 1000
 }
 
+// "2026-11-02" (a date without a time, as up-next/ gives it) as local
+// midnight - new Date("2026-11-02") would be UTC midnight, the day before
+// west of Greenwich.
+function parseDate(iso) {
+    var parts = String(iso).split("-")
+    return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10))
+}
+
+function isToday(iso, now) {
+    var day = parseDate(iso)
+    return day.getFullYear() === now.getFullYear() && day.getMonth() === now.getMonth()
+            && day.getDate() === now.getDate()
+}
+
 function formatHoursMinutes(seconds) {
     seconds = Math.max(0, Math.floor(seconds))
     var h = Math.floor(seconds / 3600)

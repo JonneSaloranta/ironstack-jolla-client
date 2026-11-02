@@ -121,6 +121,22 @@
         <source>No connection to the server. Workouts can still be logged and are sent later.</source>
         <translation>Ei yhteyttä palvelimeen. Treenejä voi silti kirjata, ja ne lähetetään myöhemmin.</translation>
     </message>
+    <message>
+        <source>Today</source>
+        <translation>Tänään</translation>
+    </message>
+    <message>
+        <source>Up next</source>
+        <translation>Seuraavana vuorossa</translation>
+    </message>
+    <message>
+        <source>Choose another workout</source>
+        <translation>Valitse toinen treeni</translation>
+    </message>
+    <message>
+        <source>Achievements</source>
+        <translation>Saavutukset</translation>
+    </message>
 </context>
 <context>
     <name>ErrorBanner</name>
@@ -517,6 +533,10 @@
         <source>Training mode</source>
         <translation>Treenitila</translation>
     </message>
+    <message>
+        <source>Prefilled with the smart suggestion.</source>
+        <translation>Esitäytetty painoehdotuksella.</translation>
+    </message>
 </context>
 <context>
     <name>SetItem</name>
@@ -589,6 +609,25 @@
             <numerusform>Kirjaudutaan ulos, %n lähettämätön muutos menetetään</numerusform>
             <numerusform>Kirjaudutaan ulos, %n lähettämätöntä muutosta menetetään</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>SuggestionLabel</name>
+    <message>
+        <source>Low confidence</source>
+        <translation>Matala luotettavuus</translation>
+    </message>
+    <message>
+        <source>Medium confidence</source>
+        <translation>Kohtalainen luotettavuus</translation>
+    </message>
+    <message>
+        <source>High confidence</source>
+        <translation>Korkea luotettavuus</translation>
+    </message>
+    <message>
+        <source>Suggested: %1</source>
+        <translation>Ehdotus: %1</translation>
     </message>
 </context>
 <context>
