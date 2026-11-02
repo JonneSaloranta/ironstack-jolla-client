@@ -37,9 +37,11 @@ ListItem {
                 text: valueText()
             }
         }
+        // Wraps rather than fades: the date comes last and is what a fade
+        // would cut off (long in Finnish, "1. marraskuuta 2026").
         Label {
             width: parent.width
-            truncationMode: TruncationMode.Fade
+            wrapMode: Text.Wrap
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
             //: Rep-max, e.g. "5RM" = best weight for 5 reps
