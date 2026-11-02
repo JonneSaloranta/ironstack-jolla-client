@@ -39,8 +39,8 @@ TestCase {
     function test_pages_data() {
         return [
             "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "DashboardPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "HistoryPage", "LogSetDialog",
-            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "RecordsPage",
-            "SessionPage", "SettingsPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
+            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
+            "SessionPage", "SettingsPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

@@ -21,9 +21,9 @@
     </message>
     <message numerus="yes">
         <source>%n logged</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n logged</numerusform>
+            <numerusform>%n logged</numerusform>
         </translation>
     </message>
     <message>
@@ -86,9 +86,9 @@
     <name>ActivityHistoryPage</name>
     <message numerus="yes">
         <source>%n logged</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n logged</numerusform>
+            <numerusform>%n logged</numerusform>
         </translation>
     </message>
     <message>
@@ -952,6 +952,10 @@
         <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NameDialog</name>
@@ -1205,6 +1209,52 @@
     </message>
 </context>
 <context>
+    <name>RoutineEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RoutineItemDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold (seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leave the hold empty to use the stretch&apos;s own default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rest (seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SessionController</name>
     <message>
         <source>Workout</source>
@@ -1428,6 +1478,443 @@
     </message>
     <message>
         <source>Allow group invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>How to do it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchPage</name>
+    <message>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivating stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>How to do it</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchPlayerPage</name>
+    <message>
+        <source>Get ready</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abandon session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abandoning session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next up:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All stretches done - nice work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchRoutinePage</name>
+    <message>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n set(s)</source>
+        <translation>
+            <numerusform>%n set</numerusform>
+            <numerusform>%n sets</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (copy)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivating routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Built-in routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No stretches in this routine yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duration (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionsPage</name>
+    <message>
+        <source>Abandoned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cool-down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No stretching sessions yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchesPage</name>
+    <message>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stretches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No stretches match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchingPage</name>
+    <message>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stretches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n day</numerusform>
+            <numerusform>%n days</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Streak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last 7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start a routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n stretch(es)</source>
+        <translation>
+            <numerusform>%n stretch</numerusform>
+            <numerusform>%n stretches</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No routines yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minutes per week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finish or log a stretching session to see your weekly minutes here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recent sessions</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1120,57 +1120,62 @@
 <context>
     <name>MenuPage</name>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="22"/>
+        <location filename="../qml/pages/MenuPage.qml" line="23"/>
         <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="23"/>
+        <location filename="../qml/pages/MenuPage.qml" line="24"/>
         <source>Programs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="24"/>
+        <location filename="../qml/pages/MenuPage.qml" line="25"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="25"/>
+        <location filename="../qml/pages/MenuPage.qml" line="26"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="26"/>
+        <location filename="../qml/pages/MenuPage.qml" line="27"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="27"/>
+        <location filename="../qml/pages/MenuPage.qml" line="28"/>
         <source>Body tracking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="28"/>
+        <location filename="../qml/pages/MenuPage.qml" line="29"/>
         <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="35"/>
-        <source>Training</source>
+        <location filename="../qml/pages/MenuPage.qml" line="30"/>
+        <source>Stretching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="37"/>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="39"/>
         <source>Body and activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="38"/>
+        <location filename="../qml/pages/MenuPage.qml" line="40"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="45"/>
+        <location filename="../qml/pages/MenuPage.qml" line="47"/>
         <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1480,6 +1485,62 @@
     </message>
 </context>
 <context>
+    <name>RoutineEditDialog</name>
+    <message>
+        <location filename="../qml/pages/RoutineEditDialog.qml" line="21"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineEditDialog.qml" line="22"/>
+        <source>Edit routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineEditDialog.qml" line="22"/>
+        <source>New routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineEditDialog.qml" line="27"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineEditDialog.qml" line="35"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RoutineItemDialog</name>
+    <message>
+        <location filename="../qml/pages/RoutineItemDialog.qml" line="34"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineItemDialog.qml" line="40"/>
+        <source>Hold (seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineItemDialog.qml" line="46"/>
+        <source>Leave the hold empty to use the stretch&apos;s own default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineItemDialog.qml" line="51"/>
+        <source>Sets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoutineItemDialog.qml" line="60"/>
+        <source>Rest (seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SessionController</name>
     <message>
         <location filename="../qml/components/SessionController.qml" line="65"/>
@@ -1756,6 +1817,546 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="239"/>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchEditDialog</name>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="48"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="49"/>
+        <source>Edit stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="49"/>
+        <source>New stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="54"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="60"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="63"/>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="64"/>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="69"/>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="75"/>
+        <source>Default hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="84"/>
+        <source>How to do it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="89"/>
+        <source>Muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchPage</name>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="41"/>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="42"/>
+        <source>Deactivating stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="54"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="79"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="85"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="86"/>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="86"/>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="89"/>
+        <source>Default hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="91"/>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="95"/>
+        <source>Muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPage.qml" line="101"/>
+        <source>How to do it</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchPlayerPage</name>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="30"/>
+        <source>Get ready</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="32"/>
+        <source>Rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="33"/>
+        <source>Hold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="38"/>
+        <source>Left side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="40"/>
+        <source>Right side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="116"/>
+        <source>Abandon session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="117"/>
+        <source>Abandoning session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="121"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="225"/>
+        <source>Finish session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="169"/>
+        <source>set %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="190"/>
+        <source>Next up:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="195"/>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="195"/>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="199"/>
+        <source>Next step</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="203"/>
+        <source>Skip stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="220"/>
+        <source>All stretches done - nice work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchRoutinePage</name>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="47"/>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="49"/>
+        <source>%n set(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="51"/>
+        <source>Rest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="92"/>
+        <source>%1 (copy)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="133"/>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="134"/>
+        <source>Deactivating routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="147"/>
+        <source>Edit routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="157"/>
+        <source>Copy to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="162"/>
+        <source>Add a stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="167"/>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="172"/>
+        <source>Start routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="181"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="181"/>
+        <source>Built-in routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="212"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="217"/>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="222"/>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="226"/>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchRoutinePage.qml" line="256"/>
+        <source>No stretches in this routine yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionDialog</name>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="41"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="42"/>
+        <source>Edit session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="42"/>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="47"/>
+        <source>Routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="48"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="51"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="64"/>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="71"/>
+        <source>Duration (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="81"/>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionsPage</name>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="17"/>
+        <source>Abandoned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="19"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="53"/>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="67"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="77"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="95"/>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="110"/>
+        <source>Cool-down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchSessionsPage.qml" line="118"/>
+        <source>No stretching sessions yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchesPage</name>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="64"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="111"/>
+        <source>Dynamic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="64"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="110"/>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="81"/>
+        <source>New stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="99"/>
+        <source>Add a stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="99"/>
+        <source>Stretches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="107"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="109"/>
+        <source>All types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="115"/>
+        <source>Muscle group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="118"/>
+        <source>All muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="132"/>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="161"/>
+        <source>per side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="162"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchesPage.qml" line="169"/>
+        <source>No stretches match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StretchingPage</name>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="21"/>
+        <location filename="../qml/pages/StretchingPage.qml" line="110"/>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="75"/>
+        <source>New routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="91"/>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="95"/>
+        <source>Stretches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="99"/>
+        <source>Log stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/StretchingPage.qml" line="123"/>
+        <source>%n day(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="124"/>
+        <source>Streak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="129"/>
+        <source>Last 7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="134"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="139"/>
+        <source>Start a routine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="155"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/StretchingPage.qml" line="162"/>
+        <source>%n stretch(es)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="172"/>
+        <source>No routines yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="176"/>
+        <source>Minutes per week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="180"/>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="191"/>
+        <source>Finish or log a stretching session to see your weekly minutes here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StretchingPage.qml" line="196"/>
+        <source>Recent sessions</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

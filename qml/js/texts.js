@@ -9,5 +9,6 @@ function contentText(value) {
     if (!value)
         return value || ""
     var texts = Texts.catalog[Store.contentLanguage()]
-    return (texts && texts[value]) || value
+    // Some short texts (routine descriptions) are in the names catalog.
+    return (texts && texts[value]) || Store.contentName(value)
 }

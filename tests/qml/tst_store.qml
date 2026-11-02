@@ -249,6 +249,79 @@ TestCase {
         compare(none.calories, null)
     }
 
+    function test_stretchSteps() {
+        var stretches = { 1: { per_side: true, default_hold_seconds: 30 }, 2: { per_side: false, default_hold_seconds: 20 } }
+        var items = [
+            { id: 11, stretch: 2, order: 1, hold_seconds: null, sets: 1, rest_seconds: 10 },
+            { id: 10, stretch: 1, order: 0, hold_seconds: 45, sets: 2, rest_seconds: 10 }
+        ]
+        var steps = Store.stretchSteps(items, stretches)
+        compare(steps.map(function(s) { return s.kind + (s.side ? ":" + s.side : "") }),
+                ["prepare:left", "hold:left", "rest:left", "hold:right", "rest:right", "hold:left",
+                 "rest:left", "hold:right", "prepare", "hold"])
+        compare(steps[0].seconds, 5)
+        compare(steps[1].seconds, 45)
+        compare(steps[7].lastOfStretch, true)
+        // the item's hold falls back to the stretch's default
+        compare(steps[9].seconds, 20)
+        compare(Store.nextStretchStep(steps, 2), 8)
+        compare(Store.nextStretchStep(steps, 8), 10)
+    }
+
+    function test_weeklyStretchMinutes() {
+        var today = new Date(2026, 10, 4)   // a Wednesday
+        var rows = Store.weeklyStretchMinutes([
+            { status: "completed", date: "2026-11-02", duration: "00:10:00" },
+            { status: "completed", date: "2026-11-04", duration: "00:05:30" },
+            { status: "abandoned", date: "2026-11-03", duration: "00:30:00" },
+            { status: "completed", date: "2026-10-28", duration: "00:12:00" }
+        ], today, 3)
+        compare(rows.length, 3)
+        compare(Store.isoDate(rows[2].monday), "2026-11-02")
+        compare(rows[2].minutes, 16)
+        compare(rows[1].minutes, 12)
+        compare(rows[0].minutes, 0)
+    }
+
+    function test_stretchSummary() {
+        var today = new Date(2026, 10, 4)
+        var sessions = [
+            { status: "completed", date: "2026-11-03", duration: "00:10:00" },
+            { status: "completed", date: "2026-11-02", duration: "00:05:00" },
+            { status: "completed", date: "2026-10-20", duration: "00:20:00" },
+            { status: "abandoned", date: "2026-11-04", duration: "00:30:00" }
+        ]
+        var summary = Store.stretchSummary(sessions, today)
+        compare(summary.count, 3)
+        compare(summary.seconds, 2100)
+        compare(summary.weekCount, 2)
+        compare(summary.weekSeconds, 900)
+        // nothing today yet: the streak ends yesterday
+        compare(summary.streak, 2)
+        compare(Store.stretchSummary([], today).streak, 0)
+    }
+
+    function test_copyName() {
+        compare(Store.copyName("Venyttely (kopio)", []), "Venyttely (kopio)")
+        compare(Store.copyName("Venyttely (kopio)", ["Venyttely (kopio)", "Venyttely (kopio) 2"]),
+                "Venyttely (kopio) 3")
+    }
+
+    function test_copyRoutine() {
+        var api = fakeApi()
+        var result = null
+        Store.copyRoutine(api, { items: [{ stretch: 3, order: 0, hold_seconds: null, sets: 2, rest_seconds: 10 }] },
+                          "R (copy)", "d", function(ok, routine) { result = { ok: ok, id: routine.id } })
+        verify(result.ok)
+        compare(api.calls[1].path, "stretch-routine-items/")
+        compare(api.calls[1].body.routine, 100)
+        compare(api.calls[1].body.hold_seconds, null)
+        var failing = fakeApi("stretch-routine-items/")
+        Store.copyRoutine(failing, { items: [{ stretch: 3, order: 0, sets: 1 }] }, "R", "", function(ok) { result = ok })
+        verify(!result)
+        compare(failing.calls[failing.calls.length - 1].path, "stretch-routines/100/")
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

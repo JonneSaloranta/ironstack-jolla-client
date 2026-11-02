@@ -952,6 +952,10 @@
         <source>Activities</source>
         <translation>Aktiviteetit</translation>
     </message>
+    <message>
+        <source>Stretching</source>
+        <translation>Venyttely</translation>
+    </message>
 </context>
 <context>
     <name>NameDialog</name>
@@ -1205,6 +1209,52 @@
     </message>
 </context>
 <context>
+    <name>RoutineEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit routine</source>
+        <translation>Muokkaa rutiinia</translation>
+    </message>
+    <message>
+        <source>New routine</source>
+        <translation>Uusi rutiini</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Kuvaus</translation>
+    </message>
+</context>
+<context>
+    <name>RoutineItemDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Hold (seconds)</source>
+        <translation>Pito (sekuntia)</translation>
+    </message>
+    <message>
+        <source>Leave the hold empty to use the stretch&apos;s own default.</source>
+        <translation>Jätä pito tyhjäksi käyttääksesi venytyksen oletusta.</translation>
+    </message>
+    <message>
+        <source>Sets</source>
+        <translation>Sarjat</translation>
+    </message>
+    <message>
+        <source>Rest (seconds)</source>
+        <translation>Lepo (sekuntia)</translation>
+    </message>
+</context>
+<context>
     <name>SessionController</name>
     <message>
         <source>Workout</source>
@@ -1429,6 +1479,443 @@
     <message>
         <source>Allow group invites</source>
         <translation>Salli ryhmäkutsut</translation>
+    </message>
+</context>
+<context>
+    <name>StretchEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit stretch</source>
+        <translation>Muokkaa venytystä</translation>
+    </message>
+    <message>
+        <source>New stretch</source>
+        <translation>Uusi venytys</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tyyppi</translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation>Staattinen</translation>
+    </message>
+    <message>
+        <source>Dynamic</source>
+        <translation>Dynaaminen</translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation>per puoli</translation>
+    </message>
+    <message>
+        <source>Default hold</source>
+        <translation>Oletuspito</translation>
+    </message>
+    <message>
+        <source>How to do it</source>
+        <translation>Näin teet sen</translation>
+    </message>
+    <message>
+        <source>Muscle groups</source>
+        <translation>Lihasryhmät</translation>
+    </message>
+</context>
+<context>
+    <name>StretchPage</name>
+    <message>
+        <source>Deactivate</source>
+        <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+        <source>Deactivating stretch</source>
+        <translation>Poistetaan venytys käytöstä</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tyyppi</translation>
+    </message>
+    <message>
+        <source>Dynamic</source>
+        <translation>Dynaaminen</translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation>Staattinen</translation>
+    </message>
+    <message>
+        <source>Default hold</source>
+        <translation>Oletuspito</translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation>per puoli</translation>
+    </message>
+    <message>
+        <source>Muscle groups</source>
+        <translation>Lihasryhmät</translation>
+    </message>
+    <message>
+        <source>How to do it</source>
+        <translation>Näin teet sen</translation>
+    </message>
+</context>
+<context>
+    <name>StretchPlayerPage</name>
+    <message>
+        <source>Get ready</source>
+        <translation>Valmistaudu</translation>
+    </message>
+    <message>
+        <source>Rest</source>
+        <translation>Lepo</translation>
+    </message>
+    <message>
+        <source>Hold</source>
+        <translation>Pidä</translation>
+    </message>
+    <message>
+        <source>Left side</source>
+        <translation>Vasen puoli</translation>
+    </message>
+    <message>
+        <source>Right side</source>
+        <translation>Oikea puoli</translation>
+    </message>
+    <message>
+        <source>Abandon session</source>
+        <translation>Keskeytä sessio</translation>
+    </message>
+    <message>
+        <source>Abandoning session</source>
+        <translation>Keskeytetään</translation>
+    </message>
+    <message>
+        <source>Finish session</source>
+        <translation>Lopeta sessio</translation>
+    </message>
+    <message>
+        <source>set %1/%2</source>
+        <translation>sarja %1/%2</translation>
+    </message>
+    <message>
+        <source>Next up:</source>
+        <translation>Seuraavaksi:</translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Tauko</translation>
+    </message>
+    <message>
+        <source>Next step</source>
+        <translation>Seuraava vaihe</translation>
+    </message>
+    <message>
+        <source>Skip stretch</source>
+        <translation>Ohita venytys</translation>
+    </message>
+    <message>
+        <source>All stretches done - nice work.</source>
+        <translation>Kaikki venytykset tehty - hyvää työtä.</translation>
+    </message>
+</context>
+<context>
+    <name>StretchRoutinePage</name>
+    <message>
+        <source>per side</source>
+        <translation>per puoli</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n set(s)</source>
+        <translation>
+            <numerusform>%n sarja</numerusform>
+            <numerusform>%n sarjaa</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Rest</source>
+        <translation>Lepo</translation>
+    </message>
+    <message>
+        <source>%1 (copy)</source>
+        <translation>%1 (kopio)</translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+        <source>Deactivating routine</source>
+        <translation>Poistetaan rutiini käytöstä</translation>
+    </message>
+    <message>
+        <source>Edit routine</source>
+        <translation>Muokkaa rutiinia</translation>
+    </message>
+    <message>
+        <source>Copy to edit</source>
+        <translation>Kopioi muokattavaksi</translation>
+    </message>
+    <message>
+        <source>Add a stretch</source>
+        <translation>Lisää venytys</translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation>Kirjaa venyttely</translation>
+    </message>
+    <message>
+        <source>Start routine</source>
+        <translation>Aloita rutiini</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message>
+        <source>Built-in routine</source>
+        <translation>Valmis rutiini</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Siirrä ylös</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Siirrä alas</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>No stretches in this routine yet.</source>
+        <translation>Tässä rutiinissa ei ole vielä venytyksiä.</translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit session</source>
+        <translation>Muokkaa sessiota</translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation>Kirjaa venyttely</translation>
+    </message>
+    <message>
+        <source>Routine</source>
+        <translation>Rutiini</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ei mitään</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Päivämäärä</translation>
+    </message>
+    <message>
+        <source>Duration (minutes)</source>
+        <translation>Kesto (minuuttia)</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+</context>
+<context>
+    <name>StretchSessionsPage</name>
+    <message>
+        <source>Abandoned</source>
+        <translation>Keskeytetty</translation>
+    </message>
+    <message>
+        <source>In progress</source>
+        <translation>Käynnissä</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historia</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Stretching</source>
+        <translation>Venyttely</translation>
+    </message>
+    <message>
+        <source>Cool-down</source>
+        <translation>Jäähdyttely</translation>
+    </message>
+    <message>
+        <source>No stretching sessions yet.</source>
+        <translation>Ei vielä venyttelysessioita.</translation>
+    </message>
+</context>
+<context>
+    <name>StretchesPage</name>
+    <message>
+        <source>Dynamic</source>
+        <translation>Dynaaminen</translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation>Staattinen</translation>
+    </message>
+    <message>
+        <source>New stretch</source>
+        <translation>Uusi venytys</translation>
+    </message>
+    <message>
+        <source>Add a stretch</source>
+        <translation>Lisää venytys</translation>
+    </message>
+    <message>
+        <source>Stretches</source>
+        <translation>Venytykset</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tyyppi</translation>
+    </message>
+    <message>
+        <source>All types</source>
+        <translation>Kaikki tyypit</translation>
+    </message>
+    <message>
+        <source>Muscle group</source>
+        <translation>Lihasryhmä</translation>
+    </message>
+    <message>
+        <source>All muscle groups</source>
+        <translation>Kaikki lihasryhmät</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Hae</translation>
+    </message>
+    <message>
+        <source>per side</source>
+        <translation>per puoli</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message>
+        <source>No stretches match.</source>
+        <translation>Ei osuvia venytyksiä.</translation>
+    </message>
+</context>
+<context>
+    <name>StretchingPage</name>
+    <message>
+        <source>Stretching</source>
+        <translation>Venyttely</translation>
+    </message>
+    <message>
+        <source>New routine</source>
+        <translation>Uusi rutiini</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historia</translation>
+    </message>
+    <message>
+        <source>Stretches</source>
+        <translation>Venytykset</translation>
+    </message>
+    <message>
+        <source>Log stretching</source>
+        <translation>Kirjaa venyttely</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n päivä</numerusform>
+            <numerusform>%n päivää</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Streak</source>
+        <translation>Putki</translation>
+    </message>
+    <message>
+        <source>Last 7 days</source>
+        <translation>Viimeiset 7 päivää</translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation>Koko aika</translation>
+    </message>
+    <message>
+        <source>Start a routine</source>
+        <translation>Aloita rutiini</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n stretch(es)</source>
+        <translation>
+            <numerusform>%n venytys</numerusform>
+            <numerusform>%n venytystä</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No routines yet.</source>
+        <translation>Ei vielä rutiineja.</translation>
+    </message>
+    <message>
+        <source>Minutes per week</source>
+        <translation>Minuutit viikossa</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>Finish or log a stretching session to see your weekly minutes here.</source>
+        <translation>Tee tai kirjaa venyttelysessio, niin näet viikkominuuttisi täällä.</translation>
+    </message>
+    <message>
+        <source>Recent sessions</source>
+        <translation>Viimeisimmät sessiot</translation>
     </message>
 </context>
 <context>

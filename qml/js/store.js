@@ -401,6 +401,163 @@ function activitySummary(activities) {
     return summary
 }
 
+// --- stretching --------------------------------------------------------------
+
+var STRETCH_PREPARE_SECONDS = 5
+
+// The guided timer's steps for a routine, like the web's
+// apps.stretching.services.timer_steps: per stretch a 5 s "prepare", then a
+// "hold" per set and side, with a "rest" between holds when the item has
+// one. An item's hold falls back to the stretch's default.
+// `stretches` maps stretch id -> stretch.
+function stretchSteps(items, stretches) {
+    var steps = []
+    ;(items || []).slice().sort(function(a, b) { return a.order - b.order || a.id - b.id }).forEach(function(item) {
+        var stretch = stretches[item.stretch] || {}
+        var sides = stretch.per_side ? ["left", "right"] : [""]
+        var hold = present(item.hold_seconds) ? item.hold_seconds : (stretch.default_hold_seconds || 30)
+        var sets = item.sets || 1
+        var holds = []
+        for (var set = 1; set <= sets; set++)
+            sides.forEach(function(side) { holds.push({ set: set, side: side }) })
+        steps.push({ kind: "prepare", stretch: item.stretch, seconds: STRETCH_PREPARE_SECONDS,
+                     set: 1, sets: sets, side: sides[0], lastOfStretch: false })
+        holds.forEach(function(h, index) {
+            var last = index === holds.length - 1
+            steps.push({ kind: "hold", stretch: item.stretch, seconds: hold, set: h.set, sets: sets,
+                         side: h.side, lastOfStretch: last })
+            if (!last && item.rest_seconds)
+                steps.push({ kind: "rest", stretch: item.stretch, seconds: item.rest_seconds, set: h.set,
+                             sets: sets, side: h.side, lastOfStretch: false })
+        })
+    })
+    return steps
+}
+
+// The stretch library (id -> stretch), fetched once; set
+// `stretchesChanged` after a stretch is created, edited or deactivated.
+var stretches = null
+var stretchesChanged = false
+// Routines and sessions changed somewhere; the stretching pages reload.
+var stretchingChanged = false
+
+function ensureStretches(api, done) {
+    if (stretches !== null && !stretchesChanged)
+        return done(true, "")
+    var found = {}
+    fetchAll(api, "stretches/?page_size=100", function(results) {
+        results.forEach(function(stretch) { found[stretch.id] = stretch })
+    }, function(ok, error) {
+        if (ok) {
+            stretches = found
+            stretchesChanged = false
+        }
+        done(ok, error)
+    })
+}
+
+function stretchName(id) {
+    return stretches && stretches[id] ? contentName(stretches[id].name) : "#" + id
+}
+
+// A free name for a copy, like the web's copy_routine: "<name> (copy)",
+// then "<name> (copy) 2", ... among `takenNames`.
+function copyName(baseName, takenNames) {
+    var name = baseName
+    var suffix = 2
+    while ((takenNames || []).indexOf(name) >= 0)
+        name = baseName + " " + suffix++
+    return name
+}
+
+// Copy a routine into your own (the web's "Copy to edit"): the new
+// routine, then its items one by one - no copy endpoint (IronStack #32).
+// A half-made copy is deleted again. done(ok, newRoutine, error)
+function copyRoutine(api, routine, name, description, done) {
+    api.request("POST", "stretch-routines/", { name: name, description: description || "" },
+                function(ok, status, created, error) {
+        if (!ok)
+            return done(false, null, error)
+        var items = (routine.items || []).slice()
+        function next() {
+            if (items.length === 0)
+                return done(true, created, "")
+            var item = items.shift()
+            api.request("POST", "stretch-routine-items/", {
+                routine: created.id, stretch: item.stretch, order: item.order,
+                hold_seconds: present(item.hold_seconds) ? item.hold_seconds : null,
+                sets: item.sets, rest_seconds: item.rest_seconds || 0
+            }, function(ok2, status2, data2, error2) {
+                if (ok2)
+                    return next()
+                api.request("DELETE", "stretch-routines/" + created.id + "/", null, function() {
+                    done(false, null, error2)
+                })
+            })
+        }
+        next()
+    })
+}
+
+// The index of the first step of the next stretch after `index`, or
+// steps.length - for "Skip stretch".
+function nextStretchStep(steps, index) {
+    var current = steps[index] ? steps[index].stretch : null
+    var at = index + 1
+    while (at < steps.length && !(steps[at].kind === "prepare" && (steps[at].stretch !== current
+                                                                  || steps[at - 1].lastOfStretch)))
+        at++
+    return at
+}
+
+// The web's stretching summary (apps.stretching.services.summarize) of
+// completed sessions: { count, seconds, weekCount, weekSeconds, streak }.
+// The streak counts days in a row ending today, or yesterday so it isn't
+// broken before today's stretch.
+function stretchSummary(sessions, today) {
+    var completed = (sessions || []).filter(function(s) { return s.status === "completed" })
+    var weekStart = isoDate(addDays(today, -6))
+    var todayIso = isoDate(today)
+    var result = { count: completed.length, seconds: 0, weekCount: 0, weekSeconds: 0, streak: 0 }
+    var days = {}
+    completed.forEach(function(s) {
+        var seconds = parseDuration(s.duration) || 0
+        result.seconds += seconds
+        if (s.date >= weekStart && s.date <= todayIso) {
+            result.weekCount++
+            result.weekSeconds += seconds
+        }
+        days[s.date] = true
+    })
+    var day = days[todayIso] ? today : addDays(today, -1)
+    while (days[isoDate(day)]) {
+        result.streak++
+        day = addDays(day, -1)
+    }
+    return result
+}
+
+// Minutes of completed stretching per week for the last `weeks` weeks
+// (Monday first), oldest first - the web's weekly_minutes:
+// [{ monday: Date, minutes }].
+function weeklyStretchMinutes(sessions, today, weeks) {
+    var thisMonday = addDays(today, -((today.getDay() + 6) % 7))
+    var rows = []
+    for (var i = weeks - 1; i >= 0; i--)
+        rows.push({ monday: addDays(thisMonday, -7 * i), seconds: 0 })
+    ;(sessions || []).forEach(function(session) {
+        if (session.status !== "completed")
+            return
+        var day = parseDate(session.date)
+        var monday = addDays(day, -((day.getDay() + 6) % 7))
+        for (var j = 0; j < rows.length; j++) {
+            if (rows[j].monday.getTime() === monday.getTime())
+                rows[j].seconds += parseDuration(session.duration) || 0
+        }
+    })
+    return rows.map(function(row) { return { monday: row.monday, minutes: Math.round(row.seconds / 60) } })
+}
+
 // --- durations as DRF sends them: "[DD ]HH:MM:SS[.uuuuuu]" ----------------
 
 function parseDuration(text) {
