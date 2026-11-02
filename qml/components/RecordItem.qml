@@ -8,11 +8,7 @@ ListItem {
     // Every record type's value is kg except rep_pr, a plain rep count
     // (apps.records.services.display_value on the server).
     function valueText() {
-        if (!record)
-            return ""
-        if (record.record_type === "rep_pr")
-            return parseInt(record.value, 10) + " " + qsTr("reps")
-        return Store.formatWeight(record.value, settings.unitSystem)
+        return record ? Store.recordValueText(record, settings.unitSystem, "%1 " + qsTr("reps")) : ""
     }
 
     // Grows with the text size setting instead of clipping it.

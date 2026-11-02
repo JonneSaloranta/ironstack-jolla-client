@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
+import "../js/texts.js" as Texts
 
 Page {
     id: page
@@ -42,7 +43,7 @@ Page {
         programsModel.append({
             programId: program.id,
             name: Store.contentName(program.name),
-            description: program.description || "",
+            description: Texts.contentText(program.description || ""),
             workoutCount: (program.workouts || []).length,
             section: section,
             // ListModel cannot hold nested JS arrays reliably; keep JSON.
@@ -76,6 +77,22 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
+                text: qsTr("New program")
+                onClicked: {
+                    var dialog = pageStack.push(Qt.resolvedUrl("ProgramEditDialog.qml"))
+                    dialog.accepted.connect(function() {
+                        api.request("POST", "programs/", dialog.body(), function(ok, status, data, error) {
+                            if (!ok) {
+                                page.errorText = error
+                                return
+                            }
+                            page.load()
+                            pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), { programId: data.id })
+                        })
+                    })
+                }
+            }
+            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: page.load()
             }
@@ -84,9 +101,12 @@ Page {
         delegate: ListItem {
             // Grows with the text size setting instead of clipping it.
             contentHeight: Math.max(Theme.itemSizeMedium, textColumn.height + 2 * Theme.paddingMedium)
-            onClicked: pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), {
-                program: JSON.parse(model.json)
-            })
+            onClicked: {
+                var programPage = pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), {
+                    program: JSON.parse(model.json)
+                })
+                programPage.changed.connect(page.load)
+            }
 
             Column {
                 id: textColumn
@@ -112,7 +132,7 @@ Page {
         ViewPlaceholder {
             enabled: !page.loading && programsModel.count === 0 && page.errorText === ""
             text: qsTr("No programs")
-            hintText: qsTr("Create a program in the IronStack web app")
+            hintText: qsTr("Pull down to create one")
         }
 
         BusyIndicator {

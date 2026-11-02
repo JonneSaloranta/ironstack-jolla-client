@@ -145,6 +145,14 @@
         <source>All sections</source>
         <translation>Kaikki osiot</translation>
     </message>
+    <message>
+        <source>Last 30 days</source>
+        <translation>Viimeiset 30 päivää</translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation>Koko aika</translation>
+    </message>
 </context>
 <context>
     <name>DurationField</name>
@@ -500,6 +508,10 @@
         <source>Freeform workout</source>
         <translation>Vapaa treeni</translation>
     </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
 </context>
 <context>
     <name>LogSetDialog</name>
@@ -607,6 +619,104 @@
     </message>
 </context>
 <context>
+    <name>PrescriptionDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Sets</source>
+        <translation>Sarjat</translation>
+    </message>
+    <message>
+        <source>Min reps</source>
+        <translation>Toistot vähintään</translation>
+    </message>
+    <message>
+        <source>Max reps</source>
+        <translation>Toistot enintään</translation>
+    </message>
+    <message>
+        <source>Minimum reps cannot exceed maximum reps.</source>
+        <translation>Vähimmäistoistomäärä ei voi olla suurempi kuin enimmäistoistomäärä.</translation>
+    </message>
+    <message>
+        <source>Target weight (%1)</source>
+        <translation>Tavoitepaino (%1)</translation>
+    </message>
+    <message>
+        <source>Target RPE</source>
+        <translation>Tavoite-RPE</translation>
+    </message>
+    <message>
+        <source>Target RIR</source>
+        <translation>Tavoite-RIR</translation>
+    </message>
+    <message>
+        <source>Progression method</source>
+        <translation>Progressiotapa</translation>
+    </message>
+    <message>
+        <source>Double progression</source>
+        <translation>Kaksoisprogressio</translation>
+    </message>
+    <message>
+        <source>Linear</source>
+        <translation>Lineaarinen</translation>
+    </message>
+    <message>
+        <source>Percentage based</source>
+        <translation>Prosenttipohjainen</translation>
+    </message>
+    <message>
+        <source>RPE/RIR based</source>
+        <translation>RPE/RIR-pohjainen</translation>
+    </message>
+    <message>
+        <source>Weight increment (%1)</source>
+        <translation>Painon lisäys (%1)</translation>
+    </message>
+    <message>
+        <source>Percentage target (% 1RM)</source>
+        <translation>Prosenttitavoite (% 1RM)</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+</context>
+<context>
+    <name>ProgramEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit program</source>
+        <translation>Muokkaa ohjelmaa</translation>
+    </message>
+    <message>
+        <source>New program</source>
+        <translation>Uusi ohjelma</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Kuvaus</translation>
+    </message>
+    <message>
+        <source>Continuous - no fixed weekdays</source>
+        <translation>Jatkuva - ei kiinteitä viikonpäiviä</translation>
+    </message>
+    <message>
+        <source>Save as a personal template</source>
+        <translation>Tallenna henkilökohtaisena mallina</translation>
+    </message>
+</context>
+<context>
     <name>ProgramPage</name>
     <message>
         <source>Continuous program</source>
@@ -622,6 +732,46 @@
     <message>
         <source>No workouts in this program</source>
         <translation>Ohjelmassa ei ole treenejä</translation>
+    </message>
+    <message>
+        <source>Deleting program</source>
+        <translation>Poistetaan ohjelma</translation>
+    </message>
+    <message>
+        <source>Delete program</source>
+        <translation>Poista ohjelma</translation>
+    </message>
+    <message>
+        <source>Edit program</source>
+        <translation>Muokkaa ohjelmaa</translation>
+    </message>
+    <message>
+        <source>Copy to my programs</source>
+        <translation>Kopioi omiin ohjelmiin</translation>
+    </message>
+    <message>
+        <source>Add workout</source>
+        <translation>Lisää treeni</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Siirrä ylös</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Siirrä alas</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Pull down to add a workout</source>
+        <translation>Lisää treeni vetämällä alas</translation>
     </message>
 </context>
 <context>
@@ -654,8 +804,12 @@
         <translation>Ei ohjelmia</translation>
     </message>
     <message>
-        <source>Create a program in the IronStack web app</source>
-        <translation>Luo ohjelma IronStackin verkkosovelluksessa</translation>
+        <source>New program</source>
+        <translation>Uusi ohjelma</translation>
+    </message>
+    <message>
+        <source>Pull down to create one</source>
+        <translation>Luo ohjelma vetämällä alas</translation>
     </message>
 </context>
 <context>
@@ -832,10 +986,6 @@
         <translation>Käynnistyy, kun kirjaat työsarjan. Saat ilmoituksen, kun lepo on ohi, myös näytön ollessa pimeänä.</translation>
     </message>
     <message>
-        <source>Weights are shown in %1, following the unit setting of your IronStack profile.</source>
-        <translation>Painot näytetään yksikössä %1 IronStack-profiilisi yksikköasetuksen mukaan.</translation>
-    </message>
-    <message>
         <source>Server</source>
         <translation>Palvelin</translation>
     </message>
@@ -873,6 +1023,66 @@
             <numerusform>Kirjaudutaan ulos, %n lähettämätön muutos menetetään</numerusform>
             <numerusform>Kirjaudutaan ulos, %n lähettämätöntä muutosta menetetään</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>IronStack profile</source>
+        <translation>IronStack-profiili</translation>
+    </message>
+    <message>
+        <source>Units</source>
+        <translation>Yksiköt</translation>
+    </message>
+    <message>
+        <source>Metric (kg, km)</source>
+        <translation>Metrinen (kg, km)</translation>
+    </message>
+    <message>
+        <source>Imperial (lb, mi)</source>
+        <translation>Imperiaalinen (lb, mi)</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Kieli</translation>
+    </message>
+    <message>
+        <source>For the IronStack web and texts from the server, like suggestions</source>
+        <translation>IronStackin webille ja palvelimen teksteille, kuten ehdotuksille</translation>
+    </message>
+    <message>
+        <source>Timezone</source>
+        <translation>Aikavyöhyke</translation>
+    </message>
+    <message>
+        <source>Height (in)</source>
+        <translation>Pituus (in)</translation>
+    </message>
+    <message>
+        <source>Height (cm)</source>
+        <translation>Pituus (cm)</translation>
+    </message>
+    <message>
+        <source>Show BMI</source>
+        <translation>Näytä BMI</translation>
+    </message>
+    <message>
+        <source>Turns off the BMI card and its category ranges entirely.</source>
+        <translation>Piilottaa BMI-kortin ja sen luokka-asteikot kokonaan.</translation>
+    </message>
+    <message>
+        <source>Share my activity</source>
+        <translation>Jaa oma toimintani</translation>
+    </message>
+    <message>
+        <source>Lets everyone using this instance see your longest streak, workout count, PRs, total weight lifted, and when you last trained, in the dashboard&apos;s achievements carousel and &quot;Recently active&quot; list. Turn off to keep your own activity private - you&apos;ll still see everyone else&apos;s.</source>
+        <translation>Antaa kaikkien tämän palvelun käyttäjien nähdä pisimmän putkesi, treenimääräsi, ennätyksesi, nostetun kokonaispainosi ja viimeisimmän treenisi ajankohdan etusivun saavutuskarusellissa ja &quot;Viimeksi aktiivisena&quot; -listassa. Poista käytöstä pitääksesi oman toimintasi yksityisenä - näet silti muiden tiedot.</translation>
+    </message>
+    <message>
+        <source>Allow friend requests</source>
+        <translation>Salli kaveripyynnöt</translation>
+    </message>
+    <message>
+        <source>Allow group invites</source>
+        <translation>Salli ryhmäkutsut</translation>
     </message>
 </context>
 <context>
@@ -952,6 +1162,37 @@
     </message>
 </context>
 <context>
+    <name>WorkoutEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit workout</source>
+        <translation>Muokkaa treeniä</translation>
+    </message>
+    <message>
+        <source>New workout</source>
+        <translation>Uusi treeni</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Weekday</source>
+        <translation>Viikonpäivä</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ei mitään</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+</context>
+<context>
     <name>WorkoutPage</name>
     <message>
         <source>Finish or abandon the workout in progress first.</source>
@@ -960,6 +1201,38 @@
     <message>
         <source>Start workout</source>
         <translation>Aloita treeni</translation>
+    </message>
+    <message>
+        <source>Edit workout</source>
+        <translation>Muokkaa treeniä</translation>
+    </message>
+    <message>
+        <source>Add exercise</source>
+        <translation>Lisää liike</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation>Siirrä ylös</translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation>Siirrä alas</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>No exercises yet</source>
+        <translation>Ei vielä liikkeitä</translation>
+    </message>
+    <message>
+        <source>Pull down to add an exercise</source>
+        <translation>Lisää liike vetämällä alas</translation>
     </message>
 </context>
 <context>
@@ -975,6 +1248,18 @@
     <message>
         <source>Time for the next set</source>
         <translation>Seuraavan sarjan aika</translation>
+    </message>
+    <message>
+        <source>New PR</source>
+        <translation>Uusi ennätys</translation>
+    </message>
+    <message>
+        <source>%1RM</source>
+        <translation>%1RM</translation>
+    </message>
+    <message>
+        <source>reps</source>
+        <translation>toistoa</translation>
     </message>
 </context>
 </TS>

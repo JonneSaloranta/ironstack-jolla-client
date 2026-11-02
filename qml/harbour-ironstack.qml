@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Nemo.KeepAlive 1.2
 import Nemo.Notifications 1.0
+import "js/store.js" as Store
 
 ApplicationWindow {
     id: appWindow
@@ -24,6 +25,44 @@ ApplicationWindow {
                 errorText: qsTr("The API key was not accepted. It may have been revoked.")
             }, PageStackAction.Immediate)
         }
+    }
+
+    // --- new personal records ---------------------------------------
+    // The web shows a toast when a logged set makes a record. The API's
+    // set response doesn't carry them (IronStack #30), so once a queued set
+    // reaches the server the newest records are checked for ones made by it.
+
+    Connections {
+        target: syncQueue
+        onItemSynced: {
+            if (method !== "POST" || path !== "sets/" || !data || !data.performed_at)
+                return
+            var performedAt = data.performed_at
+            api.request("GET", "records/?page_size=25", null, function(ok, status, page) {
+                if (!ok)
+                    return
+                var made = Store.recordsForSet(page.results, performedAt)
+                if (made.length === 0)
+                    return
+                prNotification.summary = qsTr("New PR") + " - " + Store.contentName(made[0].exercise_name)
+                prNotification.body = made.map(function(r) {
+                    return Store.recordLabel(r, qsTr("%1RM")) + ": "
+                            + Store.recordValueText(r, settings.unitSystem, "%1 " + qsTr("reps"))
+                }).join("\n")
+                prNotification.replacesId = 0
+                prNotification.publish()
+            })
+        }
+    }
+
+    Notification {
+        id: prNotification
+        appName: "IronStack"
+        appIcon: "harbour-ironstack"
+        previewSummary: summary
+        previewBody: body
+        isTransient: true
+        urgency: Notification.Normal
     }
 
     // --- rest timer ---------------------------------------------------

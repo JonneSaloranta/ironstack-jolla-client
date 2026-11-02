@@ -10,7 +10,17 @@ Page {
     id: page
 
     property bool picking: false
+    // Off when the caller replaces this page with the next step itself.
+    property bool popOnSelect: true
     signal selected(int exerciseId)
+
+    function nameOf(id) {
+        for (var i = 0; i < exercises.length; i++) {
+            if (exercises[i].id === id)
+                return exercises[i].storedName
+        }
+        return ""
+    }
 
     property var exercises: []
     property bool loading: true
@@ -144,7 +154,8 @@ Page {
             onClicked: {
                 if (page.picking) {
                     page.selected(model.id)
-                    pageStack.pop()
+                    if (page.popOnSelect)
+                        pageStack.pop()
                 } else {
                     pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), { exerciseId: model.id })
                 }

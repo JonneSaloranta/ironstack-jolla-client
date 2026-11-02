@@ -39,10 +39,13 @@ so it isn't rediscovered).
 | Own exercises | done | Create, edit, deactivate (`DELETE` is a soft delete, like the web's Deactivate). Adding images: n/a, the API takes no uploads. |
 | Records for an exercise | done | On the exercise page (`records/`, filtered here). |
 | Strength trend | done | Estimated 1RM (Epley, best working non-failure set per day), sessions and volume for the web's date ranges, worked out from completed sessions (IronStack #35). |
-| New personal record shown after logging a set | todo | `POST sets/` doesn't return the new PRs (IronStack #30); the web shows a toast. Possible by comparing `records/` before and after. |
+| New personal record shown after logging a set | done | A notification like the web's toast: "New PR - <exercise>" and each record. `POST sets/` doesn't return them (IronStack #30), so once a queued set reaches the server the newest `records/` with the set's `performed_at` are shown. |
+| Deleting a workout from history | done | `DELETE sessions/<id>/` (records are rebuilt by the server, like the web's delete). |
+| Summary period | done | Dashboard: 7 days, 30 days or all time (`analytics/summary/?range=`); tap the heading. The web's "this week" has no API range. |
+| Profile settings | done | Units, language, time zone, height, BMI, sharing activity, friend requests and group invites (`PATCH profile/`). The web-only look (theme, appearance) isn't shown. |
 | Remaining time estimate in training mode | n/a | Not in the API. |
-| Program editing (programs, workouts, prescriptions) | todo | API supports it; the app only reads programs. |
-| Copying a program template | todo | No copy endpoint (IronStack #32); done request by request. |
+| Program editing (programs, workouts, prescriptions) | done | Create, edit and delete your programs; add, edit, reorder (up/down, like the web) and delete workouts and their exercises. Weights in your unit, like the web form. Built-in program descriptions translated like the web. |
+| Copying a program template | done | No copy endpoint (IronStack #32): done request by request, and a half-made copy is deleted if a request fails. |
 | Social, coaching, assistant, tutorials | n/a | No API. |
 
 ## Other areas

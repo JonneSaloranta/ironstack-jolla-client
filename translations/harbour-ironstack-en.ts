@@ -145,6 +145,14 @@
         <source>All sections</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Last 30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DurationField</name>
@@ -500,6 +508,10 @@
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LogSetDialog</name>
@@ -607,6 +619,104 @@
     </message>
 </context>
 <context>
+    <name>PrescriptionDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Min reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum reps cannot exceed maximum reps.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target weight (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target RPE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target RIR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Progression method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double progression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Linear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Percentage based</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RPE/RIR based</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weight increment (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Percentage target (% 1RM)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProgramEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continuous - no fixed weekdays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save as a personal template</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ProgramPage</name>
     <message>
         <source>Continuous program</source>
@@ -621,6 +731,46 @@
     </message>
     <message>
         <source>No workouts in this program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to my programs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add a workout</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -654,7 +804,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create a program in the IronStack web app</source>
+        <source>New program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to create one</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -832,10 +986,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Weights are shown in %1, following the unit setting of your IronStack profile.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Server</source>
         <translation type="unfinished"></translation>
     </message>
@@ -873,6 +1023,66 @@
             <numerusform>Logging out, %n unsynced change lost</numerusform>
             <numerusform>Logging out, %n unsynced changes lost</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>IronStack profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Units</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metric (kg, km)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imperial (lb, mi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>For the IronStack web and texts from the server, like suggestions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timezone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Height (in)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Height (cm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show BMI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turns off the BMI card and its category ranges entirely.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share my activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lets everyone using this instance see your longest streak, workout count, PRs, total weight lifted, and when you last trained, in the dashboard&apos;s achievements carousel and &quot;Recently active&quot; list. Turn off to keep your own activity private - you&apos;ll still see everyone else&apos;s.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow friend requests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow group invites</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -952,6 +1162,37 @@
     </message>
 </context>
 <context>
+    <name>WorkoutEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weekday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WorkoutPage</name>
     <message>
         <source>Finish or abandon the workout in progress first.</source>
@@ -959,6 +1200,38 @@
     </message>
     <message>
         <source>Start workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit workout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No exercises yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -974,6 +1247,18 @@
     </message>
     <message>
         <source>Time for the next set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New PR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1RM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reps</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

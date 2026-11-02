@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
-import "../js/content_texts.js" as Texts
+import "../js/texts.js" as Texts
 
 // One exercise, like the web's exercise page and guide: what it works,
 // how to do it (instructions and images, translated like the web), and
@@ -20,10 +20,7 @@ Page {
 
     // Built-in instructions are translated by the web's catalog too.
     function text(value) {
-        if (!value)
-            return ""
-        var texts = Texts.catalog[Store.contentLanguage()]
-        return (texts && texts[value]) || value
+        return Texts.contentText(value)
     }
 
     function movementText(value) {

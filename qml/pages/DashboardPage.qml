@@ -49,13 +49,7 @@ Page {
             settle()
         })
 
-        api.request("GET", "analytics/summary/?range=7d", null, function(ok, status, data, error) {
-            if (ok)
-                page.summary = data
-            else
-                page.failed(status, error)
-            settle()
-        })
+        loadSummary(settle)
 
         api.request("GET", "sessions/?status=in_progress", null, function(ok, status, data, error) {
             if (ok) {
@@ -101,6 +95,22 @@ Page {
                 page.failed(status, error)
             }
             settle()
+        })
+    }
+
+    // analytics/summary/ offers 7d, 30d and all; tapping the heading
+    // moves to the next.
+    property string summaryRange: "7d"
+    readonly property var summaryRanges: ["7d", "30d", "all"]
+
+    function loadSummary(done) {
+        api.request("GET", "analytics/summary/?range=" + summaryRange, null, function(ok, status, data, error) {
+            if (ok)
+                page.summary = data
+            else
+                page.failed(status, error)
+            if (done)
+                done()
         })
     }
 
@@ -315,8 +325,19 @@ Page {
                 }
             }
 
-            SectionHeader {
-                text: qsTr("Last 7 days")
+            BackgroundItem {
+                width: parent.width
+                height: summaryHeader.height
+                onClicked: {
+                    var ranges = page.summaryRanges
+                    page.summaryRange = ranges[(ranges.indexOf(page.summaryRange) + 1) % ranges.length]
+                    page.loadSummary()
+                }
+                SectionHeader {
+                    id: summaryHeader
+                    text: page.summaryRange === "7d" ? qsTr("Last 7 days")
+                          : page.summaryRange === "30d" ? qsTr("Last 30 days") : qsTr("All time")
+                }
             }
 
             Row {

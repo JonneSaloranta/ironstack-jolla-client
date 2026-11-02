@@ -123,6 +123,75 @@ TestCase {
         compare(trend.sessionCount, 2)
     }
 
+    function test_recordsForSet() {
+        var records = [
+            { id: 3, achieved_at: "2026-11-02T18:00:05.123456Z" },
+            { id: 2, achieved_at: "2026-11-02T18:00:05.123456Z" },
+            { id: 1, achieved_at: "2026-11-01T18:00:00Z" }
+        ]
+        compare(Store.recordsForSet(records, "2026-11-02T18:00:05.123456Z").length, 2)
+        compare(Store.recordsForSet(records, "2026-11-03T00:00:00Z").length, 0)
+        compare(Store.recordsForSet(null, "x").length, 0)
+    }
+
+    function test_recordValueText() {
+        compare(Store.recordValueText({ record_type: "rep_pr", value: "12.00" }, "metric", "%1 reps"), "12 reps")
+        compare(Store.recordValueText({ record_type: "max_weight", value: "100.00" }, "metric", "%1 reps"), "100 kg")
+    }
+
+    // Answers like the API, synchronously; `failOn` makes one path fail.
+    function fakeApi(failOn) {
+        var api = { calls: [], nextId: 100 }
+        api.request = function(method, path, body, callback) {
+            api.calls.push({ method: method, path: path, body: body })
+            if (failOn && path === failOn && method === "POST") {
+                callback(false, 400, {}, "nope")
+                return
+            }
+            callback(true, method === "POST" ? 201 : 204, method === "POST" ? { id: api.nextId++ } : null, "")
+        }
+        return api
+    }
+
+    property var template: ({ id: 5, name: "5x5 Strength (A/B)", description: "d", is_continuous: false,
+                              is_template: true, workouts: [
+        { id: 7, name: "Workout A", order: 0, scheduled_weekday: 0, notes: "", prescriptions: [
+            { exercise: 1, order: 0, set_count: 5, min_reps: 5, max_reps: 5, target_weight: null,
+              progression_method: "linear", weight_increment: "2.50", notes: "" }] },
+        { id: 8, name: "Workout B", order: 1, scheduled_weekday: null, notes: "", prescriptions: [] }] })
+
+    function test_copyProgram() {
+        var api = fakeApi()
+        var result = null
+        Store.copyProgram(api, template, function(ok, id, error) { result = { ok: ok, id: id } })
+        verify(result.ok)
+        compare(result.id, 100)
+        compare(api.calls.map(function(c) { return c.method + " " + c.path }),
+                ["POST programs/", "POST workouts/", "POST prescriptions/", "POST workouts/"])
+        compare(api.calls[0].body.is_template, false)
+        compare(api.calls[1].body.program, 100)
+        compare(api.calls[2].body.workout, 101)
+        compare(api.calls[2].body.weight_increment, "2.50")
+        compare(api.calls[2].body.target_weight, null)
+        compare(api.calls[3].body.scheduled_weekday, null)
+    }
+
+    function test_copyProgram_failureCleansUp() {
+        var api = fakeApi("prescriptions/")
+        var result = null
+        Store.copyProgram(api, template, function(ok, id, error) { result = { ok: ok, error: error } })
+        verify(!result.ok)
+        compare(result.error, "nope")
+        var last = api.calls[api.calls.length - 1]
+        compare(last.method + " " + last.path, "DELETE programs/100/")
+    }
+
+    function test_swapTarget() {
+        compare(Store.swapTarget(3, 0, -1), -1)
+        compare(Store.swapTarget(3, 0, 1), 1)
+        compare(Store.swapTarget(3, 2, 1), -1)
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

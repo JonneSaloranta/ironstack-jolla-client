@@ -104,8 +104,40 @@ Page {
         onAtYEndChanged: if (atYEnd && count > 0) page.loadMore()
 
         delegate: ListItem {
+            id: item
             contentHeight: rowColumn.height + 2 * Theme.paddingMedium
             onClicked: pageStack.push(Qt.resolvedUrl("SessionPage.qml"), { sessionId: model.sessionId })
+
+            // Deleting a workout also corrects the records it made, like
+            // the web's delete (IronStack rebuilds them). One in progress
+            // is ended from the workout itself instead.
+            function remove() {
+                var id = model.sessionId
+                var row = index
+                remorseDelete(function() {
+                    api.request("DELETE", "sessions/" + id + "/", null, function(ok, status, data, error) {
+                        if (!ok) {
+                            page.errorText = error
+                            return
+                        }
+                        if (sessionsModel.get(row) && sessionsModel.get(row).sessionId === id)
+                            sessionsModel.remove(row)
+                        else
+                            page.reload()
+                    })
+                })
+            }
+
+            menu: model.status === "in_progress" ? null : deleteMenu
+            Component {
+                id: deleteMenu
+                ContextMenu {
+                    MenuItem {
+                        text: qsTr("Delete")
+                        onClicked: item.remove()
+                    }
+                }
+            }
 
             Column {
                 id: rowColumn

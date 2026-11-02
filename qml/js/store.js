@@ -436,6 +436,99 @@ function recordLabel(record, repMaxText) {
     return record.record_type_display
 }
 
+// The records a just-logged set made: PR detection gives them the set's
+// performed_at as achieved_at (apps.records.services), so they're the
+// ones from records/ (newest first) with exactly that time.
+function recordsForSet(records, performedAt) {
+    return (records || []).filter(function(r) { return r.achieved_at === performedAt })
+}
+
+// A record's value with its unit: kg (or lb) for every type except
+// rep_pr, a plain rep count - apps.records.services.display_value.
+function recordValueText(record, unitSystem, repsTemplate) {
+    if (record.record_type === "rep_pr")
+        return repsTemplate.replace("%1", parseInt(record.value, 10))
+    return formatWeight(record.value, unitSystem)
+}
+
+// --- programs ----------------------------------------------------------------
+
+var PRESCRIPTION_FIELDS = ["exercise", "order", "set_count", "min_reps", "max_reps", "target_weight",
+                           "target_rpe", "target_rir", "progression_method", "weight_increment",
+                           "percentage_target", "notes"]
+
+// Copy a program (a template, say) into a new program of your own, like
+// the web's Copy (apps.programs.services.copy_program: same name,
+// description and kind, not a template, every workout and prescription).
+// The API has no copy endpoint (IronStack #32), so it's one request per
+// row; if one fails the half-made copy is deleted again.
+// done(ok, newProgramId, error)
+function copyProgram(api, program, done) {
+    var steps = []
+    var newProgramId = null
+    var workoutIds = {}
+
+    steps.push(function(next) {
+        api.request("POST", "programs/", {
+            name: program.name, description: program.description || "",
+            is_continuous: !!program.is_continuous, is_template: false
+        }, function(ok, status, data, error) {
+            if (!ok)
+                return next(error)
+            newProgramId = data.id
+            next()
+        })
+    })
+    ;(program.workouts || []).forEach(function(workout) {
+        steps.push(function(next) {
+            api.request("POST", "workouts/", {
+                program: newProgramId, name: workout.name, order: workout.order,
+                scheduled_weekday: present(workout.scheduled_weekday) ? workout.scheduled_weekday : null,
+                notes: workout.notes || ""
+            }, function(ok, status, data, error) {
+                if (!ok)
+                    return next(error)
+                workoutIds[workout.id] = data.id
+                next()
+            })
+        })
+        ;(workout.prescriptions || []).forEach(function(prescription) {
+            steps.push(function(next) {
+                var body = { workout: workoutIds[workout.id] }
+                PRESCRIPTION_FIELDS.forEach(function(field) {
+                    body[field] = present(prescription[field]) ? prescription[field] : (field === "notes" ? "" : null)
+                })
+                api.request("POST", "prescriptions/", body, function(ok, status, data, error) {
+                    next(ok ? undefined : error)
+                })
+            })
+        })
+    })
+
+    var at = 0
+    function next(error) {
+        if (error !== undefined) {
+            if (newProgramId === null)
+                return done(false, null, error)
+            api.request("DELETE", "programs/" + newProgramId + "/", null, function() {
+                done(false, null, error)
+            })
+            return
+        }
+        if (at === steps.length)
+            return done(true, newProgramId, "")
+        steps[at++](next)
+    }
+    next()
+}
+
+// The other row to swap `index` with when moving it up (-1) or down (+1)
+// in an `order`-sorted list, or -1 at the end of the list.
+function swapTarget(count, index, direction) {
+    var other = index + direction
+    return other >= 0 && other < count ? other : -1
+}
+
 // --- session logic shared by the training page and the full view -------
 
 // Same rule as IronStack's apps.workouts.services.is_performed_exercise_complete:
