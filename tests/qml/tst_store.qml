@@ -86,6 +86,43 @@ TestCase {
         compare(Store.isoDate(Store.addDays(new Date(2026, 0, 1), -1)), "2025-12-31")
     }
 
+    function test_estimateOneRepMax() {
+        compare(Store.estimateOneRepMax("100.00", 5), 116.67)
+        compare(Store.estimateOneRepMax("100", 1), 103.33)
+        verify(isNaN(Store.estimateOneRepMax("100", 0)))
+    }
+
+    function test_rangeStart() {
+        var today = new Date(2026, 10, 2)
+        compare(Store.isoDate(Store.rangeStart("7d", today)), "2026-10-27")
+        compare(Store.isoDate(Store.rangeStart("30d", today)), "2026-10-04")
+        compare(Store.rangeStart("all", today), null)
+    }
+
+    function test_exerciseTrend() {
+        function s(weight, reps, warmup, failure) {
+            return { weight: weight, reps: reps, is_warmup: !!warmup, is_failure: !!failure }
+        }
+        var sessions = [
+            { id: 1, status: "completed", started_at: "2026-10-01T10:00:00Z", performed_exercises: [
+                { exercise: 7, sets: [s("40", 5, true), s("100", 5), s("105", 3)] },
+                { exercise: 8, sets: [s("60", 10)] }] },
+            { id: 2, status: "completed", started_at: "2026-10-03T10:00:00Z", performed_exercises: [
+                { exercise: 7, sets: [s("110", 5, false, true), s("100", 6)] }] },
+            { id: 3, status: "abandoned", started_at: "2026-10-04T10:00:00Z", performed_exercises: [
+                { exercise: 7, sets: [s("200", 5)] }] }
+        ]
+        var trend = Store.exerciseTrend(sessions, 7)
+        compare(trend.points.length, 2)
+        // best of the day: 100 x 5 = 116.67 beats 105 x 3 = 115.5
+        compare(trend.points[0].y, 116.67)
+        // the failed 110 x 5 doesn't count for the trend...
+        compare(trend.points[1].y, 120)
+        // ...but counts for volume; warm-ups and abandoned sessions don't
+        compare(trend.volume, 100 * 5 + 105 * 3 + 110 * 5 + 100 * 6)
+        compare(trend.sessionCount, 2)
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

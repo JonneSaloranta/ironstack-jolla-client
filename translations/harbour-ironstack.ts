@@ -209,87 +209,254 @@
     </message>
 </context>
 <context>
+    <name>ExerciseEditDialog</name>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="59"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="60"/>
+        <source>Edit exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="60"/>
+        <source>New exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="66"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="72"/>
+        <source>Movement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="75"/>
+        <source>Compound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="76"/>
+        <source>Isolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="81"/>
+        <source>Weight logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="84"/>
+        <source>Total load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="85"/>
+        <source>Per hand / dumbbell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="89"/>
+        <source>Equipment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="90"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="93"/>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="108"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="115"/>
+        <source>Instructions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="121"/>
+        <source>Primary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="133"/>
+        <source>Secondary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExercisePage</name>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="31"/>
+        <source>Compound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="33"/>
+        <source>Isolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="39"/>
+        <source>Per hand / dumbbell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="40"/>
+        <source>Total load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="95"/>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="96"/>
+        <source>Deactivating exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="100"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="118"/>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="130"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="141"/>
+        <source>Movement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="146"/>
+        <source>Weight logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="151"/>
+        <source>Equipment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="156"/>
+        <source>Primary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="161"/>
+        <source>Secondary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="176"/>
+        <source>Instructions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePage.qml" line="228"/>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExercisePanel</name>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="82"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="84"/>
         <source>Last time: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="85"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="87"/>
         <source>From the program target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="87"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="89"/>
         <source>No earlier sets - enter the weight you start with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="143"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="149"/>
         <source>%1/%2 done</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/components/ExercisePanel.qml" line="144"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="150"/>
         <source>%n set(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="171"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="177"/>
         <source>All exercises done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="253"/>
-        <location filename="../qml/components/ExercisePanel.qml" line="254"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="259"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="260"/>
         <source>reps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="267"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="273"/>
         <source>Log set %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="282"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="288"/>
         <source>Fewer options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="282"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="288"/>
         <source>RPE, RIR, warm-up, failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="296"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="302"/>
         <source>RPE (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="304"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="310"/>
         <source>RIR (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="312"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="318"/>
         <source>Warm-up set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="313"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="319"/>
         <source>Not counted for records, progression or analytics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="317"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="323"/>
         <source>Taken to failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ExercisePanel.qml" line="217"/>
+        <location filename="../qml/components/ExercisePanel.qml" line="223"/>
         <source>Finish workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -297,18 +464,107 @@
 <context>
     <name>ExercisePickerPage</name>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="70"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="93"/>
+        <source>New exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="112"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="80"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="112"/>
+        <source>Exercises</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="120"/>
+        <source>Muscle group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="123"/>
+        <source>All muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="137"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExercisePickerPage.qml" line="103"/>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="169"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExercisePickerPage.qml" line="177"/>
         <source>No matching exercises</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExerciseProgressPage</name>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="23"/>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="24"/>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="25"/>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="26"/>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="27"/>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="29"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="64"/>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="75"/>
+        <source>Period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="94"/>
+        <source>workouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="99"/>
+        <source>volume (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="105"/>
+        <source>Estimated 1RM</source>
+        <extracomment>Estimated one-rep max</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ExerciseProgressPage.qml" line="122"/>
+        <source>No completed sets of this exercise in this period.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -451,37 +707,42 @@
 <context>
     <name>MenuPage</name>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="19"/>
-        <source>Programs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/MenuPage.qml" line="20"/>
-        <source>History</source>
+        <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="21"/>
-        <source>Personal records</source>
+        <source>Programs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="22"/>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="23"/>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="24"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="29"/>
+        <location filename="../qml/pages/MenuPage.qml" line="31"/>
         <source>Training</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="30"/>
+        <location filename="../qml/pages/MenuPage.qml" line="32"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="37"/>
+        <location filename="../qml/pages/MenuPage.qml" line="39"/>
         <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -554,7 +815,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/RecordItem.qml" line="46"/>
+        <location filename="../qml/components/RecordItem.qml" line="48"/>
         <source>%1RM</source>
         <extracomment>Rep-max, e.g. &quot;5RM&quot; = best weight for 5 reps</extracomment>
         <translation type="unfinished"></translation>
@@ -617,7 +878,7 @@
 <context>
     <name>SessionPage</name>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="178"/>
+        <location filename="../qml/pages/SessionPage.qml" line="183"/>
         <source>Target</source>
         <translation type="unfinished"></translation>
     </message>
@@ -658,7 +919,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SessionPage.qml" line="115"/>
-        <location filename="../qml/pages/SessionPage.qml" line="246"/>
+        <location filename="../qml/pages/SessionPage.qml" line="251"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
@@ -688,37 +949,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="179"/>
+        <location filename="../qml/pages/SessionPage.qml" line="184"/>
         <source>%1/%2 done</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="192"/>
+        <location filename="../qml/pages/SessionPage.qml" line="197"/>
         <source>Last time: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="216"/>
+        <location filename="../qml/pages/SessionPage.qml" line="221"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="220"/>
+        <location filename="../qml/pages/SessionPage.qml" line="225"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="234"/>
+        <location filename="../qml/pages/SessionPage.qml" line="239"/>
         <source>Log set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="253"/>
+        <location filename="../qml/pages/SessionPage.qml" line="258"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SessionPage.qml" line="254"/>
+        <location filename="../qml/pages/SessionPage.qml" line="259"/>
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>
@@ -873,7 +1134,7 @@
     </message>
     <message>
         <location filename="../qml/pages/TrainingPage.qml" line="120"/>
-        <location filename="../qml/pages/TrainingPage.qml" line="216"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="217"/>
         <source>Finishing workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -893,12 +1154,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/TrainingPage.qml" line="221"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="222"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/TrainingPage.qml" line="222"/>
+        <location filename="../qml/pages/TrainingPage.qml" line="223"/>
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>

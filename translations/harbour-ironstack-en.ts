@@ -169,6 +169,140 @@
     </message>
 </context>
 <context>
+    <name>ExerciseEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Movement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Compound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Isolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weight logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per hand / dumbbell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Instructions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secondary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExercisePage</name>
+    <message>
+        <source>Compound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Isolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per hand / dumbbell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivating exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Movement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weight logging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secondary muscles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Instructions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExercisePanel</name>
     <message>
         <source>Last time: %1</source>
@@ -250,6 +384,78 @@
     </message>
     <message>
         <source>No matching exercises</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exercises</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All muscle groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExerciseProgressPage</name>
+    <message>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>workouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>volume (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <extracomment>Estimated one-rep max</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No completed sets of this exercise in this period.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -393,6 +599,10 @@
     </message>
     <message>
         <source>IronStack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -7,7 +7,8 @@ Page {
 
     ListModel {
         id: sections
-        ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-levels"; target: "ProgramsPage.qml" }
+        ListElement { section: "training"; title: "Exercises"; icon: "image://theme/icon-m-levels"; target: "ExercisePickerPage.qml" }
+        ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-note"; target: "ProgramsPage.qml" }
         ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
         ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
         ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
@@ -16,6 +17,7 @@ Page {
     // ListElement can't hold qsTr(); the titles are translated here.
     function titleText(title) {
         switch (title) {
+        case "Exercises": return qsTr("Exercises")
         case "Programs": return qsTr("Programs")
         case "History": return qsTr("History")
         case "Personal records": return qsTr("Personal records")

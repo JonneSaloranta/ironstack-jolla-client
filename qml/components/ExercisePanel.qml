@@ -21,6 +21,8 @@ Item {
     signal previous_()
     signal next_()
     signal finish()
+    // The exercise's name was tapped: show its guide.
+    signal guide()
 
     readonly property string unitSystem: settings.unitSystem
     readonly property real stepKg: pe && pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5
@@ -118,6 +120,10 @@ Item {
                 font.pixelSize: Theme.fontSizeLarge
                 color: Theme.highlightColor
                 text: panel.pe ? Store.contentName(panel.pe.exercise_name) : ""
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: panel.guide()
+                }
             }
             IconButton {
                 id: nextButton

@@ -56,6 +56,117 @@ function ensureWorkouts(api, ids, done) {
     ensureNames(api, workoutNames, "workouts/", ids, done)
 }
 
+// --- analytics -------------------------------------------------------------
+// The web's analytics date ranges (apps/analytics/dateranges.py).
+var RANGE_DAYS = { "7d": 7, "30d": 30, "3m": 90, "6m": 182, "1y": 365, "all": 0 }
+
+// The first day of `range` ending today, or null for all time.
+function rangeStart(range, today) {
+    var days = RANGE_DAYS[range]
+    return days ? addDays(today, -(days - 1)) : null
+}
+
+// Estimated one-rep max, Epley like the web (apps/records/one_rep_max.py).
+function estimateOneRepMax(weight, reps) {
+    var w = parseNumber(weight)
+    if (isNaN(w) || !(reps >= 1))
+        return NaN
+    return round(w * (1 + reps / 30), 2)
+}
+
+// An exercise's strength trend from completed sessions, like the web's
+// exercise_one_rm_trend: one point per day (that day's best estimate of a
+// working set that wasn't a failure), and the summary of
+// exercise_summary: sessions and volume (failed sets count there).
+// Returns { points: [{x, y}], sessionCount, volume } - kg.
+function exerciseTrend(sessions, exerciseId) {
+    var best = {}
+    var sessionIds = {}
+    var volume = 0
+    sessions.forEach(function(session) {
+        if (session.status !== "completed")
+            return
+        var started = new Date(session.started_at)
+        var day = isoDate(started)
+        ;(session.performed_exercises || []).forEach(function(pe) {
+            if (pe.exercise !== exerciseId)
+                return
+            ;(pe.sets || []).forEach(function(set) {
+                if (set.is_warmup)
+                    return
+                sessionIds[session.id] = true
+                volume += parseNumber(set.weight) * set.reps
+                if (set.is_failure)
+                    return
+                var estimate = estimateOneRepMax(set.weight, set.reps)
+                if (!isNaN(estimate) && (best[day] === undefined || estimate > best[day].y))
+                    best[day] = { x: parseDate(day).getTime(), y: estimate }
+            })
+        })
+    })
+    var points = []
+    for (var day in best)
+        points.push(best[day])
+    points.sort(function(a, b) { return a.x - b.x })
+    return { points: points, sessionCount: Object.keys(sessionIds).length, volume: round(volume, 2) }
+}
+
+// --- small lookup lists ----------------------------------------------------
+// Muscle groups and equipment (exercises context): fetched once, names
+// translated like the web's.
+
+var lookups = { muscleGroups: null, equipment: null }
+// Set after an exercise is created, edited or removed, so lists reload.
+var exercisesChanged = false
+
+function ensureLookups(api, done) {
+    var kinds = [["muscleGroups", "muscle-groups/"], ["equipment", "equipment/"]]
+    var remaining = 0
+    kinds.forEach(function(kind) {
+        if (lookups[kind[0]] !== null)
+            return
+        remaining++
+        var items = []
+        fetchAll(api, kind[1] + "?page_size=100", function(results) {
+            items = items.concat(results)
+        }, function(ok) {
+            if (ok) {
+                lookups[kind[0]] = items.map(function(item) {
+                    return { id: item.id, name: contentName(item.name) }
+                }).sort(function(a, b) { return a.name.localeCompare(b.name) })
+            }
+            remaining--
+            if (remaining === 0)
+                done()
+        })
+    })
+    if (remaining === 0)
+        done()
+}
+
+// `kind`'s list or []. `dependency` is only there so a binding re-reads it
+// once the list has been loaded.
+function lookupList(kind, dependency) {
+    return lookups[kind] || []
+}
+
+function lookupName(kind, id) {
+    var list = lookups[kind] || []
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].id === id)
+            return list[i].name
+    }
+    return ""
+}
+
+function muscleGroupName(id) {
+    return lookupName("muscleGroups", id)
+}
+
+function equipmentName(id) {
+    return lookupName("equipment", id)
+}
+
 // Follow a paginated list endpoint to the end. onPage(results) is called
 // per page; done(ok, error) once at the end.
 function fetchAll(api, path, onPage, done) {

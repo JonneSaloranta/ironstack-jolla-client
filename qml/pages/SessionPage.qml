@@ -77,7 +77,7 @@ Page {
     }
 
     function addExercise() {
-        var picker = pageStack.push(Qt.resolvedUrl("ExercisePickerPage.qml"))
+        var picker = pageStack.push(Qt.resolvedUrl("ExercisePickerPage.qml"), { picking: true })
         picker.selected.connect(function(exerciseId) { controller.addExercise(exerciseId) })
     }
 
@@ -162,6 +162,11 @@ Page {
 
             SectionHeader {
                 text: Store.contentName(pe.exercise_name)
+                // Tapping the name shows the exercise's guide.
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), { exerciseId: pe.exercise })
+                }
             }
 
             Label {

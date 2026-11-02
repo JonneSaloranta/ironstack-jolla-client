@@ -38,7 +38,7 @@ TestCase {
 
     function test_pages_data() {
         return [
-            "DashboardPage", "ExercisePickerPage", "HistoryPage", "LogSetDialog",
+            "DashboardPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "HistoryPage", "LogSetDialog",
             "LoginPage", "MenuPage", "ProgramPage", "ProgramsPage", "RecordsPage",
             "SessionPage", "SettingsPage", "TrainingPage", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })

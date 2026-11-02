@@ -70,7 +70,7 @@ Page {
     }
 
     function addExercise() {
-        var picker = pageStack.push(Qt.resolvedUrl("ExercisePickerPage.qml"))
+        var picker = pageStack.push(Qt.resolvedUrl("ExercisePickerPage.qml"), { picking: true })
         picker.selected.connect(function(exerciseId) {
             var before = rows.count
             controller.addExercise(exerciseId)
@@ -213,6 +213,7 @@ Page {
                 }
                 onPrevious_: page.goTo(index - 1)
                 onNext_: page.goTo(index + 1)
+                onGuide: pageStack.push(Qt.resolvedUrl("ExercisePage.qml"), { exerciseId: pe.exercise })
                 onFinish: remorse.execute(qsTr("Finishing workout"), function() { controller.end("completed") })
             }
 

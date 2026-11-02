@@ -76,7 +76,9 @@ def unquote(line):
 
 
 def read_po(path):
-    """{msgid: msgstr} for translated, non-fuzzy, singular entries."""
+    """{msgid: msgstr} for translated, non-fuzzy, singular entries without
+    a context - content is translated with plain gettext, so a "navigation"
+    "Back" (Takaisin) must not replace the muscle group "Back" (Selkä)."""
     catalog = {}
     entry = {}
     field = None
@@ -85,7 +87,7 @@ def read_po(path):
     def flush():
         msgid = entry.get("msgid")
         msgstr = entry.get("msgstr")
-        if msgid and msgstr and not fuzzy and "msgid_plural" not in entry:
+        if msgid and msgstr and not fuzzy and "msgid_plural" not in entry and "msgctxt" not in entry:
             catalog[msgid] = msgstr
 
     for raw in path.read_text(encoding="utf-8").splitlines():

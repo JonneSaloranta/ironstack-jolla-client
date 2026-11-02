@@ -34,7 +34,11 @@ so it isn't rediscovered).
 | Default for the next set | done | Same order as the web (`apps.workouts.views._build_set_form`): last set this session, then the smart suggestion (first set only), then the plan's target with `min_reps`. Two additions: after warm-ups only, the first working set's default is used instead of repeating the warm-up, and "last time" fills in when there's nothing else (the web leaves it empty). |
 | Smart suggestion shown | done | "Suggested: 52.5 kg x 5 - High confidence" and the reason, until the first working set is logged; in training mode and the full view. The reason text comes in the IronStack profile's language. |
 | Per-hand weights | n/a | The web doesn't mark them when logging either (only on the exercise page), so neither does the app. |
-| Exercise guide (description, instructions, images) | todo | Read-only in `exercises/<id>/`. |
+| Exercise library | done | Browse, search (shown and stored name) and filter by primary muscle group like the web; muscle groups, equipment, movement type and weight logging shown translated. |
+| Exercise guide (description, instructions, images) | done | `exercises/<id>/`, instructions translated with the web's catalog (`content_texts.js`); opened by tapping the exercise's name in training mode or the full view, like the web's guide button. |
+| Own exercises | done | Create, edit, deactivate (`DELETE` is a soft delete, like the web's Deactivate). Adding images: n/a, the API takes no uploads. |
+| Records for an exercise | done | On the exercise page (`records/`, filtered here). |
+| Strength trend | done | Estimated 1RM (Epley, best working non-failure set per day), sessions and volume for the web's date ranges, worked out from completed sessions (IronStack #35). |
 | New personal record shown after logging a set | todo | `POST sets/` doesn't return the new PRs (IronStack #30); the web shows a toast. Possible by comparing `records/` before and after. |
 | Remaining time estimate in training mode | n/a | Not in the API. |
 | Program editing (programs, workouts, prescriptions) | todo | API supports it; the app only reads programs. |

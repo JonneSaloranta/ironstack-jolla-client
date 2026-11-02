@@ -169,6 +169,140 @@
     </message>
 </context>
 <context>
+    <name>ExerciseEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit exercise</source>
+        <translation>Muokkaa liikettä</translation>
+    </message>
+    <message>
+        <source>New exercise</source>
+        <translation>Uusi liike</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Movement type</source>
+        <translation>Liiketyyppi</translation>
+    </message>
+    <message>
+        <source>Compound</source>
+        <translation>Moninivelliike</translation>
+    </message>
+    <message>
+        <source>Isolation</source>
+        <translation>Eristävä liike</translation>
+    </message>
+    <message>
+        <source>Weight logging</source>
+        <translation>Painon kirjaus</translation>
+    </message>
+    <message>
+        <source>Total load</source>
+        <translation>Kokonaispaino</translation>
+    </message>
+    <message>
+        <source>Per hand / dumbbell</source>
+        <translation>Per käsi / käsipaino</translation>
+    </message>
+    <message>
+        <source>Equipment</source>
+        <translation>Välineet</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ei mitään</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Kuvaus</translation>
+    </message>
+    <message>
+        <source>Instructions</source>
+        <translation>Ohjeet</translation>
+    </message>
+    <message>
+        <source>Primary muscles</source>
+        <translation>Ensisijaiset lihakset</translation>
+    </message>
+    <message>
+        <source>Secondary muscles</source>
+        <translation>Toissijaiset lihakset</translation>
+    </message>
+</context>
+<context>
+    <name>ExercisePage</name>
+    <message>
+        <source>Compound</source>
+        <translation>Moninivelliike</translation>
+    </message>
+    <message>
+        <source>Isolation</source>
+        <translation>Eristävä liike</translation>
+    </message>
+    <message>
+        <source>Per hand / dumbbell</source>
+        <translation>Per käsi / käsipaino</translation>
+    </message>
+    <message>
+        <source>Total load</source>
+        <translation>Kokonaispaino</translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+        <source>Deactivating exercise</source>
+        <translation>Poistetaan liike käytöstä</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation>Voiman kehitys</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message>
+        <source>Movement type</source>
+        <translation>Liiketyyppi</translation>
+    </message>
+    <message>
+        <source>Weight logging</source>
+        <translation>Painon kirjaus</translation>
+    </message>
+    <message>
+        <source>Equipment</source>
+        <translation>Välineet</translation>
+    </message>
+    <message>
+        <source>Primary muscles</source>
+        <translation>Ensisijaiset lihakset</translation>
+    </message>
+    <message>
+        <source>Secondary muscles</source>
+        <translation>Toissijaiset lihakset</translation>
+    </message>
+    <message>
+        <source>Instructions</source>
+        <translation>Ohjeet</translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Ennätykset</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePanel</name>
     <message>
         <source>Last time: %1</source>
@@ -251,6 +385,78 @@
     <message>
         <source>No matching exercises</source>
         <translation>Ei osuvia liikkeitä</translation>
+    </message>
+    <message>
+        <source>New exercise</source>
+        <translation>Uusi liike</translation>
+    </message>
+    <message>
+        <source>Exercises</source>
+        <translation>Liikkeet</translation>
+    </message>
+    <message>
+        <source>Muscle group</source>
+        <translation>Lihasryhmä</translation>
+    </message>
+    <message>
+        <source>All muscle groups</source>
+        <translation>Kaikki lihasryhmät</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+</context>
+<context>
+    <name>ExerciseProgressPage</name>
+    <message>
+        <source>7 days</source>
+        <translation>7 päivää</translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation>30 päivää</translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation>3 kuukautta</translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation>6 kuukautta</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 vuosi</translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation>Koko aika</translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation>Voiman kehitys</translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <translation>Jakso</translation>
+    </message>
+    <message>
+        <source>workouts</source>
+        <translation>treeniä</translation>
+    </message>
+    <message>
+        <source>volume (%1)</source>
+        <translation>volyymi (%1)</translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <extracomment>Estimated one-rep max</extracomment>
+        <translation>Arvioitu 1RM</translation>
+    </message>
+    <message>
+        <source>No completed sets of this exercise in this period.</source>
+        <translation>Tästä liikkeestä ei ole tehtyjä sarjoja tällä aikavälillä.</translation>
     </message>
 </context>
 <context>
@@ -394,6 +600,10 @@
     <message>
         <source>IronStack</source>
         <translation>IronStack</translation>
+    </message>
+    <message>
+        <source>Exercises</source>
+        <translation>Liikkeet</translation>
     </message>
 </context>
 <context>
