@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QStringList>
 #include <QQmlEngine>
 #include <QTimer>
 
@@ -96,7 +97,7 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     buffer->open(QIODevice::ReadOnly);
     QNetworkReply *reply = m_network->sendCustomRequest(req, method.toUpper().toLatin1(), buffer);
     buffer->setParent(reply);
-    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey() });
+    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey(), method.toUpper() });
     if (m_pending.size() == 1)
         emit busyChanged();
 
@@ -122,7 +123,7 @@ void ApiClient::finish(QNetworkReply *reply)
         data = QJsonDocument::fromJson(raw).toVariant();
 
     const bool ok = status >= 200 && status < 300;
-    const QString error = ok ? QString() : errorMessage(status, data, reply);
+    const QString error = ok ? QString() : errorMessage(status, data, reply, pending.method);
 
     if (status == 401 && pending.usesSavedKey)
         emit unauthorized();
@@ -131,7 +132,70 @@ void ApiClient::finish(QNetworkReply *reply)
         pending.handler(ok, status, data, error);
 }
 
-QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply *reply)
+QString ApiClient::contextForPath(const QString &path)
+{
+    QString relative = path;
+    const int api = relative.indexOf(QStringLiteral("/api/v1/"));
+    if (api >= 0)
+        relative = relative.mid(api + 8);
+    const QStringList parts = relative.split(QLatin1Char('/'), QString::SkipEmptyParts);
+    if (parts.isEmpty())
+        return QString();
+    const QString first = parts.first().section(QLatin1Char('?'), 0, 0);
+    // exercises/<id>/last-performance/ reads logged sets.
+    if (first == QLatin1String("exercises") && parts.size() >= 3 && parts.at(2) == QLatin1String("last-performance"))
+        return QStringLiteral("workouts");
+    static const QHash<QString, QString> contexts {
+        { QStringLiteral("profile"), QStringLiteral("profile") },
+        { QStringLiteral("exercises"), QStringLiteral("exercises") },
+        { QStringLiteral("muscle-groups"), QStringLiteral("exercises") },
+        { QStringLiteral("equipment"), QStringLiteral("exercises") },
+        { QStringLiteral("programs"), QStringLiteral("programs") },
+        { QStringLiteral("workouts"), QStringLiteral("programs") },
+        { QStringLiteral("prescriptions"), QStringLiteral("programs") },
+        { QStringLiteral("up-next"), QStringLiteral("programs") },
+        { QStringLiteral("sessions"), QStringLiteral("workouts") },
+        { QStringLiteral("performed-exercises"), QStringLiteral("workouts") },
+        { QStringLiteral("sets"), QStringLiteral("workouts") },
+        { QStringLiteral("measurement-types"), QStringLiteral("measurements") },
+        { QStringLiteral("measurements"), QStringLiteral("measurements") },
+        { QStringLiteral("activity-types"), QStringLiteral("activities") },
+        { QStringLiteral("activities"), QStringLiteral("activities") },
+        { QStringLiteral("records"), QStringLiteral("records") },
+        { QStringLiteral("analytics"), QStringLiteral("analytics") },
+        { QStringLiteral("foods"), QStringLiteral("nutrition") },
+        { QStringLiteral("meal-slots"), QStringLiteral("nutrition") },
+        { QStringLiteral("recipes"), QStringLiteral("nutrition") },
+        { QStringLiteral("recipe-ingredients"), QStringLiteral("nutrition") },
+        { QStringLiteral("diary-entries"), QStringLiteral("nutrition") },
+        { QStringLiteral("nutrition-goals"), QStringLiteral("nutrition") },
+        { QStringLiteral("nutrition-targets"), QStringLiteral("nutrition") },
+        { QStringLiteral("nutrition"), QStringLiteral("nutrition") },
+        { QStringLiteral("diet-plans"), QStringLiteral("nutrition") },
+        { QStringLiteral("diet-plan-meals"), QStringLiteral("nutrition") },
+        { QStringLiteral("diet-plan-items"), QStringLiteral("nutrition") },
+        { QStringLiteral("stretches"), QStringLiteral("stretching") },
+        { QStringLiteral("stretch-routines"), QStringLiteral("stretching") },
+        { QStringLiteral("stretch-routine-items"), QStringLiteral("stretching") },
+        { QStringLiteral("stretch-sessions"), QStringLiteral("stretching") },
+    };
+    return contexts.value(first);
+}
+
+QString ApiClient::permissionForMethod(const QString &method)
+{
+    const QString upper = method.toUpper();
+    if (upper == QLatin1String("POST"))
+        return QStringLiteral("Create");
+    if (upper == QLatin1String("PUT") || upper == QLatin1String("PATCH"))
+        return QStringLiteral("Update");
+    if (upper == QLatin1String("DELETE"))
+        return QStringLiteral("Delete");
+    return QStringLiteral("Read");
+}
+
+QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply *reply,
+                                const QString &method)
 {
     switch (status) {
     case 0:
@@ -141,8 +205,15 @@ QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply 
         return tr("Can't reach the server.");
     case 401:
         return tr("The API key was not accepted. It may have been revoked.");
-    case 403:
+    case 403: {
+        // Name what to tick on the key in IronStack (Profile > API keys).
+        const QString context = contextForPath(reply->url().path());
+        if (!context.isEmpty())
+            return tr("This API key does not have the permission it needs: %1 - %2. "
+                      "Add it in IronStack under Profile > API keys.")
+                    .arg(context, permissionForMethod(method));
         return tr("This API key does not have permission for that.");
+    }
     case 404:
         return tr("Not found.");
     case 429:

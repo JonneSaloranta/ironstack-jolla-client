@@ -39,6 +39,10 @@
         <source>Can&apos;t reach the server.</source>
         <translation>Palvelimeen ei saada yhteyttä.</translation>
     </message>
+    <message>
+        <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
+        <translation>Tältä API-avaimelta puuttuu tarvittava oikeus: %1 - %2. Lisää se IronStackissa kohdassa Profiili &gt; API-avaimet.</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -136,6 +140,25 @@
     <message>
         <source>Achievements</source>
         <translation>Saavutukset</translation>
+    </message>
+    <message>
+        <source>All sections</source>
+        <translation>Kaikki osiot</translation>
+    </message>
+</context>
+<context>
+    <name>DurationField</name>
+    <message>
+        <source>h</source>
+        <translation>h</translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation>s</translation>
     </message>
 </context>
 <context>
@@ -340,6 +363,37 @@
     <message>
         <source>Create an API key in your IronStack instance under Profile &gt; API keys. It needs read access to profile, exercises, programs, records and analytics, and create, read, update and delete access to workouts.</source>
         <translation>Luo API-avain IronStackissa kohdassa Profiili &gt; API-avaimet. Se tarvitsee lukuoikeuden profiiliin, liikkeisiin, ohjelmiin, ennätyksiin ja analytiikkaan sekä luonti-, luku-, muokkaus- ja poisto-oikeuden treeneihin.</translation>
+    </message>
+</context>
+<context>
+    <name>MenuPage</name>
+    <message>
+        <source>Programs</source>
+        <translation>Ohjelmat</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historia</translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Ennätykset</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Training</source>
+        <translation>Harjoittelu</translation>
+    </message>
+    <message>
+        <source>App</source>
+        <translation>Sovellus</translation>
+    </message>
+    <message>
+        <source>IronStack</source>
+        <translation>IronStack</translation>
     </message>
 </context>
 <context>

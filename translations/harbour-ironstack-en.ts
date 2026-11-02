@@ -39,6 +39,10 @@
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -135,6 +139,25 @@
     </message>
     <message>
         <source>Achievements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DurationField</name>
+    <message>
+        <source>h</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -339,6 +362,37 @@
     </message>
     <message>
         <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MenuPage</name>
+    <message>
+        <source>Programs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>App</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

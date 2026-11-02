@@ -112,6 +112,132 @@ function formatWeight(kg, unitSystem) {
     return formatNumber(kgToDisplay(kg, unitSystem)) + " " + weightUnit(unitSystem)
 }
 
+// Lengths are canonical meters, shown as cm or inches; distances meters,
+// shown as km or miles - the same factors and rounding as IronStack's
+// apps/core/units.py and apps/measurements/units.py.
+var M_PER_INCH = 0.0254
+var M_PER_MILE = 1609.344
+
+function parseNumber(value) {
+    return parseFloat(String(value).replace(",", "."))
+}
+
+function round(value, places) {
+    var factor = Math.pow(10, places)
+    return Math.round(value * factor) / factor
+}
+
+function lengthUnit(unitSystem) {
+    return isImperial(unitSystem) ? "in" : "cm"
+}
+
+function distanceUnit(unitSystem) {
+    return isImperial(unitSystem) ? "mi" : "km"
+}
+
+// A body measurement's unit label by its type's unit_kind.
+function measurementUnit(unitKind, unitSystem) {
+    if (unitKind === "weight")
+        return weightUnit(unitSystem)
+    if (unitKind === "length")
+        return lengthUnit(unitSystem)
+    if (unitKind === "percentage")
+        return "%"
+    return ""
+}
+
+// Canonical value -> display number (weights 2 decimals, lengths 1).
+function measurementToDisplay(value, unitKind, unitSystem) {
+    var number = parseNumber(value)
+    if (isNaN(number))
+        return NaN
+    if (unitKind === "weight")
+        return round(kgToDisplay(number, unitSystem), 2)
+    if (unitKind === "length")
+        return round(isImperial(unitSystem) ? number / M_PER_INCH : number * 100, 1)
+    return round(number, 2)
+}
+
+// Typed display value -> canonical value for the API (lengths 4 decimals).
+function displayToMeasurement(value, unitKind, unitSystem) {
+    var number = parseNumber(value)
+    if (isNaN(number))
+        return NaN
+    if (unitKind === "weight")
+        return displayToKg(number, unitSystem)
+    if (unitKind === "length")
+        return round(isImperial(unitSystem) ? number * M_PER_INCH : number / 100, 4)
+    return round(number, 2)
+}
+
+function formatMeasurement(value, unitKind, unitSystem) {
+    var number = measurementToDisplay(value, unitKind, unitSystem)
+    if (isNaN(number))
+        return "-"
+    var unit = measurementUnit(unitKind, unitSystem)
+    return formatNumber(number) + (unit === "%" ? " %" : unit ? " " + unit : "")
+}
+
+function metersToDistance(meters, unitSystem) {
+    var number = parseNumber(meters)
+    if (isNaN(number))
+        return NaN
+    return round(number / (isImperial(unitSystem) ? M_PER_MILE : 1000), 2)
+}
+
+function distanceToMeters(value, unitSystem) {
+    var number = parseNumber(value)
+    if (isNaN(number))
+        return NaN
+    return round(number * (isImperial(unitSystem) ? M_PER_MILE : 1000), 2)
+}
+
+function formatDistance(meters, unitSystem) {
+    if (meters === null || meters === undefined || meters === "")
+        return ""
+    return formatNumber(metersToDistance(meters, unitSystem)) + " " + distanceUnit(unitSystem)
+}
+
+// --- durations as DRF sends them: "[DD ]HH:MM:SS[.uuuuuu]" ----------------
+
+function parseDuration(text) {
+    if (text === null || text === undefined || text === "")
+        return NaN
+    var days = 0
+    var rest = String(text).trim()
+    var space = rest.indexOf(" ")
+    if (space > 0) {
+        days = parseInt(rest.substring(0, space), 10)
+        rest = rest.substring(space + 1)
+    }
+    var parts = rest.split(":")
+    if (parts.length !== 3)
+        return NaN
+    return days * 86400 + parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60
+            + Math.floor(parseFloat(parts[2]))
+}
+
+function toDuration(seconds) {
+    seconds = Math.max(0, Math.round(seconds))
+    var h = Math.floor(seconds / 3600)
+    var m = Math.floor((seconds % 3600) / 60)
+    var s = seconds % 60
+    function pad(n) { return n < 10 ? "0" + n : String(n) }
+    return pad(h) + ":" + pad(m) + ":" + pad(s)
+}
+
+// "2026-11-02" for a Date, in local time (the API's DateField).
+function isoDate(date) {
+    function pad(n) { return n < 10 ? "0" + n : String(n) }
+    return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate())
+}
+
+function addDays(date, days) {
+    var result = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    result.setDate(result.getDate() + days)
+    return result
+}
+
 // --- time -----------------------------------------------------------------
 // Dates and times are formatted in the pages with Silica's Format.formatDate,
 // which follows the device's locale and 12/24-hour setting.

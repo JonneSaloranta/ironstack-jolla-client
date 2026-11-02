@@ -4,47 +4,52 @@
 <context>
     <name>ApiClient</name>
     <message>
-        <location filename="../src/apiclient.cpp" line="73"/>
+        <location filename="../src/apiclient.cpp" line="74"/>
         <source>Refused to follow a link to another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="139"/>
+        <location filename="../src/apiclient.cpp" line="203"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="141"/>
+        <location filename="../src/apiclient.cpp" line="205"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="143"/>
+        <location filename="../src/apiclient.cpp" line="207"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="145"/>
+        <location filename="../src/apiclient.cpp" line="212"/>
+        <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/apiclient.cpp" line="215"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="147"/>
+        <location filename="../src/apiclient.cpp" line="218"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="149"/>
+        <location filename="../src/apiclient.cpp" line="220"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="177"/>
+        <location filename="../src/apiclient.cpp" line="248"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="178"/>
+        <location filename="../src/apiclient.cpp" line="249"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -76,7 +81,7 @@
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="119"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="304"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="308"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -87,88 +92,111 @@
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="177"/>
-        <source>Settings</source>
+        <source>All sections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="181"/>
-        <source>Personal records</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="185"/>
-        <source>History</source>
+        <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/DashboardPage.qml" line="189"/>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="193"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="217"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="221"/>
         <source>No connection to the server. Workouts can still be logged and are sent later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="234"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="238"/>
         <source>Continue workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="245"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="249"/>
         <source>started %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="256"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="260"/>
         <source>Up next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="295"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="299"/>
         <source>Start workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="309"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="313"/>
         <source>Choose another workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="315"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="319"/>
         <source>Last 7 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="324"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="328"/>
         <source>workouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="329"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="333"/>
         <source>time (h:min)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="335"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="339"/>
         <source>volume (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="340"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="344"/>
         <source>Recent personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="347"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="351"/>
         <source>No records yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="363"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="364"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="367"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="368"/>
         <source>Achievements</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DurationField</name>
+    <message>
+        <location filename="../qml/components/DurationField.qml" line="40"/>
+        <source>h</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DurationField.qml" line="49"/>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DurationField.qml" line="59"/>
+        <source>s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -417,6 +445,44 @@
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="82"/>
         <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MenuPage</name>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="19"/>
+        <source>Programs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="20"/>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="21"/>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="22"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="29"/>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="30"/>
+        <source>App</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="37"/>
+        <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

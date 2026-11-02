@@ -247,7 +247,9 @@ private slots:
         QTest::newRow("400 detail") << 400 << QByteArray("{\"detail\": \"Bad thing.\"}") << "Bad thing.";
         QTest::newRow("400 list") << 400 << QByteArray("[\"Session is no longer in progress.\"]")
             << "Session is no longer in progress.";
-        QTest::newRow("403") << 403 << QByteArray("{}") << "This API key does not have permission for that.";
+        QTest::newRow("403") << 403 << QByteArray("{}")
+            << "This API key does not have the permission it needs: profile - Read. "
+               "Add it in IronStack under Profile > API keys.";
         QTest::newRow("404") << 404 << QByteArray("{}") << "Not found.";
         QTest::newRow("429") << 429 << QByteArray("{}") << "Too many requests. Wait a moment and try again.";
         QTest::newRow("500") << 500 << QByteArray("") << "The server had an error (500).";
@@ -265,6 +267,36 @@ private slots:
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), status);
         QCOMPARE(result().property("error").toString(), expected);
+    }
+
+    void contextForPath_data()
+    {
+        QTest::addColumn<QString>("path");
+        QTest::addColumn<QString>("context");
+        QTest::newRow("profile") << "profile/" << "profile";
+        QTest::newRow("diary") << "diary-entries/3/" << "nutrition";
+        QTest::newRow("query") << "sessions/?status=in_progress" << "workouts";
+        QTest::newRow("absolute") << "/api/v1/stretch-sessions/?page=2" << "stretching";
+        QTest::newRow("last performance") << "exercises/1/last-performance/" << "workouts";
+        QTest::newRow("exercise") << "exercises/1/" << "exercises";
+        QTest::newRow("nutrition profile") << "nutrition/profile/" << "nutrition";
+        QTest::newRow("unknown") << "nope/" << "";
+    }
+
+    void contextForPath()
+    {
+        QFETCH(QString, path);
+        QFETCH(QString, context);
+        QCOMPARE(ApiClient::contextForPath(path), context);
+    }
+
+    void permissionForMethod()
+    {
+        QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("GET")), QStringLiteral("Read"));
+        QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("post")), QStringLiteral("Create"));
+        QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("PATCH")), QStringLiteral("Update"));
+        QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("PUT")), QStringLiteral("Update"));
+        QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("DELETE")), QStringLiteral("Delete"));
     }
 
     void unauthorizedOnlyForSavedKey()

@@ -174,6 +174,10 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
+                text: qsTr("All sections")
+                onClicked: pageStack.push(Qt.resolvedUrl("MenuPage.qml"))
+            }
+            MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }

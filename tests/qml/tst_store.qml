@@ -44,6 +44,48 @@ TestCase {
         compare(Store.formatDuration(-5), "0:00")
     }
 
+    function test_measurementUnits() {
+        compare(Store.measurementUnit("weight", "metric"), "kg")
+        compare(Store.measurementUnit("length", "imperial"), "in")
+        compare(Store.measurementUnit("percentage", "imperial"), "%")
+        // lengths: canonical meters, shown as cm (1 decimal) or inches
+        compare(Store.measurementToDisplay("0.8125", "length", "metric"), 81.3)
+        compare(Store.measurementToDisplay("0.0254", "length", "imperial"), 1)
+        compare(Store.displayToMeasurement("81,25", "length", "metric"), 0.8125)
+        compare(Store.displayToMeasurement("32", "length", "imperial"), 0.8128)
+        compare(Store.displayToMeasurement("80", "weight", "metric"), 80)
+        compare(Store.displayToMeasurement("18.5", "percentage", "metric"), 18.5)
+        compare(Store.formatMeasurement("0.8125", "length", "metric"), "81.3 cm")
+        compare(Store.formatMeasurement("18.50", "percentage", "metric"), "18.5 %")
+        compare(Store.formatMeasurement("80.00", "weight", "imperial"), "176.37 lb")
+        verify(isNaN(Store.displayToMeasurement("", "weight", "metric")))
+    }
+
+    function test_distance() {
+        compare(Store.metersToDistance("5000.00", "metric"), 5)
+        compare(Store.metersToDistance("1609.34", "imperial"), 1)
+        compare(Store.distanceToMeters("5,2", "metric"), 5200)
+        compare(Store.distanceToMeters("1", "imperial"), 1609.34)
+        compare(Store.formatDistance("10500", "metric"), "10.5 km")
+        compare(Store.formatDistance(null, "metric"), "")
+    }
+
+    function test_durations() {
+        compare(Store.parseDuration("00:45:30"), 2730)
+        compare(Store.parseDuration("01:00:00.500000"), 3600)
+        compare(Store.parseDuration("1 02:00:00"), 93600)
+        verify(isNaN(Store.parseDuration("")))
+        verify(isNaN(Store.parseDuration(null)))
+        compare(Store.toDuration(2730), "00:45:30")
+        compare(Store.toDuration(36000), "10:00:00")
+    }
+
+    function test_isoDateAndAddDays() {
+        compare(Store.isoDate(new Date(2026, 0, 5, 23, 30)), "2026-01-05")
+        compare(Store.isoDate(Store.addDays(new Date(2026, 1, 28), 1)), "2026-03-01")
+        compare(Store.isoDate(Store.addDays(new Date(2026, 0, 1), -1)), "2025-12-31")
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

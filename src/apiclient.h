@@ -59,11 +59,23 @@ private:
                   const QVariantMap &headers = QVariantMap());
     void finish(QNetworkReply *reply);
     Handler jsHandler(const QJSValue &callback);
-    static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply);
+    static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply,
+                                const QString &method);
+
+public:
+    // The API key context (IronStack docs/API.md "Contexts and
+    // permissions") a path under /api/v1/ belongs to, e.g. "nutrition" for
+    // "diary-entries/3/"; "" if unknown.
+    static QString contextForPath(const QString &path);
+    // "Create", "Read", "Update" or "Delete" - the permission a method needs.
+    static QString permissionForMethod(const QString &method);
+
+private:
 
     struct Pending {
         Handler handler;
         bool usesSavedKey;
+        QString method;
     };
 
     Settings *m_settings;

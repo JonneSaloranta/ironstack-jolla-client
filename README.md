@@ -32,10 +32,20 @@ REST API (`/api/v1/`) with a per-user API key.
 
 Create one in IronStack under Profile > API keys with:
 
-| Context | Permissions |
-|---|---|
-| profile, exercises, programs, records, analytics | Read |
-| workouts | Create, Read, Update, Delete |
+| Context | Permissions | Used for |
+|---|---|---|
+| profile | Read, Update | Units, settings |
+| exercises | Create, Read, Update, Delete | Exercise library, your own exercises |
+| programs | Create, Read, Update, Delete | Programs, up next, editing your programs |
+| workouts | Create, Read, Update, Delete | Logging workouts |
+| records, analytics | Read | Records, stats, achievements |
+| measurements | Create, Read, Update, Delete | Body measurements |
+| activities | Create, Read, Update, Delete | Activities |
+| nutrition | Create, Read, Update, Delete | Food diary, foods, recipes, diet plans |
+| stretching | Create, Read, Update, Delete | Stretching |
+
+A key can leave out the parts you don't use; the app then tells you which
+permission a section needs instead of showing it.
 
 ## Building
 
