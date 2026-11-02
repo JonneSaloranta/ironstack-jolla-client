@@ -26,7 +26,6 @@ Dialog {
             width: parent.width
             label: qsTr("Name")
             placeholderText: label
-            focus: true
         }
         ComboBox {
             id: kindBox

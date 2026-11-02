@@ -121,6 +121,7 @@ var exercisesChanged = false
 // Same for body measurements and their types.
 var measurementsChanged = false
 var activitiesChanged = false
+var dietPlansChanged = false
 
 function ensureLookups(api, done) {
     var kinds = [["muscleGroups", "muscle-groups/"], ["equipment", "equipment/"]]

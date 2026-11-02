@@ -25,7 +25,6 @@ Dialog {
             label: qsTr("Name")
             placeholderText: label
             text: dialog.initialName
-            focus: true
             EnterKey.enabled: dialog.canAccept
             EnterKey.iconSource: "image://theme/icon-m-enter-accept"
             EnterKey.onClicked: dialog.accept()

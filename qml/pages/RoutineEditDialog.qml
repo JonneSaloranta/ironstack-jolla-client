@@ -27,7 +27,6 @@ Dialog {
             label: qsTr("Name")
             placeholderText: label
             text: dialog.routine ? dialog.routine.name : ""
-            focus: true
         }
         TextArea {
             id: descriptionArea

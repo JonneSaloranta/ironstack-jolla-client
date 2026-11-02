@@ -103,7 +103,6 @@ Dialog {
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 1; top: 99999 }
                 text: dialog.activity ? String(Math.round(Store.parseDuration(dialog.activity.duration) / 60)) : ""
-                focus: true
             }
             TextField {
                 id: distanceField

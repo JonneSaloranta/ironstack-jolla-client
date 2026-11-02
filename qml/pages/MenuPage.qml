@@ -11,6 +11,8 @@ Page {
         ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-note"; target: "ProgramsPage.qml" }
         ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
         ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
+        ListElement { section: "nutrition"; title: "Nutrition"; icon: "image://theme/icon-m-health"; target: "NutritionPage.qml" }
+        ListElement { section: "nutrition"; title: "Food diary"; icon: "image://theme/icon-m-note"; target: "DiaryPage.qml" }
         ListElement { section: "body"; title: "Body tracking"; icon: "image://theme/icon-m-person"; target: "MeasurementsPage.qml" }
         ListElement { section: "body"; title: "Activities"; icon: "image://theme/icon-m-location"; target: "ActivitiesPage.qml" }
         ListElement { section: "body"; title: "Stretching"; icon: "image://theme/icon-m-gesture"; target: "StretchingPage.qml" }
@@ -28,6 +30,8 @@ Page {
         case "Body tracking": return qsTr("Body tracking")
         case "Activities": return qsTr("Activities")
         case "Stretching": return qsTr("Stretching")
+        case "Nutrition": return qsTr("Nutrition")
+        case "Food diary": return qsTr("Food diary")
         }
         return title
     }
@@ -37,6 +41,8 @@ Page {
             return qsTr("Training")
         if (section === "body")
             return qsTr("Body and activity")
+        if (section === "nutrition")
+            return qsTr("Nutrition")
         return qsTr("App")
     }
 

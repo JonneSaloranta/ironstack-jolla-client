@@ -75,7 +75,6 @@ Dialog {
                 text: dialog.reading && dialog.type
                       ? Store.formatNumber(Store.measurementToDisplay(dialog.reading.value, dialog.type.unit_kind, dialog.unitSystem))
                       : ""
-                focus: true
             }
 
             DatePickerButton {

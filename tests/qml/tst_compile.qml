@@ -24,6 +24,7 @@ TestCase {
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
             { tag: "ExercisePanel", path: "components/ExercisePanel.qml" },
             { tag: "LineChart", path: "components/LineChart.qml" },
+            { tag: "MacroSummary", path: "components/MacroSummary.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },
             { tag: "RestTimer", path: "components/RestTimer.qml" },
             { tag: "SessionController", path: "components/SessionController.qml" },
@@ -38,9 +39,9 @@ TestCase {
 
     function test_pages_data() {
         return [
-            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "DashboardPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "HistoryPage", "LogSetDialog",
-            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
-            "SessionPage", "SettingsPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
+            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "HistoryPage", "LogSetDialog",
+            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
+            "SessionPage", "SettingsPage", "ShoppingListPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

@@ -184,6 +184,205 @@
     </message>
 </context>
 <context>
+    <name>CalculatorsPage</name>
+    <message>
+        <source>BMR and TDEE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Water intake</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BMI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waist-to-hip ratio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time to goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BMR %1 kcal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TDEE %1 kcal/day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check your measurements.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 litres a day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lower risk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moderate risk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Higher risk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This goal doesn&apos;t move toward the target weight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Biological sex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Male</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Female</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current weight (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weight (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target weight (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Height (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Age (years)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Neck (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waist (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hip (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activity level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sedentary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lightly active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moderately active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Very active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - aggressive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - moderate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - lean bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - moderate bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - aggressive bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An estimate, not medical advice.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Workout</source>
@@ -298,6 +497,321 @@
     </message>
     <message>
         <source>Log body weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiaryEntryDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Meal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Optional - e.g. the restaurant dish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kcal. Leave blank to estimate it from the macros.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amount (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Servings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DiaryPage</name>
+    <message>
+        <source>%1 serving(s)</source>
+        <translation>%1 serving(s)</translation>
+    </message>
+    <message>
+        <source>%1 portion(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing logged for this meal yet to save as a recipe.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy this day to another date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food diary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save as recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing logged yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DietPlanDialog</name>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New diet plan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plan name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vary meals across a whole week instead of repeating one day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Which meals?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DietPlanPage</name>
+    <message>
+        <source>Built-in recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting plan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log for date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>serving(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DietPlansPage</name>
+    <message>
+        <source>New diet plan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Diet plans</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weekly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No diet plans yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to create one</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -615,6 +1129,231 @@
     </message>
 </context>
 <context>
+    <name>FoodEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serving size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>piece</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nutrition per serving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Energy (kJ)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which saturates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which sugars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which starch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which polyols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fibre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein (g)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sodium (mg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FoodPage</name>
+    <message>
+        <source>1 - Unprocessed or minimally processed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2 - Processed culinary ingredients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 - Processed foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4 - Ultra-processed foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Energy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which saturates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which sugars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which starch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of which polyols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fibre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sodium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quality</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nutri-Score</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOVA group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data from Open Food Facts (ODbL), barcode %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FoodsPage</name>
+    <message>
+        <source>Recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>serving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No foods found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HistoryPage</name>
     <message>
         <source>In progress</source>
@@ -727,6 +1466,21 @@
     </message>
     <message>
         <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MacroSummary</name>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -956,6 +1710,14 @@
         <source>Stretching</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Nutrition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food diary</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NameDialog</name>
@@ -965,6 +1727,319 @@
     </message>
     <message>
         <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NutritionGoalsPage</name>
+    <message>
+        <source>Fat loss - aggressive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - moderate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - lean bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - moderate bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - aggressive bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sedentary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lightly active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moderately active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Very active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goal and profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rate per week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No goal set. Goals are set on the IronStack web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nutrition profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No nutrition profile yet. It&apos;s created by the nutrition setup on the IronStack web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Age (years)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Biological sex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Female</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Male</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activity level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gym sessions per week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Earlier goals</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NutritionPage</name>
+    <message>
+        <source>Fat loss - aggressive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - moderate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - lean bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - moderate bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - aggressive bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goal and profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Diet plans</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open food diary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nutrition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Today so far</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log food now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No goal set. Goals are set on the IronStack web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Today&apos;s plan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NutritionProfileDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nutrition profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Biological sex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Male</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Female</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date of birth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your job</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desk job, mostly sitting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On my feet some of the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On my feet most of the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Physically demanding / manual labor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Average daily steps (if you know it)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gym sessions per week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Typical session length (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other exercise (minutes/week)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activity level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sedentary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lightly active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moderately active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Very active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current daily calories, if you already track this</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1155,6 +2230,128 @@
     </message>
     <message>
         <source>New program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to create one</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuantityDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amount (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecipeEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Servings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Instructions</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecipePage</name>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add ingredient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log to diary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n serving(s)</source>
+        <translation>
+            <numerusform>%n serving</numerusform>
+            <numerusform>%n servings</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ingredients</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No ingredients yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add one</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecipesPage</name>
+    <message>
+        <source>New recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>serving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n serving(s)</source>
+        <translation>
+            <numerusform>%n serving</numerusform>
+            <numerusform>%n servings</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No recipes yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1478,6 +2675,41 @@
     </message>
     <message>
         <source>Allow group invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShoppingListPage</name>
+    <message>
+        <source>Whole week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shopping days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buy for the shopping day itself</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing to buy.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
