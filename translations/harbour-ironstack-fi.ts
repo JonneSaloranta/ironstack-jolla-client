@@ -153,6 +153,14 @@
         <source>All time</source>
         <translation>Koko aika</translation>
     </message>
+    <message>
+        <source>Body weight</source>
+        <translation>Kehon paino</translation>
+    </message>
+    <message>
+        <source>Log body weight</source>
+        <translation>Kirjaa painosi</translation>
+    </message>
 </context>
 <context>
     <name>DurationField</name>
@@ -584,6 +592,182 @@
     </message>
 </context>
 <context>
+    <name>MeasurementDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit reading</source>
+        <translation>Muokkaa mittausta</translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation>Kirjaa mittaus</translation>
+    </message>
+    <message>
+        <source>Measurement</source>
+        <translation>Mitta</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Päivämäärä</translation>
+    </message>
+    <message>
+        <source>Time</source>
+        <translation>Aika</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementHistoryPage</name>
+    <message>
+        <source>Underweight</source>
+        <translation>Alipainoinen</translation>
+    </message>
+    <message>
+        <source>Normal weight</source>
+        <translation>Normaalipaino</translation>
+    </message>
+    <message>
+        <source>Overweight</source>
+        <translation>Ylipainoinen</translation>
+    </message>
+    <message>
+        <source>Obese</source>
+        <translation>Lihavuus</translation>
+    </message>
+    <message>
+        <source>Deactivate type</source>
+        <translation>Poista tyyppi käytöstä</translation>
+    </message>
+    <message>
+        <source>Deactivating type</source>
+        <translation>Poistetaan tyyppi käytöstä</translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation>Kirjaa mittaus</translation>
+    </message>
+    <message>
+        <source>BMI</source>
+        <translation>BMI</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation>Tilastot</translation>
+    </message>
+    <message>
+        <source>Current</source>
+        <translation>Nykyiset</translation>
+    </message>
+    <message>
+        <source>Change since first log</source>
+        <translation>Muutos ensimmäisestä kirjauksesta</translation>
+    </message>
+    <message>
+        <source>Lowest</source>
+        <translation>Pienin</translation>
+    </message>
+    <message>
+        <source>Highest</source>
+        <translation>Suurin</translation>
+    </message>
+    <message>
+        <source>Average</source>
+        <translation>Keskiarvo</translation>
+    </message>
+    <message>
+        <source>Entries logged</source>
+        <translation>Kirjauksia</translation>
+    </message>
+    <message>
+        <source>Trend</source>
+        <translation>Trendi</translation>
+    </message>
+    <message>
+        <source>Readings</source>
+        <translation>Lukemat</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>No readings logged yet.</source>
+        <translation>Mittauksia ei ole vielä kirjattu.</translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementTypeDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>New measurement type</source>
+        <translation>Uusi mittaustyyppi</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Unit kind</source>
+        <translation>Yksikön tyyppi</translation>
+    </message>
+    <message>
+        <source>Weight</source>
+        <translation>Paino</translation>
+    </message>
+    <message>
+        <source>Length/circumference</source>
+        <translation>Pituus/ympärysmitta</translation>
+    </message>
+    <message>
+        <source>Percentage</source>
+        <translation>Prosentti</translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementsPage</name>
+    <message>
+        <source>New measurement type</source>
+        <translation>Uusi mittaustyyppi</translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation>Kirjaa mittaus</translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation>Kehon seuranta</translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation>Oma</translation>
+    </message>
+    <message>
+        <source>Latest: %1</source>
+        <translation>Viimeisin: %1</translation>
+    </message>
+    <message>
+        <source>No readings yet</source>
+        <translation>Ei mittauksia vielä</translation>
+    </message>
+    <message>
+        <source>No measurement types yet.</source>
+        <translation>Mittaustyyppejä ei ole vielä.</translation>
+    </message>
+</context>
+<context>
     <name>MenuPage</name>
     <message>
         <source>Programs</source>
@@ -616,6 +800,14 @@
     <message>
         <source>Exercises</source>
         <translation>Liikkeet</translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation>Kehon seuranta</translation>
+    </message>
+    <message>
+        <source>Body and activity</source>
+        <translation>Keho ja liikunta</translation>
     </message>
 </context>
 <context>

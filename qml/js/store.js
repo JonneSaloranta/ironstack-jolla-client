@@ -118,6 +118,8 @@ function exerciseTrend(sessions, exerciseId) {
 var lookups = { muscleGroups: null, equipment: null }
 // Set after an exercise is created, edited or removed, so lists reload.
 var exercisesChanged = false
+// Same for body measurements and their types.
+var measurementsChanged = false
 
 function ensureLookups(api, done) {
     var kinds = [["muscleGroups", "muscle-groups/"], ["equipment", "equipment/"]]
@@ -307,6 +309,61 @@ function formatDistance(meters, unitSystem) {
     if (meters === null || meters === undefined || meters === "")
         return ""
     return formatNumber(metersToDistance(meters, unitSystem)) + " " + distanceUnit(unitSystem)
+}
+
+// --- body measurements -----------------------------------------------------
+
+var BODY_WEIGHT_TYPE_NAME = "Body weight"
+
+// The built-in body weight type (the web's dashboard and BMI use it).
+function isBodyWeightType(type) {
+    return !!type && type.name === BODY_WEIGHT_TYPE_NAME && !present(type.owner)
+}
+
+// The web's statistics for one type's readings (any order), canonical:
+// { count, latest, latestAt, first, change, min, max, average } or null.
+function measurementStats(readings) {
+    if (!readings || readings.length === 0)
+        return null
+    var sorted = readings.slice().sort(function(a, b) {
+        return new Date(a.recorded_at) - new Date(b.recorded_at)
+    })
+    var values = sorted.map(function(r) { return parseNumber(r.value) })
+    var sum = values.reduce(function(total, v) { return total + v }, 0)
+    var first = values[0]
+    var latest = values[values.length - 1]
+    return {
+        count: values.length,
+        latest: latest,
+        latestAt: sorted[sorted.length - 1].recorded_at,
+        first: first,
+        change: round(latest - first, 4),
+        min: Math.min.apply(null, values),
+        max: Math.max.apply(null, values),
+        average: round(sum / values.length, 4)
+    }
+}
+
+// BMI from kg and meters, one decimal (apps/core/bmi.py), or NaN.
+function bmi(weightKg, heightM) {
+    var w = parseNumber(weightKg)
+    var h = parseNumber(heightM)
+    if (isNaN(w) || isNaN(h) || h <= 0)
+        return NaN
+    return round(w / (h * h), 1)
+}
+
+// "underweight", "normal", "overweight" or "obese" - the web's ranges.
+function bmiCategory(value) {
+    if (isNaN(value))
+        return ""
+    if (value < 18.5)
+        return "underweight"
+    if (value < 25)
+        return "normal"
+    if (value < 30)
+        return "overweight"
+    return "obese"
 }
 
 // --- durations as DRF sends them: "[DD ]HH:MM:SS[.uuuuuu]" ----------------

@@ -192,6 +192,41 @@ TestCase {
         compare(Store.swapTarget(3, 2, 1), -1)
     }
 
+    function test_measurementStats() {
+        var readings = [
+            { value: "82.00", recorded_at: "2026-10-03T07:00:00Z" },
+            { value: "84.00", recorded_at: "2026-10-01T07:00:00Z" },
+            { value: "83.00", recorded_at: "2026-10-02T07:00:00Z" }
+        ]
+        var stats = Store.measurementStats(readings)
+        compare(stats.count, 3)
+        compare(stats.latest, 82)
+        compare(stats.latestAt, "2026-10-03T07:00:00Z")
+        compare(stats.first, 84)
+        compare(stats.change, -2)
+        compare(stats.min, 82)
+        compare(stats.max, 84)
+        compare(stats.average, 83)
+        compare(Store.measurementStats([]), null)
+    }
+
+    function test_bmi() {
+        compare(Store.bmi("80.00", "1.8000"), 24.7)
+        verify(isNaN(Store.bmi("80", null)))
+        verify(isNaN(Store.bmi("80", "0")))
+        compare(Store.bmiCategory(18.4), "underweight")
+        compare(Store.bmiCategory(18.5), "normal")
+        compare(Store.bmiCategory(25), "overweight")
+        compare(Store.bmiCategory(30), "obese")
+        compare(Store.bmiCategory(NaN), "")
+    }
+
+    function test_isBodyWeightType() {
+        verify(Store.isBodyWeightType({ name: "Body weight", owner: null }))
+        verify(!Store.isBodyWeightType({ name: "Body weight", owner: 5 }))
+        verify(!Store.isBodyWeightType({ name: "Waist", owner: null }))
+    }
+
     function test_parseDateAndIsToday() {
         var day = Store.parseDate("2026-11-02")
         compare(day.getFullYear(), 2026)

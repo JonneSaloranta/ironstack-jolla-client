@@ -14,6 +14,11 @@ Page {
     // a program has been completed.
     property var upNext: null
     property var achievements: []
+    // The built-in body weight type and its latest reading, like the web's
+    // dashboard; both null without one (or without the measurements
+    // permission, which isn't an error here).
+    property var bodyWeightType: null
+    property var bodyWeight: null
     property string errorText: ""
     property bool offline: false
     property bool loading: false
@@ -68,6 +73,8 @@ Page {
             }
             settle()
         })
+
+        loadBodyWeight()
 
         api.request("GET", "up-next/", null, function(ok, status, data, error) {
             if (ok)
@@ -132,6 +139,36 @@ Page {
 
     function openSession(id) {
         pageStack.push(Qt.resolvedUrl("TrainingPage.qml"), { sessionId: id })
+    }
+
+    function loadBodyWeight() {
+        api.request("GET", "measurement-types/?page_size=100", null, function(ok, status, data) {
+            if (!ok)
+                return
+            var type = (data.results || []).filter(Store.isBodyWeightType)[0] || null
+            page.bodyWeightType = type
+            if (!type)
+                return
+            // Newest first; the latest body weight is nearly always on the
+            // first page (the API can't filter by type, IronStack #29).
+            api.request("GET", "measurements/?page_size=100", null, function(ok2, status2, readings) {
+                if (ok2)
+                    page.bodyWeight = (readings.results || []).filter(function(r) {
+                        return r.measurement_type === type.id
+                    })[0] || null
+            })
+        })
+    }
+
+    function logBodyWeight() {
+        var dialog = pageStack.push(Qt.resolvedUrl("MeasurementDialog.qml"), { type: bodyWeightType })
+        dialog.accepted.connect(function() {
+            api.request("POST", "measurements/", dialog.body(), function(ok, status, data, error) {
+                if (!ok)
+                    page.errorText = error
+                loadBodyWeight()
+            })
+        })
     }
 
     // "Today" or the weekday, like the web's up-next card.
@@ -358,6 +395,32 @@ Page {
                     value: page.summary ? Math.round(Store.kgToDisplay(page.summary.total_volume,
                                                                        settings.unitSystem)) : "-"
                     label: qsTr("volume (%1)").arg(Store.weightUnit(settings.unitSystem))
+                }
+            }
+
+            // Body weight, like the web's dashboard stat and its "Log body
+            // weight" link.
+            BackgroundItem {
+                visible: page.bodyWeightType !== null
+                width: parent.width
+                height: Theme.itemSizeSmall
+                onClicked: page.logBodyWeight()
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * Theme.horizontalPageMargin - logLabel.width
+                    truncationMode: TruncationMode.Fade
+                    text: qsTr("Body weight") + (page.bodyWeight
+                          ? ": " + Store.formatMeasurement(page.bodyWeight.value, "weight", settings.unitSystem) : "")
+                }
+                Label {
+                    id: logLabel
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    color: Theme.highlightColor
+                    font.pixelSize: Theme.fontSizeSmall
+                    text: qsTr("Log body weight")
                 }
             }
 

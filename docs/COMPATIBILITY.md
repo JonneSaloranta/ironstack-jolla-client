@@ -52,7 +52,7 @@ so it isn't rediscovered).
 
 | Area | Status | Server gaps |
 |---|---|---|
-| Body measurements | todo | No type or date filter: #29. No idempotency key: #31. |
+| Body measurements | done | Types with their latest reading (body weight first, then by the name as shown); a type's BMI card, statistics, trend and readings; log, correct and delete readings; your own types created and deactivated. Dashboard: body weight and "Log body weight", like the web. Every reading is fetched and grouped here - no type or date filter: #29. Online only - no idempotency key: #31. The 14-day "time to log" reminder isn't shown: its on/off setting isn't in the API's profile. |
 | Activities | todo | No date filter: #29. No idempotency key: #31. |
 | Stretching | todo | Guided sessions only as a quick log; no `after_workout`: #34. No routine copy: #32. |
 | Nutrition | todo | No diary date filter: #26. Entry nutrition not exposed: #27. No food search: #28. Goals and targets read-only: #33. No idempotency key: #31. |

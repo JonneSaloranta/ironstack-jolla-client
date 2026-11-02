@@ -153,6 +153,14 @@
         <source>All time</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Body weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log body weight</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DurationField</name>
@@ -584,6 +592,182 @@
     </message>
 </context>
 <context>
+    <name>MeasurementDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Measurement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementHistoryPage</name>
+    <message>
+        <source>Underweight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overweight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Obese</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivate type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deactivating type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BMI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change since first log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lowest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Average</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entries logged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Readings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No readings logged yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementTypeDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New measurement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit kind</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Length/circumference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Percentage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MeasurementsPage</name>
+    <message>
+        <source>New measurement type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log reading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No readings yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No measurement types yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MenuPage</name>
     <message>
         <source>Programs</source>
@@ -615,6 +799,14 @@
     </message>
     <message>
         <source>Exercises</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body and activity</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

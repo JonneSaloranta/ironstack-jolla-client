@@ -11,6 +11,7 @@ Page {
         ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-note"; target: "ProgramsPage.qml" }
         ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
         ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
+        ListElement { section: "body"; title: "Body tracking"; icon: "image://theme/icon-m-person"; target: "MeasurementsPage.qml" }
         ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
     }
 
@@ -22,6 +23,7 @@ Page {
         case "History": return qsTr("History")
         case "Personal records": return qsTr("Personal records")
         case "Settings": return qsTr("Settings")
+        case "Body tracking": return qsTr("Body tracking")
         }
         return title
     }
@@ -29,6 +31,8 @@ Page {
     function sectionText(section) {
         if (section === "training")
             return qsTr("Training")
+        if (section === "body")
+            return qsTr("Body and activity")
         return qsTr("App")
     }
 
