@@ -7,6 +7,18 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QSaveFile>
+#include <QUuid>
+
+namespace {
+const QString IdempotencyKey = QStringLiteral("idempotencyKey");
+
+QString newIdempotencyKey()
+{
+    // Qt 5.6 has no QUuid::WithoutBraces.
+    QString key = QUuid::createUuid().toString();
+    return key.mid(1, key.length() - 2);
+}
+}
 
 SyncQueue::SyncQueue(ApiClient *api, const QString &storagePath, QObject *parent)
     : QObject(parent)
@@ -35,6 +47,8 @@ int SyncQueue::enqueueVariant(const QString &method, const QString &path, const 
     item.insert(QStringLiteral("path"), path);
     if (body.isValid())
         item.insert(QStringLiteral("body"), body);
+    if (item.value(QStringLiteral("method")).toString() == QLatin1String("POST"))
+        item.insert(IdempotencyKey, newIdempotencyKey());
     item.insert(QStringLiteral("queuedAt"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate));
     m_items.append(item);
     save();
@@ -72,6 +86,9 @@ void SyncQueue::sendNext()
     const int id = item.value(QStringLiteral("id")).toInt();
     const QString method = item.value(QStringLiteral("method")).toString();
     const QString path = item.value(QStringLiteral("path")).toString();
+    QVariantMap headers;
+    if (item.contains(IdempotencyKey))
+        headers.insert(QStringLiteral("Idempotency-Key"), item.value(IdempotencyKey));
 
     m_api->send(method, path, item.value(QStringLiteral("body")),
                 [this, id, method, path](bool ok, int status, const QVariant &data, const QString &error) {
@@ -95,7 +112,7 @@ void SyncQueue::sendNext()
         else
             emit itemFailed(id, method, path, status, error);
         sendNext();
-    });
+    }, headers);
 }
 
 void SyncQueue::load()
@@ -106,6 +123,16 @@ void SyncQueue::load()
     const QVariantMap stored = QJsonDocument::fromJson(file.readAll()).toVariant().toMap();
     m_items = stored.value(QStringLiteral("items")).toList();
     m_nextId = qMax(1, stored.value(QStringLiteral("nextId")).toInt());
+    // Items queued by a version without idempotency keys get one now; it
+    // covers every retry from here on.
+    for (int i = 0; i < m_items.size(); i++) {
+        QVariantMap item = m_items.at(i).toMap();
+        if (item.value(QStringLiteral("method")).toString() == QLatin1String("POST")
+                && !item.contains(IdempotencyKey)) {
+            item.insert(IdempotencyKey, newIdempotencyKey());
+            m_items[i] = item;
+        }
+    }
 }
 
 void SyncQueue::save() const

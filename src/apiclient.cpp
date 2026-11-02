@@ -37,9 +37,10 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
     sendWith(baseUrl, apiKey, method, path, variantBody, jsHandler(callback));
 }
 
-void ApiClient::send(const QString &method, const QString &path, const QVariant &body, Handler handler)
+void ApiClient::send(const QString &method, const QString &path, const QVariant &body, Handler handler,
+                     const QVariantMap &headers)
 {
-    sendWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, handler);
+    sendWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, handler, headers);
 }
 
 ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
@@ -56,7 +57,8 @@ ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
 }
 
 void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
-                         const QString &path, const QVariant &body, Handler handler)
+                         const QString &path, const QVariant &body, Handler handler,
+                         const QVariantMap &headers)
 {
     const QString base = Settings::normalizeBaseUrl(baseUrl);
     const QUrl root(base + QStringLiteral("/api/v1/"));
@@ -79,6 +81,8 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     req.setRawHeader("Authorization", "Bearer " + apiKey.toUtf8());
     req.setRawHeader("Accept", "application/json");
     req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
+    for (auto it = headers.constBegin(); it != headers.constEnd(); ++it)
+        req.setRawHeader(it.key().toUtf8(), it.value().toString().toUtf8());
 
     QByteArray payload;
     if (body.isValid()) {

@@ -384,6 +384,55 @@ private slots:
         QCOMPARE(m_server->requests.size(), 3);
     }
 
+    static QByteArray header(const QByteArray &request, const QByteArray &name)
+    {
+        for (const QByteArray &line : request.split('\n')) {
+            if (line.toLower().startsWith(name.toLower() + ':'))
+                return line.mid(name.size() + 1).trimmed();
+        }
+        return QByteArray();
+    }
+
+    void queueSendsIdempotencyKey()
+    {
+        // Every retry of one POST carries the same key, so the server can
+        // tell a retry from a second set; each POST has its own key; a
+        // PATCH (already idempotent) has none.
+        QTemporaryDir dir;
+        SyncQueue queue(m_api, dir.path() + QStringLiteral("/pending.json"));
+        queue.setRetryInterval(50);
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        m_server->statuses = { 502, 201, 201, 200 };
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        queue.enqueueVariant(QStringLiteral("PATCH"), QStringLiteral("sessions/5/"), QVariantMap());
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 3, 5000);
+        QCOMPARE(m_server->requests.size(), 4);
+        const QByteArray first = header(m_server->requests.at(0), "Idempotency-Key");
+        QCOMPARE(first.size(), 36);
+        QCOMPARE(header(m_server->requests.at(1), "Idempotency-Key"), first);
+        const QByteArray second = header(m_server->requests.at(2), "Idempotency-Key");
+        QCOMPARE(second.size(), 36);
+        QVERIFY(second != first);
+        QVERIFY(header(m_server->requests.at(3), "Idempotency-Key").isEmpty());
+    }
+
+    void queueKeyedAfterUpgrade()
+    {
+        // A POST queued by a version without keys gets one when loaded.
+        QTemporaryDir dir;
+        const QString path = dir.path() + QStringLiteral("/pending.json");
+        QFile file(path);
+        QVERIFY(file.open(QIODevice::WriteOnly));
+        file.write("{\"items\":[{\"id\":1,\"method\":\"POST\",\"path\":\"sets/\",\"body\":{}}],\"nextId\":2}");
+        file.close();
+        m_server->status = 201;
+        SyncQueue queue(m_api, path);
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        QTRY_COMPARE_WITH_TIMEOUT(synced.count(), 1, 5000);
+        QCOMPARE(header(m_server->requests.at(0), "Idempotency-Key").size(), 36);
+    }
+
     void queueClear()
     {
         QTemporaryDir dir;

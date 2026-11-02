@@ -42,8 +42,10 @@ public:
     using Handler = std::function<void(bool ok, int status, const QVariant &data, const QString &error)>;
 
     // C++ entry point (the sync queue uses it). An invalid `body` sends no
-    // body; anything else is serialized as JSON.
-    void send(const QString &method, const QString &path, const QVariant &body, Handler handler);
+    // body; anything else is serialized as JSON. `headers` are added to
+    // the request as they are (e.g. Idempotency-Key).
+    void send(const QString &method, const QString &path, const QVariant &body, Handler handler,
+              const QVariantMap &headers = QVariantMap());
 
 signals:
     void busyChanged();
@@ -53,7 +55,8 @@ signals:
 
 private:
     void sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
-                  const QString &path, const QVariant &body, Handler handler);
+                  const QString &path, const QVariant &body, Handler handler,
+                  const QVariantMap &headers = QVariantMap());
     void finish(QNetworkReply *reply);
     Handler jsHandler(const QJSValue &callback);
     static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply);

@@ -19,8 +19,10 @@ class ApiClient;
 //   other 4xx                -> dropped, itemFailed() - retrying a request
 //                               the server rejected would never succeed
 //
-// A retry after a lost response can log a set twice; the server has no
-// idempotency key yet (IronStack issue #22).
+// Every POST gets an Idempotency-Key (a UUID kept on disk with the item and
+// sent unchanged with every retry - IronStack docs/API.md "Retrying
+// writes"), so a retry after a lost response doesn't log a set twice: the
+// server answers it with the stored response instead.
 class SyncQueue : public QObject
 {
     Q_OBJECT
