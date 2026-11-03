@@ -174,52 +174,52 @@
 <context>
     <name>ApiClient</name>
     <message>
-        <location filename="../src/apiclient.cpp" line="74"/>
+        <location filename="../src/apiclient.cpp" line="79"/>
         <source>Refused to follow a link to another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="207"/>
+        <location filename="../src/apiclient.cpp" line="214"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="209"/>
+        <location filename="../src/apiclient.cpp" line="216"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="211"/>
+        <location filename="../src/apiclient.cpp" line="218"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="216"/>
+        <location filename="../src/apiclient.cpp" line="223"/>
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="219"/>
+        <location filename="../src/apiclient.cpp" line="226"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="222"/>
+        <location filename="../src/apiclient.cpp" line="229"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="224"/>
+        <location filename="../src/apiclient.cpp" line="231"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="252"/>
+        <location filename="../src/apiclient.cpp" line="259"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="253"/>
+        <location filename="../src/apiclient.cpp" line="260"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
