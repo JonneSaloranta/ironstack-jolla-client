@@ -69,10 +69,6 @@ Page {
             if (ok) {
                 input.text = ""
                 show([data], true)
-                // Reading the thread marks it read: a group otherwise
-                // counts your own message as unread (IronStack #45).
-                if (kind === "group")
-                    poll()
             }
         })
     }
