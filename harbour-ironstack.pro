@@ -36,4 +36,8 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
     translations/harbour-ironstack-fi.ts \
-    translations/harbour-ironstack-en.ts
+    translations/harbour-ironstack-en.ts \
+    translations/harbour-ironstack-sv.ts \
+    translations/harbour-ironstack-et.ts \
+    translations/harbour-ironstack-it.ts \
+    translations/harbour-ironstack-ru.ts
