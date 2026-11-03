@@ -641,38 +641,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="423"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="429"/>
         <source>Body weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="433"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="439"/>
         <source>Log body weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="453"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="459"/>
         <source>Time to log your body measurements?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="460"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="466"/>
         <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="466"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="472"/>
         <source>Recent personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="473"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="479"/>
         <source>No records yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="489"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="490"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="495"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="496"/>
         <source>Achievements</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2800,58 +2800,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>Period</source>
         <extracomment>Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>Days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>Mean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>Med.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="167"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="213"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="262"/>
         <source>Days: days logged / days in the period. Mean and median calories in kcal, median macros in grams. Today isn&apos;t included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="218"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="267"/>
         <source>Daily calories (last 30 days)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="237"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="286"/>
         <source>Log a few days in your food diary to see your trend here.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionStatsPage.qml" line="239"/>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="288"/>
         <source>Dashed line: your current target, %1 kcal. It&apos;s the same on every day, even if your target was different back then.</source>
         <translation type="unfinished"></translation>
     </message>
