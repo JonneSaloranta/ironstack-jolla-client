@@ -154,7 +154,7 @@ function ensureLookups(api, done) {
         }, function(ok) {
             if (ok) {
                 lookups[kind[0]] = items.map(function(item) {
-                    return { id: item.id, name: contentName(item.name) }
+                    return { id: item.id, name: contentName(item.name), storedName: item.name }
                 }).sort(function(a, b) { return a.name.localeCompare(b.name) })
             }
             remaining--
@@ -433,24 +433,120 @@ function stretchSteps(items, stretches) {
     var steps = []
     ;(items || []).slice().sort(function(a, b) { return a.order - b.order || a.id - b.id }).forEach(function(item) {
         var stretch = stretches[item.stretch] || {}
-        var sides = stretch.per_side ? ["left", "right"] : [""]
+        var perSide = item.per_side !== undefined ? item.per_side : stretch.per_side
+        var sides = perSide ? ["left", "right"] : [""]
         var hold = present(item.hold_seconds) ? item.hold_seconds : (stretch.default_hold_seconds || 30)
         var sets = item.sets || 1
         var holds = []
         for (var set = 1; set <= sets; set++)
             sides.forEach(function(side) { holds.push({ set: set, side: side }) })
+        var performed = item.performed || null
         steps.push({ kind: "prepare", stretch: item.stretch, seconds: STRETCH_PREPARE_SECONDS,
-                     set: 1, sets: sets, side: sides[0], lastOfStretch: false })
+                     set: 1, sets: sets, side: sides[0], lastOfStretch: false, performed: performed })
         holds.forEach(function(h, index) {
             var last = index === holds.length - 1
             steps.push({ kind: "hold", stretch: item.stretch, seconds: hold, set: h.set, sets: sets,
-                         side: h.side, lastOfStretch: last })
+                         side: h.side, lastOfStretch: last, performed: performed })
             if (!last && item.rest_seconds)
                 steps.push({ kind: "rest", stretch: item.stretch, seconds: item.rest_seconds, set: h.set,
-                             sets: sets, side: h.side, lastOfStretch: false })
+                             sets: sets, side: h.side, lastOfStretch: false, performed: performed })
         })
     })
     return steps
+}
+
+// --- cool-down suggestion (apps.stretching.services.suggest_cooldown) --------
+
+var MAX_SUGGESTED_STRETCHES = 6
+var MIN_ROUTINE_COVERAGE = 0.5
+// Rest between holds of a stretch picked outside a routine.
+var AD_HOC_REST_SECONDS = 10
+
+// Planned time for one stretch: every hold, plus rest between them.
+function itemSeconds(holdSeconds, sets, perSide, restSeconds) {
+    var holds = (sets || 1) * (perSide ? 2 : 1)
+    return holds * holdSeconds + (holds - 1) * (restSeconds || 0)
+}
+
+function routineSeconds(routine, stretches) {
+    return (routine.items || []).reduce(function(total, item) {
+        var stretch = stretches[item.stretch] || {}
+        var hold = present(item.hold_seconds) ? item.hold_seconds : (stretch.default_hold_seconds || 30)
+        return total + itemSeconds(hold, item.sets, stretch.per_side, item.rest_seconds)
+    }, 0)
+}
+
+// What to stretch after a workout that trained `muscleIds` (primary muscle
+// groups, in name order): the routine whose static stretches cover most of
+// them - ties to the shorter - if it covers at least half, else one static
+// stretch per muscle from the library, built-in ones first, at most six.
+// `routines` with their items, `stretches` id -> stretch. Returns
+// { routine, seconds } or { stretches: [ids], seconds }, or null.
+function suggestCooldown(muscleIds, routines, stretches) {
+    if (!muscleIds || muscleIds.length === 0)
+        return null
+    var best = null
+    var bestCoverage = 0
+    var bestSeconds = 0
+    ;(routines || []).slice().sort(function(a, b) { return a.name.localeCompare(b.name) }).forEach(function(routine) {
+        var covered = {}
+        ;(routine.items || []).forEach(function(item) {
+            var stretch = stretches[item.stretch]
+            if (!stretch || stretch.kind !== "static")
+                return
+            ;(stretch.muscle_groups || []).forEach(function(group) {
+                if (muscleIds.indexOf(group) >= 0)
+                    covered[group] = true
+            })
+        })
+        var coverage = Object.keys(covered).length / muscleIds.length
+        var seconds = routineSeconds(routine, stretches)
+        if (coverage > bestCoverage || (coverage === bestCoverage && best !== null && seconds < bestSeconds)) {
+            best = routine
+            bestCoverage = coverage
+            bestSeconds = seconds
+        }
+    })
+    if (best !== null && bestCoverage >= MIN_ROUTINE_COVERAGE)
+        return { routine: best, seconds: bestSeconds }
+
+    var candidates = []
+    for (var id in stretches) {
+        if (stretches[id].kind === "static" && stretches[id].active !== false)
+            candidates.push(stretches[id])
+    }
+    candidates.sort(function(a, b) {
+        return present(a.owner) - present(b.owner) || a.name.localeCompare(b.name)
+    })
+    var chosen = []
+    for (var m = 0; m < muscleIds.length && chosen.length < MAX_SUGGESTED_STRETCHES; m++) {
+        for (var c = 0; c < candidates.length; c++) {
+            if (chosen.indexOf(candidates[c]) < 0 && (candidates[c].muscle_groups || []).indexOf(muscleIds[m]) >= 0) {
+                chosen.push(candidates[c])
+                break
+            }
+        }
+    }
+    if (chosen.length === 0)
+        return null
+    return {
+        stretches: chosen.map(function(s) { return s.id }),
+        seconds: chosen.reduce(function(total, s) {
+            return total + itemSeconds(s.default_hold_seconds || 30, 1, s.per_side, AD_HOC_REST_SECONDS)
+        }, 0)
+    }
+}
+
+// A guided session's stretches still to do (stretch-sessions/start/), as
+// items for stretchSteps(): its snapshot of hold, sets, rest and per side,
+// each step carrying the performed stretch's id to mark.
+function sessionItems(session) {
+    return ((session && session.performed_stretches) || []).filter(function(ps) {
+        return ps.status === "pending"
+    }).map(function(ps) {
+        return { id: ps.id, order: ps.order, stretch: ps.stretch, hold_seconds: ps.target_hold_seconds,
+                 sets: ps.sets, rest_seconds: ps.rest_seconds, per_side: ps.per_side, performed: ps.id }
+    })
 }
 
 // The stretch library (id -> stretch), fetched once; set

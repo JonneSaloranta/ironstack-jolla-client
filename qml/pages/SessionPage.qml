@@ -5,7 +5,8 @@ import "../js/store.js" as Store
 
 // The full view of a session: every exercise with all its sets. The place
 // for reviewing a workout and correcting mistakes (edit/delete); logging
-// during a workout happens in TrainingPage.
+// during a workout happens in TrainingPage. A finished workout offers a
+// cool-down, like the web's workout page.
 Page {
     id: page
 
@@ -99,6 +100,11 @@ Page {
         id: remorse
     }
 
+    onStatusChanged: {
+        if (status === PageStatus.Active && Store.stretchingChanged && list.headerItem)
+            list.headerItem.reloadCooldown()
+    }
+
     SilicaListView {
         id: list
         anchors.fill: parent
@@ -131,6 +137,7 @@ Page {
 
         header: Column {
             width: parent.width
+            function reloadCooldown() { cooldown.reload() }
             PageHeader {
                 title: controller.title
                 description: {
@@ -152,6 +159,10 @@ Page {
             }
             SyncStatus {}
             RestTimer {}
+            CooldownCard {
+                id: cooldown
+                session: controller.session
+            }
         }
 
         delegate: Column {

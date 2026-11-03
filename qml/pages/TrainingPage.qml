@@ -24,7 +24,14 @@ Page {
 
     SessionController {
         id: controller
-        onEnded: pageStack.pop()
+        // A finished workout is shown in full, with a cool-down to start
+        // like the web's workout page.
+        onEnded: {
+            if (status === "completed")
+                pageStack.replace(Qt.resolvedUrl("SessionPage.qml"), { sessionId: controller.sessionId })
+            else
+                pageStack.pop()
+        }
     }
 
     // A stable model: the view only gets a new row when an exercise is

@@ -20,6 +20,7 @@ TestCase {
         return [
             { tag: "AchievementItem", path: "components/AchievementItem.qml" },
             { tag: "BarChart", path: "components/BarChart.qml" },
+            { tag: "CooldownCard", path: "components/CooldownCard.qml" },
             { tag: "DatePickerButton", path: "components/DatePickerButton.qml" },
             { tag: "DurationField", path: "components/DurationField.qml" },
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },

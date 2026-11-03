@@ -171,7 +171,7 @@ Page {
             MenuItem {
                 enabled: page.items.length > 0
                 text: qsTr("Start routine")
-                onClicked: pageStack.push(Qt.resolvedUrl("StretchPlayerPage.qml"), { routine: page.routine, steps: page.steps })
+                onClicked: pageStack.push(Qt.resolvedUrl("StretchPlayerPage.qml"), { routine: page.routine, offlineSteps: page.steps })
             }
         }
 
