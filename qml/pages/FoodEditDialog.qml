@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../components"
 import "../js/store.js" as Store
 
 // A food of your own, or changes to one (`food` set) - the web's food
@@ -47,7 +46,6 @@ Dialog {
     canAccept: nameField.text.trim() !== "" && (number(servingField) || 0) > 0 && number(caloriesField) !== null
 
     SilicaFlickable {
-        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -143,9 +141,6 @@ Dialog {
                     text: dialog.food ? dialog.text(dialog.food[modelData[1]]) : ""
                     Component.onCompleted: dialog.fields[modelData[1]] = this
                 }
-            }
-            KeyboardRoom {
-                flickable: flickable
             }
         }
 

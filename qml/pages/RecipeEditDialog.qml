@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../components"
 
 // A recipe's name, servings and instructions - the web's recipe form. The
 // page that opened it saves body().
@@ -20,7 +19,6 @@ Dialog {
     canAccept: nameField.text.trim() !== "" && parseInt(servingsField.text, 10) > 0
 
     SilicaFlickable {
-        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -54,9 +52,6 @@ Dialog {
                 label: qsTr("Instructions")
                 placeholderText: label
                 text: dialog.recipe ? dialog.recipe.instructions || "" : ""
-            }
-            KeyboardRoom {
-                flickable: flickable
             }
         }
 

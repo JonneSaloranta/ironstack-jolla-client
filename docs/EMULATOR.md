@@ -173,6 +173,14 @@ tools/emulator/emu.sh launch fi_FI.utf8    # relaunch in Finnish
 - `emu.sh warnings` lists the QML/JS warnings logged since the last launch -
   binding errors and the like that the compile test can't see. Worth a
   look after every UI change.
+- `emu.sh shot` shows a "Screenshot captured" banner across the top of
+  the screen for a few seconds, and that banner takes the taps there. A
+  tap on a dialog's Save or Cancel right after a screenshot does nothing,
+  which looks like an app bug. Wait about 5 s after a screenshot, or take
+  it after the tap.
+- `emu.sh warnings` only shows lines from the app's own files. Silica's
+  messages, like "cannot push while transition is in progress", need
+  `emu.sh sh "journalctl --since -5min -o cat"`.
 
 ### Checking themes, text size and orientation
 

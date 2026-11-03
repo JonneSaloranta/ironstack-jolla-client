@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../components"
 
 // A new program or changes to one (`program` set) - the web's program
 // form. The page that opened it sends body() and shows any error.
@@ -21,7 +20,6 @@ Dialog {
     canAccept: nameField.text.trim() !== ""
 
     SilicaFlickable {
-        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -56,9 +54,6 @@ Dialog {
                 id: templateSwitch
                 text: qsTr("Save as a personal template")
                 checked: dialog.program ? dialog.program.is_template : false
-            }
-            KeyboardRoom {
-                flickable: flickable
             }
         }
 

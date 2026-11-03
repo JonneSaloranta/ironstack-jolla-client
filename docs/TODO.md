@@ -32,12 +32,11 @@ it's done.
   Facts search and barcode, the body tracking reminder. Still to hear on
   real hardware: the stretching timer chimes (the emulator has no audio
   out), also with the screen off.
-- [ ] **Dialogs.** The first tap on Save was lost when the form was
-  scrolled to a field above the keyboard: the tap closes the keyboard, the
-  content slides back and the flickable takes it for a drag. Reproduced
-  in the emulator and fixed with `KeyboardRoom` in every scrolling dialog
-  (2026-11-03). Confirm on the phone that each dialog saves with one tap,
-  also after editing its last field.
+- [ ] **Dialogs.** A focused text field swallowed the first tap on Save;
+  initial focus was removed from every dialog. Confirm on the phone that
+  each dialog saves with one tap, also with the keyboard open. (In the
+  emulator one tap saves, as long as no "Screenshot captured" banner is
+  covering the header; see EMULATOR.md.)
 
 ## Features possible now (API supports them)
 

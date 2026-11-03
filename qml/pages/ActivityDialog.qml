@@ -41,7 +41,6 @@ Dialog {
     canAccept: type !== null && parseInt(minutesField.text, 10) > 0
 
     SilicaFlickable {
-        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -130,9 +129,6 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.activity ? dialog.activity.notes || "" : ""
-            }
-            KeyboardRoom {
-                flickable: flickable
             }
         }
 
