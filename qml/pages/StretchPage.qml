@@ -75,7 +75,7 @@ Page {
             spacing: Theme.paddingSmall
 
             PageHeader {
-                title: page.stretch ? Store.contentName(page.stretch.name) : ""
+                title: page.stretch ? Store.shown(page.stretch) : ""
                 description: page.stretch && page.stretch.is_custom ? qsTr("Custom") : ""
             }
             ErrorBanner {
@@ -107,7 +107,7 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: page.stretch ? Texts.contentText(page.stretch.instructions) : ""
+                text: page.stretch ? Texts.shownText(page.stretch, "instructions") : ""
             }
         }
 

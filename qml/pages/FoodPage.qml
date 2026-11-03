@@ -79,7 +79,7 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: page.food ? Store.contentName(page.food.name) : ""
+                title: page.food ? Store.shown(page.food) : ""
                 description: page.food ? page.food.brand || "" : ""
             }
             ErrorBanner {

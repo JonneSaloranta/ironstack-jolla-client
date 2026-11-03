@@ -29,7 +29,7 @@ Page {
                 return
             loading = false
             types = foundTypes.sort(function(a, b) {
-                return Store.contentName(a.name).localeCompare(Store.contentName(b.name))
+                return Store.shown(a).localeCompare(Store.shown(b))
             })
             activities = byType
         }
@@ -118,7 +118,7 @@ Page {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
                     color: count ? Theme.primaryColor : Theme.secondaryColor
-                    text: Store.contentName(modelData.name) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
+                    text: Store.shown(modelData) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
                 }
                 Label {
                     width: parent.width

@@ -56,12 +56,12 @@ Dialog {
             ComboBox {
                 visible: dialog.types.length > 0
                 label: qsTr("Activity")
-                value: dialog.type ? Store.contentName(dialog.type.name) : ""
+                value: dialog.type ? Store.shown(dialog.type) : ""
                 menu: ContextMenu {
                     Repeater {
                         model: dialog.types
                         MenuItem {
-                            text: Store.contentName(modelData.name)
+                            text: Store.shown(modelData)
                             onClicked: dialog.type = modelData
                         }
                     }

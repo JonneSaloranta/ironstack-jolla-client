@@ -10,7 +10,7 @@ Dialog {
 
     property var prescription: null
     property int exerciseId: prescription ? prescription.exercise : 0
-    property string exerciseName: prescription ? prescription.exercise_name : ""
+    property string exerciseName: prescription ? Store.shown(prescription, "exercise_name") : ""
 
     readonly property string unitSystem: settings.unitSystem
     readonly property var methods: ["double_progression", "linear", "percentage_based", "rpe_rir"]
@@ -65,7 +65,7 @@ Dialog {
 
             DialogHeader {
                 acceptText: qsTr("Save")
-                title: Store.contentName(dialog.exerciseName)
+                title: dialog.exerciseName
             }
 
             TextField {

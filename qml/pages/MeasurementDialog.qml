@@ -52,12 +52,12 @@ Dialog {
             ComboBox {
                 visible: dialog.types.length > 0
                 label: qsTr("Measurement")
-                value: dialog.type ? Store.contentName(dialog.type.name) : ""
+                value: dialog.type ? Store.shown(dialog.type) : ""
                 menu: ContextMenu {
                     Repeater {
                         model: dialog.types
                         MenuItem {
-                            text: Store.contentName(modelData.name)
+                            text: Store.shown(modelData)
                             onClicked: dialog.type = modelData
                         }
                     }
@@ -67,7 +67,7 @@ Dialog {
             TextField {
                 id: valueField
                 width: parent.width
-                label: dialog.type ? Store.contentName(dialog.type.name) + " ("
+                label: dialog.type ? Store.shown(dialog.type) + " ("
                                      + Store.measurementUnit(dialog.type.unit_kind, dialog.unitSystem) + ")" : ""
                 placeholderText: label
                 inputMethodHints: Qt.ImhFormattedNumbersOnly

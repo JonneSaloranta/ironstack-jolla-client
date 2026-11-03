@@ -103,7 +103,7 @@ Page {
             spacing: Theme.paddingSmall
 
             PageHeader {
-                title: Store.contentName(page.type.name)
+                title: Store.shown(page.type)
             }
             ErrorBanner {
                 text: page.errorText

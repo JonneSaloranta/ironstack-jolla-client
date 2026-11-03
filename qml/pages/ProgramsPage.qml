@@ -51,8 +51,8 @@ Page {
     function append(program, section) {
         programsModel.append({
             programId: program.id,
-            name: Store.contentName(program.name),
-            description: Texts.contentText(program.description || ""),
+            name: Store.shown(program),
+            description: Texts.shownText(program, "description"),
             workoutCount: (program.workouts || []).length,
             section: section,
             // ListModel cannot hold nested JS arrays reliably; keep JSON.

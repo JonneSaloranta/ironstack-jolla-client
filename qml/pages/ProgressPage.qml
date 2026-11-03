@@ -46,7 +46,7 @@ Page {
                 }
             })
         })
-        return list.sort(function(a, b) { return Store.contentName(a.name).localeCompare(Store.contentName(b.name)) })
+        return list.sort(function(a, b) { return Store.shown(a).localeCompare(Store.shown(b)) })
     }
 
     function rangeText(key) {
@@ -253,7 +253,7 @@ Page {
                             Label {
                                 width: parent.width - bodyValue.width
                                 truncationMode: TruncationMode.Fade
-                                text: Store.contentName(modelData.type.name)
+                                text: Store.shown(modelData.type)
                             }
                             Label {
                                 id: bodyValue
@@ -289,7 +289,7 @@ Page {
                     Repeater {
                         model: page.trained
                         MenuItem {
-                            text: Store.contentName(modelData.name)
+                            text: Store.shown(modelData)
                             onClicked: pageStack.push(Qt.resolvedUrl("ExerciseProgressPage.qml"),
                                                       { exercise: modelData, range: page.range })
                         }
@@ -384,7 +384,7 @@ Page {
                         width: parent.width - 2 * Theme.horizontalPageMargin
                         truncationMode: TruncationMode.Fade
                         color: Theme.highlightColor
-                        text: Store.contentName(group.entry.name)
+                        text: Store.shown(group.entry)
                     }
                     Repeater {
                         model: group.open ? group.entry.primary.concat(group.entry.secondary) : group.entry.primary

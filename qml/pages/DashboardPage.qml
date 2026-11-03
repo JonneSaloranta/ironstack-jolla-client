@@ -142,7 +142,7 @@ Page {
         settings.activeSessionStarted = session.started_at
         if (session.workout) {
             api.request("GET", "workouts/" + session.workout + "/", null, function(ok, status, data) {
-                settings.activeSessionName = ok ? Store.contentName(data.name) : qsTr("Workout")
+                settings.activeSessionName = ok ? Store.shown(data) : qsTr("Workout")
             })
         } else {
             settings.activeSessionName = qsTr("Freeform workout")
@@ -336,7 +336,7 @@ Page {
                         width: parent.width
                         wrapMode: Text.Wrap
                         color: upNextItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        text: page.upNext ? Store.contentName(page.upNext.workout.name) : ""
+                        text: page.upNext ? Store.shown(page.upNext.workout) : ""
                     }
                     Label {
                         width: parent.width
@@ -344,7 +344,7 @@ Page {
                         font.pixelSize: Theme.fontSizeSmall
                         color: Theme.secondaryColor
                         text: page.upNext
-                              ? [Store.contentName(page.upNext.program.name), page.dayText(page.upNext.day)]
+                              ? [Store.shown(page.upNext.program), page.dayText(page.upNext.day)]
                                 .filter(function(part) { return part }).join(" · ")
                               : ""
                     }

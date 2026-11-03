@@ -71,18 +71,18 @@ Dialog {
             DialogHeader {
                 acceptText: qsTr("Save")
                 title: dialog.kind === "quick" ? qsTr("Quick entry")
-                       : dialog.food ? Store.contentName(dialog.food.name)
-                       : dialog.recipe ? Store.contentName(dialog.recipe.name) : ""
+                       : dialog.food ? Store.shown(dialog.food)
+                       : dialog.recipe ? Store.shown(dialog.recipe) : ""
             }
 
             ComboBox {
                 label: qsTr("Meal")
-                value: dialog.slot ? Store.contentName(dialog.slot.name) : ""
+                value: dialog.slot ? Store.shown(dialog.slot) : ""
                 menu: ContextMenu {
                     Repeater {
                         model: Nutrition.slots || []
                         MenuItem {
-                            text: Store.contentName(modelData.name)
+                            text: Store.shown(modelData)
                             onClicked: dialog.slot = modelData
                         }
                     }

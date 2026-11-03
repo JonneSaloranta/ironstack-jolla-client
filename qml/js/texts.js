@@ -12,3 +12,12 @@ function contentText(value) {
     // Some short texts (routine descriptions) are in the names catalog.
     return (texts && texts[value]) || Store.contentName(value)
 }
+
+// `row[field]` (instructions, description) as IronStack shows it: its
+// display twin (Store.shown), else the app's own translation.
+function shownText(row, field) {
+    if (!row)
+        return ""
+    var display = row[Store.displayField(field)]
+    return Store.present(display) ? display : contentText(row[field])
+}

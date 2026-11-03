@@ -178,7 +178,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.routine ? Store.contentName(page.routine.name) : ""
+                title: page.routine ? Store.shown(page.routine) : ""
                 description: page.editable ? qsTr("Custom") : qsTr("Built-in routine")
             }
             ErrorBanner {
@@ -195,7 +195,7 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryHighlightColor
-                text: [page.routine ? Texts.contentText(page.routine.description) : "",
+                text: [page.routine ? Texts.shownText(page.routine, "description") : "",
                        page.items.length ? "≈ " + Store.formatMinutes(page.estimatedSeconds) : ""]
                       .filter(function(p) { return p }).join("\n")
             }

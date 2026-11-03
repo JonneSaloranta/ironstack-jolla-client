@@ -133,16 +133,16 @@ function total(entries, foods, recipes) {
 // own food_name/recipe_name first, so a deleted recipe still has its name.
 function entryName(entry, foods, recipes, quickFallback) {
     if (entry.food_name)
-        return Store.contentName(entry.food_name)
+        return Store.shown(entry, "food_name")
     if (entry.recipe_name)
-        return Store.contentName(entry.recipe_name)
+        return Store.shown(entry, "recipe_name")
     if (Store.present(entry.food)) {
         var food = foods[entry.food]
-        return food ? Store.contentName(food.name) : "#" + entry.food
+        return food ? Store.shown(food) : "#" + entry.food
     }
     if (Store.present(entry.recipe)) {
         var recipe = recipes[entry.recipe]
-        return recipe ? Store.contentName(recipe.name) : "#" + entry.recipe
+        return recipe ? Store.shown(recipe) : "#" + entry.recipe
     }
     return entry.quick_name || quickFallback
 }
@@ -250,7 +250,7 @@ function list(map) {
     var result = []
     for (var id in map)
         result.push(map[id])
-    return result.sort(function(a, b) { return Store.contentName(a.name).localeCompare(Store.contentName(b.name)) })
+    return result.sort(function(a, b) { return Store.shown(a).localeCompare(Store.shown(b)) })
 }
 
 // A day's diary entries. done(ok, entries, error)

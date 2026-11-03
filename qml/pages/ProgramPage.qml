@@ -175,7 +175,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.program ? Store.contentName(page.program.name) : ""
+                title: page.program ? Store.shown(page.program) : ""
                 description: page.program && page.program.is_continuous ? qsTr("Continuous program") : ""
             }
             ErrorBanner {
@@ -191,7 +191,7 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryHighlightColor
-                text: page.program ? Texts.contentText(page.program.description || "") : ""
+                text: page.program ? Texts.shownText(page.program, "description") : ""
             }
         }
 
@@ -241,7 +241,7 @@ Page {
                 Label {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
-                    text: Store.contentName(modelData.name)
+                    text: Store.shown(modelData)
                 }
                 Label {
                     width: parent.width

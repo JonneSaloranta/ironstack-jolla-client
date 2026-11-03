@@ -86,7 +86,7 @@ Page {
                     Label {
                         width: parent.width
                         truncationMode: TruncationMode.Fade
-                        text: Store.contentName(modelData.name)
+                        text: Store.shown(modelData)
                     }
                     Label {
                         width: parent.width

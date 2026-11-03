@@ -35,7 +35,7 @@ Page {
         }
         if (includeRecipes) {
             Nutrition.list(Nutrition.recipes || {}).forEach(function(r) {
-                var name = Store.contentName(r.name)
+                var name = Store.shown(r)
                 if (matches(name, r.name))
                     filtered.append({ kind: "recipe", id: r.id, name: name, section: qsTr("Recipes"),
                                       detail: Math.round(Nutrition.recipePerServing(r, Nutrition.foods).calories)
@@ -44,7 +44,7 @@ Page {
         }
         var fromServer = term && found !== null
         Nutrition.list(fromServer ? found : Nutrition.foods || {}).forEach(function(f) {
-            var name = Store.contentName(f.name)
+            var name = Store.shown(f)
             if (!f.active || (!fromServer && !matches(name, f.brand)))
                 return
             filtered.append({ kind: "food", id: f.id, name: name, section: qsTr("Foods"),

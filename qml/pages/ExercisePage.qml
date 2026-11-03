@@ -18,11 +18,6 @@ Page {
 
     readonly property bool editable: exercise !== null && exercise.is_custom
 
-    // Built-in instructions are translated by the web's catalog too.
-    function text(value) {
-        return Texts.contentText(value)
-    }
-
     function movementText(value) {
         if (value === "compound")
             return qsTr("Compound")
@@ -123,7 +118,7 @@ Page {
             spacing: Theme.paddingSmall
 
             PageHeader {
-                title: page.exercise ? Store.contentName(page.exercise.name) : ""
+                title: page.exercise ? Store.shown(page.exercise) : ""
                 description: page.exercise && page.exercise.is_custom ? qsTr("Custom") : ""
             }
 
@@ -165,7 +160,7 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 color: Theme.highlightColor
-                text: page.exercise ? page.text(page.exercise.description) : ""
+                text: page.exercise ? Texts.shownText(page.exercise, "description") : ""
             }
 
             SectionHeader {
@@ -208,7 +203,7 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: page.exercise ? page.text(page.exercise.instructions) : ""
+                text: page.exercise ? Texts.shownText(page.exercise, "instructions") : ""
             }
             Label {
                 visible: text !== ""

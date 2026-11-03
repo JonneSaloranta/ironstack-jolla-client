@@ -55,7 +55,7 @@ Page {
             else if (data.status === "error")
                 errorText = qsTr("Open Food Facts couldn't be reached.")
             results = (data.local || []).map(function(food) {
-                return { foodId: food.id, food: food, name: Store.contentName(food.name),
+                return { foodId: food.id, food: food, name: Store.shown(food),
                          detail: qsTr("Already in the food library") + " · " + detail(food) }
             }).concat((data.results || []).map(function(product) {
                 return { offId: product.off_id, name: product.name, detail: detail(product) }

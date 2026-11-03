@@ -151,7 +151,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.workout ? Store.contentName(page.workout.name) : ""
+                title: page.workout ? Store.shown(page.workout) : ""
             }
             ErrorBanner {
                 text: page.errorText
@@ -209,7 +209,7 @@ Page {
                 Label {
                     width: parent.width
                     truncationMode: TruncationMode.Fade
-                    text: Store.contentName(modelData.exercise_name)
+                    text: Store.shown(modelData, "exercise_name")
                 }
                 Label {
                     width: parent.width

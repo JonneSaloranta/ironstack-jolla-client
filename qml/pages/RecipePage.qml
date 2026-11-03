@@ -46,7 +46,7 @@ Page {
         picker.picked.connect(function(kind, foodId) {
             var food = Nutrition.foods[foodId]
             var dialog = pageStack.replace(Qt.resolvedUrl("QuantityDialog.qml"), {
-                title: Store.contentName(food.name),
+                title: Store.shown(food),
                 unitLabel: Nutrition.unitText(food.serving_unit, qsTr("pcs")),
                 initialQuantity: parseFloat(food.serving_size)
             })
@@ -60,7 +60,7 @@ Page {
     function editIngredient(ingredient) {
         var food = Nutrition.foods[ingredient.food]
         var dialog = pageStack.push(Qt.resolvedUrl("QuantityDialog.qml"), {
-            title: food ? Store.contentName(food.name) : "",
+            title: food ? Store.shown(food) : "",
             unitLabel: food ? Nutrition.unitText(food.serving_unit, qsTr("pcs")) : "",
             initialQuantity: parseFloat(ingredient.quantity)
         })
@@ -129,7 +129,7 @@ Page {
         header: Column {
             width: parent.width
             PageHeader {
-                title: page.recipe ? Store.contentName(page.recipe.name) : ""
+                title: page.recipe ? Store.shown(page.recipe) : ""
                 description: page.recipe ? qsTr("%n serving(s)", "", page.recipe.servings)
                                            + (page.editable ? "" : " · " + qsTr("Built-in")) : ""
             }
@@ -151,7 +151,7 @@ Page {
                 topPadding: Theme.paddingMedium
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: page.recipe ? Texts.contentText(page.recipe.instructions) : ""
+                text: page.recipe ? Texts.shownText(page.recipe, "instructions") : ""
             }
             SectionHeader {
                 text: qsTr("Ingredients")
@@ -191,7 +191,7 @@ Page {
                 Label {
                     width: parent.width - amount.width
                     truncationMode: TruncationMode.Fade
-                    text: food ? Store.contentName(food.name) : "#" + modelData.food
+                    text: food ? Store.shown(food) : "#" + modelData.food
                 }
                 Label {
                     id: amount

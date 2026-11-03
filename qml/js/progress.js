@@ -27,7 +27,7 @@ function weeklyFrom(data) {
 // name translated like the web's.
 function musclesFrom(data) {
     return ((data && data.muscle_groups) || []).map(function(m) {
-        return { id: m.muscle_group, name: Store.contentName(m.muscle_group_name),
+        return { id: m.muscle_group, name: Store.shown(m, "muscle_group_name"),
                  value: Store.parseNumber(m.volume) || 0 }
     }).sort(function(a, b) { return b.value - a.value || a.id - b.id })
 }
@@ -103,7 +103,7 @@ function bodyProgress(readings, types, start, end, unitSystem) {
     return rows.sort(function(a, b) {
         var aw = Store.isBodyWeightType(a.type) ? 0 : 1
         var bw = Store.isBodyWeightType(b.type) ? 0 : 1
-        return aw - bw || Store.contentName(a.type.name).localeCompare(Store.contentName(b.type.name))
+        return aw - bw || Store.shown(a.type).localeCompare(Store.shown(b.type))
     })
 }
 

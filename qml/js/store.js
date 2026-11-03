@@ -26,14 +26,35 @@ function whenIdle(pageStack, action) {
 }
 
 // --- built-in content names ------------------------------------------------
-// IronStack stores built-in exercises, programs and workouts in English and
-// the web translates their names when showing them; the API returns them
-// as stored. content.js carries the same translations (see
+// IronStack stores built-in exercises, programs, stretches and the like in
+// English and translates them where they're shown. The API sends the shown
+// name as a `display_*` twin of the stored one (`display_name`,
+// `exercise_display_name`, ...; IronStack 1.31) in the language the app
+// asks for (ApiClient::acceptLanguage). A few rows have no twin yet
+// (IronStack #47), and data cached by an older version neither: for those
+// content.js carries the web's own translations (see
 // tools/content-i18n/generate.py). A name with no translation - a user's
 // own exercise, say - is shown as typed, the same as on the web.
 
 function contentLanguage() {
     return Qt.locale().name.split("_")[0]
+}
+
+// The `display_*` twin of a stored field: "name" -> "display_name",
+// "exercise_name" -> "exercise_display_name", "instructions" ->
+// "display_instructions".
+function displayField(field) {
+    return /_name$/.test(field) ? field.replace(/_name$/, "_display_name") : "display_" + field
+}
+
+// `row[field]` (default "name") as IronStack shows it: its display twin,
+// else the app's own translation of the stored value.
+function shown(row, field) {
+    if (!row)
+        return ""
+    field = field || "name"
+    var display = row[displayField(field)]
+    return present(display) ? display : contentName(row[field])
 }
 
 function contentName(name, language) {
@@ -62,7 +83,7 @@ function ensureNames(api, cache, endpoint, ids, done) {
     missing.forEach(function(id) {
         api.request("GET", endpoint + id + "/", null, function(ok, status, data) {
             if (ok)
-                cache[data.id] = data.name
+                cache[data.id] = shown(data)
             remaining--
             if (remaining === 0)
                 done()
@@ -122,7 +143,7 @@ function ensureLookups(api, done) {
         }, function(ok) {
             if (ok) {
                 lookups[kind[0]] = items.map(function(item) {
-                    return { id: item.id, name: contentName(item.name), storedName: item.name }
+                    return { id: item.id, name: shown(item), storedName: item.name }
                 }).sort(function(a, b) { return a.name.localeCompare(b.name) })
             }
             remaining--
@@ -458,7 +479,7 @@ function ensureStretches(api, done) {
 }
 
 function stretchName(id) {
-    return stretches && stretches[id] ? contentName(stretches[id].name) : "#" + id
+    return stretches && stretches[id] ? shown(stretches[id]) : "#" + id
 }
 
 // The index of the first step of the next stretch after `index`, or

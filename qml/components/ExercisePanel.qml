@@ -119,7 +119,7 @@ Item {
                 maximumLineCount: 2
                 font.pixelSize: Theme.fontSizeLarge
                 color: Theme.highlightColor
-                text: panel.pe ? Store.contentName(panel.pe.exercise_name) : ""
+                text: panel.pe ? Store.shown(panel.pe, "exercise_name") : ""
                 MouseArea {
                     anchors.fill: parent
                     onClicked: panel.guide()

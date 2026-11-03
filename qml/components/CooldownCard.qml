@@ -37,7 +37,7 @@ Column {
                 return
             done = data.done || null
             muscleNames = (data.muscle_groups || []).map(function(m) {
-                return m.display_name || Store.contentName(m.name)
+                return Store.shown(m)
             })
             var stretches = data.stretches || []
             if (!done && (data.routine || stretches.length > 0))
@@ -84,14 +84,14 @@ Column {
         color: Theme.highlightColor
         text: {
             if (card.done)
-                return (card.done.name ? Store.contentName(card.done.name) : qsTr("Stretching"))
+                return (card.done.name ? Store.shown(card.done) : qsTr("Stretching"))
                         + " · " + (card.done.status === "completed" ? qsTr("Completed") : qsTr("In progress"))
             var s = card.suggestion
             if (!s)
                 return ""
-            return (s.routine ? (s.routine.display_name || Store.contentName(s.routine.name))
+            return (s.routine ? Store.shown(s.routine)
                               : s.stretches.map(function(st) {
-                                  return st.display_name || Store.contentName(st.name)
+                                  return Store.shown(st)
                               }).join(", "))
                     + " · ≈ " + Store.formatMinutes(s.seconds)
         }

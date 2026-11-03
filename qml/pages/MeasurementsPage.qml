@@ -32,7 +32,7 @@ Page {
             // progress list), the rest by the name as shown.
             types = foundTypes.sort(function(a, b) {
                 return Store.isBodyWeightType(b) - Store.isBodyWeightType(a)
-                        || Store.contentName(a.name).localeCompare(Store.contentName(b.name))
+                        || Store.shown(a).localeCompare(Store.shown(b))
             })
             readings = byType
         }
@@ -123,7 +123,7 @@ Page {
                     truncationMode: TruncationMode.Fade
                     // An untracked type is dimmed, like the web's card.
                     color: stats ? Theme.primaryColor : Theme.secondaryColor
-                    text: Store.contentName(modelData.name) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
+                    text: Store.shown(modelData) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
                 }
                 Label {
                     width: parent.width

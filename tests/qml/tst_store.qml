@@ -297,6 +297,21 @@ TestCase {
         compare(Store.contentName("Skull Crusher"), Store.contentName("Skull Crusher", Store.contentLanguage()))
     }
 
+    function test_shown() {
+        compare(Store.displayField("name"), "display_name")
+        compare(Store.displayField("exercise_name"), "exercise_display_name")
+        compare(Store.displayField("instructions"), "display_instructions")
+        // the server's display twin first
+        compare(Store.shown({ name: "Workout A", display_name: "Treeni A (server)" }), "Treeni A (server)")
+        compare(Store.shown({ exercise_name: "Skull Crusher", exercise_display_name: "Kallonmurskaaja" },
+                            "exercise_name"), "Kallonmurskaaja")
+        // no twin (IronStack #47, an older cache): the app's own translation
+        compare(Store.shown({ name: "Skull Crusher" }), Store.contentName("Skull Crusher"))
+        compare(Store.shown({ name: "Skull Crusher", display_name: null }), Store.contentName("Skull Crusher"))
+        compare(Store.shown({ name: "My own lift", display_name: "My own lift" }), "My own lift")
+        compare(Store.shown(null), "")
+    }
+
     function set(weight, reps, warmup) {
         return { weight: weight, reps: reps, is_warmup: !!warmup }
     }

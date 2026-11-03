@@ -18,7 +18,7 @@ Page {
     readonly property var summary: Store.stretchSummary(sessions, new Date())
 
     function sessionName(session) {
-        return session.name ? Store.contentName(session.name) : qsTr("Stretching")
+        return session.name ? Store.shown(session) : qsTr("Stretching")
     }
 
     function load() {
@@ -155,7 +155,7 @@ Page {
                         Label {
                             width: parent.width
                             truncationMode: TruncationMode.Fade
-                            text: Store.contentName(modelData.name) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
+                            text: Store.shown(modelData) + (modelData.is_custom ? " · " + qsTr("Custom") : "")
                         }
                         Label {
                             width: parent.width
@@ -163,7 +163,7 @@ Page {
                             font.pixelSize: Theme.fontSizeExtraSmall
                             color: Theme.secondaryColor
                             text: qsTr("%n stretch(es)", "", modelData.items.length)
-                                  + (modelData.description ? " - " + Texts.contentText(modelData.description) : "")
+                                  + (modelData.description ? " - " + Texts.shownText(modelData, "description") : "")
                         }
                     }
                 }

@@ -25,7 +25,7 @@ ListItem {
             Label {
                 width: parent.width - valueLabel.width
                 truncationMode: TruncationMode.Fade
-                text: record ? Store.contentName(record.exercise_name) : ""
+                text: record ? Store.shown(record, "exercise_name") : ""
             }
             Label {
                 id: valueLabel

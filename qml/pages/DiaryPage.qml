@@ -130,7 +130,7 @@ Page {
     }
 
     function saveAsRecipe(slot) {
-        var name = Store.contentName(slot.name) + " - " + isoDay
+        var name = Store.shown(slot) + " - " + isoDay
         Nutrition.saveMealAsRecipe(api, entriesOf(slot.id), name, function(ok, recipeId, error) {
             if (!ok) {
                 errorText = error || qsTr("Nothing logged for this meal yet to save as a recipe.")
@@ -271,7 +271,7 @@ Page {
                         }
                         SectionHeader {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: Store.contentName(slot.name) + (slotEntries.length ? " · " + page.slotCalories(slotEntries) : "")
+                            text: Store.shown(slot) + (slotEntries.length ? " · " + page.slotCalories(slotEntries) : "")
                         }
                     }
 

@@ -60,7 +60,7 @@ Page {
 
             PageHeader {
                 title: qsTr("Strength trend")
-                description: Store.contentName(page.exercise.name)
+                description: Store.shown(page.exercise)
             }
 
             ErrorBanner {

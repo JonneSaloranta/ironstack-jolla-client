@@ -45,7 +45,7 @@ Dialog {
             ComboBox {
                 visible: !dialog.session && dialog.routines.length > 0
                 label: qsTr("Routine")
-                value: dialog.routine ? Store.contentName(dialog.routine.name) : qsTr("None")
+                value: dialog.routine ? Store.shown(dialog.routine) : qsTr("None")
                 menu: ContextMenu {
                     MenuItem {
                         text: qsTr("None")
@@ -54,7 +54,7 @@ Dialog {
                     Repeater {
                         model: dialog.routines
                         MenuItem {
-                            text: Store.contentName(modelData.name)
+                            text: Store.shown(modelData)
                             onClicked: dialog.routine = modelData
                         }
                     }

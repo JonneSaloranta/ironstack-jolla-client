@@ -174,7 +174,7 @@ Page {
                         width: parent.width - total.width
                         truncationMode: TruncationMode.Fade
                         font.strikeout: !!page.ticked[modelData.food]
-                        text: Store.contentName(modelData.food_name)
+                        text: Store.shown(modelData, "food_name")
                     }
                     Label {
                         id: total

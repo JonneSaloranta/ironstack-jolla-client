@@ -32,7 +32,7 @@ Page {
                 return
             if (muscleGroup && s.muscle_groups.indexOf(muscleGroup) < 0)
                 return
-            var name = Store.contentName(s.name)
+            var name = Store.shown(s)
             if (term && name.toLowerCase().indexOf(term) < 0 && s.name.toLowerCase().indexOf(term) < 0)
                 return
             filtered.append({ id: s.id, name: name, custom: s.is_custom, kind: s.kind, perSide: s.per_side,
@@ -55,7 +55,7 @@ Page {
             var list = []
             for (var id in Store.stretches)
                 list.push(Store.stretches[id])
-            all = list.sort(function(a, b) { return Store.contentName(a.name).localeCompare(Store.contentName(b.name)) })
+            all = list.sort(function(a, b) { return Store.shown(a).localeCompare(Store.shown(b)) })
             applyFilter()
         })
     }

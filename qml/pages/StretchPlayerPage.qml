@@ -43,8 +43,8 @@ Page {
     property string errorText: ""
 
     readonly property var step: steps[index] || null
-    readonly property string title: session ? Store.contentName(session.name)
-                                    : routine ? Store.contentName(routine.name) : name
+    readonly property string title: session ? Store.shown(session)
+                                    : routine ? Store.shown(routine) : name
 
     function stepTitle(kind) {
         if (kind === "prepare")

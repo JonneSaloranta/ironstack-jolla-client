@@ -92,7 +92,7 @@ Page {
                     Label {
                         width: parent.width - valueLabel.width
                         truncationMode: TruncationMode.Fade
-                        text: modelData.name ? Store.contentName(modelData.name) : qsTr("Stretching")
+                        text: modelData.name ? Store.shown(modelData) : qsTr("Stretching")
                     }
                     Label {
                         id: valueLabel

@@ -100,7 +100,7 @@ Page {
             Repeater {
                 model: page.measured
                 delegate: DetailItem {
-                    label: Store.contentName(modelData.name)
+                    label: Store.shown(modelData)
                     value: Store.formatMeasurement(modelData.latest_value, modelData.unit_kind, settings.unitSystem)
                            + " · " + Format.formatDate(new Date(modelData.latest_recorded_at), Formatter.DateMedium)
                 }

@@ -31,7 +31,7 @@ Page {
     property int muscleGroup: 0
 
     // The whole library is fetched once and searched here, matching both
-    // the name as shown (translated, see Store.contentName) and as stored.
+    // the name as shown (translated, see Store.shown) and as stored.
     // The API's own ?search= would match the IronStack profile's language,
     // which isn't necessarily the one this phone shows. The view keeps one
     // ListModel that is refilled in place: swapping the view's model on
@@ -64,7 +64,7 @@ Page {
             var all = []
             Store.fetchAll(api, "exercises/?page_size=100", function(results) {
                 all = all.concat(results.map(function(e) {
-                    return { id: e.id, name: Store.contentName(e.name), storedName: e.name,
+                    return { id: e.id, name: Store.shown(e), storedName: e.name,
                              custom: e.is_custom, primary: e.primary_muscle_groups || [],
                              muscles: (e.primary_muscle_groups || []).map(Store.muscleGroupName).join(", ") }
                 }))

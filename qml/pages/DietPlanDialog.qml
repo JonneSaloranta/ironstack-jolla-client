@@ -122,7 +122,7 @@ Dialog {
             Repeater {
                 model: dialog.slots
                 TextSwitch {
-                    text: Store.contentName(modelData.name)
+                    text: Store.shown(modelData)
                     checked: dialog.chosen.indexOf(modelData.id) >= 0
                     automaticCheck: false
                     onClicked: dialog.toggle(modelData.id)

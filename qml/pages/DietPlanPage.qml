@@ -26,14 +26,14 @@ Page {
 
     function slotName(id) {
         var slot = (Nutrition.slots || []).filter(function(s) { return s.id === id })[0]
-        return slot ? Store.contentName(slot.name) : ""
+        return slot ? Store.shown(slot) : ""
     }
 
     function itemName(item) {
         if (Store.present(item.food))
-            return Nutrition.foods && Nutrition.foods[item.food] ? Store.contentName(Nutrition.foods[item.food].name) : "#" + item.food
+            return Nutrition.foods && Nutrition.foods[item.food] ? Store.shown(Nutrition.foods[item.food]) : "#" + item.food
         if (Nutrition.recipes && Nutrition.recipes[item.recipe])
-            return Store.contentName(Nutrition.recipes[item.recipe].name)
+            return Store.shown(Nutrition.recipes[item.recipe])
         return "#" + item.recipe
     }
 

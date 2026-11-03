@@ -62,7 +62,7 @@ QtObject {
             if (data.workout) {
                 api.request("GET", "workouts/" + data.workout + "/", null, function(ok2, status2, workout) {
                     if (ok2 || title === "")
-                        title = ok2 ? Store.contentName(workout.name) : qsTr("Workout")
+                        title = ok2 ? Store.shown(workout) : qsTr("Workout")
                     syncCover()
                     save()
                 })

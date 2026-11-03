@@ -26,7 +26,7 @@ Page {
     function openLogDialog(pe) {
         var p = controller.prefill(pe)
         var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), {
-            exerciseName: Store.contentName(pe.exercise_name),
+            exerciseName: Store.shown(pe, "exercise_name"),
             incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
             initialWeightKg: p.weightKg,
             initialReps: p.reps,
@@ -39,7 +39,7 @@ Page {
 
     function openEditDialog(pe, set) {
         var dialog = pageStack.push(Qt.resolvedUrl("LogSetDialog.qml"), {
-            exerciseName: Store.contentName(pe.exercise_name) + " - " + qsTr("set %1").arg(set.set_number),
+            exerciseName: Store.shown(pe, "exercise_name") + " - " + qsTr("set %1").arg(set.set_number),
             editing: true,
             incrementKg: pe.weight_increment ? parseFloat(pe.weight_increment) : 2.5,
             initialWeightKg: set.weight,
@@ -172,7 +172,7 @@ Page {
             bottomPadding: Theme.paddingLarge
 
             SectionHeader {
-                text: Store.contentName(pe.exercise_name)
+                text: Store.shown(pe, "exercise_name")
                 // Tapping the name shows the exercise's guide.
                 MouseArea {
                     anchors.fill: parent
