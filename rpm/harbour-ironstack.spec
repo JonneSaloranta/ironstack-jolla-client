@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.1.0
+Version:    0.2.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -15,9 +15,9 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  desktop-file-utils
 
 %description
-Native Sailfish OS client for a self-hosted IronStack instance: follow
-your programs, log sets during a workout, and browse your history and
-personal records.
+Native Sailfish OS client for a self-hosted IronStack instance: training
+with programs, workouts and personal records, body tracking, activities,
+stretching and nutrition, like the web.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -39,3 +39,17 @@ desktop-file-install --delete-original \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+
+%changelog
+* Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.2.0-1
+- Progress page: training summary, body changes, strength trend, weekly
+  and muscle group volume, personal records.
+- Nutrition statistics, "Is your current target working?" and observed
+  maintenance; Open Food Facts search by name or barcode.
+- Body tracking reminder; stretching timer sounds (Audio permission).
+- Body tracking, activities, stretching and nutrition like the web.
+- Fixes: diary meals and days, built-in and deleted recipes in the diary,
+  new items opening their page, shopping list ticks kept.
+
+* Fri Oct 23 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.1.0-1
+- First version: programs, workouts, set logging, history and records.
