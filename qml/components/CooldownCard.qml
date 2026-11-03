@@ -3,17 +3,18 @@ import Sailfish.Silica 1.0
 import "../js/store.js" as Store
 
 // The web's cool-down card on a finished workout: the cool-down done after
-// it, or stretches picked for the muscles it trained with a button to start
-// them as a guided session marked as its cool-down. Nothing without the
-// stretching permission or a match.
+// it, or the server's pick of stretches for the muscles it trained, with a
+// button to start them as a guided session marked as its cool-down.
+// Nothing without the stretching permission or a match.
 Column {
     id: card
 
     // The workout session as read from the server.
     property var session: null
 
-    // The cool-down logged for it: a stretch session, or null.
+    // The cool-down started or done after it: a stretch session, or null.
     property var done: null
+    // { routine, stretches, seconds }, or null when nothing matches.
     property var suggestion: null
     property var muscleNames: []
     property bool loaded: false
@@ -24,63 +25,40 @@ Column {
     width: parent ? parent.width : 0
     visible: loaded && (done !== null || suggestion !== null)
 
+    // The server's suggestion (sessions/<id>/cooldown/, the web's card).
+    // A key without the stretching permission gets a 403: no card.
     function load() {
         if (!finished || loaded || loading)
             return
-        var exerciseIds = (session.performed_exercises || []).map(function(pe) { return pe.exercise })
-        if (exerciseIds.length === 0)
-            return
         loading = true
-        var pending = 4
-        var routines = []
-        var groups = {}
-        var failed = false
-        function settle(ok) {
-            if (!ok)
-                failed = true
-            if (--pending > 0)
-                return
+        api.request("GET", "sessions/" + session.id + "/cooldown/", null, function(ok, status, data) {
             loading = false
-            if (failed)
+            if (!ok)
                 return
-            var muscles = (Store.lookups.muscleGroups || []).filter(function(m) { return groups[m.id] })
-                    .sort(function(a, b) { return a.storedName.localeCompare(b.storedName) })
-            muscleNames = muscles.map(function(m) { return m.name })
-            if (!done)
-                suggestion = Store.suggestCooldown(muscles.map(function(m) { return m.id }), routines, Store.stretches || {})
+            done = data.done || null
+            muscleNames = (data.muscle_groups || []).map(function(m) {
+                return m.display_name || Store.contentName(m.name)
+            })
+            var stretches = data.stretches || []
+            if (!done && (data.routine || stretches.length > 0))
+                suggestion = { routine: data.routine || null, stretches: stretches, seconds: data.planned_seconds || 0 }
             loaded = true
-        }
-        // The newest stretching sessions: a cool-down follows its workout.
-        api.request("GET", "stretch-sessions/?page_size=100", null, function(ok, status, data) {
-            if (ok)
-                done = (data.results || []).filter(function(s) {
-                    return s.after_workout === session.id && s.status !== "abandoned"
-                })[0] || null
-            settle(ok)
-        })
-        Store.fetchAll(api, "stretch-routines/?page_size=100", function(results) {
-            routines = routines.concat(results.filter(function(r) { return r.active !== false }))
-        }, settle)
-        Store.ensureStretches(api, settle)
-        Store.ensureLookups(api, function() {
-            Store.fetchAll(api, "exercises/?page_size=100&ids=" + exerciseIds.join(","), function(results) {
-                results.forEach(function(e) {
-                    ;(e.primary_muscle_groups || []).forEach(function(g) { groups[g] = true })
-                })
-            }, settle)
         })
     }
 
     function start() {
         var s = suggestion
-        if (s.routine) {
-            var steps = Store.stretchSteps(s.routine.items, Store.stretches || {})
-            pageStack.push(Qt.resolvedUrl("../pages/StretchPlayerPage.qml"),
-                           { routine: s.routine, offlineSteps: steps, afterWorkout: session.id })
-        } else {
-            pageStack.push(Qt.resolvedUrl("../pages/StretchPlayerPage.qml"),
-                           { stretchIds: s.stretches, name: qsTr("Cool-down"), afterWorkout: session.id })
-        }
+        Store.ensureStretches(api, function() {
+            if (s.routine) {
+                var steps = Store.stretchSteps(s.routine.items, Store.stretches || {})
+                pageStack.push(Qt.resolvedUrl("../pages/StretchPlayerPage.qml"),
+                               { routine: s.routine, offlineSteps: steps, afterWorkout: session.id })
+            } else {
+                pageStack.push(Qt.resolvedUrl("../pages/StretchPlayerPage.qml"),
+                               { stretchIds: s.stretches.map(function(st) { return st.id }),
+                                 name: qsTr("Cool-down"), afterWorkout: session.id })
+            }
+        })
     }
 
     // Again, e.g. back from the player: the cool-down may be there now.
@@ -111,8 +89,10 @@ Column {
             var s = card.suggestion
             if (!s)
                 return ""
-            return (s.routine ? Store.contentName(s.routine.name)
-                              : s.stretches.map(function(id) { return Store.stretchName(id) }).join(", "))
+            return (s.routine ? (s.routine.display_name || Store.contentName(s.routine.name))
+                              : s.stretches.map(function(st) {
+                                  return st.display_name || Store.contentName(st.name)
+                              }).join(", "))
                     + " · ≈ " + Store.formatMinutes(s.seconds)
         }
     }

@@ -235,31 +235,6 @@ TestCase {
         compare(Store.sessionItems(null).length, 0)
     }
 
-    function test_suggestCooldown() {
-        // muscle groups: 1 legs, 2 hips, 3 chest
-        var stretches = {
-            10: { id: 10, name: "Hamstring", kind: "static", per_side: true, default_hold_seconds: 30, muscle_groups: [1], owner: null },
-            11: { id: 11, name: "Hip flexor", kind: "static", per_side: true, default_hold_seconds: 30, muscle_groups: [2], owner: null },
-            12: { id: 12, name: "Leg swings", kind: "dynamic", per_side: true, default_hold_seconds: 30, muscle_groups: [1, 2], owner: null },
-            13: { id: 13, name: "Doorway chest", kind: "static", per_side: false, default_hold_seconds: 30, muscle_groups: [3], owner: null },
-            14: { id: 14, name: "A mine", kind: "static", per_side: false, default_hold_seconds: 20, muscle_groups: [3], owner: 7 }
-        }
-        var lower = { id: 1, name: "Lower", items: [{ stretch: 10, hold_seconds: 30, sets: 1, rest_seconds: 10 },
-                                                    { stretch: 11, hold_seconds: 30, sets: 1, rest_seconds: 10 }] }
-        var warmUp = { id: 2, name: "Warm-up", items: [{ stretch: 12, hold_seconds: 30, sets: 1, rest_seconds: 0 }] }
-        var s = Store.suggestCooldown([1, 2], [warmUp, lower], stretches)
-        // a dynamic warm-up isn't a cool-down
-        compare(s.routine.id, 1)
-        compare(s.seconds, 2 * (2 * 30 + 10))
-        // under half covered: stretches from the library, built-in first
-        s = Store.suggestCooldown([1, 3], [warmUp], stretches)
-        compare(s.routine, undefined)
-        compare(s.stretches, [10, 13])
-        compare(s.seconds, (2 * 30 + 10) + 30)
-        compare(Store.suggestCooldown([], [lower], stretches), null)
-        compare(Store.suggestCooldown([99], [lower], stretches), null)
-    }
-
     function test_weeklyStretchMinutes() {
         var today = new Date(2026, 10, 4)   // a Wednesday
         var rows = Store.weeklyStretchMinutes([
