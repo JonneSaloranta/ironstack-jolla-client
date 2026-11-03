@@ -51,7 +51,7 @@ it's done.
 | Issue | What the app does meanwhile |
 |---|---|
 | #26 diary date filter | Pages through entries newest first |
-| #27 entry nutrition | Computes from today's foods (old days may differ from the web); entries of a deleted recipe aren't counted |
+| #27 entry nutrition | Computes from today's foods (old days may differ from the web); entries of a built-in or deleted recipe aren't counted |
 | #28 food search | Fetches the whole food library |
 | #29 measurement/activity filters | Fetches everything, groups locally |
 | #30 new PRs in set response | Compares `records/` after sync |
@@ -62,7 +62,7 @@ it's done.
 | #35 analytics over time | Progress page and strength trend computed locally |
 | #36 translated display names | Ships `content.js` / `content_texts.js` |
 | #37 social, coaching, assistant, tutorials | Not in the app |
-| #38 built-in recipes not visible | Diet plans show "Built-in recipe" without details |
+| #38 built-in recipes not visible | Diet plans show "Built-in recipe" without details; the diary can't count or copy their entries |
 | #39 null food/recipe crashes | Leaves empty fields out |
 | #40 body tracking reminder setting | Own on/off switch in Settings; needs one reading first |
 | #41 Open Food Facts import | Searches OFF itself, saves a plain food (no Nutri-Score/NOVA/OFF link) |
