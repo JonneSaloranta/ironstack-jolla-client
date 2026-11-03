@@ -27,29 +27,23 @@ it's done.
   phone, install with `devel-su rpm -Uvh` (needs the user's terminal), go
   through every section with the user's real account, larger text sizes
   and landscape.
+- [ ] **New in this pass, on the phone** (emulator-checked against the
+  local IronStack 2026-11-03): Progress page, nutrition statistics,
+  "Is your current target working?" and observed maintenance, Open Food
+  Facts search and barcode, the body tracking reminder. Still to hear on
+  real hardware: the stretching timer chimes (the emulator has no audio
+  out), also with the screen off.
 - [ ] **Dialogs.** A focused text field swallowed the first tap on Save;
   initial focus was removed from every dialog. Confirm on the phone that
   each dialog saves with one tap.
 
 ## Features possible now (API supports them)
 
-- [ ] Nutrition stats (the web's `stats` page: averages, macro split
-  over time) - worked out from diary entries, slow without #26.
-- [ ] Observed maintenance and the "is your target working?" suggestion
-  on the nutrition overview - computable from diary and body weight, but
-  the web's algorithm (`apps/nutrition/maintenance.py`,
-  `suggestions.py`) would need porting.
-- [ ] Open Food Facts: search and barcode import done by the app itself,
-  then `POST foods/` (the API has no import, see COMPATIBILITY.md).
-- [ ] Training analytics like the web's: weekly volume, muscle group
-  volume, PR history - from completed sessions until #35.
-- [ ] Body tracking reminder (14 days without a reading) - the on/off
-  setting isn't in the API profile.
-- [ ] Stretching: timer sound, cool-down suggestion after a workout
-  (needs #34 for `after_workout`).
 - [ ] Offline queue for diary, measurements, activities and stretching
   once #31 adds idempotency keys there (today these need a connection).
 - [ ] Home screen / cover: show today's calories or stretching streak?
+  Open question - decide whether the cover should show anything but a
+  workout in progress.
 
 ## Waiting on IronStack (issues filed on JonneSaloranta/ironstack)
 
@@ -62,13 +56,15 @@ it's done.
 | #30 new PRs in set response | Compares `records/` after sync |
 | #31 idempotency for more endpoints | Online only for those areas |
 | #32 copy program/routine | Copies request by request |
-| #33 goals/targets writable | Read-only; set on the web |
-| #34 guided stretching | Plays locally, logs as a quick log |
-| #35 analytics over time | Strength trend computed locally |
+| #33 goals/targets writable | Read-only; set on the web, and a suggested target adjustment is accepted there |
+| #34 guided stretching | Plays locally, logs as a quick log; no cool-down suggestion after a workout |
+| #35 analytics over time | Progress page and strength trend computed locally |
 | #36 translated display names | Ships `content.js` / `content_texts.js` |
 | #37 social, coaching, assistant, tutorials | Not in the app |
 | #38 built-in recipes not visible | Diet plans show "Built-in recipe" without details |
 | #39 null food/recipe crashes | Leaves empty fields out |
+| #40 body tracking reminder setting | Own on/off switch in Settings; needs one reading first |
+| #41 Open Food Facts import | Searches OFF itself, saves a plain food (no Nutri-Score/NOVA/OFF link) |
 
 When one is fixed: update the app, regenerate `content.js` if relevant
 (`python3 -I tools/content-i18n/generate.py ../IronStack`), and update

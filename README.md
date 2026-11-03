@@ -24,7 +24,13 @@ REST API (`/api/v1/`) with a per-user API key.
 - Full view of a session for corrections: edit and delete sets, add
   exercises, finish or abandon
 - Rest timer with a notification, also with the screen off
-- History and personal records
+- History and personal records; a Progress page like the web's (volume
+  per week and muscle group, records, body measurement changes)
+- Nutrition: food diary, foods (also from Open Food Facts by name or
+  barcode), recipes, diet plans, statistics, observed maintenance and
+  whether your calorie target is working
+- Body measurements with a reminder after 14 days, activities, and
+  stretching with a guided, chiming timer
 - Cover shows the workout in progress and its duration
 - Metric or imperial display, following the IronStack profile setting
 

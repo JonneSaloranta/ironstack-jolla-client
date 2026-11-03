@@ -38,6 +38,17 @@ HTTP server on localhost:
   shared by training mode and the full view (when an exercise is done,
   which one is next, what to prefill, merging queued sets in).
 
+- `tst_progress.qml`: the Progress page's figures (`progress.js`) - weekly
+  and muscle-group volume, records grouped by exercise, body measurement
+  changes, the body tracking reminder.
+- `tst_nutritionstats.qml`: nutrition statistics, the weight trend, observed
+  maintenance and the calorie adjustment suggestion (`nutritionstats.js`;
+  the expected figures are the ones IronStack's own `trends.py` gives for
+  the same readings), and turning an Open Food Facts product into a food
+  (`openfoodfacts.js`).
+- `tst_nutrition.qml` and `tst_calculators.qml`: nutrition maths and the
+  calculators.
+
 A new page or component must be added to `tests/qml/tst_compile.qml`.
 
 ## One-time setup
