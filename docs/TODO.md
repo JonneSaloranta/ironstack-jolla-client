@@ -16,7 +16,7 @@ landscape. Nothing has been tried on real hardware yet.
 How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
-0.1.0 installed on 2026-11-03; 0.3.1 is waiting in its `/tmp`.
+0.3.1 installed on 2026-11-03; 0.4.0 is waiting in its `/tmp`.
 
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
@@ -81,7 +81,7 @@ COMPATIBILITY.md and drop the row.
   no git remote yet. Harbour rules out camera barcode scanning (section 2).
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
-  (0.3.1 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
+  (0.4.0 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
   `sfdk check` on the aarch64 RPM; write release notes once there's a
   public release.
 - [ ] **`sfdk check` warning**: "unstripped-binary-or-object
