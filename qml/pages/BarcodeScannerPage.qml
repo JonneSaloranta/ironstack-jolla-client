@@ -59,7 +59,9 @@ Page {
         anchors.fill: parent
         source: camera
         fillMode: VideoOutput.PreserveAspectCrop
-        autoOrientation: true
+        // No autoOrientation: Sailfish's camera already gives the picture
+        // upright, as the system camera shows it; turning it again put it
+        // 90 degrees off on the phone.
     }
 
     Timer {
