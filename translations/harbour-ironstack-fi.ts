@@ -1840,23 +1840,23 @@
     <name>FoodsPage</name>
     <message>
         <source>Recipes</source>
-        <translation type="unfinished">Reseptit</translation>
+        <translation>Reseptit</translation>
     </message>
     <message>
         <source>serving</source>
-        <translation type="unfinished">annos</translation>
+        <translation>annos</translation>
     </message>
     <message>
         <source>Foods</source>
-        <translation type="unfinished">Ruoat</translation>
+        <translation>Ruoat</translation>
     </message>
     <message>
         <source>pcs</source>
-        <translation type="unfinished">kpl</translation>
+        <translation>kpl</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="unfinished">Oma</translation>
+        <translation>Oma</translation>
     </message>
     <message>
         <source>Scan a barcode</source>
@@ -1864,23 +1864,23 @@
     </message>
     <message>
         <source>Find in Open Food Facts</source>
-        <translation type="unfinished"></translation>
+        <translation>Hae Open Food Factsista</translation>
     </message>
     <message>
         <source>New food</source>
-        <translation type="unfinished">Uusi ruoka</translation>
+        <translation>Uusi ruoka</translation>
     </message>
     <message>
         <source>Add food</source>
-        <translation type="unfinished">Lisää ruoka</translation>
+        <translation>Lisää ruoka</translation>
     </message>
     <message>
         <source>Search foods</source>
-        <translation type="unfinished"></translation>
+        <translation>Hae ruokia</translation>
     </message>
     <message>
         <source>No foods found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruokia ei löytynyt.</translation>
     </message>
 </context>
 <context>
