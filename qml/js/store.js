@@ -811,6 +811,19 @@ function firstIncompleteIndex(exercises) {
     return -1
 }
 
+// Bodies of the writes to `path` still waiting in the sync queue, oldest
+// first, each with `pendingId` (the queue item's id). `queueItems` is
+// syncQueue.items.
+function pendingPosts(queueItems, path) {
+    return (queueItems || []).filter(function(item) {
+        return item.method === "POST" && item.path === path && item.body
+    }).map(function(item) {
+        var body = JSON.parse(JSON.stringify(item.body))
+        body.pendingId = item.id
+        return body
+    })
+}
+
 // The session's exercises with sets still waiting in the sync queue
 // appended, marked `pending: true`, so a set logged offline shows up right
 // away. `queueItems` is syncQueue.items.

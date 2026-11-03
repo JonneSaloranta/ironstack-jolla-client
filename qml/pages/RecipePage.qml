@@ -74,10 +74,8 @@ Page {
             kind: "recipe", itemId: recipeId, slot: (Nutrition.slots || [])[0] || null
         })
         dialog.accepted.connect(function() {
-            api.request("POST", "diary-entries/", dialog.body(), function(ok, status, data, error) {
-                errorText = ok ? "" : error
-                Nutrition.diaryEdited()
-            })
+            syncQueue.enqueue("POST", "diary-entries/", dialog.body())
+            Nutrition.diaryEdited()
         })
     }
 

@@ -47,6 +47,30 @@ ApplicationWindow {
         }
     }
 
+    // A queued write the server rejected is dropped (SyncQueue). Training
+    // shows its own; anything else - a diary entry, a reading logged offline
+    // - may have been made on a page long since closed, so it's said here.
+    Connections {
+        target: syncQueue
+        onItemFailed: {
+            if (path === "sets/" || path.indexOf("sessions/") === 0)
+                return
+            failedNotification.body = error
+            failedNotification.publish()
+        }
+    }
+
+    Notification {
+        id: failedNotification
+        appName: "IronStack"
+        appIcon: "harbour-ironstack"
+        summary: qsTr("Not saved")
+        previewSummary: summary
+        previewBody: body
+        isTransient: true
+        urgency: Notification.Normal
+    }
+
     Notification {
         id: prNotification
         appName: "IronStack"

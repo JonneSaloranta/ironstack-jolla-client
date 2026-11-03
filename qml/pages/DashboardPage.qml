@@ -164,13 +164,9 @@ Page {
     function logBodyWeight() {
         var dialog = pageStack.push(Qt.resolvedUrl("MeasurementDialog.qml"), { type: bodyWeightType })
         dialog.accepted.connect(function() {
-            api.request("POST", "measurements/", dialog.body(), function(ok, status, data, error) {
-                if (!ok)
-                    page.errorText = error
-                else
-                    page.bodyReminder = false
-                loadBodyWeight()
-            })
+            // Through the sync queue; the page refreshes once it's empty.
+            syncQueue.enqueue("POST", "measurements/", dialog.body())
+            page.bodyReminder = false
         })
     }
 

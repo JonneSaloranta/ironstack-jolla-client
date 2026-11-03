@@ -108,11 +108,14 @@ Page {
             initialMinutes: Math.max(1, Math.round(estimatedSeconds / 60))
         })
         dialog.accepted.connect(function() {
-            api.request("POST", "stretch-sessions/", dialog.body(), function(ok, status, data, error) {
-                errorText = ok ? "" : error
-                Store.stretchingChanged = true
-            })
+            syncQueue.enqueue("POST", "stretch-sessions/", dialog.body())
         })
+    }
+
+    SyncWatcher {
+        writes: "stretch-sessions/"
+        onSynced: Store.stretchingChanged = true
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -185,6 +188,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
             Label {
                 visible: text !== ""
                 x: Theme.horizontalPageMargin

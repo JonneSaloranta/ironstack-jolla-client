@@ -64,12 +64,18 @@ Page {
 
     function log() {
         var dialog = pageStack.push(Qt.resolvedUrl("MeasurementDialog.qml"), { type: type })
-        dialog.accepted.connect(function() { write("POST", "measurements/", dialog.body()) })
+        dialog.accepted.connect(function() { syncQueue.enqueue("POST", "measurements/", dialog.body()) })
     }
 
     function edit(reading) {
         var dialog = pageStack.push(Qt.resolvedUrl("MeasurementDialog.qml"), { type: type, reading: reading })
         dialog.accepted.connect(function() { write("PATCH", "measurements/" + reading.id + "/", dialog.body()) })
+    }
+
+    SyncWatcher {
+        writes: "measurements/"
+        onSynced: { Store.measurementsChanged = true; page.load() }
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -118,6 +124,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
 
             // The web's BMI card.
             Column {

@@ -51,12 +51,18 @@ Page {
 
     function log() {
         var dialog = pageStack.push(Qt.resolvedUrl("ActivityDialog.qml"), { type: type })
-        dialog.accepted.connect(function() { write("POST", "activities/", dialog.body()) })
+        dialog.accepted.connect(function() { syncQueue.enqueue("POST", "activities/", dialog.body()) })
     }
 
     function edit(activity) {
         var dialog = pageStack.push(Qt.resolvedUrl("ActivityDialog.qml"), { type: type, activity: activity })
         dialog.accepted.connect(function() { write("PATCH", "activities/" + activity.id + "/", dialog.body()) })
+    }
+
+    SyncWatcher {
+        writes: "activities/"
+        onSynced: { Store.activitiesChanged = true; page.load() }
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -104,6 +110,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
             Label {
                 visible: page.summary.count > 0
                 x: Theme.horizontalPageMargin

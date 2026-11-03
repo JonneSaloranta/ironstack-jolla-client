@@ -8,10 +8,10 @@
 
 class ApiClient;
 
-// Writes that must not be lost to a bad gym connection - logging a set,
-// finishing a workout - go through this queue instead of straight to
-// ApiClient. Items are kept on disk, sent strictly in order, and retried
-// until the server answers:
+// Writes that must not be lost to a bad connection - logging a set,
+// finishing a workout, a diary entry, a reading, an activity or stretching
+// - go through this queue instead of straight to ApiClient. Items are kept
+// on disk, sent strictly in order, and retried until the server answers:
 //
 //   2xx                      -> done, itemSynced()
 //   no connection, 429, 5xx  -> kept, retried later (order preserved)
@@ -21,7 +21,7 @@ class ApiClient;
 //
 // Every POST gets an Idempotency-Key (a UUID kept on disk with the item and
 // sent unchanged with every retry - IronStack docs/API.md "Retrying
-// writes"), so a retry after a lost response doesn't log a set twice: the
+// writes"), so a retry after a lost response doesn't log anything twice: the
 // server answers it with the stored response instead.
 class SyncQueue : public QObject
 {

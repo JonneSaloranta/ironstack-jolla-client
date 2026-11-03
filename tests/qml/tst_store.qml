@@ -443,6 +443,21 @@ TestCase {
         compare(Store.mergePendingSets(null, items).length, 0)
     }
 
+    function test_pendingPosts() {
+        var items = [
+            { id: 1, method: "POST", path: "sets/", body: { reps: 5 } },
+            { id: 2, method: "POST", path: "diary-entries/", body: { date: "2026-11-03", food: 5 } },
+            { id: 3, method: "PATCH", path: "diary-entries/", body: { quantity: 1 } }
+        ]
+        var pending = Store.pendingPosts(items, "diary-entries/")
+        compare(pending.length, 1)
+        compare(pending[0].food, 5)
+        compare(pending[0].pendingId, 2)
+        // a copy: the queue's own item is left alone
+        verify(items[1].body.pendingId === undefined)
+        compare(Store.pendingPosts(null, "sets/").length, 0)
+    }
+
     function test_pendingSessionEnd() {
         var items = [{ id: 1, method: "PATCH", path: "sessions/9/", body: { status: "completed" } }]
         compare(Store.pendingSessionEnd(items, 9), "completed")

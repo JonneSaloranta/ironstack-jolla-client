@@ -7,7 +7,9 @@ import "../js/nutrition.js" as Nutrition
 // The food diary, one day at a time like the web's: the day's totals
 // against the target, then each meal with what was logged. Add a food or
 // recipe, a quick entry, copy the day to another date, save a meal as a
-// recipe; entries can be corrected or removed.
+// recipe; entries can be corrected or removed. New entries go through the
+// sync queue, so they're kept on the phone without a connection and shown
+// (worked out from the food or recipe) until the server has them.
 Page {
     id: page
     objectName: "diaryPage"
@@ -25,12 +27,17 @@ Page {
     property string notice: ""
 
     readonly property string isoDay: Store.isoDate(day)
-    readonly property var totals: Nutrition.total(entries, Nutrition.foods || {}, Nutrition.recipes || {})
+    // The day's entries still waiting in the sync queue.
+    readonly property var pending: Store.pendingPosts(syncQueue.items, "diary-entries/").filter(function(e) {
+        return e.date === isoDay
+    })
+    readonly property var shown: entries.concat(pending)
+    readonly property var totals: Nutrition.total(shown, Nutrition.foods || {}, Nutrition.recipes || {})
 
     readonly property var texts: ({ servings: qsTr("%1 serving(s)"), portions: qsTr("%1 portion(s)"), piece: qsTr("pcs") })
 
     function entriesOf(slotId) {
-        return entries.filter(function(e) { return e.meal_slot === slotId })
+        return shown.filter(function(e) { return e.meal_slot === slotId })
     }
 
     // The day is read here, not from isoDay: onDayChanged runs before
@@ -82,23 +89,20 @@ Page {
             var dialog = pageStack.replace(Qt.resolvedUrl("DiaryEntryDialog.qml"), {
                 kind: kind, itemId: id, slot: slot || defaultSlot(), day: day
             })
-            dialog.accepted.connect(function() {
-                api.request("POST", "diary-entries/", dialog.body(), function(ok, status, data, error) {
-                    changed(ok ? "" : error)
-                })
-            })
+            dialog.accepted.connect(function() { log(dialog.body()) })
         })
+    }
+
+    function log(body) {
+        syncQueue.enqueue("POST", "diary-entries/", body)
+        Nutrition.diaryEdited()
     }
 
     function quickEntry(slot) {
         var dialog = pageStack.push(Qt.resolvedUrl("DiaryEntryDialog.qml"), {
             kind: "quick", slot: slot || defaultSlot(), day: day
         })
-        dialog.accepted.connect(function() {
-            api.request("POST", "diary-entries/", dialog.body(), function(ok, status, data, error) {
-                changed(ok ? "" : error)
-            })
-        })
+        dialog.accepted.connect(function() { log(dialog.body()) })
     }
 
     function edit(entry) {
@@ -135,6 +139,12 @@ Page {
             Nutrition.changed = true
             Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: recipeId }) })
         })
+    }
+
+    SyncWatcher {
+        writes: "diary-entries/"
+        onSynced: page.changed("")
+        onFailed: page.changed(error)
     }
 
     onDayChanged: {
@@ -226,6 +236,8 @@ Page {
                 text: page.notice
             }
 
+            SyncStatus {}
+
             MacroSummary {
                 totals: page.totals
                 target: page.target
@@ -269,20 +281,29 @@ Page {
                             id: entryItem
                             property var nutrition: Nutrition.forEntry(modelData, Nutrition.foods, Nutrition.recipes)
                             contentHeight: Math.max(Theme.itemSizeSmall, entryColumn.height + 2 * Theme.paddingSmall)
-                            onClicked: page.edit(modelData)
-                            menu: ContextMenu {
-                                MenuItem {
-                                    text: qsTr("Edit")
-                                    onClicked: page.edit(modelData)
-                                }
-                                MenuItem {
-                                    text: qsTr("Delete")
-                                    onClicked: {
-                                        var id = modelData.id
-                                        entryItem.remorseDelete(function() {
-                                            api.request("DELETE", "diary-entries/" + id + "/", null,
-                                                        function(ok, status, data, error) { page.changed(ok ? "" : error) })
-                                        })
+                            // Waiting in the sync queue: nothing to edit on the server yet.
+                            property bool pending: modelData.pendingId !== undefined
+                            onClicked: {
+                                if (!pending)
+                                    page.edit(modelData)
+                            }
+                            menu: pending ? null : entryMenu
+                            Component {
+                                id: entryMenu
+                                ContextMenu {
+                                    MenuItem {
+                                        text: qsTr("Edit")
+                                        onClicked: page.edit(modelData)
+                                    }
+                                    MenuItem {
+                                        text: qsTr("Delete")
+                                        onClicked: {
+                                            var id = modelData.id
+                                            entryItem.remorseDelete(function() {
+                                                api.request("DELETE", "diary-entries/" + id + "/", null,
+                                                            function(ok, status, data, error) { page.changed(ok ? "" : error) })
+                                            })
+                                        }
                                     }
                                 }
                             }
@@ -309,7 +330,8 @@ Page {
                                     truncationMode: TruncationMode.Fade
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.secondaryColor
-                                    text: Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
+                                    text: (pending ? qsTr("Not sent yet") + " · " : "")
+                                          + Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
                                           + " · " + qsTr("P") + " " + Math.round(nutrition.protein_grams)
                                           + " · " + qsTr("C") + " " + Math.round(nutrition.carbohydrate_grams)
                                           + " · " + qsTr("F") + " " + Math.round(nutrition.fat_grams)
@@ -322,7 +344,7 @@ Page {
             }
 
             Label {
-                visible: !page.loading && page.entries.length === 0
+                visible: !page.loading && page.shown.length === 0
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 topPadding: Theme.paddingLarge

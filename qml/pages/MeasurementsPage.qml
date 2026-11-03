@@ -50,12 +50,14 @@ Page {
         var dialog = pageStack.push(Qt.resolvedUrl("MeasurementDialog.qml"),
                                     type ? { type: type } : { types: types, type: types[0] || null })
         dialog.accepted.connect(function() {
-            api.request("POST", "measurements/", dialog.body(), function(ok, status, data, error) {
-                if (!ok)
-                    errorText = error
-                load()
-            })
+            syncQueue.enqueue("POST", "measurements/", dialog.body())
         })
+    }
+
+    SyncWatcher {
+        writes: "measurements/"
+        onSynced: page.load()
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -103,6 +105,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
         }
 
         delegate: ListItem {

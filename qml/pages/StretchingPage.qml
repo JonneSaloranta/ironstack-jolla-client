@@ -49,12 +49,14 @@ Page {
     function quickLog() {
         var dialog = pageStack.push(Qt.resolvedUrl("StretchSessionDialog.qml"), { routines: routines })
         dialog.accepted.connect(function() {
-            api.request("POST", "stretch-sessions/", dialog.body(), function(ok, status, data, error) {
-                if (!ok)
-                    errorText = error
-                load()
-            })
+            syncQueue.enqueue("POST", "stretch-sessions/", dialog.body())
         })
+    }
+
+    SyncWatcher {
+        writes: "stretch-sessions/"
+        onSynced: page.load()
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -114,6 +116,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
 
             Row {
                 x: Theme.horizontalPageMargin

@@ -46,12 +46,14 @@ Page {
     function logActivity() {
         var dialog = pageStack.push(Qt.resolvedUrl("ActivityDialog.qml"), { types: types, type: types[0] || null })
         dialog.accepted.connect(function() {
-            api.request("POST", "activities/", dialog.body(), function(ok, status, data, error) {
-                if (!ok)
-                    errorText = error
-                load()
-            })
+            syncQueue.enqueue("POST", "activities/", dialog.body())
         })
+    }
+
+    SyncWatcher {
+        writes: "activities/"
+        onSynced: page.load()
+        onFailed: page.errorText = error
     }
 
     Component.onCompleted: load()
@@ -99,6 +101,7 @@ Page {
                 showRetry: true
                 onRetry: page.load()
             }
+            SyncStatus {}
         }
 
         delegate: ListItem {
