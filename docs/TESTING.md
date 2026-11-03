@@ -48,6 +48,9 @@ HTTP server on localhost:
   ones IronStack's own `trends.py` gives for the same readings).
 - `tst_nutrition.qml` and `tst_calculators.qml`: nutrition maths and the
   calculators.
+- `tst_social.qml` and `tst_assistant.qml`: merging polled messages,
+  unread counts, request direction; the assistant's reply states and its
+  Markdown as Silica's StyledText.
 
 A new page or component must be added to `tests/qml/tst_compile.qml`.
 

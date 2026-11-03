@@ -35,6 +35,9 @@ later.
 - Body measurements with a reminder after 14 days, activities, and
   stretching with a guided, chiming timer; a cool-down suggested after a
   workout
+- Friends, groups and messages; coaching (ask a trainer, shared plans,
+  a trainer's clients); the AI assistant; the web's guided tours as a
+  guide
 - Cover shows the workout in progress and its duration; otherwise today's
   calories and protein against the target, with a quick entry action
 - Metric or imperial display, following the IronStack profile setting
