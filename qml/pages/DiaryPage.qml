@@ -30,7 +30,12 @@ Page {
         return entries.filter(function(e) { return e.meal_slot === slotId })
     }
 
+    // The day is read here, not from isoDay: onDayChanged runs before
+    // that binding has followed, which showed the previous day's entries
+    // (and edited or deleted those). A reply for a day no longer shown is
+    // dropped.
     function load(keepError) {
+        var iso = Store.isoDate(day)
         loading = true
         Nutrition.ensure(api, function(ok, error) {
             if (!ok) {
@@ -39,7 +44,9 @@ Page {
                 return
             }
             slots = Nutrition.slots || []
-            Nutrition.entriesFor(api, isoDay, function(ok2, found, error2) {
+            Nutrition.entriesFor(api, iso, function(ok2, found, error2) {
+                if (iso !== Store.isoDate(day))
+                    return
                 loading = false
                 errorText = ok2 ? (keepError || "") : error2
                 if (ok2)
@@ -123,7 +130,10 @@ Page {
         })
     }
 
-    onDayChanged: load()
+    onDayChanged: {
+        entries = []
+        load()
+    }
     Component.onCompleted: load()
 
     SilicaFlickable {
