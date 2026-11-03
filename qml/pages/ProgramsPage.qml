@@ -20,6 +20,15 @@ Page {
         programsModel.clear()
         var own = []
         var templates = []
+        // A coach's shared programs are left out; without the coaching
+        // permission there are none to tell apart.
+        api.request("GET", "coaching/coaches/", null, function(ok, status, data) {
+            Store.coachIds = ok ? (data || []).map(function(r) { return r.coach.id }) : []
+            loadPrograms(own, templates)
+        })
+    }
+
+    function loadPrograms(own, templates) {
         Store.fetchAll(api, "programs/", function(results) {
             for (var i = 0; i < results.length; i++) {
                 var group = Store.programGroup(results[i])

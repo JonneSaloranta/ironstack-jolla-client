@@ -898,12 +898,17 @@ function workingSetCount(pe) {
     return (pe.sets || []).filter(function(s) { return !s.is_warmup }).length
 }
 
+// The user ids of the user's coaches (coaching/coaches/), as last read:
+// programs/ also lists the programs a coach shares, owned by the coach.
+var coachIds = []
+
 // Which list a program from programs/ belongs in, matching IronStack's own
-// program page: "own" (the user's, or shared by their coach), "template"
-// (a built-in template), or "" - an ownerless program that isn't a
-// template, which the web page doesn't list either.
-function programGroup(program) {
+// program page: "own", "template" (a built-in template), or "" - a
+// program a coach shares (it's under Coaching, imported from there as an
+// own copy; the web's list leaves it out too) or an ownerless one that
+// isn't a template.
+function programGroup(program, coaches) {
     if (program.owner !== null && program.owner !== undefined)
-        return "own"
+        return (coaches || coachIds).indexOf(program.owner) >= 0 ? "" : "own"
     return program.is_template ? "template" : ""
 }
