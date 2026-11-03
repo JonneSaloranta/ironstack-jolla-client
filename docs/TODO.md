@@ -1,6 +1,6 @@
 # Remaining work
 
-The app uses all of IronStack 1.30's API (2026-11-03). What's left:
+The app uses all of IronStack 1.31's API (2026-11-04). What's left:
 testing on the phone, changes waiting on IronStack, a few limitations
 worth knowing, and housekeeping. Status per feature is in
 [COMPATIBILITY.md](COMPATIBILITY.md); open bugs go in
@@ -62,17 +62,13 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
-#26-#41 were fixed in IronStack 1.30.0 and are used by the app. Still
-open (2026-11-04). When one is fixed: make the change below, update
-COMPATIBILITY.md and drop the row.
+#26-#46 were fixed in IronStack 1.30.0 and 1.31.0 and are used by the
+app. Still open (2026-11-04). When one is fixed: make the change below,
+update COMPATIBILITY.md and drop the row.
 
 | Issue | Today in the app | When fixed | Where |
 |---|---|---|---|
-| #42 translated nested names and long texts | `display_name` isn't used; the app ships the web's catalog for every built-in name and text | Use the server's names and texts; drop the generator | `store.js` `contentName`, `texts.js`, `tools/content-i18n/` |
-| #43 cool-down suggestion | Ported `suggest_cooldown`; reads every exercise, routine and stretch, finds a done cool-down on the newest page of stretch sessions | Ask the server | `store.js` `suggestCooldown`, `CooldownCard.qml` |
-| #44 nutrition statistics and maintenance | Ported from `services.py`, `maintenance.py`, `trends.py`; reads the whole diary | Read them from the API | `nutritionstats.js`, `NutritionStatsPage.qml`, `NutritionPage.qml` |
-| #45 group unread counts your own message | Reads the thread again after sending to a group | Nothing; drop the extra read | `ChatPage.qml` `send` |
-| #46 API program edits don't bump the version | A coach editing a shared program in the app doesn't offer clients an update (on the web it does) | Nothing to change in the app | - |
+| #47 translated names still missing in `up-next/` (program), stretch sessions' `name`, the coaching client page and shared plans | `Store.shown` falls back to the app's copy of the web's catalog for these | Drop the fallback, `content.js`, `content_texts.js` and `tools/content-i18n/` (old offline caches then show English until refreshed) | `store.js` `contentName`, `texts.js` |
 
 ## 4. Housekeeping
 

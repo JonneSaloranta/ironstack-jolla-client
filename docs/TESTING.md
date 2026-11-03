@@ -16,7 +16,7 @@ HTTP server on localhost:
 
 - the API key goes only to the configured server - an absolute URL on
   another host, port or scheme is refused before any connection is made
-- the Bearer header, request path and JSON body
+- the Bearer and Accept-Language headers, request path and JSON body
 - error messages for 400 (DRF validation shapes), 401, 403, 404, 429, 5xx
   and an unreachable server
 - `unauthorized()` fires for the saved key only, not for a key being tried
@@ -48,14 +48,12 @@ with a wrong check digit must read as nothing.
   shared by training mode and the full view (when an exercise is done,
   which one is next, what to prefill, merging queued sets in), queued
   writes shown before they're sent, guided stretching steps from a
-  session and the cool-down suggestion.
+  session, and IronStack's translated names (`Store.shown`) with the
+  app's own catalog as the fallback.
 
 - `tst_progress.qml`: the Progress page's figures (`progress.js`) - the
   analytics endpoints' answers, records grouped by exercise, body
   measurement changes.
-- `tst_nutritionstats.qml`: nutrition statistics, the weight trend and
-  observed maintenance (`nutritionstats.js`; the expected figures are the
-  ones IronStack's own `trends.py` gives for the same readings).
 - `tst_nutrition.qml` and `tst_calculators.qml`: nutrition maths and the
   calculators.
 - `tst_social.qml` and `tst_assistant.qml`: merging polled messages,

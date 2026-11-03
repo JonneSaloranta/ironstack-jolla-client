@@ -3,7 +3,7 @@
 Native Sailfish OS client (`harbour-ironstack`) for a self-hosted
 [IronStack](https://github.com/JonneSaloranta/ironstack) instance. Silica
 QML UI, a small C++ layer for networking and settings. Talks to IronStack's
-REST API (`/api/v1/`) with a per-user API key; needs IronStack 1.30.0 or
+REST API (`/api/v1/`) with a per-user API key; needs IronStack 1.31.0 or
 later.
 
 ## Features (0.1)
