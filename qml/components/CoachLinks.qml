@@ -56,12 +56,16 @@ Item {
         })
     }
 
+    // Shows what changes first; the update is made once that's accepted.
     function update() {
-        api.request("POST", "coaching/" + kind + "/" + planId + "/update/", null, function(ok, status, data, error) {
-            if (!ok)
-                return failed(error)
-            updateAvailable = false
-            updated()
+        var dialog = pageStack.push(Qt.resolvedUrl("../pages/CoachUpdateDialog.qml"), { diff: updateDiff })
+        dialog.accepted.connect(function() {
+            api.request("POST", "coaching/" + kind + "/" + planId + "/update/", null, function(ok, status, data, error) {
+                if (!ok)
+                    return failed(error)
+                updateAvailable = false
+                updated()
+            })
         })
     }
 
