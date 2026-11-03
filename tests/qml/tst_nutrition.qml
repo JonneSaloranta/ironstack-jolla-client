@@ -52,7 +52,7 @@ TestCase {
         compare(Nutrition.quantityText(entries[1], foods, { servings: "%1 s", portions: "%1 p", piece: "pcs" }), "1 s")
     }
 
-    // A deleted recipe is hidden from recipes/; its entries stay.
+    // A built-in or deleted recipe is hidden from recipes/; its entries stay.
     function test_isKnown() {
         var recipes = { 9: recipe }
         verify(Nutrition.isKnown({ food: 5, recipe: null }, foods, recipes))

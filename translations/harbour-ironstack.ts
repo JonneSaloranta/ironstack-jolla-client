@@ -45,58 +45,58 @@
 <context>
     <name>ActivityDialog</name>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="53"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="52"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="54"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="53"/>
         <source>Edit activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="54"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="53"/>
         <source>Log activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="59"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="58"/>
         <source>Activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="73"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="72"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="79"/>
-        <location filename="../qml/pages/ActivityDialog.qml" line="86"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="78"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="85"/>
         <source>Start time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="102"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="101"/>
         <source>Duration (minutes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="111"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="110"/>
         <source>Distance (mi)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="111"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="110"/>
         <source>Distance (km)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="121"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="120"/>
         <source>Calories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ActivityDialog.qml" line="130"/>
+        <location filename="../qml/pages/ActivityDialog.qml" line="129"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -660,112 +660,112 @@
 <context>
     <name>DiaryEntryDialog</name>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="73"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="72"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="74"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="73"/>
         <source>Quick entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="80"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="79"/>
         <source>Meal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="93"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="92"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="102"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="101"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="103"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="102"/>
         <source>Optional - e.g. the restaurant dish.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="110"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="109"/>
         <source>Calories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="111"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="110"/>
         <source>kcal. Leave blank to estimate it from the macros.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="122"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="121"/>
         <source>Protein (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="123"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="122"/>
         <source>Protein</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="132"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="131"/>
         <source>Carbohydrates (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="133"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="132"/>
         <source>Carbohydrates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="142"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="141"/>
         <source>Fat (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="143"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="142"/>
         <source>Fat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="155"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="154"/>
         <source>Amount (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="155"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="154"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="156"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="155"/>
         <source>Servings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="156"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="155"/>
         <source>Portions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="172"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="171"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="173"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="172"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="174"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="173"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryEntryDialog.qml" line="181"/>
+        <location filename="../qml/pages/DiaryEntryDialog.qml" line="180"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -788,87 +788,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/DiaryPage.qml" line="124"/>
-        <source>%n entries of a deleted recipe weren&apos;t copied.</source>
+        <location filename="../qml/pages/DiaryPage.qml" line="135"/>
+        <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="133"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="144"/>
         <source>Nothing logged for this meal yet to save as a recipe.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="156"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="167"/>
         <source>Copy this day to another date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="160"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="252"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="304"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="171"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="263"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="312"/>
         <source>Quick entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="164"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="248"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="175"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="259"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="174"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="185"/>
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="199"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="210"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="257"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="268"/>
         <source>Save as recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="280"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="288"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="284"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="292"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="305"/>
-        <source>Deleted recipe</source>
+        <location filename="../qml/pages/DiaryPage.qml" line="313"/>
+        <source>Built-in or deleted recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="319"/>
-        <source>Not counted in the totals: the app can&apos;t read a deleted recipe.</source>
+        <location filename="../qml/pages/DiaryPage.qml" line="327"/>
+        <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="321"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="329"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="322"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="330"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="323"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="331"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="339"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="347"/>
         <source>Nothing logged yet.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -876,62 +876,62 @@
 <context>
     <name>DietPlanDialog</name>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="69"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="67"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="70"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="68"/>
         <source>New diet plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="75"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="73"/>
         <source>Plan name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="81"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="79"/>
         <source>Daily calories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="92"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="90"/>
         <source>Protein (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="93"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="91"/>
         <source>Protein</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="101"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="99"/>
         <source>Carbohydrates (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="102"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="100"/>
         <source>Carbohydrates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="110"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="108"/>
         <source>Fat (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="111"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="109"/>
         <source>Fat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="119"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="117"/>
         <source>Vary meals across a whole week instead of repeating one day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanDialog.qml" line="122"/>
+        <location filename="../qml/pages/DietPlanDialog.qml" line="120"/>
         <source>Which meals?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1097,83 +1097,83 @@
 <context>
     <name>ExerciseEditDialog</name>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="61"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="59"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="62"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="60"/>
         <source>Edit exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="62"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="60"/>
         <source>New exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="68"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="66"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="74"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="72"/>
         <source>Movement type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="77"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="75"/>
         <source>Compound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="78"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="76"/>
         <source>Isolation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="83"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="81"/>
         <source>Weight logging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="86"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="84"/>
         <source>Total load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="87"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="85"/>
         <source>Per hand / dumbbell</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="91"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="89"/>
         <source>Equipment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="92"/>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="95"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="90"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="93"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="110"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="108"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="117"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="115"/>
         <source>Instructions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="123"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="121"/>
         <source>Primary muscles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ExerciseEditDialog.qml" line="135"/>
+        <location filename="../qml/pages/ExerciseEditDialog.qml" line="133"/>
         <source>Secondary muscles</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1457,107 +1457,107 @@
 <context>
     <name>FoodEditDialog</name>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="59"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="57"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="60"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="58"/>
         <source>Edit food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="60"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="58"/>
         <source>New food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="65"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="63"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="72"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="70"/>
         <source>Brand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="81"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="79"/>
         <source>Serving size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="90"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="88"/>
         <source>Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="95"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="93"/>
         <source>piece</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="101"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="99"/>
         <source>Nutrition per serving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="108"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="106"/>
         <source>Calories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="117"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="115"/>
         <source>Energy (kJ)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="126"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="124"/>
         <source>Fat (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="127"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="125"/>
         <source>of which saturates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="128"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="126"/>
         <source>Carbohydrates (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="129"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="127"/>
         <source>of which sugars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="130"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="128"/>
         <source>of which starch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="131"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="129"/>
         <source>of which polyols</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="132"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="130"/>
         <source>Fibre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="133"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="131"/>
         <source>Protein (g)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="134"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="132"/>
         <source>Salt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodEditDialog.qml" line="135"/>
+        <location filename="../qml/pages/FoodEditDialog.qml" line="133"/>
         <source>Sodium (mg)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1797,52 +1797,52 @@
 <context>
     <name>LogSetDialog</name>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="66"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="64"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="66"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="64"/>
         <source>Log set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="91"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="89"/>
         <source>Weight (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="117"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="115"/>
         <source>Reps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="138"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="136"/>
         <source>RPE (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="147"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="145"/>
         <source>RIR (optional)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="157"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="155"/>
         <source>Warm-up set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="158"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="156"/>
         <source>Not counted for records, progression or analytics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="164"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="162"/>
         <source>Taken to failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LogSetDialog.qml" line="171"/>
+        <location filename="../qml/pages/LogSetDialog.qml" line="169"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1901,37 +1901,37 @@
 <context>
     <name>MeasurementDialog</name>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="49"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="48"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="50"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="49"/>
         <source>Edit reading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="50"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="49"/>
         <source>Log reading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="55"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="54"/>
         <source>Measurement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="82"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="81"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="88"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="87"/>
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MeasurementDialog.qml" line="104"/>
+        <location filename="../qml/pages/MeasurementDialog.qml" line="103"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2572,112 +2572,112 @@
 <context>
     <name>NutritionProfileDialog</name>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="51"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="50"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="52"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="51"/>
         <source>Nutrition profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="56"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="55"/>
         <source>Biological sex</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="59"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="58"/>
         <source>Male</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="60"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="59"/>
         <source>Female</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="64"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="63"/>
         <source>Date of birth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="70"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="69"/>
         <source>Your job</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="73"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="72"/>
         <source>Desk job, mostly sitting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="74"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="73"/>
         <source>On my feet some of the day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="75"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="74"/>
         <source>On my feet most of the day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="76"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="75"/>
         <source>Physically demanding / manual labor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="82"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="81"/>
         <source>Average daily steps (if you know it)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="91"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="90"/>
         <source>Gym sessions per week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="100"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="99"/>
         <source>Typical session length (minutes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="109"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="108"/>
         <source>Other exercise (minutes/week)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="117"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="116"/>
         <source>Activity level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="120"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="119"/>
         <source>Sedentary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="121"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="120"/>
         <source>Lightly active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="122"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="121"/>
         <source>Moderately active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="123"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="122"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="124"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="123"/>
         <source>Very active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionProfileDialog.qml" line="130"/>
+        <location filename="../qml/pages/NutritionProfileDialog.qml" line="129"/>
         <source>Current daily calories, if you already track this</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2872,82 +2872,82 @@
 <context>
     <name>PrescriptionDialog</name>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="69"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="67"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="76"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="74"/>
         <source>Sets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="87"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="85"/>
         <source>Min reps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="97"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="95"/>
         <source>Max reps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="111"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="109"/>
         <source>Minimum reps cannot exceed maximum reps.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="116"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="114"/>
         <source>Target weight (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="127"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="125"/>
         <source>Target RPE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="136"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="134"/>
         <source>Target RIR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="144"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="142"/>
         <source>Progression method</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="147"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="145"/>
         <source>Double progression</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="148"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="146"/>
         <source>Linear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="149"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="147"/>
         <source>Percentage based</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="150"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="148"/>
         <source>RPE/RIR based</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="156"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="154"/>
         <source>Weight increment (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="166"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="164"/>
         <source>Percentage target (% 1RM)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PrescriptionDialog.qml" line="175"/>
+        <location filename="../qml/pages/PrescriptionDialog.qml" line="173"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2955,37 +2955,37 @@
 <context>
     <name>ProgramEditDialog</name>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="33"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="31"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="34"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="32"/>
         <source>Edit program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="34"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="32"/>
         <source>New program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="39"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="37"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="46"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="44"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="52"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="50"/>
         <source>Continuous - no fixed weekdays</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProgramEditDialog.qml" line="57"/>
+        <location filename="../qml/pages/ProgramEditDialog.qml" line="55"/>
         <source>Save as a personal template</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3261,32 +3261,32 @@
 <context>
     <name>RecipeEditDialog</name>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="32"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="30"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="33"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="31"/>
         <source>Edit recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="33"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="31"/>
         <source>New recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="38"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="36"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="45"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="43"/>
         <source>Servings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RecipeEditDialog.qml" line="54"/>
+        <location filename="../qml/pages/RecipeEditDialog.qml" line="52"/>
         <source>Instructions</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3856,57 +3856,57 @@
 <context>
     <name>StretchEditDialog</name>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="50"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="48"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="51"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="49"/>
         <source>Edit stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="51"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="49"/>
         <source>New stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="56"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="54"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="62"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="60"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="65"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="63"/>
         <source>Static</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="66"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="64"/>
         <source>Dynamic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="71"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="69"/>
         <source>per side</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="77"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="75"/>
         <source>Default hold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="86"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="84"/>
         <source>How to do it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchEditDialog.qml" line="91"/>
+        <location filename="../qml/pages/StretchEditDialog.qml" line="89"/>
         <source>Muscle groups</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4146,43 +4146,43 @@
 <context>
     <name>StretchSessionDialog</name>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="42"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="41"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="43"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="42"/>
         <source>Edit session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="43"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="42"/>
         <source>Log stretching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="48"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="47"/>
         <source>Routine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="49"/>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="52"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="48"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="51"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="65"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="64"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="72"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="71"/>
         <source>Duration (minutes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchSessionDialog.qml" line="82"/>
+        <location filename="../qml/pages/StretchSessionDialog.qml" line="81"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4488,38 +4488,38 @@
 <context>
     <name>WorkoutEditDialog</name>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="41"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="39"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="42"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="40"/>
         <source>Edit workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="42"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="40"/>
         <source>New workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="47"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="45"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="52"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="50"/>
         <source>Weekday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="53"/>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="56"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="51"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="54"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutEditDialog.qml" line="71"/>
+        <location filename="../qml/pages/WorkoutEditDialog.qml" line="69"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4532,48 +4532,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="134"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="136"/>
         <source>Edit workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="139"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="141"/>
         <source>Add exercise</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="143"/>
-        <location filename="../qml/pages/WorkoutPage.qml" line="229"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="145"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="231"/>
         <source>Start workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="179"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="181"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="184"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="186"/>
         <source>Move up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="189"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="191"/>
         <source>Move down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="193"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="195"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="237"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="239"/>
         <source>No exercises yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WorkoutPage.qml" line="238"/>
+        <location filename="../qml/pages/WorkoutPage.qml" line="240"/>
         <source>Pull down to add an exercise</source>
         <translation type="unfinished"></translation>
     </message>

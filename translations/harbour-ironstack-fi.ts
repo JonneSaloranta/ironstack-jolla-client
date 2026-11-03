@@ -686,19 +686,19 @@
         <translation>Ei vielä kirjauksia.</translation>
     </message>
     <message numerus="yes">
-        <source>%n entries of a deleted recipe weren&apos;t copied.</source>
+        <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
         <translation>
-            <numerusform>%n poistetun reseptin merkintä jäi kopioimatta.</numerusform>
-            <numerusform>%n poistetun reseptin merkintää jäi kopioimatta.</numerusform>
+            <numerusform>%n valmiin tai poistetun reseptin merkintä jäi kopioimatta.</numerusform>
+            <numerusform>%n valmiin tai poistetun reseptin merkintää jäi kopioimatta.</numerusform>
         </translation>
     </message>
     <message>
-        <source>Deleted recipe</source>
-        <translation>Poistettu resepti</translation>
+        <source>Built-in or deleted recipe</source>
+        <translation>Valmis tai poistettu resepti</translation>
     </message>
     <message>
-        <source>Not counted in the totals: the app can&apos;t read a deleted recipe.</source>
-        <translation>Ei mukana yhteissummissa: sovellus ei voi lukea poistettua reseptiä.</translation>
+        <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
+        <translation>Ei mukana yhteissummissa: sovellus ei voi lukea valmiita eikä poistettuja reseptejä.</translation>
     </message>
 </context>
 <context>

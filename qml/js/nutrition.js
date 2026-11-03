@@ -95,9 +95,10 @@ function total(entries, foods, recipes) {
     }, zero())
 }
 
-// Whether the entry's food or recipe is in the library. A deleted recipe
-// is hidden from the API (only active ones are listed), though the web
-// still counts its entries; the app can't (IronStack #27).
+// Whether the entry's food or recipe is in the library. recipes/ lists
+// only your own active recipes: a built-in one (a diet plan's, IronStack
+// #38) or a deleted one can't be read, though the web counts its entries
+// (IronStack #27).
 function isKnown(entry, foods, recipes) {
     if (Store.present(entry.food))
         return !!(foods && foods[entry.food])

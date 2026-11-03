@@ -66,6 +66,16 @@ Page {
         load(error || "")
     }
 
+    // "520 kcal"; an entry the app can't read (a built-in or deleted
+    // recipe) adds " + ?", or makes it "? kcal" when it's all there is.
+    function slotCalories(slotEntries) {
+        var known = slotEntries.filter(function(e) { return Nutrition.isKnown(e, Nutrition.foods, Nutrition.recipes) })
+        if (known.length === 0)
+            return "? kcal"
+        return Math.round(Nutrition.total(known, Nutrition.foods, Nutrition.recipes).calories) + " kcal"
+                + (known.length < slotEntries.length ? " + ?" : "")
+    }
+
     // The meal for a new entry: the first one, unless one is given.
     function defaultSlot() {
         return slots[0] || null
@@ -109,7 +119,8 @@ Page {
     function copyDay() {
         var picker = pageStack.push("Sailfish.Silica.DatePickerDialog", { date: Store.addDays(day, 1) })
         picker.accepted.connect(function() {
-            // An entry of a deleted recipe can't be logged again.
+            // An entry of a built-in (IronStack #38) or deleted recipe
+            // can't be logged again: "Not a recipe you own."
             var copied = entries.filter(function(e) { return Nutrition.isKnown(e, Nutrition.foods, Nutrition.recipes) })
             var skipped = entries.length - copied.length
             loading = true
@@ -121,7 +132,7 @@ Page {
                     day = picker.date
                 // After the day changed, which clears it.
                 if (ok && skipped)
-                    notice = qsTr("%n entries of a deleted recipe weren't copied.", "", skipped)
+                    notice = qsTr("%n entries of a built-in or deleted recipe weren't copied.", "", skipped)
             })
         })
     }
@@ -260,10 +271,7 @@ Page {
                         }
                         SectionHeader {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: Store.contentName(slot.name)
-                                  + (slotEntries.length
-                                     ? " · " + Math.round(Nutrition.total(slotEntries, Nutrition.foods, Nutrition.recipes).calories) + " kcal"
-                                     : "")
+                            text: Store.contentName(slot.name) + (slotEntries.length ? " · " + page.slotCalories(slotEntries) : "")
                         }
                     }
 
@@ -302,7 +310,7 @@ Page {
                                         width: parent.width - kcalLabel.width
                                         truncationMode: TruncationMode.Fade
                                         text: known ? Nutrition.entryName(modelData, Nutrition.foods, Nutrition.recipes, qsTr("Quick entry"))
-                                                    : qsTr("Deleted recipe")
+                                                    : qsTr("Built-in or deleted recipe")
                                     }
                                     Label {
                                         id: kcalLabel
@@ -316,7 +324,7 @@ Page {
                                     wrapMode: known ? Text.NoWrap : Text.Wrap
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.secondaryColor
-                                    text: !known ? qsTr("Not counted in the totals: the app can't read a deleted recipe.")
+                                    text: !known ? qsTr("Not counted in the totals: the app can't read built-in or deleted recipes.")
                                           : Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
                                           + " · " + qsTr("P") + " " + Math.round(nutrition.protein_grams)
                                           + " · " + qsTr("C") + " " + Math.round(nutrition.carbohydrate_grams)

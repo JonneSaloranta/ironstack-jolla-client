@@ -686,18 +686,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <source>%n entries of a deleted recipe weren&apos;t copied.</source>
+        <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
         <translation>
-            <numerusform>%n entry of a deleted recipe wasn&apos;t copied.</numerusform>
-            <numerusform>%n entries of a deleted recipe weren&apos;t copied.</numerusform>
+            <numerusform>%n entry of a built-in or deleted recipe wasn&apos;t copied.</numerusform>
+            <numerusform>%n entries of a built-in or deleted recipe weren&apos;t copied.</numerusform>
         </translation>
     </message>
     <message>
-        <source>Deleted recipe</source>
+        <source>Built-in or deleted recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Not counted in the totals: the app can&apos;t read a deleted recipe.</source>
+        <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
