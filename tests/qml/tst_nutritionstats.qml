@@ -98,22 +98,7 @@ TestCase {
                 "implausible")
     }
 
-    function test_suggestion() {
-        var now = new Date(today.getTime())
-        var goal = { target_rate_kg_per_week: "-0.50" }
-        var target = { daily_calories: 2200, source: "calculated", started_at: "2026-01-01T00:00:00Z" }
-        compare(Stats.suggestAdjustment(null, target, [], now).action, "no_active_goal")
-        compare(Stats.suggestAdjustment(goal, target, [], now).action, "insufficient_data")
-        compare(Stats.suggestAdjustment(goal, target, weights(-0.45, 1, 27), now).action, "on_track")
-        var s = Stats.suggestAdjustment(goal, target, weights(0, 1, 27), now)
-        compare(s.action, "adjust")
-        // -0.5 kg/week * 7700 / 7 = -550, capped at -250
-        compare(s.delta, -250)
-        compare(s.suggestedCalories, 1950)
-        // an accepted adjustment: nothing from before it counts
-        var adjusted = { daily_calories: 1950, source: "adjusted",
-                         started_at: new Date(today.getTime() - 5 * 86400000).toISOString() }
-        compare(Stats.suggestAdjustment(goal, adjusted, weights(0, 1, 27), now).action, "insufficient_data")
+    function test_rounding() {
         compare(Stats.roundHalfUp(-12.5), -13)
         compare(Stats.roundHalfUp(2.675, 2), 2.68)
         // the stats round like Decimal.quantize: half to even

@@ -9,10 +9,9 @@ import "../js/nutritionstats.js" as Stats
 // the daily target, the current goal, today's diet plan, whether the
 // target is working and the observed maintenance. Everything else -
 // diary, foods, recipes, plans, shopping, stats, calculators, profile - is
-// in the pull-down. The last two are worked out here from the diary and
-// body weight like the web's (apps/nutrition/suggestions.py,
-// maintenance.py); accepting a suggested target isn't possible over the
-// API (IronStack #33).
+// in the pull-down. The calorie adjustment is IronStack's own and can be
+// accepted here; the observed maintenance is worked out from the diary and
+// body weight like the web's (apps/nutrition/maintenance.py).
 Page {
     id: page
 
@@ -26,8 +25,10 @@ Page {
     property string weightError: ""
     readonly property var maintenance: dayTotals !== null && weights !== null
                                        ? Stats.estimateMaintenance(dayTotals, weights, new Date()) : null
-    readonly property var suggestion: weights !== null
-                                      ? Stats.suggestAdjustment(goal, target, weights, new Date()) : null
+    // nutrition/adjustment-suggestion/: { action, suggested_daily_calories,
+    // confidence, reason } - reason in the IronStack profile's language.
+    property var suggestion: null
+    property bool accepting: false
     property bool loading: false
     property string errorText: ""
 
@@ -57,24 +58,18 @@ Page {
         return Store.kgToDisplay(kgPerWeek, settings.unitSystem).toFixed(2)
     }
 
-    function suggestionText(s) {
-        if (!s)
-            return ""
-        var unit = Store.weightUnit(settings.unitSystem)
-        switch (s.action) {
-        case "insufficient_data":
-            return qsTr("Not enough logged weight yet - keep logging your weight regularly and check back in a "
-                        + "couple of weeks.")
-        case "on_track":
-            return qsTr("Target: %1 %3/week. Actual trend: %2 %3/week - on track.")
-                    .arg(rateText(s.targetRate)).arg(rateText(s.actualRate)).arg(unit)
-        case "adjust":
-            return qsTr("Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested "
-                        + "adjustment: %5 kcal/day.")
-                    .arg(rateText(s.targetRate)).arg(rateText(s.actualRate)).arg(unit).arg(s.spanDays)
-                    .arg((s.delta > 0 ? "+" : "") + s.delta)
-        }
-        return ""
+    // The web's "Accept": IronStack works the suggestion out again and,
+    // if it still says adjust, replaces the target.
+    function acceptSuggestion() {
+        accepting = true
+        api.request("POST", "nutrition/adjustment-suggestion/accept/", null, function(ok, status, data, error) {
+            accepting = false
+            if (!ok && status === 409 && data && data.reason)
+                suggestion = data
+            else if (!ok)
+                errorText = error
+            load()
+        })
     }
 
     function maintenanceText(m) {
@@ -102,7 +97,7 @@ Page {
     function load() {
         loading = true
         errorText = ""
-        var pending = 5
+        var pending = 6
         function settle(ok, error) {
             if (ok === false)
                 errorText = error
@@ -134,11 +129,15 @@ Page {
         })
         // Body weight needs the measurements permission; without it only
         // the two cards below say so.
-        var weightsSince = new Date(Date.now() - Stats.ADJUSTMENT_TREND_WINDOW_DAYS * 86400000)
+        var weightsSince = new Date(Date.now() - Stats.MAINTENANCE_WINDOW_DAYS * 86400000)
         Stats.bodyWeightSince(api, weightsSince, function(ok, readings, error) {
             weights = ok ? readings : null
             weightError = ok ? "" : error
             settle(true, "")
+        })
+        api.request("GET", "nutrition/adjustment-suggestion/", null, function(ok, status, data, error) {
+            suggestion = ok ? data : null
+            settle(ok, error)
         })
         api.request("GET", "diet-plans/?page_size=100", null, function(ok, status, data, error) {
             if (ok)
@@ -232,7 +231,7 @@ Page {
                          ? Store.formatWeight(page.goal.target_weight, settings.unitSystem) : "",
                          page.target ? qsTr("Daily target") + " " + page.target.daily_calories + " kcal" : ""]
                         .filter(function(p) { return p }).join(" · ")
-                      : qsTr("No goal set. Goals are set on the IronStack web.")
+                      : qsTr("No goal set yet. Set one under Goal and profile.")
             }
 
             SectionHeader {
@@ -264,7 +263,7 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 color: page.suggestion && page.suggestion.action === "adjust" ? Theme.highlightColor : Theme.secondaryColor
-                text: page.suggestionText(page.suggestion)
+                text: page.suggestion ? page.suggestion.reason : ""
             }
             Label {
                 visible: page.suggestion !== null && page.suggestion.action === "adjust"
@@ -273,9 +272,14 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryHighlightColor
-                text: visible ? page.confidenceText(page.suggestion.confidence) + ". "
-                                + qsTr("Adjusting to %1 kcal/day is done on the IronStack web: the app can't change "
-                                       + "targets.").arg(page.suggestion.suggestedCalories) : ""
+                text: visible ? page.confidenceText(page.suggestion.confidence) : ""
+            }
+            Button {
+                visible: page.suggestion !== null && page.suggestion.action === "adjust"
+                anchors.horizontalCenter: parent.horizontalCenter
+                enabled: !page.accepting
+                text: visible ? qsTr("Adjust to %1 kcal/day").arg(page.suggestion.suggested_daily_calories) : ""
+                onClicked: page.acceptSuggestion()
             }
 
             SectionHeader {

@@ -9,7 +9,8 @@ import "../js/store.js" as Store
 Dialog {
     id: dialog
 
-    property var profile
+    // The profile as read; {} to set one up.
+    property var profile: ({})
     readonly property var sexes: ["male", "female"]
     readonly property var jobs: ["sedentary", "light", "moderate", "physical"]
     readonly property var levels: ["sedentary", "light", "moderate", "active", "very_active"]

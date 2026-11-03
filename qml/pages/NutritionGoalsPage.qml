@@ -5,9 +5,8 @@ import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
 
 // The nutrition goal and daily target with their history, and the
-// nutrition profile behind them. Goals and targets are set on the web -
-// the API has them read-only (IronStack #33); the profile can be corrected
-// here once the web's onboarding has created it.
+// nutrition profile behind them, like the web's: set up the profile, start
+// a new goal (IronStack calculates its target), correct the profile.
 Page {
     id: page
 
@@ -74,6 +73,28 @@ Page {
         })
     }
 
+    function editProfile() {
+        var dialog = pageStack.push(Qt.resolvedUrl("NutritionProfileDialog.qml"), { profile: page.profile || {} })
+        dialog.accepted.connect(function() {
+            // PUT creates the profile, PATCH corrects it.
+            api.request(page.profile ? "PATCH" : "PUT", "nutrition/profile/", dialog.body(),
+                        function(ok, status, data, error) {
+                page.load(ok ? "" : error)
+            })
+        })
+    }
+
+    function newGoal() {
+        var dialog = pageStack.push(Qt.resolvedUrl("NutritionGoalDialog.qml"), { goal: page.goal })
+        dialog.accepted.connect(function() {
+            loading = true
+            api.request("POST", "nutrition-goals/", dialog.body(), function(ok, status, data, error) {
+                Nutrition.diaryChanged = true
+                page.load(ok ? "" : error)
+            })
+        })
+    }
+
     Component.onCompleted: load()
 
     SilicaFlickable {
@@ -81,18 +102,16 @@ Page {
         contentHeight: column.height + Theme.paddingLarge
 
         PullDownMenu {
-            visible: page.profile !== null
+            visible: page.profile !== null || page.noProfile
             busy: page.loading
             MenuItem {
-                text: qsTr("Edit profile")
-                onClicked: {
-                    var dialog = pageStack.push(Qt.resolvedUrl("NutritionProfileDialog.qml"), { profile: page.profile })
-                    dialog.accepted.connect(function() {
-                        api.request("PATCH", "nutrition/profile/", dialog.body(), function(ok, status, data, error) {
-                            page.load(ok ? "" : error)
-                        })
-                    })
-                }
+                text: page.profile ? qsTr("Edit profile") : qsTr("Set up nutrition profile")
+                onClicked: page.editProfile()
+            }
+            MenuItem {
+                visible: page.profile !== null
+                text: qsTr("New goal")
+                onClicked: page.newGoal()
             }
         }
 
@@ -166,7 +185,8 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 color: Theme.secondaryColor
-                text: qsTr("No goal set. Goals are set on the IronStack web.")
+                text: page.profile ? qsTr("No goal set yet. Pull down to set one.")
+                                   : qsTr("No goal set yet. Set up your nutrition profile first.")
             }
 
             SectionHeader {
@@ -178,7 +198,8 @@ Page {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 color: Theme.secondaryColor
-                text: qsTr("No nutrition profile yet. It's created by the nutrition setup on the IronStack web.")
+                text: qsTr("No nutrition profile yet. Pull down to set it up: the daily target is calculated "
+                           + "from it, your height (Settings) and your latest body weight.")
             }
             Column {
                 visible: page.profile !== null

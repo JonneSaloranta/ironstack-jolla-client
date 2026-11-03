@@ -178,7 +178,8 @@ var foods = null      // id -> food
 var recipes = null    // id -> recipe
 var slots = null      // meal slots, in order
 var changed = false
-// The diary changed somewhere; the nutrition overview reloads.
+// The diary, or the goal and target, changed somewhere; the nutrition
+// overview reloads.
 var diaryChanged = false
 // Counts diary changes, for the cover to see one since it last looked.
 var diaryEdits = 0

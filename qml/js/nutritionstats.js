@@ -1,9 +1,8 @@
 .pragma library
-// The web's nutrition statistics, observed maintenance and calorie
-// adjustment suggestion (IronStack apps/nutrition/services.py
-// nutrition_stats*, trends.py, maintenance.py, suggestions.py), worked
-// out here from diary entries and body weight readings. Pure functions
-// except the two fetch helpers at the end.
+// The web's nutrition statistics and observed maintenance (IronStack
+// apps/nutrition/services.py nutrition_stats*, trends.py, maintenance.py),
+// worked out here from diary entries and body weight readings - the API
+// has neither. Pure functions except the two fetch helpers at the end.
 .import "store.js" as Store
 .import "nutrition.js" as Nutrition
 
@@ -235,49 +234,6 @@ function estimateMaintenance(totals, bodyWeightReadings, today) {
         result.confidence = "medium"
     else
         result.confidence = "low"
-    return result
-}
-
-// --- calorie adjustment suggestion (suggestions.py) ----------------------------
-
-var TOLERANCE_FRACTION = 0.3
-var MIN_TOLERANCE_KG_PER_WEEK = 0.1
-var ADJUSTMENT_ROUNDING_KCAL = 25
-var MAX_SINGLE_ADJUSTMENT_KCAL = 250
-var ADJUSTMENT_TREND_WINDOW_DAYS = 28
-
-// "Is your current target working?": the weight trend of the last 28
-// days (never from before an accepted adjustment) against the goal's
-// rate. { action: "no_active_goal" | "insufficient_data" | "on_track" |
-// "adjust", targetRate, actualRate, spanDays, delta, suggestedCalories,
-// confidence }. Never applied by itself.
-function suggestAdjustment(goal, target, bodyWeightReadings, now) {
-    var result = { action: "no_active_goal", targetRate: null, actualRate: null, spanDays: 0,
-                   delta: null, suggestedCalories: null, confidence: null }
-    if (!goal || !target)
-        return result
-    result.targetRate = Store.parseNumber(goal.target_rate_kg_per_week) || 0
-    var since = new Date(now.getTime() - ADJUSTMENT_TREND_WINDOW_DAYS * 86400000)
-    if (target.source === "adjusted" && target.started_at && new Date(target.started_at) > since)
-        since = new Date(target.started_at)
-    var trend = computeTrend(weightReadings(bodyWeightReadings, since))
-    if (trend === null) {
-        result.action = "insufficient_data"
-        return result
-    }
-    result.actualRate = trend.rate
-    result.spanDays = trend.spanDays
-    result.confidence = trendConfidence(trend)
-    var tolerance = Math.max(Math.abs(result.targetRate) * TOLERANCE_FRACTION, MIN_TOLERANCE_KG_PER_WEEK)
-    if (Math.abs(trend.rate - result.targetRate) <= tolerance + 1e-9) {
-        result.action = "on_track"
-        return result
-    }
-    var raw = (result.targetRate - trend.rate) * KCAL_PER_KG_BODY_FAT / 7
-    var rounded = roundHalfUp(raw / ADJUSTMENT_ROUNDING_KCAL) * ADJUSTMENT_ROUNDING_KCAL
-    result.delta = Math.max(Math.min(rounded, MAX_SINGLE_ADJUSTMENT_KCAL), -MAX_SINGLE_ADJUSTMENT_KCAL)
-    result.suggestedCalories = target.daily_calories + result.delta
-    result.action = "adjust"
     return result
 }
 
