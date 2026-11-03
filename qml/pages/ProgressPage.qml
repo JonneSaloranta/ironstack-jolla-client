@@ -72,16 +72,23 @@ Page {
 
     // Sessions and records depend on the range; measurements and the
     // exercises' muscle groups are read once.
+    // `start` isn't read here: onRangeChanged can run before the binding
+    // has followed the new range. A reply for an earlier range that comes
+    // in late is dropped.
+    property int rangeLoads: 0
+
     function loadRange() {
         errorText = ""
         pending += 2
+        var load = ++rangeLoads
+        var start = Store.rangeStart(range, new Date())
         var path = "sessions/?status=completed&page_size=100"
                 + (start ? "&started_after=" + Store.isoDate(start) : "")
         var found = []
         Store.fetchAll(api, path, function(results) {
             found = found.concat(results)
         }, function(ok, error) {
-            if (ok)
+            if (ok && load === rangeLoads)
                 sessions = found
             settle(ok, error)
         })
@@ -99,7 +106,8 @@ Page {
                 if (data.next && last && (!startDay || Store.isoDate(new Date(last.achieved_at)) >= startDay))
                     recordPage(data.next)
                 else {
-                    records = foundRecords
+                    if (load === rangeLoads)
+                        records = foundRecords
                     settle(true, "")
                 }
             })
