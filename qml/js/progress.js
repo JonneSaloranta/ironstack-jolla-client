@@ -1,87 +1,34 @@
 .pragma library
-// The web's Progress page (apps/analytics/services.py), worked out from
-// completed sessions, records and body measurements - the API has no
-// analytics over time (IronStack #35). Pure functions; the page fetches.
+// The web's Progress page (apps/analytics/services.py): the analytics
+// endpoints' answers in the page's shapes, and what the API leaves to the
+// client - records grouped by exercise and how each body measurement
+// changed. Pure functions; the page fetches.
 // Weights and volumes stay canonical kg here, the page converts.
 .import "store.js" as Store
 
-// Sets that count toward training load: working sets of completed
-// sessions started in [start, end] (Dates, start null = no lower bound).
-// A failed set still counts - the work happened (_training_sets).
-// Calls fn(set, performedExercise, session) for each.
-function eachTrainingSet(sessions, start, end, fn) {
-    ;(sessions || []).forEach(function(session) {
-        if (!inRange(session, start, end))
-            return
-        ;(session.performed_exercises || []).forEach(function(pe) {
-            ;(pe.sets || []).forEach(function(set) {
-                if (!set.is_warmup)
-                    fn(set, pe, session)
-            })
-        })
-    })
+// analytics/summary/: workouts, training time (seconds) and volume (kg).
+function summaryFrom(data) {
+    return {
+        sessionCount: (data && data.session_count) || 0,
+        duration: (data && data.total_duration_seconds) || 0,
+        volume: data ? Store.parseNumber(data.total_volume) || 0 : 0
+    }
 }
 
-function inRange(session, start, end) {
-    if (session.status !== "completed")
-        return false
-    var day = Store.isoDate(new Date(session.started_at))
-    return (!start || day >= Store.isoDate(start)) && (!end || day <= Store.isoDate(end))
-}
-
-function setVolume(set) {
-    var weight = Store.parseNumber(set.weight)
-    return (isNaN(weight) ? 0 : weight) * (set.reps || 0)
-}
-
-// Workouts, training time (seconds, sessions with an end) and volume.
-function trainingSummary(sessions, start, end) {
-    var summary = { sessionCount: 0, duration: 0, volume: 0 }
-    ;(sessions || []).forEach(function(session) {
-        if (!inRange(session, start, end))
-            return
-        summary.sessionCount++
-        if (session.ended_at)
-            summary.duration += Math.max(0, (new Date(session.ended_at) - new Date(session.started_at)) / 1000)
-    })
-    eachTrainingSet(sessions, start, end, function(set) { summary.volume += setVolume(set) })
-    summary.volume = Store.round(summary.volume, 2)
-    return summary
-}
-
-// Monday of the week `date` is in, local midnight.
-function weekStart(date) {
-    var day = Store.addDays(date, 0)
-    return Store.addDays(day, -((day.getDay() + 6) % 7))
-}
-
-// Volume per ISO week (weekly_volume_series): [{ x: <Monday ms>, value }],
-// oldest first, only weeks with training.
-function weeklyVolume(sessions, start, end) {
-    var weeks = {}
-    eachTrainingSet(sessions, start, end, function(set, pe, session) {
-        var key = weekStart(new Date(session.started_at)).getTime()
-        weeks[key] = (weeks[key] || 0) + setVolume(set)
-    })
-    return Object.keys(weeks).map(function(key) {
-        return { x: Number(key), value: Store.round(weeks[key], 2) }
+// analytics/volume/: [{ x: <Monday ms>, value }], oldest first, only
+// weeks with training.
+function weeklyFrom(data) {
+    return ((data && data.weeks) || []).map(function(w) {
+        return { x: Store.parseDate(w.week_start).getTime(), value: Store.parseNumber(w.volume) || 0 }
     }).sort(function(a, b) { return a.x - b.x })
 }
 
-// Volume per primary muscle group (muscle_group_volume_series): a set
-// counts in full for each of its exercise's primary muscle groups.
-// `primaryGroups` maps exercise id -> [muscle group id]. Biggest first:
-// [{ id, value }].
-function muscleGroupVolume(sessions, start, end, primaryGroups) {
-    var totals = {}
-    eachTrainingSet(sessions, start, end, function(set, pe) {
-        var volume = setVolume(set)
-        ;(primaryGroups[pe.exercise] || []).forEach(function(id) {
-            totals[id] = (totals[id] || 0) + volume
-        })
-    })
-    return Object.keys(totals).map(function(id) {
-        return { id: Number(id), value: Store.round(totals[id], 2) }
+// analytics/muscle-groups/: [{ id, name, value }], biggest first; the
+// name translated like the web's.
+function musclesFrom(data) {
+    return ((data && data.muscle_groups) || []).map(function(m) {
+        return { id: m.muscle_group, name: Store.contentName(m.muscle_group_name),
+                 value: Store.parseNumber(m.volume) || 0 }
     }).sort(function(a, b) { return b.value - a.value || a.id - b.id })
 }
 

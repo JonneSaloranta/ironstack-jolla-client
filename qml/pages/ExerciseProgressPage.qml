@@ -4,9 +4,8 @@ import "../components"
 import "../js/store.js" as Store
 
 // An exercise's strength trend, like the web's exercise analytics page:
-// estimated 1RM over time, sessions and volume for a date range. Worked out
-// here from completed sessions - the API has no analytics endpoint for it
-// (IronStack #35).
+// estimated 1RM over time, sessions and volume for a date range
+// (analytics/exercises/<id>/).
 Page {
     id: page
 
@@ -29,22 +28,21 @@ Page {
         return qsTr("All time")
     }
 
+    // A reply for an earlier range that comes in late is dropped.
     function load() {
         loading = true
         errorText = ""
-        var start = Store.rangeStart(range, new Date())
-        var path = "sessions/?status=completed&page_size=100"
-                + (start ? "&started_after=" + Store.isoDate(start) : "")
-        var sessions = []
-        Store.fetchAll(api, path, function(results) {
-            sessions = sessions.concat(results)
-        }, function(ok, error) {
+        var asked = range
+        api.request("GET", "analytics/exercises/" + exercise.id + "/?range=" + asked, null,
+                    function(ok, status, data, error) {
+            if (asked !== range)
+                return
             loading = false
             if (!ok) {
                 errorText = error
                 return
             }
-            trend = Store.exerciseTrend(sessions, exercise.id)
+            trend = Store.exerciseTrend(data)
         })
     }
 

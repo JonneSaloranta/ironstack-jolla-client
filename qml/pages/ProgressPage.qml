@@ -7,8 +7,9 @@ import "../js/progress.js" as Progress
 // The web's Progress page for a date range: workouts, training time and
 // volume; how each body measurement changed; strength trend per exercise;
 // weekly and muscle-group volume; personal records grouped by exercise.
-// The API has no analytics over time (IronStack #35), so it's worked out
-// here from completed sessions, records and measurements.
+// The training figures come from IronStack's analytics/; the exercises to
+// pick a trend for from the range's completed sessions; records and body
+// changes are grouped here.
 Page {
     id: page
 
@@ -16,10 +17,12 @@ Page {
     readonly property var ranges: ["7d", "30d", "3m", "6m", "1y", "all"]
 
     property var sessions: []
+    property var summary: Progress.summaryFrom(null)
+    property var weekly: []
+    property var muscles: []
     property var records: []
     property var readings: null
     property var types: []
-    property var primaryGroups: ({})
     property string bodyError: ""
     property int pending: 0
     property string errorText: ""
@@ -30,9 +33,6 @@ Page {
     readonly property var start: Store.rangeStart(range, new Date())
     readonly property var today: new Date()
 
-    readonly property var summary: Progress.trainingSummary(sessions, start, today)
-    readonly property var weekly: Progress.weeklyVolume(sessions, start, today)
-    readonly property var muscles: Progress.muscleGroupVolume(sessions, start, today, primaryGroups)
     readonly property var recordGroups: Progress.recordGroups(records, start, today)
     readonly property var body: readings ? Progress.bodyProgress(readings, types, start, today, settings.unitSystem) : []
     readonly property var trained: {
@@ -79,8 +79,19 @@ Page {
 
     function loadRange() {
         errorText = ""
-        pending += 2
+        pending += 5
         var load = ++rangeLoads
+        var asked = range
+        function analytics(path, apply) {
+            api.request("GET", "analytics/" + path + "?range=" + asked, null, function(ok, status, data, error) {
+                if (ok && load === rangeLoads)
+                    apply(data)
+                settle(ok, error)
+            })
+        }
+        analytics("summary/", function(data) { summary = Progress.summaryFrom(data) })
+        analytics("volume/", function(data) { weekly = Progress.weeklyFrom(data) })
+        analytics("muscle-groups/", function(data) { muscles = Progress.musclesFrom(data) })
         var start = Store.rangeStart(range, new Date())
         var path = "sessions/?status=completed&page_size=100"
                 + (start ? "&started_after=" + Store.isoDate(start) : "")
@@ -116,17 +127,7 @@ Page {
     }
 
     function loadOnce() {
-        pending += 3
-        Store.ensureLookups(api, function() {
-            var groups = {}
-            Store.fetchAll(api, "exercises/?page_size=100", function(results) {
-                results.forEach(function(e) { groups[e.id] = e.primary_muscle_groups || [] })
-            }, function(ok, error) {
-                if (ok)
-                    primaryGroups = groups
-                settle(ok, error)
-            })
-        })
+        pending += 2
         // Body measurements need their own permission; without it only
         // that section says so.
         var foundTypes = []
@@ -334,7 +335,7 @@ Page {
                         width: parent.width - 2 * Theme.horizontalPageMargin - muscleValue.width
                         truncationMode: TruncationMode.Fade
                         font.pixelSize: Theme.fontSizeSmall
-                        text: Store.muscleGroupName(modelData.id) || "#" + modelData.id
+                        text: modelData.name
                     }
                     Label {
                         id: muscleValue

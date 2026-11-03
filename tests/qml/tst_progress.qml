@@ -10,53 +10,24 @@ TestCase {
         return new Date(y, m - 1, d, h || 12).toISOString()
     }
 
-    property var sessions: [
-        // Wednesday 2026-10-28
-        { id: 1, status: "completed", started_at: at(2026, 10, 28, 10), ended_at: at(2026, 10, 28, 11),
-          performed_exercises: [
-              { exercise: 7, sets: [{ weight: "60.00", reps: 5, is_warmup: true },
-                                    { weight: "100.00", reps: 5, is_warmup: false },
-                                    { weight: "100.00", reps: 3, is_warmup: false, is_failure: true }] },
-              { exercise: 8, sets: [{ weight: null, reps: 10, is_warmup: false }] }] },
-        // Monday 2026-11-02
-        { id: 2, status: "completed", started_at: at(2026, 11, 2, 10), ended_at: at(2026, 11, 2, 10, 30),
-          performed_exercises: [{ exercise: 8, sets: [{ weight: "20.00", reps: 10, is_warmup: false }] }] },
-        { id: 3, status: "abandoned", started_at: at(2026, 11, 2, 18), ended_at: null,
-          performed_exercises: [{ exercise: 7, sets: [{ weight: "200.00", reps: 1, is_warmup: false }] }] },
-        { id: 4, status: "completed", started_at: at(2026, 11, 3, 18), ended_at: null, performed_exercises: [] }
-    ]
+    function test_fromAnalytics() {
+        var summary = Progress.summaryFrom({ session_count: 2, total_duration_seconds: 997.3, total_volume: "2562.50" })
+        compare(summary.sessionCount, 2)
+        compare(summary.duration, 997.3)
+        compare(summary.volume, 2562.5)
+        compare(Progress.summaryFrom(null).sessionCount, 0)
 
-    function test_trainingSummary() {
-        var s = Progress.trainingSummary(sessions, null, null)
-        compare(s.sessionCount, 3)
-        // warm-up and the abandoned session left out, the failed set counted
-        compare(s.volume, 500 + 300 + 0 + 200)
-        compare(s.duration, 3600)
-        var week = Progress.trainingSummary(sessions, new Date(2026, 10, 1), new Date(2026, 10, 3))
-        compare(week.sessionCount, 2)
-        compare(week.volume, 200)
-    }
-
-    function test_weeklyVolume() {
-        var weeks = Progress.weeklyVolume(sessions, null, null)
+        var weeks = Progress.weeklyFrom({ weeks: [{ week_start: "2026-10-26", volume: "200.00" },
+                                                  { week_start: "2026-10-19", volume: "2562.50" }] })
         compare(weeks.length, 2)
-        compare(new Date(weeks[0].x).getDate(), 26)  // Monday 2026-10-26
-        compare(weeks[0].value, 800)
-        compare(new Date(weeks[1].x).getDate(), 2)
+        compare(new Date(weeks[0].x).getDate(), 19)
         compare(weeks[1].value, 200)
-        // Sunday belongs to the week before
-        compare(Progress.weekStart(new Date(2026, 10, 8)).getDate(), 2)
-    }
 
-    function test_muscleGroupVolume() {
-        // a set counts in full for each primary group
-        var groups = Progress.muscleGroupVolume(sessions, null, null, { 7: [1, 2], 8: [3] })
-        compare(groups.length, 3)
-        compare(groups[0].id, 1)
-        compare(groups[0].value, 800)
-        compare(groups[1].id, 2)
-        compare(groups[2].id, 3)
-        compare(groups[2].value, 200)
+        var muscles = Progress.musclesFrom({ muscle_groups: [{ muscle_group: 1, muscle_group_name: "Chest", volume: "800.00" },
+                                                             { muscle_group: 6, muscle_group_name: "Quads", volume: "1762.50" }] })
+        compare(muscles[0].id, 6)
+        compare(muscles[0].name, "Quads")
+        compare(muscles[1].value, 800)
     }
 
     function test_recordGroups() {

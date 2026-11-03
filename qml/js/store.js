@@ -84,49 +84,17 @@ function rangeStart(range, today) {
     return days ? addDays(today, -(days - 1)) : null
 }
 
-// Estimated one-rep max, Epley like the web (apps/records/one_rep_max.py).
-function estimateOneRepMax(weight, reps) {
-    var w = parseNumber(weight)
-    if (isNaN(w) || !(reps >= 1))
-        return NaN
-    return round(w * (1 + reps / 30), 2)
-}
-
-// An exercise's strength trend from completed sessions, like the web's
-// exercise_one_rm_trend: one point per day (that day's best estimate of a
-// working set that wasn't a failure), and the summary of
-// exercise_summary: sessions and volume (failed sets count there).
-// Returns { points: [{x, y}], sessionCount, volume } - kg.
-function exerciseTrend(sessions, exerciseId) {
-    var best = {}
-    var sessionIds = {}
-    var volume = 0
-    sessions.forEach(function(session) {
-        if (session.status !== "completed")
-            return
-        var started = new Date(session.started_at)
-        var day = isoDate(started)
-        ;(session.performed_exercises || []).forEach(function(pe) {
-            if (pe.exercise !== exerciseId)
-                return
-            ;(pe.sets || []).forEach(function(set) {
-                if (set.is_warmup)
-                    return
-                sessionIds[session.id] = true
-                volume += parseNumber(set.weight) * set.reps
-                if (set.is_failure)
-                    return
-                var estimate = estimateOneRepMax(set.weight, set.reps)
-                if (!isNaN(estimate) && (best[day] === undefined || estimate > best[day].y))
-                    best[day] = { x: parseDate(day).getTime(), y: estimate }
-            })
-        })
-    })
-    var points = []
-    for (var day in best)
-        points.push(best[day])
-    points.sort(function(a, b) { return a.x - b.x })
-    return { points: points, sessionCount: Object.keys(sessionIds).length, volume: round(volume, 2) }
+// An exercise's strength trend from analytics/exercises/<id>/: one point
+// per training day (its best set's estimated 1RM), sessions and volume.
+// { points: [{x, y}], sessionCount, volume } - kg.
+function exerciseTrend(analytics) {
+    return {
+        points: (analytics.sessions || []).map(function(s) {
+            return { x: parseDate(s.date).getTime(), y: parseNumber(s.estimated_one_rep_max) }
+        }).filter(function(p) { return !isNaN(p.y) }).sort(function(a, b) { return a.x - b.x }),
+        sessionCount: analytics.session_count || 0,
+        volume: parseNumber(analytics.total_volume) || 0
+    }
 }
 
 // --- small lookup lists ----------------------------------------------------
