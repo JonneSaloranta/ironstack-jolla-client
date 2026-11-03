@@ -74,6 +74,9 @@ Page {
         id: list
         anchors.fill: parent
         model: filtered
+        // No current item: refilling the model on a keystroke would make
+        // one and take the focus from the search field.
+        currentIndex: -1
 
         PullDownMenu {
             busy: page.loading
