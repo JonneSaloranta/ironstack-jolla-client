@@ -31,6 +31,11 @@ Item {
     onBarsChanged: canvas.requestPaint()
     onReferenceChanged: canvas.requestPaint()
     onWidthChanged: canvas.requestPaint()
+    // Bars that came in while the chart was hidden are painted once shown.
+    onVisibleChanged: {
+        if (visible)
+            canvas.requestPaint()
+    }
 
     Label {
         id: maxLabel
@@ -47,6 +52,7 @@ Item {
         anchors.bottomMargin: Theme.paddingSmall
         x: Theme.horizontalPageMargin
         width: parent.width - 2 * Theme.horizontalPageMargin
+        onHeightChanged: requestPaint()
 
         onPaint: {
             var ctx = getContext("2d")
