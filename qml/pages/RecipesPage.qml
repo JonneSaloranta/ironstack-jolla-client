@@ -4,7 +4,8 @@ import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
 
-// Your recipes, like the web's list: calories per serving at a glance.
+// Your recipes, then the built-in ones (the diet plan builder's), like the
+// web's list: calories per serving at a glance.
 Page {
     id: page
 
@@ -17,7 +18,9 @@ Page {
         Nutrition.ensure(api, function(ok, error) {
             loading = false
             errorText = ok ? "" : error
-            recipes = Nutrition.list(Nutrition.recipes || {})
+            var all = Nutrition.list(Nutrition.recipes || {})
+            recipes = all.filter(function(r) { return Store.present(r.owner) })
+                    .concat(all.filter(function(r) { return !Store.present(r.owner) }))
         })
     }
 
@@ -65,25 +68,33 @@ Page {
             }
         }
 
-        delegate: ListItem {
-            contentHeight: Math.max(Theme.itemSizeSmall, textColumn.height + 2 * Theme.paddingSmall)
-            onClicked: pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: modelData.id })
-            Column {
-                id: textColumn
-                anchors.verticalCenter: parent.verticalCenter
-                x: Theme.horizontalPageMargin
-                width: parent.width - 2 * Theme.horizontalPageMargin
-                Label {
-                    width: parent.width
-                    truncationMode: TruncationMode.Fade
-                    text: Store.contentName(modelData.name)
-                }
-                Label {
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: Math.round(Nutrition.recipePerServing(modelData, Nutrition.foods).calories) + " kcal / "
-                          + qsTr("serving") + " · " + qsTr("%n serving(s)", "", modelData.servings)
+        delegate: Column {
+            width: list.width
+            property bool builtIn: !Store.present(modelData.owner)
+            SectionHeader {
+                visible: builtIn && (index === 0 || Store.present(page.recipes[index - 1].owner))
+                text: qsTr("Built-in recipes")
+            }
+            ListItem {
+                contentHeight: Math.max(Theme.itemSizeSmall, textColumn.height + 2 * Theme.paddingSmall)
+                onClicked: pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: modelData.id })
+                Column {
+                    id: textColumn
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    Label {
+                        width: parent.width
+                        truncationMode: TruncationMode.Fade
+                        text: Store.contentName(modelData.name)
+                    }
+                    Label {
+                        width: parent.width
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryColor
+                        text: Math.round(Nutrition.recipePerServing(modelData, Nutrition.foods).calories) + " kcal / "
+                              + qsTr("serving") + " · " + qsTr("%n serving(s)", "", modelData.servings)
+                    }
                 }
             }
         }

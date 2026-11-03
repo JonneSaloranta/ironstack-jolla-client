@@ -7,8 +7,7 @@ import "../js/nutrition.js" as Nutrition
 // One diet plan, like the web's: its targets, then each meal (per weekday
 // for a weekly plan) with what the builder put in it. Activate or
 // deactivate it, log a day of it to the diary, open its shopping list,
-// rename or delete it. Built-in recipes in a plan can't be read through
-// the API yet (IronStack #38) and show without their details.
+// rename or delete it. A recipe opens with its ingredients.
 Page {
     id: page
 
@@ -35,7 +34,7 @@ Page {
             return Nutrition.foods && Nutrition.foods[item.food] ? Store.contentName(Nutrition.foods[item.food].name) : "#" + item.food
         if (Nutrition.recipes && Nutrition.recipes[item.recipe])
             return Store.contentName(Nutrition.recipes[item.recipe].name)
-        return qsTr("Built-in recipe")
+        return "#" + item.recipe
     }
 
     function itemCalories(item) {
@@ -161,23 +160,36 @@ Page {
             }
             Repeater {
                 model: modelData.items
-                delegate: Row {
-                    x: Theme.horizontalPageMargin
-                    width: list.width - 2 * Theme.horizontalPageMargin
-                    Label {
-                        width: parent.width - kcal.width
-                        truncationMode: TruncationMode.Fade
-                        font.pixelSize: Theme.fontSizeSmall
-                        text: page.itemName(modelData) + " · " + Store.formatNumber(parseFloat(modelData.quantity))
-                              + (Store.present(modelData.food) && Nutrition.foods && Nutrition.foods[modelData.food]
-                                 ? " " + Nutrition.unitText(Nutrition.foods[modelData.food].serving_unit, qsTr("pcs"))
-                                 : " " + qsTr("serving(s)"))
+                // Opens the food or recipe, like the web's links.
+                delegate: BackgroundItem {
+                    width: list.width
+                    height: itemRow.height + 2 * Theme.paddingSmall
+                    onClicked: {
+                        if (Store.present(modelData.recipe))
+                            pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: modelData.recipe })
+                        else
+                            pageStack.push(Qt.resolvedUrl("FoodPage.qml"), { foodId: modelData.food })
                     }
-                    Label {
-                        id: kcal
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.secondaryColor
-                        text: page.itemCalories(modelData) !== null ? page.itemCalories(modelData) + " kcal" : ""
+                    Row {
+                        id: itemRow
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: Theme.horizontalPageMargin
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        Label {
+                            width: parent.width - kcal.width
+                            truncationMode: TruncationMode.Fade
+                            font.pixelSize: Theme.fontSizeSmall
+                            text: page.itemName(modelData) + " · " + Store.formatNumber(parseFloat(modelData.quantity))
+                                  + (Store.present(modelData.food) && Nutrition.foods && Nutrition.foods[modelData.food]
+                                     ? " " + Nutrition.unitText(Nutrition.foods[modelData.food].serving_unit, qsTr("pcs"))
+                                     : " " + qsTr("serving(s)"))
+                        }
+                        Label {
+                            id: kcal
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: Theme.secondaryColor
+                            text: page.itemCalories(modelData) !== null ? page.itemCalories(modelData) + " kcal" : ""
+                        }
                     }
                 }
             }

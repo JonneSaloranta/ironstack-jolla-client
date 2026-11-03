@@ -6,8 +6,9 @@ import "../js/nutrition.js" as Nutrition
 import "../js/texts.js" as Texts
 
 // One recipe, like the web's: nutrition per serving, the ingredients and
-// the instructions. Log it to the diary; edit it, its ingredients (added,
-// amounts changed, removed) or delete it.
+// the instructions. Log it to the diary; edit your own, its ingredients
+// (added, amounts changed, removed) or delete it - a built-in one is read
+// only, like on the web.
 Page {
     id: page
 
@@ -15,6 +16,7 @@ Page {
     property var recipe: Nutrition.recipes ? Nutrition.recipes[recipeId] || null : null
     property bool loading: false
     property string errorText: ""
+    readonly property bool editable: recipe !== null && Store.present(recipe.owner)
 
     readonly property var perServing: recipe ? Nutrition.recipePerServing(recipe, Nutrition.foods || {}) : Nutrition.zero()
 
@@ -93,6 +95,7 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
+                visible: page.editable
                 text: qsTr("Delete")
                 onClicked: remorse.execute(qsTr("Deleting recipe"), function() {
                     api.request("DELETE", "recipes/" + page.recipeId + "/", null, function(ok, status, data, error) {
@@ -106,6 +109,7 @@ Page {
                 })
             }
             MenuItem {
+                visible: page.editable
                 text: qsTr("Edit")
                 onClicked: {
                     var dialog = pageStack.push(Qt.resolvedUrl("RecipeEditDialog.qml"), { recipe: page.recipe })
@@ -113,6 +117,7 @@ Page {
                 }
             }
             MenuItem {
+                visible: page.editable
                 text: qsTr("Add ingredient")
                 onClicked: page.addIngredient()
             }
@@ -127,7 +132,8 @@ Page {
             width: parent.width
             PageHeader {
                 title: page.recipe ? Store.contentName(page.recipe.name) : ""
-                description: page.recipe ? qsTr("%n serving(s)", "", page.recipe.servings) : ""
+                description: page.recipe ? qsTr("%n serving(s)", "", page.recipe.servings)
+                                           + (page.editable ? "" : " · " + qsTr("Built-in")) : ""
             }
             ErrorBanner {
                 text: page.errorText
@@ -158,17 +164,24 @@ Page {
             id: item
             property var food: Nutrition.foods ? Nutrition.foods[modelData.food] : null
             contentHeight: Math.max(Theme.itemSizeSmall, row.height + 2 * Theme.paddingSmall)
-            onClicked: page.editIngredient(modelData)
-            menu: ContextMenu {
-                MenuItem {
-                    text: qsTr("Edit")
-                    onClicked: page.editIngredient(modelData)
-                }
-                MenuItem {
-                    text: qsTr("Remove")
-                    onClicked: {
-                        var id = modelData.id
-                        item.remorseDelete(function() { page.write("DELETE", "recipe-ingredients/" + id + "/", null) })
+            onClicked: {
+                if (page.editable)
+                    page.editIngredient(modelData)
+            }
+            menu: page.editable ? ingredientMenu : null
+            Component {
+                id: ingredientMenu
+                ContextMenu {
+                    MenuItem {
+                        text: qsTr("Edit")
+                        onClicked: page.editIngredient(modelData)
+                    }
+                    MenuItem {
+                        text: qsTr("Remove")
+                        onClicked: {
+                            var id = modelData.id
+                            item.remorseDelete(function() { page.write("DELETE", "recipe-ingredients/" + id + "/", null) })
+                        }
                     }
                 }
             }
@@ -195,7 +208,7 @@ Page {
         ViewPlaceholder {
             enabled: !page.loading && page.recipe !== null && (page.recipe.ingredients || []).length === 0
             text: qsTr("No ingredients yet.")
-            hintText: qsTr("Pull down to add one")
+            hintText: page.editable ? qsTr("Pull down to add one") : ""
         }
 
         VerticalScrollDecorator {}
