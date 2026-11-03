@@ -16,7 +16,7 @@ How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 0.3.1 installed on 2026-11-03; 0.4.0 is waiting in its `/tmp`.
-0.3.1 installed on 2026-11-03; 0.5.0 is the newest build (0.4.0 waits in its `/tmp`).
+0.4.0 installed on 2026-11-03; 0.5.0 is waiting in its `/tmp`.
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
   history, records, exercises, body tracking, activities, stretching,
