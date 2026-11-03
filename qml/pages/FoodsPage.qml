@@ -4,11 +4,12 @@ import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
 
-// The food library, like the web's: search by name or brand, your own
-// foods and the shared ones. Browsing opens a food; with `picking` a tap
-// emits picked() - with `includeRecipes` your recipes are offered too
-// (logging to the diary). The API has no food search (IronStack #28), so
-// the library is fetched once and searched here.
+// The food library, like the web's: search by name, brand or barcode,
+// your own foods and the shared ones. Browsing opens a food; with
+// `picking` a tap emits picked() - with `includeRecipes` recipes are
+// offered too (logging to the diary). Foods are searched on the server
+// (`foods/?search=`, which also matches a barcode); recipes, whose
+// built-in names are shown translated, in the library here.
 Page {
     id: page
 
@@ -19,13 +20,15 @@ Page {
     property bool loading: false
     property string errorText: ""
     property string searchText: ""
+    // The server's matches for the search: [food], or null until it answers.
+    property var found: null
 
     ListModel {
         id: filtered
     }
 
     function applyFilter() {
-        var term = searchText.toLowerCase()
+        var term = searchText.trim().toLowerCase()
         filtered.clear()
         function matches(name, extra) {
             return !term || name.toLowerCase().indexOf(term) >= 0 || (extra || "").toLowerCase().indexOf(term) >= 0
@@ -39,9 +42,10 @@ Page {
                                               + " kcal / " + qsTr("serving") })
             })
         }
-        Nutrition.list(Nutrition.foods || {}).forEach(function(f) {
+        var fromServer = term && found !== null
+        Nutrition.list(fromServer ? found : Nutrition.foods || {}).forEach(function(f) {
             var name = Store.contentName(f.name)
-            if (!f.active || !matches(name, f.brand))
+            if (!f.active || (!fromServer && !matches(name, f.brand)))
                 return
             filtered.append({ kind: "food", id: f.id, name: name, section: qsTr("Foods"),
                               detail: [f.brand, f.calories + " kcal / " + Store.formatNumber(parseFloat(f.serving_size))
@@ -51,14 +55,49 @@ Page {
         })
     }
 
-    onSearchTextChanged: applyFilter()
+    // One request once typing pauses; until it answers, the library
+    // already loaded is searched here.
+    function search() {
+        var term = searchText.trim()
+        if (!term) {
+            found = null
+            return applyFilter()
+        }
+        api.request("GET", "foods/?page_size=100&search=" + encodeURIComponent(term), null,
+                    function(ok, status, data, error) {
+            if (term !== searchText.trim())
+                return
+            errorText = ok ? "" : error
+            found = ok ? data.results || [] : null
+            // A match the library doesn't have yet (just imported by
+            // someone else) is still picked and shown by id.
+            if (found && Nutrition.foods)
+                found.forEach(function(f) { Nutrition.foods[f.id] = f })
+            applyFilter()
+        })
+    }
+
+    Timer {
+        id: searchTimer
+        interval: 400
+        onTriggered: page.search()
+    }
+
+    onSearchTextChanged: {
+        found = null
+        applyFilter()
+        searchTimer.restart()
+    }
 
     function load() {
         loading = true
         Nutrition.ensure(api, function(ok, error) {
             loading = false
             errorText = ok ? "" : error
-            applyFilter()
+            if (searchText.trim())
+                search()
+            else
+                applyFilter()
         })
     }
 
