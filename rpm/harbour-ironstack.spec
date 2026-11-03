@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.4.0
+Version:    0.5.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,16 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.5.0-1
+- Friends and groups: requests, invites, conversations, blocking and
+  group management.
+- Coaching: ask a trainer, import and update shared plans; a trainer's
+  clients and sharing.
+- The AI assistant: conversations, suggested plans, its settings.
+- The web's guided tours as a Guide.
+- A deleted diet plan's shopping list ticks are forgotten; the binary
+  is stripped.
+
 * Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.4.0-1
 - Needs IronStack 1.30.0 or later.
 - Food diary totals from the logged values, built-in recipes, copy day
