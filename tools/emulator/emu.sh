@@ -4,7 +4,7 @@
 # "Scripted testing".
 #
 #   tools/emulator/emu.sh setup              # once per emulator boot
-#   tools/emulator/emu.sh deploy             # install RPMS/*.i486.rpm and (re)launch
+#   tools/emulator/emu.sh deploy             # install the newest i486 RPM (tools/build.sh) and (re)launch
 #   tools/emulator/emu.sh launch [LANG]      # (re)launch, e.g. launch fi_FI.utf8
 #   tools/emulator/emu.sh wake               # screen on, unlocked
 #   tools/emulator/emu.sh ambience NAME      # e.g. airy (light), ruska (dark, default)
@@ -78,7 +78,9 @@ setup)
     echo "ready"
     ;;
 deploy)
-    rpm=$(ls -t "$ROOT"/RPMS/harbour-ironstack-*.i486.rpm | head -1)
+    # Built by tools/build.sh, next to the source tree.
+    rpm=$(ls -t "$(dirname "$ROOT")"/build-ironstack-i486/RPMS/harbour-ironstack-*.i486.rpm 2>/dev/null | head -1)
+    [ -n "$rpm" ] || { echo "No i486 RPM - run tools/build.sh first." >&2; exit 1; }
     push "$rpm" /tmp/harbour-ironstack.rpm
     emu 'rpm -Uvh --force /tmp/harbour-ironstack.rpm >/dev/null'
     launch "${2:-}"
