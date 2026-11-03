@@ -14,6 +14,8 @@ Page {
     // a program has been completed.
     property var upNext: null
     property var achievements: []
+    // The web's "Recently active": who shares their training, newest first.
+    property var recentlyActive: []
     // The built-in body weight type and its latest reading, like the web's
     // dashboard; both null without one (or without the measurements
     // permission, which isn't an error here).
@@ -86,6 +88,12 @@ Page {
             else
                 page.failed(status, error)
             settle()
+        })
+
+        // Not counted for the spinner, like a card that's only extra.
+        api.request("GET", "analytics/recently-active/", null, function(ok, status, data) {
+            if (ok)
+                page.recentlyActive = data || []
         })
 
         api.request("GET", "analytics/achievements/", null, function(ok, status, data, error) {
@@ -512,6 +520,52 @@ Page {
                 running: page.achievements.length > 1 && page.status === PageStatus.Active
                          && Qt.application.active
                 onTriggered: next()
+            }
+
+            SectionHeader {
+                visible: page.recentlyActive.length > 0
+                text: qsTr("Recently active")
+            }
+            Repeater {
+                model: page.recentlyActive
+                delegate: Item {
+                    width: page.width
+                    height: Math.max(Theme.itemSizeExtraSmall, nameLabel.height)
+                    // Training now: lit; in the last few days: dimmer.
+                    Rectangle {
+                        id: dot
+                        x: Theme.horizontalPageMargin
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: Theme.paddingMedium
+                        height: width
+                        radius: width / 2
+                        color: modelData.is_in_progress ? Theme.highlightColor
+                               : modelData.is_recent ? Theme.secondaryHighlightColor : "transparent"
+                        border.color: Theme.secondaryColor
+                        border.width: modelData.is_in_progress || modelData.is_recent ? 0 : 1
+                    }
+                    Label {
+                        id: nameLabel
+                        anchors.left: dot.right
+                        anchors.leftMargin: Theme.paddingMedium
+                        anchors.right: timeLabel.left
+                        anchors.rightMargin: Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        truncationMode: TruncationMode.Fade
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: modelData.display_name
+                    }
+                    Label {
+                        id: timeLabel
+                        anchors.right: parent.right
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryColor
+                        text: modelData.is_in_progress ? qsTr("Training now")
+                              : Format.formatDate(new Date(modelData.last_active_at), Formatter.DurationElapsed)
+                    }
+                }
             }
         }
 
