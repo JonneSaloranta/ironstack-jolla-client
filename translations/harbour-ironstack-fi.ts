@@ -685,6 +685,21 @@
         <source>Nothing logged yet.</source>
         <translation>Ei vielä kirjauksia.</translation>
     </message>
+    <message numerus="yes">
+        <source>%n entries of a deleted recipe weren&apos;t copied.</source>
+        <translation>
+            <numerusform>%n poistetun reseptin merkintä jäi kopioimatta.</numerusform>
+            <numerusform>%n poistetun reseptin merkintää jäi kopioimatta.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Deleted recipe</source>
+        <translation>Poistettu resepti</translation>
+    </message>
+    <message>
+        <source>Not counted in the totals: the app can&apos;t read a deleted recipe.</source>
+        <translation>Ei mukana yhteissummissa: sovellus ei voi lukea poistettua reseptiä.</translation>
+    </message>
 </context>
 <context>
     <name>DietPlanDialog</name>

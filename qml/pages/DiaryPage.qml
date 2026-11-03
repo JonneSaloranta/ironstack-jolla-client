@@ -20,6 +20,8 @@ Page {
     property var target: null
     property bool loading: false
     property string errorText: ""
+    // Something worth knowing about the last action, not an error.
+    property string notice: ""
 
     readonly property string isoDay: Store.isoDate(day)
     readonly property var totals: Nutrition.total(entries, Nutrition.foods || {}, Nutrition.recipes || {})
@@ -107,13 +109,19 @@ Page {
     function copyDay() {
         var picker = pageStack.push("Sailfish.Silica.DatePickerDialog", { date: Store.addDays(day, 1) })
         picker.accepted.connect(function() {
+            // An entry of a deleted recipe can't be logged again.
+            var copied = entries.filter(function(e) { return Nutrition.isKnown(e, Nutrition.foods, Nutrition.recipes) })
+            var skipped = entries.length - copied.length
             loading = true
-            Nutrition.copyDay(api, entries, Store.isoDate(picker.date), function(ok, error) {
+            Nutrition.copyDay(api, copied, Store.isoDate(picker.date), function(ok, error) {
                 loading = false
                 Nutrition.diaryChanged = true
                 errorText = ok ? "" : error
                 if (ok)
                     day = picker.date
+                // After the day changed, which clears it.
+                if (ok && skipped)
+                    notice = qsTr("%n entries of a deleted recipe weren't copied.", "", skipped)
             })
         })
     }
@@ -132,6 +140,7 @@ Page {
 
     onDayChanged: {
         entries = []
+        notice = ""
         load()
     }
     Component.onCompleted: load()
@@ -206,6 +215,18 @@ Page {
                 onRetry: page.load()
             }
 
+            Label {
+                visible: page.notice !== ""
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                height: visible ? implicitHeight + Theme.paddingMedium : 0
+                verticalAlignment: Text.AlignTop
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.highlightColor
+                text: page.notice
+            }
+
             MacroSummary {
                 totals: page.totals
                 target: page.target
@@ -251,6 +272,7 @@ Page {
                         delegate: ListItem {
                             id: entryItem
                             property var nutrition: Nutrition.forEntry(modelData, Nutrition.foods, Nutrition.recipes)
+                            property bool known: Nutrition.isKnown(modelData, Nutrition.foods, Nutrition.recipes)
                             contentHeight: Math.max(Theme.itemSizeSmall, entryColumn.height + 2 * Theme.paddingSmall)
                             onClicked: page.edit(modelData)
                             menu: ContextMenu {
@@ -279,20 +301,23 @@ Page {
                                     Label {
                                         width: parent.width - kcalLabel.width
                                         truncationMode: TruncationMode.Fade
-                                        text: Nutrition.entryName(modelData, Nutrition.foods, Nutrition.recipes, qsTr("Quick entry"))
+                                        text: known ? Nutrition.entryName(modelData, Nutrition.foods, Nutrition.recipes, qsTr("Quick entry"))
+                                                    : qsTr("Deleted recipe")
                                     }
                                     Label {
                                         id: kcalLabel
                                         color: Theme.highlightColor
-                                        text: Math.round(nutrition.calories) + " kcal"
+                                        text: known ? Math.round(nutrition.calories) + " kcal" : "? kcal"
                                     }
                                 }
                                 Label {
                                     width: parent.width
-                                    truncationMode: TruncationMode.Fade
+                                    truncationMode: known ? TruncationMode.Fade : TruncationMode.None
+                                    wrapMode: known ? Text.NoWrap : Text.Wrap
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.secondaryColor
-                                    text: Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
+                                    text: !known ? qsTr("Not counted in the totals: the app can't read a deleted recipe.")
+                                          : Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
                                           + " · " + qsTr("P") + " " + Math.round(nutrition.protein_grams)
                                           + " · " + qsTr("C") + " " + Math.round(nutrition.carbohydrate_grams)
                                           + " · " + qsTr("F") + " " + Math.round(nutrition.fat_grams)

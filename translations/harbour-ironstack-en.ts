@@ -685,6 +685,21 @@
         <source>Nothing logged yet.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <source>%n entries of a deleted recipe weren&apos;t copied.</source>
+        <translation>
+            <numerusform>%n entry of a deleted recipe wasn&apos;t copied.</numerusform>
+            <numerusform>%n entries of a deleted recipe weren&apos;t copied.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Deleted recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not counted in the totals: the app can&apos;t read a deleted recipe.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DietPlanDialog</name>

@@ -52,6 +52,17 @@ TestCase {
         compare(Nutrition.quantityText(entries[1], foods, { servings: "%1 s", portions: "%1 p", piece: "pcs" }), "1 s")
     }
 
+    // A deleted recipe is hidden from recipes/; its entries stay.
+    function test_isKnown() {
+        var recipes = { 9: recipe }
+        verify(Nutrition.isKnown({ food: 5, recipe: null }, foods, recipes))
+        verify(Nutrition.isKnown({ food: null, recipe: 9 }, foods, recipes))
+        verify(Nutrition.isKnown({ food: null, recipe: null, quick_name: "Pizza" }, foods, recipes))
+        verify(!Nutrition.isKnown({ food: null, recipe: 56 }, foods, recipes))
+        verify(!Nutrition.isKnown({ food: 99, recipe: null }, foods, recipes))
+        verify(!Nutrition.isKnown({ food: null, recipe: 9 }, foods, null))
+    }
+
     function test_caloriesFromMacros() {
         compare(Nutrition.caloriesFromMacros("20", "30", "10"), 290)
         compare(Nutrition.caloriesFromMacros(null, "", "1"), 9)

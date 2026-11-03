@@ -95,6 +95,17 @@ function total(entries, foods, recipes) {
     }, zero())
 }
 
+// Whether the entry's food or recipe is in the library. A deleted recipe
+// is hidden from the API (only active ones are listed), though the web
+// still counts its entries; the app can't (IronStack #27).
+function isKnown(entry, foods, recipes) {
+    if (Store.present(entry.food))
+        return !!(foods && foods[entry.food])
+    if (Store.present(entry.recipe))
+        return !!(recipes && recipes[entry.recipe])
+    return true
+}
+
 // An entry's name: the food (with brand), the recipe, or the quick entry's.
 function entryName(entry, foods, recipes, quickFallback) {
     if (Store.present(entry.food)) {
