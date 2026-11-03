@@ -184,6 +184,255 @@
     </message>
 </context>
 <context>
+    <name>AssistantChatPage</name>
+    <message>
+        <source>Waiting...</source>
+        <translation>Odottaa...</translation>
+    </message>
+    <message>
+        <source>Writing...</source>
+        <translation>Kirjoittaa...</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>New conversation</source>
+        <translation>Uusi keskustelu</translation>
+    </message>
+    <message>
+        <source>The reply failed.</source>
+        <translation>Vastaus epäonnistui.</translation>
+    </message>
+    <message>
+        <source>Program</source>
+        <translation>Ohjelma</translation>
+    </message>
+    <message>
+        <source>Diet plan</source>
+        <translation>Ruokavaliosuunnitelma</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Luotu</translation>
+    </message>
+    <message>
+        <source>Dismissed</source>
+        <translation>Hylätty</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Luo</translation>
+    </message>
+    <message>
+        <source>Dismiss</source>
+        <translation>Hylkää</translation>
+    </message>
+    <message>
+        <source>Ask about your training or food</source>
+        <translation>Kysy treenistäsi tai ruokailustasi</translation>
+    </message>
+    <message>
+        <source>For example: make me a 3-day program, or how is my weight trending?</source>
+        <translation>Esimerkiksi: tee minulle 3 päivän ohjelma, tai miten painoni kehittyy?</translation>
+    </message>
+    <message>
+        <source>Wait for the reply</source>
+        <translation>Odota vastausta</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Viesti</translation>
+    </message>
+</context>
+<context>
+    <name>AssistantPage</name>
+    <message>
+        <source>Turn off</source>
+        <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+        <source>Turning off the assistant</source>
+        <translation>Poistetaan avustaja käytöstä</translation>
+    </message>
+    <message>
+        <source>Assistant settings</source>
+        <translation>Avustajan asetukset</translation>
+    </message>
+    <message>
+        <source>New conversation</source>
+        <translation>Uusi keskustelu</translation>
+    </message>
+    <message>
+        <source>AI assistant</source>
+        <translation>Tekoälyavustaja</translation>
+    </message>
+    <message>
+        <source>Your own key is added on the IronStack web, under Profile &gt; AI assistant.</source>
+        <translation>Oman avaimen voi lisätä IronStackin webissä kohdassa Profiili &gt; Tekoälyavustaja.</translation>
+    </message>
+    <message>
+        <source>Before you turn it on</source>
+        <translation>Ennen kuin otat sen käyttöön</translation>
+    </message>
+    <message>
+        <source>Your messages, and the training and nutrition data the assistant looks up to answer them, are sent to an AI model this instance runs on its own server.</source>
+        <translation>Viestisi sekä treeni- ja ravintotiedot, jotka avustaja hakee vastatakseen niihin, lähetetään tekoälymallille, jota tämä palvelin ajaa omalla laitteistollaan.</translation>
+    </message>
+    <message>
+        <source>Your messages, and the training and nutrition data the assistant looks up to answer them, are sent to Anthropic (the maker of Claude) to generate replies.</source>
+        <translation>Viestisi sekä treeni- ja ravintotiedot, jotka avustaja hakee vastatakseen niihin, lähetetään Anthropicille (Clauden kehittäjä) vastausten tuottamista varten.</translation>
+    </message>
+    <message>
+        <source>It only reads your own data, and only while it&apos;s answering you. It can&apos;t change anything: plans it suggests are created only if you choose to.</source>
+        <translation>Se lukee vain omia tietojasi ja vain silloin, kun se vastaa sinulle. Se ei voi muuttaa mitään: sen ehdottamat suunnitelmat luodaan vain, jos itse niin päätät.</translation>
+    </message>
+    <message>
+        <source>You choose what it may read - body measurements, food diary and more - on its settings page.</source>
+        <translation>Valitset itse sen asetuksista, mitä se saa lukea - kehon mitat, ruokapäiväkirjan ja muuta.</translation>
+    </message>
+    <message>
+        <source>Replies can be wrong. It isn&apos;t a doctor or a dietitian - check anything important with a professional.</source>
+        <translation>Vastaukset voivat olla virheellisiä. Avustaja ei ole lääkäri eikä ravitsemusterapeutti - tarkista tärkeät asiat ammattilaiselta.</translation>
+    </message>
+    <message>
+        <source>You can turn it off, and delete your conversations, at any time.</source>
+        <translation>Voit poistaa sen käytöstä ja poistaa keskustelusi milloin tahansa.</translation>
+    </message>
+    <message>
+        <source>Turn on</source>
+        <translation>Ota käyttöön</translation>
+    </message>
+    <message>
+        <source>Left today</source>
+        <translation>Jäljellä tänään</translation>
+    </message>
+    <message>
+        <source>%1 of %2 tokens</source>
+        <translation>%1 / %2 tokenia</translation>
+    </message>
+    <message>
+        <source>Conversations</source>
+        <translation>Keskustelut</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Conversation</source>
+        <translation>Keskustelu</translation>
+    </message>
+    <message>
+        <source>No conversations yet</source>
+        <translation>Ei vielä keskusteluja</translation>
+    </message>
+    <message>
+        <source>Pull down to ask something</source>
+        <translation>Vedä alas kysyäksesi jotain</translation>
+    </message>
+</context>
+<context>
+    <name>AssistantSettingsPage</name>
+    <message>
+        <source>Workout history, records and progression</source>
+        <translation>Treenihistoria, ennätykset ja progressio</translation>
+    </message>
+    <message>
+        <source>Body measurements and weight trend</source>
+        <translation>Kehon mitat ja painon kehitys</translation>
+    </message>
+    <message>
+        <source>Food diary</source>
+        <translation>Ruokapäiväkirja</translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation>Aktiviteetit</translation>
+    </message>
+    <message>
+        <source>Stretching</source>
+        <translation>Venyttely</translation>
+    </message>
+    <message>
+        <source>Personal details (height, age, sex, activity level)</source>
+        <translation>Henkilötiedot (pituus, ikä, sukupuoli, aktiivisuustaso)</translation>
+    </message>
+    <message>
+        <source>The instance&apos;s default</source>
+        <translation>Palvelimen oletus</translation>
+    </message>
+    <message>
+        <source>Claude Opus 5.5 - best plans ($4 / $20)</source>
+        <translation>Claude Opus 5.5 - parhaat suunnitelmat ($4 / $20)</translation>
+    </message>
+    <message>
+        <source>Claude Sonnet 5.5 - good and half the price ($2 / $10)</source>
+        <translation>Claude Sonnet 5.5 - hyvä ja puolet halvempi ($2 / $10)</translation>
+    </message>
+    <message>
+        <source>Claude Haiku 4.5 - fastest and cheapest, weaker plans ($1 / $5)</source>
+        <translation>Claude Haiku 4.5 - nopein ja halvin, heikommat suunnitelmat ($1 / $5)</translation>
+    </message>
+    <message>
+        <source>Claude Fable 5.1 - most capable, most expensive ($10 / $50)</source>
+        <translation>Claude Fable 5.1 - tehokkain ja kallein ($10 / $50)</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation>Oletus</translation>
+    </message>
+    <message>
+        <source>Low - quickest and cheapest; fine for everyday questions</source>
+        <translation>Matala - nopein ja halvin; riittää arkisiin kysymyksiin</translation>
+    </message>
+    <message>
+        <source>Medium - balanced</source>
+        <translation>Keskitaso - tasapainoinen</translation>
+    </message>
+    <message>
+        <source>High - more thorough plans, more tokens</source>
+        <translation>Korkea - perusteellisemmat suunnitelmat, enemmän tokeneita</translation>
+    </message>
+    <message>
+        <source>Extra high - for demanding planning</source>
+        <translation>Erittäin korkea - vaativaan suunnitteluun</translation>
+    </message>
+    <message>
+        <source>Maximum - the most thorough and the most expensive</source>
+        <translation>Maksimi - perusteellisin ja kallein</translation>
+    </message>
+    <message>
+        <source>Assistant settings</source>
+        <translation>Avustajan asetukset</translation>
+    </message>
+    <message>
+        <source>What it may read</source>
+        <translation>Mitä se saa lukea</translation>
+    </message>
+    <message>
+        <source>About you</source>
+        <translation>Tietoja sinusta</translation>
+    </message>
+    <message>
+        <source>What the assistant should know about you, e.g. injuries or equipment at home</source>
+        <translation>Mitä avustajan pitäisi tietää sinusta, esim. vammat tai kotona olevat välineet</translation>
+    </message>
+    <message>
+        <source>Your own key</source>
+        <translation>Oma avaimesi</translation>
+    </message>
+    <message>
+        <source>Model</source>
+        <translation>Malli</translation>
+    </message>
+    <message>
+        <source>Thinking</source>
+        <translation>Ajattelu</translation>
+    </message>
+</context>
+<context>
     <name>BlockedUsersPage</name>
     <message>
         <source>Blocked users</source>
@@ -422,6 +671,155 @@
     <message>
         <source>Message</source>
         <translation>Viesti</translation>
+    </message>
+</context>
+<context>
+    <name>ClientPage</name>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>Client</source>
+        <translation>Asiakas</translation>
+    </message>
+    <message>
+        <source>Last 30 days</source>
+        <translation>Viimeiset 30 päivää</translation>
+    </message>
+    <message>
+        <source>workouts</source>
+        <translation>treeniä</translation>
+    </message>
+    <message>
+        <source>time (h:min)</source>
+        <translation>aika (h:min)</translation>
+    </message>
+    <message>
+        <source>volume (%1)</source>
+        <translation>volyymi (%1)</translation>
+    </message>
+    <message>
+        <source>Highlights</source>
+        <translation>Kohokohdat</translation>
+    </message>
+    <message>
+        <source>Body measurements</source>
+        <translation>Kehon mittaukset</translation>
+    </message>
+    <message>
+        <source>Your programs they use</source>
+        <translation>Ohjelmasi, joita hän käyttää</translation>
+    </message>
+    <message>
+        <source>Last trained %1</source>
+        <translation>Viimeksi treenattu %1</translation>
+    </message>
+    <message>
+        <source>Not trained yet</source>
+        <translation>Ei vielä treenattu</translation>
+    </message>
+    <message>
+        <source>Latest records</source>
+        <translation>Viimeisimmät ennätykset</translation>
+    </message>
+</context>
+<context>
+    <name>ClientsDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Share with clients</source>
+        <translation>Jaa asiakkaille</translation>
+    </message>
+    <message>
+        <source>A client sees it under Coaching and can import a copy; later changes reach that copy when they update it.</source>
+        <translation>Asiakas näkee sen kohdassa Valmennus ja voi tuoda siitä kopion; myöhemmät muutokset päivittyvät kopioon, kun hän päivittää sen.</translation>
+    </message>
+    <message>
+        <source>No clients</source>
+        <translation>Ei asiakkaita</translation>
+    </message>
+</context>
+<context>
+    <name>CoachingPage</name>
+    <message>
+        <source>Ask a trainer</source>
+        <translation>Pyydä valmentajaa</translation>
+    </message>
+    <message>
+        <source>Trainer&apos;s username</source>
+        <translation>Valmentajan käyttäjänimi</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>Coaching</source>
+        <translation>Valmennus</translation>
+    </message>
+    <message>
+        <source>Asking you to coach them</source>
+        <translation>Pyytävät sinua valmentajaksi</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>Hyväksy</translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation>Hylkää</translation>
+    </message>
+    <message>
+        <source>Your coaches</source>
+        <translation>Valmentajasi</translation>
+    </message>
+    <message>
+        <source>End coaching</source>
+        <translation>Lopeta valmennus</translation>
+    </message>
+    <message>
+        <source>Ending coaching</source>
+        <translation>Lopetetaan valmennus</translation>
+    </message>
+    <message>
+        <source>Waiting for %1 to answer</source>
+        <translation>Odotetaan vastausta: %1</translation>
+    </message>
+    <message>
+        <source>No coach yet. Pull down to ask a personal trainer by their username.</source>
+        <translation>Ei vielä valmentajaa. Vedä alas pyytääksesi personal traineria käyttäjänimellä.</translation>
+    </message>
+    <message>
+        <source>Shared with you</source>
+        <translation>Jaettu sinulle</translation>
+    </message>
+    <message>
+        <source>Import another copy</source>
+        <translation>Tuo uusi kopio</translation>
+    </message>
+    <message>
+        <source>Import a copy</source>
+        <translation>Tuo kopio</translation>
+    </message>
+    <message>
+        <source>Program</source>
+        <translation>Ohjelma</translation>
+    </message>
+    <message>
+        <source>Diet plan</source>
+        <translation>Ruokavaliosuunnitelma</translation>
+    </message>
+    <message>
+        <source>imported</source>
+        <translation>tuotu</translation>
+    </message>
+    <message>
+        <source>Your clients</source>
+        <translation>Asiakkaasi</translation>
     </message>
 </context>
 <context>
@@ -875,6 +1273,14 @@
     <message>
         <source>Nothing planned</source>
         <translation>Ei mitään suunniteltuna</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Päivitä valmentajan versioon</translation>
+    </message>
+    <message>
+        <source>Share with clients</source>
+        <translation>Jaa asiakkaille</translation>
     </message>
 </context>
 <context>
@@ -1599,6 +2005,17 @@
     </message>
 </context>
 <context>
+    <name>GuidePage</name>
+    <message>
+        <source>Mark all as unread</source>
+        <translation>Merkitse kaikki lukemattomiksi</translation>
+    </message>
+    <message>
+        <source>Guide</source>
+        <translation>Opas</translation>
+    </message>
+</context>
+<context>
     <name>HistoryPage</name>
     <message>
         <source>In progress</source>
@@ -1974,6 +2391,18 @@
     <message>
         <source>People</source>
         <translation>Ihmiset</translation>
+    </message>
+    <message>
+        <source>Coaching</source>
+        <translation>Valmennus</translation>
+    </message>
+    <message>
+        <source>AI assistant</source>
+        <translation>Tekoälyavustaja</translation>
+    </message>
+    <message>
+        <source>Guide</source>
+        <translation>Opas</translation>
     </message>
 </context>
 <context>
@@ -2765,6 +3194,14 @@
         <source>Pull down to add a workout</source>
         <translation>Lisää treeni vetämällä alas</translation>
     </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Päivitä valmentajan versioon</translation>
+    </message>
+    <message>
+        <source>Share with clients</source>
+        <translation>Jaa asiakkaille</translation>
+    </message>
 </context>
 <context>
     <name>ProgramsPage</name>
@@ -3381,6 +3818,14 @@
     <message>
         <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days.</source>
         <translation>Näyttää kotisivulla muistutuksen, kun et ole kirjannut kehon mittausta 14 päivään.</translation>
+    </message>
+    <message>
+        <source>Guided tours on the web</source>
+        <translation>Opastetut kierrokset webissä</translation>
+    </message>
+    <message>
+        <source>A short tour the first time you open each part of the IronStack web. The same tours can be read in the app&apos;s Guide.</source>
+        <translation>Lyhyt esittely, kun avaat IronStackin webin osion ensimmäisen kerran. Samat kierrokset voi lukea sovelluksen Oppaasta.</translation>
     </message>
 </context>
 <context>
@@ -4004,6 +4449,13 @@
     <message>
         <source>Sent when the server can be reached. Tap to try now.</source>
         <translation>Lähetetään, kun palvelimeen saadaan yhteys. Napauta yrittääksesi nyt.</translation>
+    </message>
+</context>
+<context>
+    <name>TourPage</name>
+    <message>
+        <source>Mark as unread</source>
+        <translation>Merkitse lukemattomaksi</translation>
     </message>
 </context>
 <context>
