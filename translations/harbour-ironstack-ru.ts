@@ -761,6 +761,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation>Изменение</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Обновить от тренера</translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation>Тренировки и их упражнения заменяются последней версией тренера, включая ваши изменения; название и описание сохраняются. Строки с «-» удаляются, строки с «+» добавляются.</translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1014,6 +1029,14 @@
     <message>
         <source>Achievements</source>
         <translation>Достижения</translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation>Недавняя активность</translation>
+    </message>
+    <message>
+        <source>Training now</source>
+        <translation>Тренируется сейчас</translation>
     </message>
 </context>
 <context>

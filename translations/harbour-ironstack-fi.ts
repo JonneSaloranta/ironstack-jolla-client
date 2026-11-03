@@ -759,6 +759,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation>Muokkaus</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Päivitä valmentajan versioon</translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation>Treenit ja niiden liikkeet korvataan valmentajasi uusimmalla versiolla, myös niihin tekemäsi muutokset; nimi ja kuvaus säilyvät. Miinuksella alkavat rivit poistuvat, plussalla alkavat tulevat tilalle.</translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1012,6 +1027,14 @@
     <message>
         <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
         <translation>Siitä on jo aikaa, kun kirjasit painosi tai mittauksesi - napauta tästä lisätäksesi uuden lukeman.</translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation>Viimeksi aktiivisena</translation>
+    </message>
+    <message>
+        <source>Training now</source>
+        <translation>Treenaa juuri nyt</translation>
     </message>
 </context>
 <context>

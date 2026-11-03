@@ -759,6 +759,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation>Muutmine</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Uuenda juhendaja versioonist</translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation>Treeningud ja nende harjutused asendatakse sinu juhendaja uusima versiooniga, ka sinu tehtud muudatused; nimi ja kirjeldus jäävad. Miinusega algavad read kaovad, plussiga algavad tulevad juurde.</translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1012,6 +1027,14 @@
     <message>
         <source>Achievements</source>
         <translation>Saavutused</translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation>Viimati aktiivsed</translation>
+    </message>
+    <message>
+        <source>Training now</source>
+        <translation>Trenniks praegu</translation>
     </message>
 </context>
 <context>

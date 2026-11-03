@@ -759,6 +759,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation>Uppdatera</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Uppdatera från coachen</translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation>Passen och deras övningar ersätts med din coachs senaste version, även det du ändrat i dem; namn och beskrivning behålls. Rader som börjar med - försvinner, rader som börjar med + tillkommer.</translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1012,6 +1027,14 @@
     <message>
         <source>Achievements</source>
         <translation>Prestationer</translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation>Senast aktiva</translation>
+    </message>
+    <message>
+        <source>Training now</source>
+        <translation>Tränar just nu</translation>
     </message>
 </context>
 <context>

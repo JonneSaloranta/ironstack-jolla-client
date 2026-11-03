@@ -759,6 +759,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1011,6 +1026,14 @@
     </message>
     <message>
         <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Training now</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

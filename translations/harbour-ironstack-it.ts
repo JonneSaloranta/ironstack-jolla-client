@@ -759,6 +759,21 @@
     </message>
 </context>
 <context>
+    <name>CoachUpdateDialog</name>
+    <message>
+        <source>Update</source>
+        <translation>Modifica</translation>
+    </message>
+    <message>
+        <source>Update from coach</source>
+        <translation>Aggiorna dal coach</translation>
+    </message>
+    <message>
+        <source>The workouts and their exercises are replaced with your coach&apos;s latest version, also anything you changed in them; your name and description stay. Lines starting with - go, lines starting with + come in.</source>
+        <translation>Gli allenamenti e i loro esercizi vengono sostituiti con l&apos;ultima versione del tuo coach, comprese le tue modifiche; nome e descrizione restano. Le righe che iniziano con - vengono tolte, quelle con + aggiunte.</translation>
+    </message>
+</context>
+<context>
     <name>CoachingPage</name>
     <message>
         <source>Ask a trainer</source>
@@ -1012,6 +1027,14 @@
     <message>
         <source>Achievements</source>
         <translation>Traguardi</translation>
+    </message>
+    <message>
+        <source>Recently active</source>
+        <translation>Attivi di recente</translation>
+    </message>
+    <message>
+        <source>Training now</source>
+        <translation>Si sta allenando ora</translation>
     </message>
 </context>
 <context>
