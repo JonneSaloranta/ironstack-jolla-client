@@ -29,7 +29,7 @@ later.
 - History and personal records; a Progress page like the web's (volume
   per week and muscle group, records, body measurement changes)
 - Nutrition: food diary, foods (also from Open Food Facts by name or
-  barcode, through the server), recipes, diet plans, goals, statistics,
+  barcode, through the server; the barcode also with the camera), recipes, diet plans, goals, statistics,
   observed maintenance and whether your calorie target is working, with
   the suggested adjustment one tap away
 - Body measurements with a reminder after 14 days, activities, and

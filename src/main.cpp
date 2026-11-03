@@ -10,6 +10,7 @@
 #include <sailfishapp.h>
 
 #include "apiclient.h"
+#include "barcode.h"
 #include "settings.h"
 #include "syncqueue.h"
 
@@ -47,6 +48,8 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty(QStringLiteral("settings"), &settings);
     view->rootContext()->setContextProperty(QStringLiteral("api"), &api);
     view->rootContext()->setContextProperty(QStringLiteral("syncQueue"), &queue);
+    BarcodeReader barcodeReader;
+    view->rootContext()->setContextProperty(QStringLiteral("barcodeReader"), &barcodeReader);
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
 

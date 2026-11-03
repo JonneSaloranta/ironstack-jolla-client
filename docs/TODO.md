@@ -30,6 +30,12 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
   and rest actions during a workout.
 - [ ] **Open Food Facts through the server**: search by name and by
   barcode, add a product (Nutri-Score and NOVA shown on the food).
+- [ ] **Barcode scanning with the camera** (Foods > "Scan a barcode"):
+  the first launch asks for the new Camera permission; real packages
+  (EAN-13, EAN-8, UPC-E), dim light with the torch, a curved bottle.
+  Untried on hardware: whether `VideoOutput.grabToImage` gets the
+  viewfinder's picture on the phone (the emulator has no camera). If it
+  comes back empty, read the frames with a QVideoProbe in C++ instead.
 - [ ] **Offline logging**: with mobile data off, log a diary entry, a body
   weight, an activity and stretching; they wait as "saved on this phone"
   (the diary shows "Not sent yet") and go once the connection is back.
@@ -46,10 +52,6 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 
 ## 2. Development possible now
 
-- [ ] **Camera barcode scanning** for Open Food Facts. Harbour allows no
-  barcode library and the camera needs its own permission, so the number
-  is typed today. Possible outside Harbour (OpenRepos) with e.g. ZXing;
-  decide together with where the app is published (section 4).
 - [ ] **More translations.** Only English and Finnish
   (`translations/`); the web has more. New languages need the `.ts` file
   in `harbour-ironstack.pro` and the built-in content names from
@@ -70,7 +72,7 @@ COMPATIBILITY.md and drop the row.
 ## 4. Housekeeping
 
 - [ ] **Where it's published**: Harbour, OpenRepos or GitHub. The repo has
-  no git remote yet. Harbour rules out camera barcode scanning (section 2).
+  no git remote yet.
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
   (0.5.0 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run

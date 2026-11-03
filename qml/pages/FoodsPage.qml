@@ -101,6 +101,21 @@ Page {
         })
     }
 
+    // Open Food Facts, by name or - with `scan` - straight to the camera.
+    function openOff(scan) {
+        var off = pageStack.push(Qt.resolvedUrl("OpenFoodFactsPage.qml"), { scanFirst: scan })
+        off.imported.connect(function(foodId) {
+            // Picking: straight on with the food, as if it had been
+            // tapped here. Browsing: open it.
+            applyFilter()
+            pageStack.pop(page, PageStackAction.Immediate)
+            if (picking)
+                picked("food", foodId)
+            else
+                pageStack.push(Qt.resolvedUrl("FoodPage.qml"), { foodId: foodId })
+        })
+    }
+
     Component.onCompleted: load()
     onStatusChanged: {
         if (status === PageStatus.Active && Nutrition.changed)
@@ -120,20 +135,12 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
+                text: qsTr("Scan a barcode")
+                onClicked: page.openOff(true)
+            }
+            MenuItem {
                 text: qsTr("Find in Open Food Facts")
-                onClicked: {
-                    var off = pageStack.push(Qt.resolvedUrl("OpenFoodFactsPage.qml"))
-                    off.imported.connect(function(foodId) {
-                        // Picking: straight on with the food, as if it
-                        // had been tapped here. Browsing: open it.
-                        page.applyFilter()
-                        pageStack.pop(page, PageStackAction.Immediate)
-                        if (page.picking)
-                            page.picked("food", foodId)
-                        else
-                            pageStack.push(Qt.resolvedUrl("FoodPage.qml"), { foodId: foodId })
-                    })
-                }
+                onClicked: page.openOff(false)
             }
             MenuItem {
                 text: qsTr("New food")

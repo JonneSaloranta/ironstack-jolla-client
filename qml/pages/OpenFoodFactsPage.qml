@@ -15,6 +15,9 @@ Page {
 
     signal imported(int foodId)
 
+    // Open the camera as soon as the page is shown.
+    property bool scanFirst: false
+
     property string query: ""
     property bool loading: false
     property bool searched: false
@@ -82,13 +85,45 @@ Page {
         })
     }
 
+    function scan() {
+        var scanner = pageStack.push(Qt.resolvedUrl("BarcodeScannerPage.qml"))
+        scanner.scanned.connect(function(code) {
+            query = code
+            list.headerItem.setQuery(code)
+            search()
+        })
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Active && scanFirst) {
+            scanFirst = false
+            scanTimer.start()
+        }
+    }
+
+    // Pushed after the status change has finished: a push from inside it
+    // is a binding loop on `status`.
+    Timer {
+        id: scanTimer
+        interval: 0
+        onTriggered: page.scan()
+    }
+
     SilicaListView {
         id: list
         anchors.fill: parent
         model: page.results
 
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Scan a barcode")
+                onClicked: page.scan()
+            }
+        }
+
         header: Column {
             width: parent.width
+            function setQuery(text) { searchField.text = text }
             PageHeader {
                 title: qsTr("Open Food Facts")
             }

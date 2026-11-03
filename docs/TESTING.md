@@ -5,7 +5,8 @@ emulator or device needed.
 
 ```bash
 sfdk build-shell bash -c 'cd tests && qmake -qt=5 && make -s \
-    && ./cpp/tst-cpp && ./qml/tst-qml -platform minimal'
+    && ./cpp/tst-cpp && ./barcode/tst-barcode -platform minimal \
+    && ./qml/tst-qml -platform minimal'
 ```
 
 ### C++ (`tests/cpp`)
@@ -26,6 +27,15 @@ HTTP server on localhost:
   document on the way into C++)
 - `SyncQueue`: order, nothing lost without a connection or across a
   restart, retry on 5xx, a rejected request dropped and reported
+
+### Barcodes (`tests/barcode`)
+
+`tst_barcode.cpp` draws real EAN-13, EAN-8 and UPC-E codes module by
+module and reads them back with `src/barcode.cpp` the way a camera frame
+would show them: small and large, a fractional number of pixels per
+module, sideways, upside down, out of focus with sensor noise, and lit
+from one side. Grey noise, stripes that only look like bars and a code
+with a wrong check digit must read as nothing.
 
 ### QML (`tests/qml`)
 
