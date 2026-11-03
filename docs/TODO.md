@@ -10,13 +10,12 @@ it's done.
 - [ ] **Nutrition in the emulator.** Only the overview, logging a food to
   the diary and viewing a diet plan were tried. Still to try against the
   local IronStack (test user `jolla-emulator`):
-  - diary: quick entry (calories estimated from macros when empty), edit,
-    delete, copy a day, save a meal as a recipe, previous/next day, date
-    picker
-  - foods: food page (label, Nutri-Score, NOVA), create, edit and delete
-    your own food (`FoodEditDialog` reads its nutrient fields through a
-    Repeater - check every value is sent)
-  - recipes: create, add/edit/remove ingredients, log to diary, delete
+  - diary: date picker (quick entry, edit, delete, copy a day, save a
+    meal as a recipe and previous/next day tried 2026-11-03)
+  - foods: food page Nutri-Score and NOVA, deleting your own food
+    (creating and editing tried 2026-11-03, every label value sent)
+  - recipes: creating one from the Recipes page (ingredients, logging to
+    the diary and deleting tried 2026-11-03)
   - goal and profile page; editing the profile (needs a profile made by
     the web's nutrition onboarding first)
   - diet plans: create (diet builder), activate/deactivate, log for a date,
@@ -53,7 +52,7 @@ it's done.
 | Issue | What the app does meanwhile |
 |---|---|
 | #26 diary date filter | Pages through entries newest first |
-| #27 entry nutrition | Computes from today's foods (old days may differ from the web) |
+| #27 entry nutrition | Computes from today's foods (old days may differ from the web); entries of a deleted recipe aren't counted |
 | #28 food search | Fetches the whole food library |
 | #29 measurement/activity filters | Fetches everything, groups locally |
 | #30 new PRs in set response | Compares `records/` after sync |
