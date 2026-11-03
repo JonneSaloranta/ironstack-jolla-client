@@ -182,6 +182,22 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation>Tältä API-avaimelta puuttuu tarvittava oikeus: %1 - %2. Lisää se IronStackissa kohdassa Profiili &gt; API-avaimet.</translation>
     </message>
+    <message>
+        <source>Open Food Facts did not answer in time.</source>
+        <translation>Open Food Facts ei vastannut ajoissa.</translation>
+    </message>
+    <message>
+        <source>Can&apos;t reach Open Food Facts.</source>
+        <translation>Open Food Factsiin ei saada yhteyttä.</translation>
+    </message>
+    <message>
+        <source>Open Food Facts is busy. Wait a moment and try again.</source>
+        <translation>Open Food Facts on kiireinen. Odota hetki ja yritä uudelleen.</translation>
+    </message>
+    <message>
+        <source>Open Food Facts had an error (%1).</source>
+        <translation>Open Food Factsissa tapahtui virhe (%1).</translation>
+    </message>
 </context>
 <context>
     <name>CalculatorsPage</name>
@@ -498,6 +514,18 @@
     <message>
         <source>Log body weight</source>
         <translation>Kirjaa painosi</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Edistyminen</translation>
+    </message>
+    <message>
+        <source>Time to log your body measurements?</source>
+        <translation>Aika kirjata kehon mittaukset?</translation>
+    </message>
+    <message>
+        <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
+        <translation>Siitä on jo aikaa, kun kirjasit painosi tai mittauksesi - napauta tästä lisätäksesi uuden lukeman.</translation>
     </message>
 </context>
 <context>
@@ -1352,6 +1380,10 @@
         <source>No foods found.</source>
         <translation>Ruokia ei löytynyt.</translation>
     </message>
+    <message>
+        <source>Find in Open Food Facts</source>
+        <translation>Hae Open Food Factsista</translation>
+    </message>
 </context>
 <context>
     <name>HistoryPage</name>
@@ -1718,6 +1750,10 @@
         <source>Food diary</source>
         <translation>Ruokapäiväkirja</translation>
     </message>
+    <message>
+        <source>Progress</source>
+        <translation>Edistyminen</translation>
+    </message>
 </context>
 <context>
     <name>NameDialog</name>
@@ -1951,6 +1987,74 @@
         <source>Nothing planned</source>
         <translation>Ei mitään suunniteltuna</translation>
     </message>
+    <message>
+        <source>High confidence</source>
+        <translation>Korkea luotettavuus</translation>
+    </message>
+    <message>
+        <source>Medium confidence</source>
+        <translation>Kohtalainen luotettavuus</translation>
+    </message>
+    <message>
+        <source>Low confidence</source>
+        <translation>Matala luotettavuus</translation>
+    </message>
+    <message>
+        <source>Not enough logged weight yet - keep logging your weight regularly and check back in a couple of weeks.</source>
+        <translation>Painoa ei ole vielä kirjattu tarpeeksi - jatka painon säännöllistä kirjaamista ja tarkista tilanne muutaman viikon kuluttua.</translation>
+    </message>
+    <message>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week - on track.</source>
+        <translation>Tavoite: %1 %3/viikko. Toteutunut trendi: %2 %3/viikko - menossa oikeaan suuntaan.</translation>
+    </message>
+    <message>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested adjustment: %5 kcal/day.</source>
+        <translation>Tavoite: %1 %3/viikko. Toteutunut trendi: %2 %3/viikko viimeisen %4 päivän aikana. Ehdotettu säätö: %5 kcal/vrk.</translation>
+    </message>
+    <message>
+        <source>Not enough logged food yet: %1 of the %2 days needed in the last %3 days.</source>
+        <translation>Kirjattua ruokaa ei ole vielä tarpeeksi: %1 / %2 tarvittavasta päivästä viimeisten %3 päivän aikana.</translation>
+    </message>
+    <message>
+        <source>Not enough logged weight yet: it takes at least %1 weigh-in days over %2 days.</source>
+        <translation>Kirjattua painoa ei ole vielä tarpeeksi: tarvitaan vähintään %1 punnituspäivää %2 päivän ajalta.</translation>
+    </message>
+    <message>
+        <source>The logged food and weight don&apos;t add up to a believable figure yet. Some days may be only partly logged.</source>
+        <translation>Kirjattu ruoka ja paino eivät vielä anna uskottavaa lukua. Osa päivistä saattaa olla kirjattu vain osittain.</translation>
+    </message>
+    <message>
+        <source>You ate %1 kcal/day on average while your weight changed %2 %3/week over the last %4 days.</source>
+        <translation>Söit keskimäärin %1 kcal/vrk, kun painosi muuttui %2 %3/viikko viimeisten %4 päivän aikana.</translation>
+    </message>
+    <message>
+        <source>Some days may be only partly logged, which makes this estimate too low.</source>
+        <translation>Osa päivistä saattaa olla kirjattu vain osittain, jolloin tämä arvio on liian pieni.</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation>Tilastot</translation>
+    </message>
+    <message>
+        <source>Is your current target working?</source>
+        <translation>Toimiiko nykyinen tavoitteesi?</translation>
+    </message>
+    <message>
+        <source>Adjusting to %1 kcal/day is done on the IronStack web: the app can&apos;t change targets.</source>
+        <translation>Säätö %1 kcal:aan/vrk tehdään IronStackin verkkosivulla: sovellus ei voi muuttaa tavoitteita.</translation>
+    </message>
+    <message>
+        <source>Observed maintenance</source>
+        <translation>Toteutunut ylläpitotaso</translation>
+    </message>
+    <message>
+        <source>%1 kcal/day</source>
+        <translation>%1 kcal/vrk</translation>
+    </message>
+    <message>
+        <source>An estimate of what you really burn, based on your food diary and weight. It doesn&apos;t change your target.</source>
+        <translation>Arvio todellisesta kulutuksestasi ruokapäiväkirjan ja painon perusteella. Se ei muuta tavoitettasi.</translation>
+    </message>
 </context>
 <context>
     <name>NutritionProfileDialog</name>
@@ -2041,6 +2145,157 @@
     <message>
         <source>Current daily calories, if you already track this</source>
         <translation>Nykyinen päivittäinen kalorimäärä, jos seuraat sitä jo</translation>
+    </message>
+</context>
+<context>
+    <name>NutritionStatsPage</name>
+    <message>
+        <source>7 days</source>
+        <translation>7 päivää</translation>
+    </message>
+    <message>
+        <source>14 days</source>
+        <translation>14 päivää</translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation>30 päivää</translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation>3 kuukautta</translation>
+    </message>
+    <message>
+        <source>Year to date</source>
+        <translation>Vuoden alusta</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 vuosi</translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation>Koko aika</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation>Tilastot</translation>
+    </message>
+    <message>
+        <source>Last 30 days</source>
+        <translation>Viimeiset 30 päivää</translation>
+    </message>
+    <message>
+        <source>Days logged</source>
+        <translation>Kirjattuja päiviä</translation>
+    </message>
+    <message>
+        <source>Mean calories</source>
+        <translation>Kalorien keskiarvo</translation>
+    </message>
+    <message>
+        <source>Typical day (median)</source>
+        <translation>Tyypillinen päivä (mediaani)</translation>
+    </message>
+    <message>
+        <source>Median protein</source>
+        <translation>Proteiinin mediaani</translation>
+    </message>
+    <message>
+        <source>Median carbohydrates</source>
+        <translation>Hiilihydraattien mediaani</translation>
+    </message>
+    <message>
+        <source>Median fat</source>
+        <translation>Rasvan mediaani</translation>
+    </message>
+    <message>
+        <source>Your mean is clearly below your typical day, so some days may be only partly logged.</source>
+        <translation>Keskiarvosi on selvästi tyypillistä päivääsi pienempi, joten osa päivistä saattaa olla kirjattu vain osittain.</translation>
+    </message>
+    <message>
+        <source>The mean shows your real total intake per day, big days included. The median shows a typical day, and one barely-logged day hardly moves it. Only finished days you logged something count: today is left out until it&apos;s over, and a day with nothing logged isn&apos;t counted as zero calories.</source>
+        <translation>Keskiarvo kertoo todellisen kokonaissaantisi päivää kohden, isot päivät mukaan lukien. Mediaani kertoo tyypillisen päivän, eikä yksi vajaasti kirjattu päivä juuri muuta sitä. Mukaan lasketaan vain päättyneet päivät, joille on kirjattu jotain: tämä päivä jää pois, kunnes se on ohi, eikä päivää ilman kirjauksia lasketa nollaksi.</translation>
+    </message>
+    <message>
+        <source>Per day</source>
+        <translation>Päivässä</translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <extracomment>Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat</extracomment>
+        <translation>Jakso</translation>
+    </message>
+    <message>
+        <source>Days</source>
+        <translation>Päivät</translation>
+    </message>
+    <message>
+        <source>Mean</source>
+        <translation>Ka.</translation>
+    </message>
+    <message>
+        <source>Med.</source>
+        <translation>Med.</translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation>P</translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation>H</translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation>R</translation>
+    </message>
+    <message>
+        <source>Days: days logged / days in the period. Mean and median calories in kcal, median macros in grams. Today isn&apos;t included.</source>
+        <translation>Päivät: kirjatut päivät / jakson päivät. Kalorien keskiarvo ja mediaani kilokaloreina, makrojen mediaanit grammoina. Tämä päivä ei ole mukana.</translation>
+    </message>
+    <message>
+        <source>Daily calories (last 30 days)</source>
+        <translation>Päivittäiset kalorit (viimeiset 30 päivää)</translation>
+    </message>
+    <message>
+        <source>Log a few days in your food diary to see your trend here.</source>
+        <translation>Kirjaa muutama päivä ruokapäiväkirjaasi nähdäksesi trendin täällä.</translation>
+    </message>
+    <message>
+        <source>Dashed line: your current target, %1 kcal. It&apos;s the same on every day, even if your target was different back then.</source>
+        <translation>Katkoviiva: nykyinen tavoitteesi, %1 kcal. Se on sama joka päivä, vaikka tavoitteesi olisi silloin ollut toinen.</translation>
+    </message>
+</context>
+<context>
+    <name>OpenFoodFactsPage</name>
+    <message>
+        <source>Nutrition values missing</source>
+        <translation>Ravintoarvot puuttuvat</translation>
+    </message>
+    <message>
+        <source>Open Food Facts</source>
+        <translation>Open Food Facts</translation>
+    </message>
+    <message>
+        <source>Product name or barcode</source>
+        <translation>Tuotteen nimi tai viivakoodi</translation>
+    </message>
+    <message>
+        <source>Values are per 100 g or 100 ml. An added product becomes one of your own foods; Nutri-Score and NOVA group aren&apos;t kept.</source>
+        <translation>Arvot ovat 100 g:aa tai 100 ml:aa kohden. Lisätystä tuotteesta tulee oma ruokasi; Nutri-Scorea ja NOVA-ryhmää ei säilytetä.</translation>
+    </message>
+    <message>
+        <source>Nothing found</source>
+        <translation>Mitään ei löytynyt</translation>
+    </message>
+    <message>
+        <source>Try another name, or the barcode under the stripes.</source>
+        <translation>Kokeile toista nimeä tai viivojen alla olevaa viivakoodia.</translation>
     </message>
 </context>
 <context>
@@ -2235,6 +2490,120 @@
     <message>
         <source>Pull down to create one</source>
         <translation>Luo ohjelma vetämällä alas</translation>
+    </message>
+</context>
+<context>
+    <name>ProgressPage</name>
+    <message>
+        <source>7 days</source>
+        <translation>7 päivää</translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation>30 päivää</translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation>3 kuukautta</translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation>6 kuukautta</translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation>1 vuosi</translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation>Koko aika</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Edistyminen</translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <translation>Jakso</translation>
+    </message>
+    <message>
+        <source>workouts</source>
+        <translation>treeniä</translation>
+    </message>
+    <message>
+        <source>time (h:min)</source>
+        <translation>aika (h:min)</translation>
+    </message>
+    <message>
+        <source>volume (%1)</source>
+        <translation>volyymi (%1)</translation>
+    </message>
+    <message>
+        <source>Body measurements</source>
+        <translation>Kehon mittaukset</translation>
+    </message>
+    <message>
+        <source>No body measurements in this range.</source>
+        <translation>Ei kehon mittauksia tällä jaksolla.</translation>
+    </message>
+    <message>
+        <source>One reading in this range</source>
+        <translation>Yksi mittaus tällä jaksolla</translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation>Voiman kehitys</translation>
+    </message>
+    <message>
+        <source>Exercise</source>
+        <translation>Liike</translation>
+    </message>
+    <message>
+        <source>Choose an exercise</source>
+        <translation>Valitse liike</translation>
+    </message>
+    <message>
+        <source>Weekly training volume</source>
+        <translation>Viikoittainen treenivolyymi</translation>
+    </message>
+    <message>
+        <source>No completed workouts in this range.</source>
+        <translation>Ei valmiita treenejä tällä ajanjaksolla.</translation>
+    </message>
+    <message>
+        <source>Muscle-group volume</source>
+        <translation>Lihasryhmien volyymi</translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Ennätykset</translation>
+    </message>
+    <message>
+        <source>No records in this range.</source>
+        <translation>Ei ennätyksiä tällä ajanjaksolla.</translation>
+    </message>
+    <message>
+        <source>%1RM</source>
+        <translation>%1RM</translation>
+    </message>
+    <message>
+        <source>reps</source>
+        <translation>toistoa</translation>
+    </message>
+    <message>
+        <source>Show less</source>
+        <translation>Näytä vähemmän</translation>
+    </message>
+    <message numerus="yes">
+        <source>Show %n more</source>
+        <translation>
+            <numerusform>Näytä %n lisää</numerusform>
+            <numerusform>Näytä %n lisää</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2676,6 +3045,26 @@
     <message>
         <source>Allow group invites</source>
         <translation>Salli ryhmäkutsut</translation>
+    </message>
+    <message>
+        <source>Stretching timer sound</source>
+        <translation>Venyttelyajastimen ääni</translation>
+    </message>
+    <message>
+        <source>A chime when a hold starts, when other steps end and when the session is done.</source>
+        <translation>Äänimerkki, kun pito alkaa, kun muut vaiheet päättyvät ja kun venyttely on valmis.</translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation>Kehon seuranta</translation>
+    </message>
+    <message>
+        <source>Body tracking reminder</source>
+        <translation>Kehon seurannan muistutus</translation>
+    </message>
+    <message>
+        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days. Kept on this phone - the web&apos;s own switch isn&apos;t available to the app.</source>
+        <translation>Näyttää etusivulla muistutuksen, kun et ole kirjannut kehon mittausta 14 päivään. Asetus on tässä puhelimessa - verkkosivun omaa asetusta sovellus ei näe.</translation>
     </message>
 </context>
 <context>

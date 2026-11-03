@@ -182,6 +182,22 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open Food Facts did not answer in time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Can&apos;t reach Open Food Facts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts is busy. Wait a moment and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts had an error (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CalculatorsPage</name>
@@ -497,6 +513,18 @@
     </message>
     <message>
         <source>Log body weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time to log your body measurements?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1352,6 +1380,10 @@
         <source>No foods found.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Find in Open Food Facts</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HistoryPage</name>
@@ -1718,6 +1750,10 @@
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NameDialog</name>
@@ -1951,6 +1987,74 @@
         <source>Nothing planned</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>High confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Medium confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Low confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not enough logged weight yet - keep logging your weight regularly and check back in a couple of weeks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week - on track.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested adjustment: %5 kcal/day.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not enough logged food yet: %1 of the %2 days needed in the last %3 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not enough logged weight yet: it takes at least %1 weigh-in days over %2 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The logged food and weight don&apos;t add up to a believable figure yet. Some days may be only partly logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You ate %1 kcal/day on average while your weight changed %2 %3/week over the last %4 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some days may be only partly logged, which makes this estimate too low.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is your current target working?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adjusting to %1 kcal/day is done on the IronStack web: the app can&apos;t change targets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Observed maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 kcal/day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An estimate of what you really burn, based on your food diary and weight. It doesn&apos;t change your target.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NutritionProfileDialog</name>
@@ -2040,6 +2144,157 @@
     </message>
     <message>
         <source>Current daily calories, if you already track this</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NutritionStatsPage</name>
+    <message>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>14 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Year to date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last 30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Days logged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mean calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Typical day (median)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Median protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Median carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Median fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your mean is clearly below your typical day, so some days may be only partly logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The mean shows your real total intake per day, big days included. The median shows a typical day, and one barely-logged day hardly moves it. Only finished days you logged something count: today is left out until it&apos;s over, and a day with nothing logged isn&apos;t counted as zero calories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <extracomment>Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Med.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Days: days logged / days in the period. Mean and median calories in kcal, median macros in grams. Today isn&apos;t included.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Daily calories (last 30 days)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log a few days in your food diary to see your trend here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dashed line: your current target, %1 kcal. It&apos;s the same on every day, even if your target was different back then.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OpenFoodFactsPage</name>
+    <message>
+        <source>Nutrition values missing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Product name or barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Values are per 100 g or 100 ml. An added product becomes one of your own foods; Nutri-Score and NOVA group aren&apos;t kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try another name, or the barcode under the stripes.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2235,6 +2490,120 @@
     <message>
         <source>Pull down to create one</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProgressPage</name>
+    <message>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>workouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>time (h:min)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>volume (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body measurements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No body measurements in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>One reading in this range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weekly training volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No completed workouts in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle-group volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No records in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1RM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show less</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Show %n more</source>
+        <translation>
+            <numerusform>Show %n more</numerusform>
+            <numerusform>Show %n more</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2675,6 +3044,26 @@
     </message>
     <message>
         <source>Allow group invites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stretching timer sound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A chime when a hold starts, when other steps end and when the session is done.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body tracking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body tracking reminder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days. Kept on this phone - the web&apos;s own switch isn&apos;t available to the app.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

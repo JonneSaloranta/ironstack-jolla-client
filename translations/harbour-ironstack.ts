@@ -174,52 +174,74 @@
 <context>
     <name>ApiClient</name>
     <message>
-        <location filename="../src/apiclient.cpp" line="74"/>
+        <location filename="../src/apiclient.cpp" line="76"/>
+        <location filename="../src/apiclient.cpp" line="127"/>
         <source>Refused to follow a link to another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="203"/>
+        <location filename="../src/apiclient.cpp" line="164"/>
+        <source>Open Food Facts did not answer in time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/apiclient.cpp" line="164"/>
+        <source>Can&apos;t reach Open Food Facts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/apiclient.cpp" line="166"/>
+        <source>Open Food Facts is busy. Wait a moment and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/apiclient.cpp" line="168"/>
+        <source>Open Food Facts had an error (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/apiclient.cpp" line="265"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="205"/>
+        <location filename="../src/apiclient.cpp" line="267"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="207"/>
+        <location filename="../src/apiclient.cpp" line="269"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="212"/>
+        <location filename="../src/apiclient.cpp" line="274"/>
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="215"/>
+        <location filename="../src/apiclient.cpp" line="277"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="218"/>
+        <location filename="../src/apiclient.cpp" line="280"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="220"/>
+        <location filename="../src/apiclient.cpp" line="139"/>
+        <location filename="../src/apiclient.cpp" line="282"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="248"/>
+        <location filename="../src/apiclient.cpp" line="310"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="249"/>
+        <location filename="../src/apiclient.cpp" line="311"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -493,129 +515,144 @@
 <context>
     <name>DashboardPage</name>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="133"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="137"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="136"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="355"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="140"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="365"/>
         <source>Freeform workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="179"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="185"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="224"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="230"/>
         <source>All sections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="228"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="234"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="232"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="238"/>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="242"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="236"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="246"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="240"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="250"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="268"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="278"/>
         <source>No connection to the server. Workouts can still be logged and are sent later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="285"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="295"/>
         <source>Continue workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="296"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="306"/>
         <source>started %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="307"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="317"/>
         <source>Up next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="346"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="356"/>
         <source>Start workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="360"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="370"/>
         <source>Choose another workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="375"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="385"/>
         <source>Last 7 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="376"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="386"/>
         <source>Last 30 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="376"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="386"/>
         <source>All time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="386"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="396"/>
         <source>workouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="391"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="401"/>
         <source>time (h:min)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="397"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="407"/>
         <source>volume (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="413"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="423"/>
         <source>Body weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="423"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="433"/>
         <source>Log body weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="428"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="453"/>
+        <source>Time to log your body measurements?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="460"/>
+        <source>It&apos;s been a while since you tracked your weight or measurements - tap here to add a new reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DashboardPage.qml" line="466"/>
         <source>Recent personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="435"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="473"/>
         <source>No records yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DashboardPage.qml" line="451"/>
-        <location filename="../qml/pages/DashboardPage.qml" line="452"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="489"/>
+        <location filename="../qml/pages/DashboardPage.qml" line="490"/>
         <source>Achievements</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1645,7 +1682,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FoodsPage.qml" line="46"/>
-        <location filename="../qml/pages/FoodsPage.qml" line="99"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="115"/>
         <source>Foods</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1661,21 +1698,26 @@
     </message>
     <message>
         <location filename="../qml/pages/FoodsPage.qml" line="81"/>
+        <source>Find in Open Food Facts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FoodsPage.qml" line="97"/>
         <source>New food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="99"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="115"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="108"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="124"/>
         <source>Search foods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="145"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="161"/>
         <source>No foods found.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2060,73 +2102,78 @@
 <context>
     <name>MenuPage</name>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="25"/>
+        <location filename="../qml/pages/MenuPage.qml" line="26"/>
         <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="26"/>
+        <location filename="../qml/pages/MenuPage.qml" line="27"/>
         <source>Programs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="27"/>
+        <location filename="../qml/pages/MenuPage.qml" line="28"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="28"/>
-        <source>Personal records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/MenuPage.qml" line="29"/>
-        <source>Settings</source>
+        <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="30"/>
-        <source>Body tracking</source>
+        <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="31"/>
-        <source>Activities</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="32"/>
-        <source>Stretching</source>
+        <source>Body tracking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="33"/>
-        <location filename="../qml/pages/MenuPage.qml" line="45"/>
-        <source>Nutrition</source>
+        <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="34"/>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="35"/>
+        <location filename="../qml/pages/MenuPage.qml" line="47"/>
+        <source>Nutrition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="36"/>
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="41"/>
+        <location filename="../qml/pages/MenuPage.qml" line="43"/>
         <source>Training</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="43"/>
+        <location filename="../qml/pages/MenuPage.qml" line="45"/>
         <source>Body and activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="46"/>
+        <location filename="../qml/pages/MenuPage.qml" line="48"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="53"/>
+        <location filename="../qml/pages/MenuPage.qml" line="55"/>
         <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2315,108 +2362,193 @@
 <context>
     <name>NutritionPage</name>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="23"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="36"/>
         <source>Fat loss - aggressive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="24"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="37"/>
         <source>Fat loss - moderate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="25"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="38"/>
         <source>Fat loss - conservative</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="26"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="39"/>
         <source>Maintenance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="27"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="40"/>
         <source>Muscle gain - lean bulk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="28"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="41"/>
         <source>Muscle gain - moderate bulk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="29"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="42"/>
         <source>Muscle gain - aggressive bulk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="49"/>
+        <source>High confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="51"/>
+        <source>Medium confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="52"/>
+        <source>Low confidence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="66"/>
+        <source>Not enough logged weight yet - keep logging your weight regularly and check back in a couple of weeks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="69"/>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week - on track.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="72"/>
+        <source>Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested adjustment: %5 kcal/day.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/NutritionPage.qml" line="85"/>
+        <source>Not enough logged food yet: %1 of the %2 days needed in the last %3 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="88"/>
+        <source>Not enough logged weight yet: it takes at least %1 weigh-in days over %2 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="91"/>
+        <source>The logged food and weight don&apos;t add up to a believable figure yet. Some days may be only partly logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="94"/>
+        <source>You ate %1 kcal/day on average while your weight changed %2 %3/week over the last %4 days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="98"/>
+        <source>Some days may be only partly logged, which makes this estimate too low.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="165"/>
         <source>Calculators</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="89"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="169"/>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="173"/>
         <source>Goal and profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="93"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="177"/>
         <source>Diet plans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="97"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="181"/>
         <source>Recipes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="101"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="185"/>
         <source>Foods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="105"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="189"/>
         <source>Open food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="116"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="200"/>
         <source>Nutrition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="125"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="209"/>
         <source>Today so far</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="133"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="217"/>
         <source>Log food now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="138"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="222"/>
         <source>Current goal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="149"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="233"/>
         <source>Daily target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="151"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="235"/>
         <source>No goal set. Goals are set on the IronStack web.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="155"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="239"/>
         <source>Today&apos;s plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NutritionPage.qml" line="168"/>
+        <location filename="../qml/pages/NutritionPage.qml" line="252"/>
         <source>Nothing planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="258"/>
+        <source>Is your current target working?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="277"/>
+        <source>Adjusting to %1 kcal/day is done on the IronStack web: the app can&apos;t change targets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="282"/>
+        <source>Observed maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="289"/>
+        <source>%1 kcal/day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionPage.qml" line="312"/>
+        <source>An estimate of what you really burn, based on your food diary and weight. It doesn&apos;t change your target.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2530,6 +2662,193 @@
     <message>
         <location filename="../qml/pages/NutritionProfileDialog.qml" line="129"/>
         <source>Current daily calories, if you already track this</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NutritionStatsPage</name>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="29"/>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="30"/>
+        <source>14 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="31"/>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="32"/>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="33"/>
+        <source>Year to date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="34"/>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="36"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="79"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="90"/>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="100"/>
+        <source>Last 30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="104"/>
+        <source>Days logged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="108"/>
+        <source>Mean calories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="113"/>
+        <source>Typical day (median)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="118"/>
+        <source>Median protein</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="123"/>
+        <source>Median carbohydrates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="128"/>
+        <source>Median fat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="138"/>
+        <source>Your mean is clearly below your typical day, so some days may be only partly logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="147"/>
+        <source>The mean shows your real total intake per day, big days included. The median shows a typical day, and one barely-logged day hardly moves it. Only finished days you logged something count: today is left out until it&apos;s over, and a day with nothing logged isn&apos;t counted as zero calories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="154"/>
+        <source>Per day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>Period</source>
+        <extracomment>Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>Days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>Mean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>Med.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="166"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="213"/>
+        <source>Days: days logged / days in the period. Mean and median calories in kcal, median macros in grams. Today isn&apos;t included.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="218"/>
+        <source>Daily calories (last 30 days)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="237"/>
+        <source>Log a few days in your food diary to see your trend here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NutritionStatsPage.qml" line="239"/>
+        <source>Dashed line: your current target, %1 kcal. It&apos;s the same on every day, even if your target was different back then.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OpenFoodFactsPage</name>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="50"/>
+        <source>Nutrition values missing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="101"/>
+        <source>Open Food Facts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="111"/>
+        <source>Product name or barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="126"/>
+        <source>Values are per 100 g or 100 ml. An added product becomes one of your own foods; Nutri-Score and NOVA group aren&apos;t kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="162"/>
+        <source>Nothing found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="163"/>
+        <source>Try another name, or the barcode under the stripes.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2767,6 +3086,146 @@
         <location filename="../qml/pages/ProgramsPage.qml" line="135"/>
         <source>Pull down to create one</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProgressPage</name>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="54"/>
+        <source>7 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="55"/>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="56"/>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="57"/>
+        <source>6 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="58"/>
+        <source>1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="60"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="161"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="172"/>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="182"/>
+        <source>Period</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="201"/>
+        <source>workouts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="206"/>
+        <source>time (h:min)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="211"/>
+        <source>volume (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="216"/>
+        <source>Body measurements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="229"/>
+        <source>No body measurements in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="261"/>
+        <source>One reading in this range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="272"/>
+        <source>Strength trend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="277"/>
+        <source>Exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="278"/>
+        <source>Choose an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="292"/>
+        <source>Weekly training volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="310"/>
+        <source>No completed workouts in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="315"/>
+        <source>Muscle-group volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="353"/>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="362"/>
+        <source>No records in this range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="391"/>
+        <source>%1RM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="400"/>
+        <source>reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProgressPage.qml" line="418"/>
+        <source>Show less</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/ProgressPage.qml" line="419"/>
+        <source>Show %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3187,124 +3646,149 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
+        <source>Stretching timer sound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="92"/>
+        <source>A chime when a hold starts, when other steps end and when the session is done.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="99"/>
+        <source>Body tracking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
+        <source>Body tracking reminder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
+        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days. Kept on this phone - the web&apos;s own switch isn&apos;t available to the app.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="114"/>
         <source>IronStack profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
         <source>Units</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="112"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
         <source>Metric (kg, km)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
         <source>Imperial (lb, mi)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="144"/>
         <source>For the IronStack web and texts from the server, like suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Timezone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="171"/>
         <source>Height (in)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="171"/>
         <source>Height (cm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="165"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="186"/>
         <source>Show BMI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="166"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="187"/>
         <source>Turns off the BMI card and its category ranges entirely.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="193"/>
         <source>Share my activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="173"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="194"/>
         <source>Lets everyone using this instance see your longest streak, workout count, PRs, total weight lifted, and when you last trained, in the dashboard&apos;s achievements carousel and &quot;Recently active&quot; list. Turn off to keep your own activity private - you&apos;ll still see everyone else&apos;s.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="204"/>
         <source>Allow friend requests</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="189"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Allow group invites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="197"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="218"/>
         <source>Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="201"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="222"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="207"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Change server or key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="211"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Logging out, %n unsynced change(s) lost</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>Logging out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="225"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="246"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="239"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3471,78 +3955,78 @@
 <context>
     <name>StretchPlayerPage</name>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="30"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="34"/>
         <source>Get ready</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="32"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="36"/>
         <source>Rest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="33"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="37"/>
         <source>Hold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="38"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="42"/>
         <source>Left side</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="40"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="44"/>
         <source>Right side</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="116"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="144"/>
         <source>Abandon session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="117"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="145"/>
         <source>Abandoning session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="121"/>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="225"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="149"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="253"/>
         <source>Finish session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="169"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="197"/>
         <source>set %1/%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="190"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="218"/>
         <source>Next up:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="195"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="223"/>
         <source>Resume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="195"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="223"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="199"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="227"/>
         <source>Next step</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="203"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="231"/>
         <source>Skip stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchPlayerPage.qml" line="220"/>
+        <location filename="../qml/pages/StretchPlayerPage.qml" line="248"/>
         <source>All stretches done - nice work.</source>
         <translation type="unfinished"></translation>
     </message>
