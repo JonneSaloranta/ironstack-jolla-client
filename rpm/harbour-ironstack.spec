@@ -28,6 +28,7 @@ stretching and nutrition, like the web.
 
 %install
 %qmake5_install
+strip %{buildroot}%{_bindir}/%{name}
 
 desktop-file-install --delete-original \
   --dir %{buildroot}%{_datadir}/applications \

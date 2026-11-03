@@ -58,11 +58,6 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
   (`translations/`); the web has more. New languages need the `.ts` file
   in `harbour-ironstack.pro` and the built-in content names from
   `tools/content-i18n/generate.py`.
-- [ ] **Stale shopping-list ticks.** Ticks are kept per plan and trip in
-  the settings cache (`shopping/<plan>/<trip>`); a deleted plan's ticks
-  stay until logout. Harmless and small; clean up when a plan is deleted
-  if it ever matters.
-
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
 #26-#41 were fixed in IronStack 1.30.0 and are used by the app. Still
@@ -82,8 +77,6 @@ COMPATIBILITY.md and drop the row.
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
   (0.4.0 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
-  `sfdk check` on the aarch64 RPM; write release notes once there's a
+  `sfdk -c target=SailfishOS-5.1.0.11-aarch64 check` on the aarch64 RPM
+  (without the target it runs the i486 objdump and fails); write release notes once there's a
   public release.
-- [ ] **`sfdk check` warning**: "unstripped-binary-or-object
-  /usr/bin/harbour-ironstack". Harbour accepts it; stripping the binary in
-  the spec's `%install` would clear it.
