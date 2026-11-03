@@ -3116,6 +3116,10 @@
         <source>Nothing to buy.</source>
         <translation>Ei ostettavaa.</translation>
     </message>
+    <message>
+        <source>Clear ticks</source>
+        <translation>Poista ruksit</translation>
+    </message>
 </context>
 <context>
     <name>StretchEditDialog</name>

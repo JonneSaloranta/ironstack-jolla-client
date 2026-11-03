@@ -6,7 +6,8 @@ import "../js/store.js" as Store
 // A diet plan's shopping list, like the web's: one trip at a time (the
 // next one, or any other), each food's total and how much each day needs;
 // the shopping days and whether the shopping day itself is bought for can
-// be changed. Ticks are kept on the phone for the trip being shopped.
+// be changed. Ticks are kept on the phone per plan and trip, like the
+// web's (there in the browser): a convenience in the shop, not data.
 Page {
     id: page
 
@@ -28,14 +29,38 @@ Page {
         return weekdayName(t.weekday, Locale.LongFormat) + " (" + t.days.map(function(d) { return weekdayName(d) }).join(", ") + ")"
     }
 
+    // The trip shown, as the web keys its ticks: a weekday or "week".
+    function tickKey() {
+        var t = list ? list.trip : null
+        return "shopping/" + planId + "/" + (t && t.weekday !== null && t.weekday !== undefined ? t.weekday : "week")
+    }
+
+    function readTicks() {
+        var saved = settings.cached(tickKey()) || []
+        var result = {}
+        saved.forEach(function(food) { result[food] = true })
+        ticked = result
+    }
+
+    function saveTicks() {
+        var foods = []
+        for (var food in ticked) {
+            if (ticked[food])
+                foods.push(parseInt(food, 10))
+        }
+        settings.setCached(tickKey(), foods)
+    }
+
     function load(keepError) {
         loading = true
         var path = "diet-plans/" + planId + "/shopping-list/" + (trip >= 0 ? "?trip=" + trip : "")
         api.request("GET", path, null, function(ok, status, data, error) {
             loading = false
             errorText = ok ? (keepError || "") : error
-            if (ok)
+            if (ok) {
                 list = data
+                readTicks()
+            }
         })
         api.request("GET", "diet-plans/" + planId + "/shopping-settings/", null, function(ok, status, data) {
             if (ok)
@@ -64,6 +89,15 @@ Page {
         var copy = Store.copy(ticked)
         copy[food] = !copy[food]
         ticked = copy
+        saveTicks()
+    }
+
+    readonly property bool anyTicked: {
+        for (var food in ticked) {
+            if (ticked[food])
+                return true
+        }
+        return false
     }
 
     Component.onCompleted: load()
@@ -75,6 +109,14 @@ Page {
 
         PullDownMenu {
             busy: page.loading
+            MenuItem {
+                visible: page.anyTicked
+                text: qsTr("Clear ticks")
+                onClicked: {
+                    page.ticked = {}
+                    page.saveTicks()
+                }
+            }
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: page.load()
@@ -102,7 +144,6 @@ Page {
                             text: page.tripText(modelData)
                             onClicked: {
                                 page.trip = modelData.weekday === null ? -2 : modelData.weekday
-                                page.ticked = {}
                                 page.load()
                             }
                         }

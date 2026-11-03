@@ -3813,42 +3813,47 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="27"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="28"/>
         <source>Whole week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="79"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="114"/>
+        <source>Clear ticks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="121"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="87"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="129"/>
         <source>Shopping list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="96"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="138"/>
         <source>Trip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="142"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="183"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="162"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="203"/>
         <source>Shopping days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="174"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="215"/>
         <source>Buy for the shopping day itself</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ShoppingListPage.qml" line="183"/>
+        <location filename="../qml/pages/ShoppingListPage.qml" line="224"/>
         <source>Nothing to buy.</source>
         <translation type="unfinished"></translation>
     </message>

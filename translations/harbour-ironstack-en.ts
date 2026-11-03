@@ -3116,6 +3116,10 @@
         <source>Nothing to buy.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear ticks</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StretchEditDialog</name>
