@@ -61,7 +61,7 @@ Page {
         api.request("POST", "diet-plans/" + planId + "/" + path, body, function(ok, status, data, error) {
             Store.dietPlansChanged = true
             if (path === "apply/")
-                Nutrition.diaryChanged = true
+                Nutrition.diaryEdited()
             load(ok ? "" : error)
         })
     }

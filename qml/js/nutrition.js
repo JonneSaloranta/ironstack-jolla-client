@@ -144,6 +144,22 @@ function currentGoal(goals) {
     return (goals || []).filter(function(g) { return !Store.present(g.ended_at) })[0] || null
 }
 
+// Today on the cover: { calories, protein, calorieTarget, proteinTarget,
+// unknown } from the day's entries and the current target (null when
+// there's none). `unknown` counts entries the app can't read (a built-in
+// or deleted recipe), which aren't in the sums.
+function daySummary(entries, foods, recipes, target) {
+    var known = (entries || []).filter(function(e) { return isKnown(e, foods, recipes) })
+    var sum = total(known, foods, recipes)
+    return {
+        calories: Math.round(sum.calories),
+        protein: Math.round(sum.protein_grams),
+        calorieTarget: target ? number(target.daily_calories) : null,
+        proteinTarget: target ? Math.round(number(target.protein_grams)) : null,
+        unknown: (entries || []).length - known.length
+    }
+}
+
 // A share of a target as a whole percent, or null without a target.
 function percentOf(value, target) {
     var t = number(target)
@@ -168,6 +184,13 @@ var slots = null      // meal slots, in order
 var changed = false
 // The diary changed somewhere; the nutrition overview reloads.
 var diaryChanged = false
+// Counts diary changes, for the cover to see one since it last looked.
+var diaryEdits = 0
+
+function diaryEdited() {
+    diaryChanged = true
+    diaryEdits++
+}
 
 function ensure(api, done) {
     if (foods !== null && !changed)

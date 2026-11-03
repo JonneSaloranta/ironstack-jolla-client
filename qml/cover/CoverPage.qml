@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../js/store.js" as Store
+import "../js/nutrition.js" as Nutrition
 
 CoverBackground {
     id: cover
@@ -9,6 +10,69 @@ CoverBackground {
     property bool resting: settings.restEndsAt > 0
     property real elapsed: 0
     property real restRemaining: 0
+
+    // Today's food when no workout is on: { calories, protein,
+    // calorieTarget, proteinTarget, unknown }, or null when there's
+    // nothing to show (no connection yet, no nutrition permission).
+    property var today: null
+    property string todayIso: ""
+    property real fetchedAt: 0
+    property int fetchedEdits: -1
+
+    // Read when the cover comes into view (the app was just minimized,
+    // perhaps after logging something): at most every 30 s, unless the
+    // diary was changed in the app or it's a new day.
+    function refreshToday() {
+        if (!settings.configured || hasSession)
+            return
+        var iso = Store.isoDate(new Date())
+        if (iso === todayIso && Nutrition.diaryEdits === fetchedEdits && Date.now() - fetchedAt < 30000)
+            return
+        fetchedAt = Date.now()
+        fetchedEdits = Nutrition.diaryEdits
+        Nutrition.ensure(api, function(ok) {
+            if (!ok)
+                return
+            var target = null
+            var pending = 2
+            var entries = null
+            function done() {
+                if (--pending > 0 || entries === null)
+                    return
+                todayIso = iso
+                today = Nutrition.daySummary(entries, Nutrition.foods, Nutrition.recipes, target)
+            }
+            api.request("GET", "nutrition-targets/?page_size=100", null, function(ok2, status, data) {
+                if (ok2)
+                    target = Nutrition.currentTarget(data.results)
+                done()
+            })
+            Nutrition.entriesFor(api, iso, function(ok3, found) {
+                if (ok3)
+                    entries = found
+                done()
+            })
+        })
+    }
+
+    onStatusChanged: {
+        if (status === Cover.Active)
+            refreshToday()
+    }
+
+    // The food diary with a quick entry, over whatever the app shows.
+    function openQuickEntry() {
+        appWindow.activate()
+        Store.whenIdle(pageStack, function() {
+            var top = pageStack.currentPage
+            var diary = top && top.objectName === "diaryPage" && top.isoDay === Store.isoDate(new Date())
+                        ? top
+                        : pageStack.push(Qt.resolvedUrl("../pages/DiaryPage.qml"), {}, PageStackAction.Immediate)
+            Store.whenIdle(pageStack, function() { diary.quickEntry(null) })
+        })
+    }
+
+    readonly property bool showToday: !hasSession && today !== null
 
     function tick() {
         elapsed = Store.elapsedSince(settings.activeSessionStarted)
@@ -29,12 +93,62 @@ CoverBackground {
         spacing: Theme.paddingSmall
 
         Label {
-            visible: !cover.hasSession
+            visible: !cover.hasSession && !cover.showToday
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             text: "IronStack"
             color: Theme.highlightColor
             font.pixelSize: Theme.fontSizeLarge
+        }
+
+        Label {
+            visible: cover.showToday
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeSmall
+            color: Theme.secondaryHighlightColor
+            text: qsTr("Today")
+        }
+        Label {
+            visible: cover.showToday
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeExtraLarge
+            color: Theme.highlightColor
+            text: cover.today ? cover.today.calories + (cover.today.unknown ? "+" : "") : ""
+        }
+        Label {
+            visible: cover.showToday
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            text: cover.today && cover.today.calorieTarget ? qsTr("/ %1 kcal").arg(cover.today.calorieTarget) : "kcal"
+        }
+        // Eaten against the target; full when over it.
+        Rectangle {
+            visible: cover.showToday && cover.today.calorieTarget > 0
+            width: parent.width
+            height: Math.max(2, Math.round(Theme.paddingSmall / 2))
+            radius: height / 2
+            color: Theme.rgba(Theme.secondaryColor, 0.3)
+            Rectangle {
+                height: parent.height
+                radius: parent.radius
+                width: cover.showToday && cover.today.calorieTarget > 0
+                       ? parent.width * Math.min(1, cover.today.calories / cover.today.calorieTarget) : 0
+                color: Theme.highlightColor
+            }
+        }
+        Label {
+            visible: cover.showToday
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            text: cover.today ? (cover.today.proteinTarget
+                                 ? qsTr("Protein %1 / %2 g").arg(cover.today.protein).arg(cover.today.proteinTarget)
+                                 : qsTr("Protein %1 g").arg(cover.today.protein)) : ""
         }
 
         Label {
@@ -76,12 +190,21 @@ CoverBackground {
         }
 
         Label {
-            visible: !cover.hasSession
+            visible: !cover.hasSession && !cover.showToday
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.Wrap
             color: Theme.secondaryColor
             text: qsTr("No workout in progress")
+        }
+    }
+
+    CoverActionList {
+        enabled: cover.showToday
+        CoverAction {
+            // quick entry to today's diary
+            iconSource: "image://theme/icon-cover-new"
+            onTriggered: cover.openQuickEntry()
         }
     }
 

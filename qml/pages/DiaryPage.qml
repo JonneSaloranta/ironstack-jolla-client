@@ -10,6 +10,7 @@ import "../js/nutrition.js" as Nutrition
 // recipe; entries can be corrected or removed.
 Page {
     id: page
+    objectName: "diaryPage"
 
     property date day: new Date()
     property var entries: []
@@ -62,7 +63,7 @@ Page {
     }
 
     function changed(error) {
-        Nutrition.diaryChanged = true
+        Nutrition.diaryEdited()
         load(error || "")
     }
 
@@ -126,7 +127,7 @@ Page {
             loading = true
             Nutrition.copyDay(api, copied, Store.isoDate(picker.date), function(ok, error) {
                 loading = false
-                Nutrition.diaryChanged = true
+                Nutrition.diaryEdited()
                 errorText = ok ? "" : error
                 if (ok)
                     day = picker.date

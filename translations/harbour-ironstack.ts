@@ -497,17 +497,37 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="48"/>
+        <location filename="../qml/cover/CoverPage.qml" line="110"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="126"/>
+        <source>/ %1 kcal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="150"/>
+        <source>Protein %1 / %2 g</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="151"/>
+        <source>Protein %1 g</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="162"/>
         <source>Workout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="75"/>
+        <location filename="../qml/cover/CoverPage.qml" line="189"/>
         <source>rest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="84"/>
+        <location filename="../qml/cover/CoverPage.qml" line="198"/>
         <source>No workout in progress</source>
         <translation type="unfinished"></translation>
     </message>
@@ -773,102 +793,102 @@
 <context>
     <name>DiaryPage</name>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="29"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="30"/>
         <source>%1 serving(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="29"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="30"/>
         <source>%1 portion(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="29"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="30"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/DiaryPage.qml" line="135"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="136"/>
         <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="144"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="145"/>
         <source>Nothing logged for this meal yet to save as a recipe.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="167"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="168"/>
         <source>Copy this day to another date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="171"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="263"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="312"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="172"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="264"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="313"/>
         <source>Quick entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="175"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="259"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="176"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="260"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="185"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="186"/>
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="210"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="211"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="268"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="269"/>
         <source>Save as recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="288"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="289"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="292"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="293"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="313"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="314"/>
         <source>Built-in or deleted recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="327"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="328"/>
         <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="329"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="330"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="330"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="331"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="331"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="332"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="347"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="348"/>
         <source>Nothing logged yet.</source>
         <translation type="unfinished"></translation>
     </message>

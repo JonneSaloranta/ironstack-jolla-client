@@ -63,6 +63,28 @@ TestCase {
         verify(!Nutrition.isKnown({ food: null, recipe: 9 }, foods, null))
     }
 
+    function test_daySummary() {
+        var recipes = { 9: recipe }
+        var entries = [
+            { food: 6, recipe: null, quantity: "3.00" },    // 210 kcal, 18 g protein
+            { food: null, recipe: 9, quantity: "1.00" },    // 177 kcal
+            { food: null, recipe: 56, quantity: "1.00" }    // can't be read
+        ]
+        var target = { daily_calories: 2200, protein_grams: "160.00", ended_at: null }
+        var day = Nutrition.daySummary(entries, foods, recipes, target)
+        compare(day.calories, 387)
+        compare(day.protein, Math.round(18 + Nutrition.recipePerServing(recipe, foods).protein_grams))
+        compare(day.calorieTarget, 2200)
+        compare(day.proteinTarget, 160)
+        compare(day.unknown, 1)
+
+        var empty = Nutrition.daySummary([], foods, recipes, null)
+        compare(empty.calories, 0)
+        compare(empty.calorieTarget, null)
+        compare(empty.proteinTarget, null)
+        compare(empty.unknown, 0)
+    }
+
     function test_caloriesFromMacros() {
         compare(Nutrition.caloriesFromMacros("20", "30", "10"), 290)
         compare(Nutrition.caloriesFromMacros(null, "", "1"), 9)

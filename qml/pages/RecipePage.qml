@@ -74,7 +74,7 @@ Page {
         dialog.accepted.connect(function() {
             api.request("POST", "diary-entries/", dialog.body(), function(ok, status, data, error) {
                 errorText = ok ? "" : error
-                Nutrition.diaryChanged = true
+                Nutrition.diaryEdited()
             })
         })
     }

@@ -412,6 +412,22 @@
         <source>rest</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>/ %1 kcal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein %1 / %2 g</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protein %1 g</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DashboardPage</name>

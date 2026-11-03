@@ -412,6 +412,22 @@
         <source>rest</source>
         <translation>lepo</translation>
     </message>
+    <message>
+        <source>Today</source>
+        <translation>Tänään</translation>
+    </message>
+    <message>
+        <source>/ %1 kcal</source>
+        <translation>/ %1 kcal</translation>
+    </message>
+    <message>
+        <source>Protein %1 / %2 g</source>
+        <translation>Proteiini %1 / %2 g</translation>
+    </message>
+    <message>
+        <source>Protein %1 g</source>
+        <translation>Proteiini %1 g</translation>
+    </message>
 </context>
 <context>
     <name>DashboardPage</name>
