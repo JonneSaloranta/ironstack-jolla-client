@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.5.0
+Version:    0.6.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,13 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.6.0-1
+- Scan a food's barcode with the camera.
+- In Swedish, Estonian, Italian and Russian too.
+- The dashboard's "Recently active" list.
+- A coach's update shows what it changes first.
+- A coach's shared programs are no longer listed as your own.
+
 * Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.5.0-1
 - Friends and groups: requests, invites, conversations, blocking and
   group management.
