@@ -1,13 +1,17 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Nemo.KeepAlive 1.2
+import QtMultimedia 5.6
 import "../js/store.js" as Store
 
 // A routine as a guided session, like the web's player: get ready, hold
 // each stretch (each side, each set), rest in between, with pause and
 // skip. Played here on the phone - the API can only take a finished
 // session as a quick log (IronStack #34) - and logged as done with the
-// routine and the time spent when finished.
+// routine and the time spent when finished. Chimes like the web's timer
+// (Settings: "Stretching timer sound"): a double one when a hold starts,
+// a single one when any other step runs out, three at the end; skipping
+// by hand is silent.
 Page {
     id: page
 
@@ -41,8 +45,15 @@ Page {
         return ""
     }
 
+    function chime(sound) {
+        if (settings.timerSound)
+            sound.play()
+    }
+
     function startStep(at) {
         if (at >= steps.length) {
+            if (!done)
+                chime(doneSound)
             done = true
             return
         }
@@ -56,8 +67,12 @@ Page {
         if (!paused && !done) {
             activeMs += now - lastTick
             remainingMs = Math.max(0, stepEndsAt - now)
-            if (remainingMs <= 0)
+            if (remainingMs <= 0) {
+                var next = steps[index + 1]
+                if (next)
+                    chime(next.kind === "hold" ? holdSound : stepSound)
                 startStep(index + 1)
+            }
         }
         lastTick = now
     }
@@ -89,6 +104,19 @@ Page {
     Component.onCompleted: {
         lastTick = Date.now()
         startStep(0)
+    }
+
+    SoundEffect {
+        id: holdSound
+        source: Qt.resolvedUrl("../sounds/hold.wav")
+    }
+    SoundEffect {
+        id: stepSound
+        source: Qt.resolvedUrl("../sounds/step.wav")
+    }
+    SoundEffect {
+        id: doneSound
+        source: Qt.resolvedUrl("../sounds/done.wav")
     }
 
     // Keeps counting with the screen off.
