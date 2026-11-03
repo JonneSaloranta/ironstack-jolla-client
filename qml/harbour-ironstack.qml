@@ -28,30 +28,22 @@ ApplicationWindow {
     }
 
     // --- new personal records ---------------------------------------
-    // The web shows a toast when a logged set makes a record. The API's
-    // set response doesn't carry them (IronStack #30), so once a queued set
-    // reaches the server the newest records are checked for ones made by it.
+    // The web shows a toast when a logged set makes a record; the set's
+    // response lists them as `new_records` once it reaches the server.
 
     Connections {
         target: syncQueue
         onItemSynced: {
-            if (method !== "POST" || path !== "sets/" || !data || !data.performed_at)
+            if (method !== "POST" || path !== "sets/" || !data || !(data.new_records || []).length)
                 return
-            var performedAt = data.performed_at
-            api.request("GET", "records/?page_size=25", null, function(ok, status, page) {
-                if (!ok)
-                    return
-                var made = Store.recordsForSet(page.results, performedAt)
-                if (made.length === 0)
-                    return
-                prNotification.summary = qsTr("New PR") + " - " + Store.contentName(made[0].exercise_name)
-                prNotification.body = made.map(function(r) {
-                    return Store.recordLabel(r, qsTr("%1RM")) + ": "
-                            + Store.recordValueText(r, settings.unitSystem, "%1 " + qsTr("reps"))
-                }).join("\n")
-                prNotification.replacesId = 0
-                prNotification.publish()
-            })
+            var made = data.new_records
+            prNotification.summary = qsTr("New PR") + " - " + Store.contentName(made[0].exercise_name)
+            prNotification.body = made.map(function(r) {
+                return Store.recordLabel(r, qsTr("%1RM")) + ": "
+                        + Store.recordValueText(r, settings.unitSystem, "%1 " + qsTr("reps"))
+            }).join("\n")
+            prNotification.replacesId = 0
+            prNotification.publish()
         }
     }
 

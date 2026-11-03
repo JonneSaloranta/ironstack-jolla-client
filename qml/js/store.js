@@ -704,13 +704,6 @@ function recordLabel(record, repMaxText) {
     return record.record_type_display
 }
 
-// The records a just-logged set made: PR detection gives them the set's
-// performed_at as achieved_at (apps.records.services), so they're the
-// ones from records/ (newest first) with exactly that time.
-function recordsForSet(records, performedAt) {
-    return (records || []).filter(function(r) { return r.achieved_at === performedAt })
-}
-
 // A record's value with its unit: kg (or lb) for every type except
 // rep_pr, a plain rep count - apps.records.services.display_value.
 function recordValueText(record, unitSystem, repsTemplate) {

@@ -146,17 +146,6 @@ TestCase {
         compare(trend.sessionCount, 2)
     }
 
-    function test_recordsForSet() {
-        var records = [
-            { id: 3, achieved_at: "2026-11-02T18:00:05.123456Z" },
-            { id: 2, achieved_at: "2026-11-02T18:00:05.123456Z" },
-            { id: 1, achieved_at: "2026-11-01T18:00:00Z" }
-        ]
-        compare(Store.recordsForSet(records, "2026-11-02T18:00:05.123456Z").length, 2)
-        compare(Store.recordsForSet(records, "2026-11-03T00:00:00Z").length, 0)
-        compare(Store.recordsForSet(null, "x").length, 0)
-    }
-
     function test_recordValueText() {
         compare(Store.recordValueText({ record_type: "rep_pr", value: "12.00" }, "metric", "%1 reps"), "12 reps")
         compare(Store.recordValueText({ record_type: "max_weight", value: "100.00" }, "metric", "%1 reps"), "100 kg")
