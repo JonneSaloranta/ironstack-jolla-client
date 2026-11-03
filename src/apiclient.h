@@ -39,14 +39,6 @@ public:
                                  const QString &method, const QString &path,
                                  const QJSValue &body, const QJSValue &callback);
 
-    // GET from Open Food Facts (search.openfoodfacts.org,
-    // world.openfoodfacts.org over https only - anything else is refused),
-    // without the API key and with an identifying User-Agent as OFF asks.
-    // Kept within OFF's per-minute budgets like the web (8 searches,
-    // 12 product reads). callback(ok, status, data, error)
-    Q_INVOKABLE void openFoodFacts(const QString &url, const QJSValue &callback);
-    static bool isOpenFoodFactsUrl(const QUrl &url);
-
     using Handler = std::function<void(bool ok, int status, const QVariant &data, const QString &error)>;
 
     // C++ entry point (the sync queue uses it). An invalid `body` sends no
@@ -90,10 +82,6 @@ private:
     QNetworkAccessManager *m_network;
     QQmlEngine *m_engine = nullptr;
     QHash<QNetworkReply *, Pending> m_pending;
-    // Open Food Facts requests in the current minute, per budget.
-    qint64 m_offMinute = -1;
-    int m_offSearches = 0;
-    int m_offReads = 0;
 };
 
 #endif

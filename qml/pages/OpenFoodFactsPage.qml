@@ -3,14 +3,13 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
-import "../js/openfoodfacts.js" as Off
 
-// Find a product in Open Food Facts by name or barcode and add it to your
-// foods, like the web's import. The API has no import, so the app reads
-// Open Food Facts itself and creates the food with POST foods/ (per 100 g
-// or 100 ml); a product already in the library is used as it is.
-// imported(foodId) fires after a product was added or found, once the
-// food is in Nutrition.foods.
+// Find a product in Open Food Facts by name or barcode and add it, like
+// the web's import: IronStack searches its foods and Open Food Facts
+// together (foods/search-off/) and imports a product as a shared food with
+// its Nutri-Score, NOVA group and OFF link (foods/import-off/), within the
+// server's own Open Food Facts budget. imported(foodId) fires once the food
+// is in Nutrition.foods.
 Page {
     id: page
 
@@ -22,8 +21,15 @@ Page {
     property string errorText: ""
     property bool saving: false
 
-    // [{ product, usable, name, detail }]
+    // [{ foodId (already here) or offId, name, detail }]
     property var results: []
+
+    function detail(item) {
+        return [item.brand, item.calories + " kcal / " + Store.formatNumber(parseFloat(item.serving_size)) + " "
+                + Nutrition.unitText(item.serving_unit, qsTr("pcs")),
+                item.nutri_score ? "Nutri-Score " + item.nutri_score.toUpperCase() : ""]
+                .filter(function(p) { return p }).join(" · ")
+    }
 
     function search() {
         var text = query.trim()
@@ -32,61 +38,47 @@ Page {
         loading = true
         errorText = ""
         results = []
-        var url = Off.isBarcode(text) ? Off.productUrl(text) : Off.searchUrl(text, Store.contentLanguage())
-        api.openFoodFacts(url, function(ok, status, data, error) {
+        api.request("GET", "foods/search-off/?q=" + encodeURIComponent(text), null, function(ok, status, data, error) {
             loading = false
             searched = true
             if (!ok) {
                 errorText = error
                 return
             }
-            results = Off.productsFrom(data).map(function(product) {
-                var body = Off.foodBody(product)
-                return {
-                    product: product,
-                    usable: body !== null,
-                    name: String(product.product_name || product.generic_name || product.code || ""),
-                    detail: [Off.firstBrand(product.brands),
-                             body ? body.calories + " kcal / 100 " + body.serving_unit : qsTr("Nutrition values missing")]
-                            .filter(function(p) { return p }).join(" · ")
-                }
-            })
+            if (data.status === "disabled")
+                errorText = qsTr("Open Food Facts is turned off on this IronStack server.")
+            else if (data.status === "busy")
+                errorText = qsTr("Open Food Facts is busy, try again in a minute.")
+            else if (data.status === "error")
+                errorText = qsTr("Open Food Facts couldn't be reached.")
+            results = (data.local || []).map(function(food) {
+                return { foodId: food.id, food: food, name: Store.contentName(food.name),
+                         detail: qsTr("Already in the food library") + " · " + detail(food) }
+            }).concat((data.results || []).map(function(product) {
+                return { offId: product.off_id, name: product.name, detail: detail(product) }
+            }))
         })
     }
 
-    function add(product) {
-        var body = Off.foodBody(product)
-        if (!body)
-            return
+    function done(food) {
+        if (Nutrition.foods)
+            Nutrition.foods[food.id] = food
+        Nutrition.changed = true
+        page.imported(food.id)
+    }
+
+    function add(item) {
+        if (item.food)
+            return done(item.food)
         saving = true
         errorText = ""
-        Nutrition.ensure(api, function(ok, error) {
+        api.request("POST", "foods/import-off/", { barcode: item.offId }, function(ok, status, data, error) {
+            saving = false
             if (!ok) {
-                saving = false
                 errorText = error
                 return
             }
-            var existing = Off.existingFood(Nutrition.foods, product, body)
-            if (existing) {
-                saving = false
-                page.imported(existing.id)
-                return
-            }
-            api.request("POST", "foods/", body, function(ok2, status, data, error2) {
-                saving = false
-                if (!ok2) {
-                    errorText = error2
-                    return
-                }
-                // The library is read again first: whoever gets
-                // imported() looks the food up in it straight away.
-                Nutrition.changed = true
-                saving = true
-                Nutrition.ensure(api, function() {
-                    saving = false
-                    page.imported(data.id)
-                })
-            })
+            done(data)
         })
     }
 
@@ -123,8 +115,8 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryHighlightColor
-                text: qsTr("Values are per 100 g or 100 ml. An added product becomes one of your own foods; "
-                           + "Nutri-Score and NOVA group aren't kept.")
+                text: qsTr("Values are per 100 g or 100 ml. An added product is shared with everyone on your "
+                           + "IronStack, like on the web.")
             }
             Item {
                 width: 1
@@ -133,15 +125,14 @@ Page {
         }
 
         delegate: ListItem {
-            enabled: modelData.usable && !page.saving
+            enabled: !page.saving
             contentHeight: Math.max(Theme.itemSizeSmall, textColumn.height + 2 * Theme.paddingSmall)
-            onClicked: page.add(modelData.product)
+            onClicked: page.add(modelData)
             Column {
                 id: textColumn
                 anchors.verticalCenter: parent.verticalCenter
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
-                opacity: modelData.usable ? 1 : Theme.opacityLow
                 Label {
                     width: parent.width
                     wrapMode: Text.Wrap

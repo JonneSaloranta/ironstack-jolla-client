@@ -2,7 +2,6 @@ import QtQuick 2.0
 import QtTest 1.0
 import "../../qml/js/store.js" as Store
 import "../../qml/js/nutritionstats.js" as Stats
-import "../../qml/js/openfoodfacts.js" as Off
 
 TestCase {
     name: "NutritionStats"
@@ -122,34 +121,5 @@ TestCase {
         compare(Stats.roundHalfEven(2261.5), 2262)
         compare(Stats.roundHalfEven(2261.4), 2261)
         compare(Stats.summarize([{ calories: 2000 }, { calories: 2521 }], 7).medianCalories, 2260)
-    }
-
-    function test_openFoodFacts() {
-        verify(Off.isBarcode(" 6408430000258 "))
-        verify(!Off.isBarcode("milk 1.5"))
-        var product = { code: "6408430000258", product_name: "Kevytmaito", brands: "Valio,Arla",
-                        product_quantity_unit: "ml",
-                        nutriments: { "energy-kj_100g": 192, proteins_100g: 3.5, carbohydrates_100g: 4.9,
-                                      fat_100g: 1.5, sodium_100g: 0.04, salt_100g: 0.1, sugars_100g: 4.888 } }
-        var body = Off.foodBody(product)
-        compare(body.name, "Kevytmaito")
-        compare(body.brand, "Valio")
-        compare(body.serving_unit, "ml")
-        compare(body.serving_size, "100")
-        compare(body.calories, 46)  // from kJ
-        compare(body.sodium_mg, 40)
-        compare(body.sugar_grams, "4.89")
-        compare(body.fiber_grams, null)
-        compare(body.salt_grams, "0.1")
-        compare(Off.foodBody({ code: "1", product_name: "x", nutriments: { proteins_100g: 1 } }), null)
-        compare(Off.productsFrom({ status: 0 }).length, 0)
-        compare(Off.productsFrom({ status: 1, product: product }).length, 1)
-        compare(Off.productsFrom({ hits: [product, product] }).length, 2)
-        var foods = { 1: { id: 1, name: "Kevytmaito", brand: "Valio", calories: 46, serving_unit: "ml",
-                           serving_size: "100.00", owner: 3, active: true } }
-        compare(Off.existingFood(foods, product, body).id, 1)
-        compare(Off.existingFood({ 2: { id: 2, off_id: "6408430000258", active: true } }, product, body).id, 2)
-        compare(Off.existingFood({}, product, body), null)
-        verify(Off.searchUrl("maito rasvaton", "fi").indexOf("q=maito%20rasvaton") > 0)
     }
 }
