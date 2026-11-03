@@ -31,7 +31,8 @@ REST API (`/api/v1/`) with a per-user API key.
   whether your calorie target is working
 - Body measurements with a reminder after 14 days, activities, and
   stretching with a guided, chiming timer
-- Cover shows the workout in progress and its duration
+- Cover shows the workout in progress and its duration; otherwise today's
+  calories and protein against the target, with a quick entry action
 - Metric or imperial display, following the IronStack profile setting
 
 ## API key

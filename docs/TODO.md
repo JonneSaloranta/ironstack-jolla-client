@@ -15,7 +15,8 @@ it's done.
 - [ ] **New in this pass, on the phone** (emulator-checked against the
   local IronStack 2026-11-03): Progress page, nutrition statistics,
   "Is your current target working?" and observed maintenance, Open Food
-  Facts search and barcode, the body tracking reminder. Still to hear on
+  Facts search and barcode, the body tracking reminder, the cover's
+  calories and quick entry (2026-11-03). Still to hear on
   real hardware: the stretching timer chimes (the emulator has no audio
   out), also with the screen off.
 - [ ] **Dialogs.** A focused text field swallowed the first tap on Save;
@@ -28,9 +29,6 @@ it's done.
 
 - [ ] Offline queue for diary, measurements, activities and stretching
   once #31 adds idempotency keys there (today these need a connection).
-- [ ] Home screen / cover: show today's calories or stretching streak?
-  Open question - decide whether the cover should show anything but a
-  workout in progress.
 
 ## Waiting on IronStack (issues filed on JonneSaloranta/ironstack)
 
