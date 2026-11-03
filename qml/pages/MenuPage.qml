@@ -10,6 +10,7 @@ Page {
         ListElement { section: "training"; title: "Exercises"; icon: "image://theme/icon-m-levels"; target: "ExercisePickerPage.qml" }
         ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-note"; target: "ProgramsPage.qml" }
         ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
+        ListElement { section: "training"; title: "Progress"; icon: "image://theme/icon-m-diagnostic"; target: "ProgressPage.qml" }
         ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
         ListElement { section: "nutrition"; title: "Nutrition"; icon: "image://theme/icon-m-health"; target: "NutritionPage.qml" }
         ListElement { section: "nutrition"; title: "Food diary"; icon: "image://theme/icon-m-note"; target: "DiaryPage.qml" }
@@ -25,6 +26,7 @@ Page {
         case "Exercises": return qsTr("Exercises")
         case "Programs": return qsTr("Programs")
         case "History": return qsTr("History")
+        case "Progress": return qsTr("Progress")
         case "Personal records": return qsTr("Personal records")
         case "Settings": return qsTr("Settings")
         case "Body tracking": return qsTr("Body tracking")

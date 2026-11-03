@@ -87,6 +87,27 @@ Page {
                            + "also with the screen off.")
             }
 
+            TextSwitch {
+                text: qsTr("Stretching timer sound")
+                description: qsTr("A chime when a hold starts, when other steps end and when the session is done.")
+                checked: settings.timerSound
+                automaticCheck: false
+                onClicked: settings.timerSound = !checked
+            }
+
+            SectionHeader {
+                text: qsTr("Body tracking")
+            }
+
+            TextSwitch {
+                text: qsTr("Body tracking reminder")
+                description: qsTr("Shows a reminder on the home page when you haven't logged a body measurement "
+                                  + "in 14 days. Kept on this phone - the web's own switch isn't available to the app.")
+                checked: settings.bodyTrackingReminder
+                automaticCheck: false
+                onClicked: settings.bodyTrackingReminder = !checked
+            }
+
             // The IronStack profile, the same settings as the web's
             // Profile page; units apply here too.
             SectionHeader {

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
+import "../js/progress.js" as Progress
 
 Page {
     id: page
@@ -19,6 +20,9 @@ Page {
     // permission, which isn't an error here).
     property var bodyWeightType: null
     property var bodyWeight: null
+    // When the newest body measurement of any type was taken, for the
+    // web's "Time to log your body measurements?" reminder.
+    property string latestMeasurementAt: ""
     property string errorText: ""
     property bool offline: false
     property bool loading: false
@@ -147,13 +151,15 @@ Page {
                 return
             var type = (data.results || []).filter(Store.isBodyWeightType)[0] || null
             page.bodyWeightType = type
-            if (!type)
-                return
             // Newest first; the latest body weight is nearly always on the
             // first page (the API can't filter by type, IronStack #29).
             api.request("GET", "measurements/?page_size=100", null, function(ok2, status2, readings) {
-                if (ok2)
-                    page.bodyWeight = (readings.results || []).filter(function(r) {
+                if (!ok2)
+                    return
+                var results = readings.results || []
+                page.latestMeasurementAt = results.length ? results[0].recorded_at : ""
+                if (type)
+                    page.bodyWeight = results.filter(function(r) {
                         return r.measurement_type === type.id
                     })[0] || null
             })
@@ -227,6 +233,10 @@ Page {
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Progress")
+                onClicked: pageStack.push(Qt.resolvedUrl("ProgressPage.qml"))
             }
             MenuItem {
                 text: qsTr("Personal records")
@@ -421,6 +431,34 @@ Page {
                     color: Theme.highlightColor
                     font.pixelSize: Theme.fontSizeSmall
                     text: qsTr("Log body weight")
+                }
+            }
+
+            // Like the web's card: only a nudge, never in the way.
+            BackgroundItem {
+                visible: settings.bodyTrackingReminder
+                         && Progress.needsBodyReminder(page.latestMeasurementAt, new Date())
+                width: parent.width
+                height: reminderColumn.height + 2 * Theme.paddingMedium
+                onClicked: pageStack.push(Qt.resolvedUrl("MeasurementsPage.qml"))
+                Column {
+                    id: reminderColumn
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    Label {
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        color: Theme.highlightColor
+                        text: qsTr("Time to log your body measurements?")
+                    }
+                    Label {
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.secondaryHighlightColor
+                        text: qsTr("It's been a while since you tracked your weight or measurements - tap here to add a new reading.")
+                    }
                 }
             }
 

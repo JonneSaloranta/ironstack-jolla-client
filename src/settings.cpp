@@ -86,6 +86,32 @@ void Settings::setRestSeconds(int seconds)
     emit restSecondsChanged();
 }
 
+bool Settings::bodyTrackingReminder() const
+{
+    return m_settings.value(QStringLiteral("body/trackingReminder"), true).toBool();
+}
+
+void Settings::setBodyTrackingReminder(bool on)
+{
+    if (on == bodyTrackingReminder())
+        return;
+    m_settings.setValue(QStringLiteral("body/trackingReminder"), on);
+    emit bodyTrackingReminderChanged();
+}
+
+bool Settings::timerSound() const
+{
+    return m_settings.value(QStringLiteral("stretching/timerSound"), true).toBool();
+}
+
+void Settings::setTimerSound(bool on)
+{
+    if (on == timerSound())
+        return;
+    m_settings.setValue(QStringLiteral("stretching/timerSound"), on);
+    emit timerSoundChanged();
+}
+
 void Settings::setRestEndsAt(double endsAt)
 {
     if (endsAt == m_restEndsAt)
