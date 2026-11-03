@@ -538,17 +538,17 @@
 <context>
     <name>BarcodeScannerPage</name>
     <message>
-        <location filename="../qml/pages/BarcodeScannerPage.qml" line="92"/>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="94"/>
         <source>Scan a barcode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/BarcodeScannerPage.qml" line="103"/>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="105"/>
         <source>The camera can&apos;t be used. Check that IronStack may use it (Settings &gt; Apps), or type the number instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/BarcodeScannerPage.qml" line="104"/>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="106"/>
         <source>Hold the barcode inside the frame, about a hand&apos;s width away.</source>
         <translation type="unfinished"></translation>
     </message>
