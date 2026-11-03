@@ -60,5 +60,5 @@ COMPATIBILITY.md.
 - [ ] The app has no git remote - decide where it's published (Harbour,
   OpenRepos, GitHub) and add `sfdk check` to the release steps.
 - [ ] Bump `Version` in `rpm/harbour-ironstack.spec` and add a
-  `%changelog` entry for every package that goes to the phone (0.3.0 on
+  `%changelog` entry for every package that goes to the phone (0.3.1 on
   2026-11-03); then `rpm -Uvh` upgrades without `--force`.

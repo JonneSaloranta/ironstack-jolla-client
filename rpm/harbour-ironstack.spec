@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.3.0
+Version:    0.3.1
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -41,6 +41,10 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.3.1-1
+- Nutrition statistics table and the dashboard's body weight fit with
+  large text sizes.
+
 * Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.3.0-1
 - Cover: today's calories and protein against the target, and a quick
   entry action, when no workout is on.
