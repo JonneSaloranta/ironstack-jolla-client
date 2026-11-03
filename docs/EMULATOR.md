@@ -96,18 +96,25 @@ Copy the key (`isk_...`) - it is shown only once.
 ```bash
 cd ~/Projektit/ironstack-jolla-app
 sfdk emulator start            # boots the VM and opens its window
-sfdk build                     # builds RPMS/harbour-ironstack-*.i486.rpm
-sfdk deploy --sdk              # installs the RPM in the emulator
+tools/build.sh                 # builds ../build-ironstack-i486/RPMS/harbour-ironstack-*.i486.rpm
+tools/emulator/emu.sh setup    # once per emulator boot
+tools/emulator/emu.sh deploy   # installs that RPM in the emulator and launches the app
 ```
+
+`tools/build.sh` builds outside the source tree, one directory per
+architecture (`../build-ironstack-i486`, `../build-ironstack-aarch64`), so
+emulator and phone objects never mix. A plain `sfdk build` in the repo
+would leave an in-tree build there, which the script then asks you to
+remove first. `sfdk deploy` needs `iptable_nat` on the host; `emu.sh
+deploy` copies over ssh instead.
 
 Then open **IronStack** from the emulator's app grid. On the very first
 launch Sailfish OS asks for the app's permission (Internet) -
 tap **Accept**. Then enter `http://10.0.2.2:8000` as the server address and
 paste the API key.
 
-After a code change, run `sfdk build && sfdk deploy --sdk` again and restart
-the app in the emulator (close it by swiping down from the top edge, or with
-the cover's close button in the home screen).
+After a code change, run `tools/build.sh && tools/emulator/emu.sh deploy`
+again; deploy restarts the app.
 
 Stop the emulator with `sfdk emulator stop` when done.
 
@@ -145,7 +152,7 @@ change end to end, or for UI screenshots.
 ```bash
 sfdk emulator start
 tools/emulator/emu.sh setup        # once per emulator boot: touch tool + app permissions
-sfdk build
+tools/build.sh
 tools/emulator/emu.sh deploy       # install the newest i486 RPM and (re)launch
 tools/emulator/emu.sh tap 360 306          # tap the server address field
 tools/emulator/emu.sh type "http://10.0.2.2:8000"
@@ -211,13 +218,17 @@ run settings. C++ changes still need a full build and deploy.
 ## Building for a phone
 
 ```bash
-sfdk -c target=SailfishOS-5.1.0.11-aarch64 build
-sfdk check RPMS/harbour-ironstack-*.aarch64.rpm     # Harbour validation
+tools/build.sh aarch64
+cd ../build-ironstack-aarch64
+sfdk -c target=SailfishOS-5.1.0.11-aarch64 check RPMS/harbour-ironstack-*.aarch64.rpm   # Harbour validation
+scp RPMS/harbour-ironstack-<version>-1.aarch64.rpm defaultuser@<phone>:/tmp/
 ```
 
-Copy the aarch64 RPM to a phone in developer mode and install it with
-`pkcon install-local`, or add the phone as a device (`sfdk device list`,
-Sailfish IDE > Options > Sailfish OS > Devices) and use `sfdk deploy --sdk`.
+On the phone (developer mode), in its own terminal or over ssh:
+`devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm`.
+`rpm -Uvh` only upgrades to a higher version, so bump `Version` in
+`rpm/harbour-ironstack.spec` and add a `%changelog` entry for every package
+(or reinstall the same version with `--force`).
 
 ## Troubleshooting
 

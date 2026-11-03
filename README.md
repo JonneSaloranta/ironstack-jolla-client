@@ -58,13 +58,9 @@ permission a section needs instead of showing it.
 Requires the [Sailfish SDK](https://docs.sailfishos.org/Tools/Sailfish_SDK/).
 
 ```bash
-sfdk config target=SailfishOS-<version>-i486     # emulator
-sfdk build
-sfdk config device="Sailfish OS Emulator <version>"
-sfdk deploy --sdk
-
-sfdk -c target=SailfishOS-<version>-aarch64 build  # phone
-sfdk check RPMS/*.rpm                             # Harbour validation
+tools/build.sh             # emulator: ../build-ironstack-i486/RPMS/
+tools/emulator/emu.sh deploy
+tools/build.sh aarch64     # phone: ../build-ironstack-aarch64/RPMS/
 ```
 
 See [docs/EMULATOR.md](docs/EMULATOR.md) for setting up and using the

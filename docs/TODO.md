@@ -7,8 +7,8 @@ it's done.
 
 ## Testing
 
-- [ ] **Everything on the phone.** Build aarch64 in
-  `~/Projektit/build-ironstack-aarch64`, copy the RPM to `/tmp` on the
+- [ ] **Everything on the phone.** Build with `tools/build.sh aarch64`
+  (EMULATOR.md "Building for a phone"), copy the RPM to `/tmp` on the
   phone, install with `devel-su rpm -Uvh` (needs the user's terminal), go
   through every section with the user's real account, larger text sizes
   and landscape.
@@ -59,8 +59,6 @@ COMPATIBILITY.md.
 
 ## Housekeeping
 
-- [ ] The repo root holds in-tree i486 build output (`*.o`, `Makefile`,
-  `moc_*`); ignored by git but easy to mix up with the aarch64 build.
 - [ ] The app has no git remote - decide where it's published (Harbour,
   OpenRepos, GitHub) and add `sfdk check` to the release steps.
 - [ ] Bump `Version` in `rpm/harbour-ironstack.spec` and add a
