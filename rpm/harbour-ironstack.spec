@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.3.1
+Version:    0.4.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -41,6 +41,19 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.4.0-1
+- Needs IronStack 1.30.0 or later.
+- Food diary totals from the logged values, built-in recipes, copy day
+  and food search on the server.
+- Diary entries, body measurements, activities and stretching are saved
+  on the phone without a connection and sent later.
+- Nutrition goals set and calorie adjustments accepted in the app.
+- Open Food Facts search and import through IronStack.
+- Guided stretching sessions on the server, and a cool-down suggested
+  after a finished workout.
+- Progress page and strength trend from IronStack's analytics.
+- The search fields keep the keyboard open while typing.
+
 * Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.3.1-1
 - Nutrition statistics table and the dashboard's body weight fit with
   large text sizes.
