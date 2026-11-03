@@ -42,9 +42,9 @@ TestCase {
 
     function test_pages_data() {
         return [
-            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "HistoryPage", "LogSetDialog",
+            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "BlockedUsersPage", "ChatPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "FriendPickerDialog", "GroupEditDialog", "GroupPage", "HistoryPage", "LogSetDialog",
             "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "NutritionStatsPage", "OpenFoodFactsPage", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "ProgressPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
-            "SessionPage", "SettingsPage", "ShoppingListPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
+            "SessionPage", "SettingsPage", "ShoppingListPage", "SocialPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "UserSearchPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

@@ -17,6 +17,7 @@ Page {
         ListElement { section: "body"; title: "Body tracking"; icon: "image://theme/icon-m-person"; target: "MeasurementsPage.qml" }
         ListElement { section: "body"; title: "Activities"; icon: "image://theme/icon-m-location"; target: "ActivitiesPage.qml" }
         ListElement { section: "body"; title: "Stretching"; icon: "image://theme/icon-m-gesture"; target: "StretchingPage.qml" }
+        ListElement { section: "people"; title: "Friends and groups"; icon: "image://theme/icon-m-people"; target: "SocialPage.qml" }
         ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
     }
 
@@ -34,6 +35,7 @@ Page {
         case "Stretching": return qsTr("Stretching")
         case "Nutrition": return qsTr("Nutrition")
         case "Food diary": return qsTr("Food diary")
+        case "Friends and groups": return qsTr("Friends and groups")
         }
         return title
     }
@@ -45,6 +47,8 @@ Page {
             return qsTr("Body and activity")
         if (section === "nutrition")
             return qsTr("Nutrition")
+        if (section === "people")
+            return qsTr("People")
         return qsTr("App")
     }
 

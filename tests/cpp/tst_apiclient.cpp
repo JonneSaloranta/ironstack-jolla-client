@@ -280,6 +280,9 @@ private slots:
         QTest::newRow("last performance") << "exercises/1/last-performance/" << "workouts";
         QTest::newRow("exercise") << "exercises/1/" << "exercises";
         QTest::newRow("nutrition profile") << "nutrition/profile/" << "nutrition";
+        QTest::newRow("social") << "social/messages/3/" << "social";
+        QTest::newRow("coaching") << "coaching/clients/" << "coaching";
+        QTest::newRow("assistant") << "assistant/conversations/" << "assistant";
         QTest::newRow("unknown") << "nope/" << "";
     }
 

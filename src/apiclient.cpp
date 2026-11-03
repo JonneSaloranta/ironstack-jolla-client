@@ -178,6 +178,10 @@ QString ApiClient::contextForPath(const QString &path)
         { QStringLiteral("stretch-routines"), QStringLiteral("stretching") },
         { QStringLiteral("stretch-routine-items"), QStringLiteral("stretching") },
         { QStringLiteral("stretch-sessions"), QStringLiteral("stretching") },
+        { QStringLiteral("tutorials"), QStringLiteral("profile") },
+        { QStringLiteral("social"), QStringLiteral("social") },
+        { QStringLiteral("coaching"), QStringLiteral("coaching") },
+        { QStringLiteral("assistant"), QStringLiteral("assistant") },
     };
     return contexts.value(first);
 }
