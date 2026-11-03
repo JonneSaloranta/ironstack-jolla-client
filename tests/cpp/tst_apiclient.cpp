@@ -497,6 +497,14 @@ private slots:
         QCOMPARE(back.value(QStringLiteral("performed_exercises")).toList().size(), 1);
         QVERIFY(!restarted.cached(QStringLiteral("missing")).isValid());
 
+        restarted.setCachedVariant(QStringLiteral("shopping/12/0"), QVariantList { 5 });
+        restarted.setCachedVariant(QStringLiteral("shopping/12/week"), QVariantList { 6 });
+        restarted.setCachedVariant(QStringLiteral("shopping/120/0"), QVariantList { 7 });
+        restarted.removeCached(QStringLiteral("shopping/12"));
+        QVERIFY(!restarted.cached(QStringLiteral("shopping/12/0")).isValid());
+        QVERIFY(!restarted.cached(QStringLiteral("shopping/12/week")).isValid());
+        QVERIFY(restarted.cached(QStringLiteral("shopping/120/0")).isValid());
+
         restarted.clearActiveSession();
         QCOMPARE(Settings().activeSessionId(), -1);
         restarted.logout();

@@ -89,6 +89,8 @@ Page {
                     api.request("DELETE", "diet-plans/" + page.planId + "/", null, function(ok, status, data, error) {
                         if (!ok)
                             return page.load(error)
+                        // Its shopping list ticks go with it.
+                        settings.removeCached("shopping/" + page.planId)
                         Store.dietPlansChanged = true
                         pageStack.pop()
                     })

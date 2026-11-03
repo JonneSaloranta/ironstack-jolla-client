@@ -61,6 +61,9 @@ public:
     // QJSValue, which QJsonDocument can't serialize - hence QJSValue here.
     Q_INVOKABLE void setCached(const QString &key, const QJSValue &value);
     void setCachedVariant(const QString &key, const QVariant &value);
+    // Removes `key` and everything under it ("shopping/12" takes every
+    // "shopping/12/<trip>" with it).
+    Q_INVOKABLE void removeCached(const QString &key);
     Q_INVOKABLE void logout();
 
     // "https://host/" or "https://host" -> "https://host"

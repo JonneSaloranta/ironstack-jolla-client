@@ -163,6 +163,12 @@ void Settings::setCachedVariant(const QString &key, const QVariant &value)
                         QJsonDocument::fromVariant(value).toJson(QJsonDocument::Compact));
 }
 
+void Settings::removeCached(const QString &key)
+{
+    if (!key.isEmpty())
+        m_settings.remove(QStringLiteral("cache/") + key);
+}
+
 void Settings::logout()
 {
     clearActiveSession();
