@@ -19,6 +19,7 @@ TestCase {
     function test_components_data() {
         return [
             { tag: "AchievementItem", path: "components/AchievementItem.qml" },
+            { tag: "BarChart", path: "components/BarChart.qml" },
             { tag: "DatePickerButton", path: "components/DatePickerButton.qml" },
             { tag: "DurationField", path: "components/DurationField.qml" },
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
@@ -40,7 +41,7 @@ TestCase {
     function test_pages_data() {
         return [
             "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "HistoryPage", "LogSetDialog",
-            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
+            "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "NutritionStatsPage", "OpenFoodFactsPage", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "ProgressPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
             "SessionPage", "SettingsPage", "ShoppingListPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
