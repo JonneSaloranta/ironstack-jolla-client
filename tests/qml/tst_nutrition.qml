@@ -52,37 +52,39 @@ TestCase {
         compare(Nutrition.quantityText(entries[1], foods, { servings: "%1 s", portions: "%1 p", piece: "pcs" }), "1 s")
     }
 
-    // A built-in or deleted recipe is hidden from recipes/; its entries stay.
-    function test_isKnown() {
-        var recipes = { 9: recipe }
-        verify(Nutrition.isKnown({ food: 5, recipe: null }, foods, recipes))
-        verify(Nutrition.isKnown({ food: null, recipe: 9 }, foods, recipes))
-        verify(Nutrition.isKnown({ food: null, recipe: null, quick_name: "Pizza" }, foods, recipes))
-        verify(!Nutrition.isKnown({ food: null, recipe: 56 }, foods, recipes))
-        verify(!Nutrition.isKnown({ food: 99, recipe: null }, foods, recipes))
-        verify(!Nutrition.isKnown({ food: null, recipe: 9 }, foods, null))
+    // A logged entry's own nutrition wins over today's food values, and its
+    // name over the library's (a deleted recipe still has one).
+    function test_loggedEntry() {
+        var entry = { food: null, recipe: 56, recipe_name: "Breakfast - 2026-11-03", quantity: "1.00",
+                      nutrition: { calories: "53.00", protein_grams: "10.86", carbohydrate_grams: "0.00",
+                                   fat_grams: "1.01", fiber_grams: "0.00", sugar_grams: null,
+                                   saturated_fat_grams: "0.00", sodium_mg: "0.00" } }
+        var n = Nutrition.forEntry(entry, foods, {})
+        compare(n.calories, 53)
+        compare(n.protein_grams, 10.86)
+        compare(n.sugar_grams, null)
+        compare(Nutrition.entryName(entry, foods, {}, "Quick entry"), "Breakfast - 2026-11-03")
+        var edited = { food: 6, food_name: "Egg", quantity: "1.00", nutrition: { calories: "80.00", protein_grams: "7.00",
+                       carbohydrate_grams: "0.00", fat_grams: "5.00" } }
+        compare(Nutrition.total([entry, edited], foods, {}).calories, 133)
+        // a food no longer in the library: no unit
+        compare(Nutrition.quantityText({ food: 99, quantity: "2.00" }, foods, { piece: "pcs" }), "2")
     }
 
     function test_daySummary() {
-        var recipes = { 9: recipe }
-        var entries = [
-            { food: 6, recipe: null, quantity: "3.00" },    // 210 kcal, 18 g protein
-            { food: null, recipe: 9, quantity: "1.00" },    // 177 kcal
-            { food: null, recipe: 56, quantity: "1.00" }    // can't be read
-        ]
+        var totals = { calories: "387.40", protein_grams: "30.60", carbohydrate_grams: "25.00", fat_grams: "12.00" }
         var target = { daily_calories: 2200, protein_grams: "160.00", ended_at: null }
-        var day = Nutrition.daySummary(entries, foods, recipes, target)
+        var day = Nutrition.daySummary(totals, target)
         compare(day.calories, 387)
-        compare(day.protein, Math.round(18 + Nutrition.recipePerServing(recipe, foods).protein_grams))
+        compare(day.protein, 31)
         compare(day.calorieTarget, 2200)
         compare(day.proteinTarget, 160)
-        compare(day.unknown, 1)
 
-        var empty = Nutrition.daySummary([], foods, recipes, null)
+        var empty = Nutrition.daySummary({ calories: "0.00" }, null)
         compare(empty.calories, 0)
+        compare(empty.protein, 0)
         compare(empty.calorieTarget, null)
         compare(empty.proteinTarget, null)
-        compare(empty.unknown, 0)
     }
 
     function test_caloriesFromMacros() {
@@ -107,17 +109,31 @@ TestCase {
     }
 
     function test_copyDay() {
-        var api = fakeApi()
+        var api = { calls: [] }
+        api.request = function(method, path, body, callback) {
+            api.calls.push({ method: method, path: path, body: body })
+            callback(true, 201, { copied: 3 }, "")
+        }
         var result = null
-        Nutrition.copyDay(api, [{ id: 1, date: "2026-11-01", meal_slot: 2, food: 5, recipe: null, quantity: "50.00",
-                                  notes: "", quick_name: "", quick_calories: null }], "2026-11-02",
-                          function(ok) { result = ok })
-        verify(result)
-        compare(api.calls[0].body.date, "2026-11-02")
-        compare(api.calls[0].body.food, 5)
-        compare(api.calls[0].body.id, undefined)
-        // no "recipe": null (IronStack #39)
-        verify(!api.calls[0].body.hasOwnProperty("recipe"))
+        Nutrition.copyDay(api, "2026-11-01", "2026-11-02", function(ok, copied) { result = { ok: ok, copied: copied } })
+        verify(result.ok)
+        compare(result.copied, 3)
+        compare(api.calls.length, 1)
+        compare(api.calls[0].path, "diary-entries/copy-day/")
+        compare(api.calls[0].body.source_date, "2026-11-01")
+        compare(api.calls[0].body.target_date, "2026-11-02")
+    }
+
+    function test_entriesFor() {
+        var api = { paths: [] }
+        api.request = function(method, path, body, callback) {
+            api.paths.push(path)
+            callback(true, 200, { results: [{ id: 1, date: "2026-11-02" }], next: null }, "")
+        }
+        var result = null
+        Nutrition.entriesFor(api, "2026-11-02", function(ok, entries) { result = entries })
+        compare(result.length, 1)
+        verify(api.paths[0].indexOf("date=2026-11-02") >= 0)
     }
 
     function test_saveMealAsRecipe() {

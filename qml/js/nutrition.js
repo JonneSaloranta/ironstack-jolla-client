@@ -5,9 +5,9 @@
 // entry carries its own values per portion. Optional nutrients stay null
 // ("unknown") unless something contributes a value.
 //
-// The API doesn't expose an entry's nutrition as logged (IronStack #27), so
-// past days are worked out from the foods and recipes as they are now -
-// they can differ from the web if a food has been edited since.
+// A diary entry carries its own `nutrition`, snapshotted when it was logged
+// (IronStack 1.30), so the diary's figures are the web's; the maths here is
+// for what isn't logged yet (a dialog's preview, a diet plan's items).
 .import "store.js" as Store
 
 var MAIN = ["calories", "protein_grams", "carbohydrate_grams", "fat_grams"]
@@ -74,8 +74,15 @@ function isQuick(entry) {
     return Store.present(entry.quick_calories)
 }
 
-// One diary entry's nutrition. `foods`/`recipes` map id -> row.
+// One diary entry's nutrition: the logged values when the entry has them,
+// else worked out from the food or recipe. `foods`/`recipes` map id -> row.
 function forEntry(entry, foods, recipes) {
+    if (entry.nutrition) {
+        var logged = {}
+        FIELDS.forEach(function(f) { logged[f] = number(entry.nutrition[f]) })
+        MAIN.forEach(function(f) { logged[f] = logged[f] || 0 })
+        return logged
+    }
     var quantity = number(entry.quantity) || 0
     if (Store.present(entry.food))
         return foods[entry.food] ? forFood(foods[entry.food], quantity) : zero()
@@ -95,20 +102,13 @@ function total(entries, foods, recipes) {
     }, zero())
 }
 
-// Whether the entry's food or recipe is in the library. recipes/ lists
-// only your own active recipes: a built-in one (a diet plan's, IronStack
-// #38) or a deleted one can't be read, though the web counts its entries
-// (IronStack #27).
-function isKnown(entry, foods, recipes) {
-    if (Store.present(entry.food))
-        return !!(foods && foods[entry.food])
-    if (Store.present(entry.recipe))
-        return !!(recipes && recipes[entry.recipe])
-    return true
-}
-
-// An entry's name: the food (with brand), the recipe, or the quick entry's.
+// An entry's name: the food, the recipe, or the quick entry's. The entry's
+// own food_name/recipe_name first, so a deleted recipe still has its name.
 function entryName(entry, foods, recipes, quickFallback) {
+    if (entry.food_name)
+        return Store.contentName(entry.food_name)
+    if (entry.recipe_name)
+        return Store.contentName(entry.recipe_name)
     if (Store.present(entry.food)) {
         var food = foods[entry.food]
         return food ? Store.contentName(food.name) : "#" + entry.food
@@ -125,8 +125,8 @@ function entryName(entry, foods, recipes, quickFallback) {
 function quantityText(entry, foods, texts) {
     var quantity = Store.formatNumber(number(entry.quantity))
     if (Store.present(entry.food)) {
-        var food = foods[entry.food]
-        return quantity + " " + (food ? unitText(food.serving_unit, texts.piece) : "")
+        var food = foods && foods[entry.food]
+        return quantity + (food ? " " + unitText(food.serving_unit, texts.piece) : "")
     }
     return (Store.present(entry.recipe) ? texts.servings : texts.portions).replace("%1", quantity)
 }
@@ -144,19 +144,15 @@ function currentGoal(goals) {
     return (goals || []).filter(function(g) { return !Store.present(g.ended_at) })[0] || null
 }
 
-// Today on the cover: { calories, protein, calorieTarget, proteinTarget,
-// unknown } from the day's entries and the current target (null when
-// there's none). `unknown` counts entries the app can't read (a built-in
-// or deleted recipe), which aren't in the sums.
-function daySummary(entries, foods, recipes, target) {
-    var known = (entries || []).filter(function(e) { return isKnown(e, foods, recipes) })
-    var sum = total(known, foods, recipes)
+// Today on the cover: { calories, protein, calorieTarget, proteinTarget }
+// from nutrition/daily-totals/'s `totals` and the current target (null
+// when there's none).
+function daySummary(totals, target) {
     return {
-        calories: Math.round(sum.calories),
-        protein: Math.round(sum.protein_grams),
+        calories: Math.round(number(totals.calories) || 0),
+        protein: Math.round(number(totals.protein_grams) || 0),
         calorieTarget: target ? number(target.daily_calories) : null,
-        proteinTarget: target ? Math.round(number(target.protein_grams)) : null,
-        unknown: (entries || []).length - known.length
+        proteinTarget: target ? Math.round(number(target.protein_grams)) : null
     }
 }
 
@@ -229,28 +225,14 @@ function list(map) {
     return result.sort(function(a, b) { return Store.contentName(a.name).localeCompare(Store.contentName(b.name)) })
 }
 
-// A day's diary entries: diary-entries/ is newest first and can't be
-// filtered by date (IronStack #26), so pages are read until they pass the
-// day. done(ok, entries, error)
+// A day's diary entries. done(ok, entries, error)
 function entriesFor(api, isoDay, done) {
     var found = []
-    function page(path) {
-        api.request("GET", path, null, function(ok, status, data, error) {
-            if (!ok)
-                return done(false, [], error)
-            var results = data.results || []
-            results.forEach(function(e) {
-                if (e.date === isoDay)
-                    found.push(e)
-            })
-            var last = results[results.length - 1]
-            if (data.next && last && last.date >= isoDay)
-                page(data.next)
-            else
-                done(true, found, "")
-        })
-    }
-    page("diary-entries/?page_size=100")
+    Store.fetchAll(api, "diary-entries/?page_size=100&date=" + isoDay, function(results) {
+        found = found.concat(results)
+    }, function(ok, error) {
+        done(ok, ok ? found : [], error || "")
+    })
 }
 
 // Requests one after another; done(ok, error) after the last or the
@@ -270,28 +252,13 @@ function sequence(api, requests, done) {
     next()
 }
 
-// The fields that make a copy of an entry (no id, user or date).
-// A null food or recipe crashes the server (IronStack #39): left out.
-function entryBody(entry, isoDay) {
-    var body = {
-        date: isoDay, meal_slot: entry.meal_slot, quantity: entry.quantity, notes: entry.notes || "",
-        quick_name: entry.quick_name || "", quick_calories: entry.quick_calories,
-        quick_protein_grams: entry.quick_protein_grams, quick_carbohydrate_grams: entry.quick_carbohydrate_grams,
-        quick_fat_grams: entry.quick_fat_grams
-    }
-    if (Store.present(entry.food))
-        body.food = entry.food
-    if (Store.present(entry.recipe))
-        body.recipe = entry.recipe
-    return body
-}
-
-// The web's "Copy this day to another date": every entry added again on
-// `isoDay` - one request each, the API has no copy.
-function copyDay(api, entries, isoDay, done) {
-    sequence(api, entries.map(function(e) {
-        return { method: "POST", path: "diary-entries/", body: entryBody(e, isoDay) }
-    }), done)
+// The web's "Copy this day to another date": every entry of `sourceIso`
+// added again on `targetIso`. done(ok, copied, error)
+function copyDay(api, sourceIso, targetIso, done) {
+    api.request("POST", "diary-entries/copy-day/", { source_date: sourceIso, target_date: targetIso },
+                function(ok, status, data, error) {
+        done(ok, ok && data ? data.copied : 0, error)
+    })
 }
 
 // The web's "Save as recipe" for one meal: its food entries (recipes and

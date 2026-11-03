@@ -12,7 +12,7 @@ CoverBackground {
     property real restRemaining: 0
 
     // Today's food when no workout is on: { calories, protein,
-    // calorieTarget, proteinTarget, unknown }, or null when there's
+    // calorieTarget, proteinTarget }, or null when there's
     // nothing to show (no connection yet, no nutrition permission).
     property var today: null
     property string todayIso: ""
@@ -30,28 +30,24 @@ CoverBackground {
             return
         fetchedAt = Date.now()
         fetchedEdits = Nutrition.diaryEdits
-        Nutrition.ensure(api, function(ok) {
-            if (!ok)
+        var target = null
+        var totals = null
+        var pending = 2
+        function done() {
+            if (--pending > 0 || totals === null)
                 return
-            var target = null
-            var pending = 2
-            var entries = null
-            function done() {
-                if (--pending > 0 || entries === null)
-                    return
-                todayIso = iso
-                today = Nutrition.daySummary(entries, Nutrition.foods, Nutrition.recipes, target)
-            }
-            api.request("GET", "nutrition-targets/?page_size=100", null, function(ok2, status, data) {
-                if (ok2)
-                    target = Nutrition.currentTarget(data.results)
-                done()
-            })
-            Nutrition.entriesFor(api, iso, function(ok3, found) {
-                if (ok3)
-                    entries = found
-                done()
-            })
+            todayIso = iso
+            today = Nutrition.daySummary(totals, target)
+        }
+        api.request("GET", "nutrition-targets/?page_size=100", null, function(ok, status, data) {
+            if (ok)
+                target = Nutrition.currentTarget(data.results)
+            done()
+        })
+        api.request("GET", "nutrition/daily-totals/?date=" + iso, null, function(ok, status, data) {
+            if (ok && data)
+                totals = data.totals
+            done()
         })
     }
 
@@ -115,7 +111,7 @@ CoverBackground {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraLarge
             color: Theme.highlightColor
-            text: cover.today ? cover.today.calories + (cover.today.unknown ? "+" : "") : ""
+            text: cover.today ? cover.today.calories : ""
         }
         Label {
             visible: cover.showToday

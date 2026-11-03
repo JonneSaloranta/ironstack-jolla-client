@@ -7,9 +7,8 @@ import "../js/nutritionstats.js" as Stats
 
 // The web's nutrition statistics: the last 30 days (days logged, mean and
 // typical calories, median macros), the same for fixed periods, and daily
-// calories with the target line. Worked out from the whole diary - the API
-// has no date filter (IronStack #26), so this reads every entry - with
-// entry nutrition from the foods as they are now (#27).
+// calories with the target line. Worked out from the whole diary (the "All
+// time" period needs every day), with each entry's logged nutrition.
 Page {
     id: page
 

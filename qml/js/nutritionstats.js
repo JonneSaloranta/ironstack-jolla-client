@@ -4,9 +4,6 @@
 // nutrition_stats*, trends.py, maintenance.py, suggestions.py), worked
 // out here from diary entries and body weight readings. Pure functions
 // except the two fetch helpers at the end.
-//
-// Entry nutrition comes from the foods as they are now (IronStack #27), so
-// an old day can differ from the web if a food was edited since.
 .import "store.js" as Store
 .import "nutrition.js" as Nutrition
 
@@ -286,28 +283,15 @@ function suggestAdjustment(goal, target, bodyWeightReadings, now) {
 
 // --- fetching ------------------------------------------------------------------
 
-// Diary entries from `startIso` on (all of them with null): diary-entries/
-// is newest first and has no date filter (IronStack #26), so pages are
-// read until they pass the start. done(ok, entries, error)
+// Diary entries from `startIso` on (all of them with null).
+// done(ok, entries, error)
 function entriesSince(api, startIso, done) {
     var found = []
-    function page(path) {
-        api.request("GET", path, null, function(ok, status, data, error) {
-            if (!ok)
-                return done(false, [], error)
-            var results = data.results || []
-            results.forEach(function(e) {
-                if (!startIso || e.date >= startIso)
-                    found.push(e)
-            })
-            var last = results[results.length - 1]
-            if (data.next && last && (!startIso || last.date >= startIso))
-                page(data.next)
-            else
-                done(true, found, "")
-        })
-    }
-    page("diary-entries/?page_size=100")
+    Store.fetchAll(api, "diary-entries/?page_size=100" + (startIso ? "&date_after=" + startIso : ""), function(results) {
+        found = found.concat(results)
+    }, function(ok, error) {
+        done(ok, ok ? found : [], error || "")
+    })
 }
 
 // Body weight readings (the built-in type) recorded from `since` (a Date)

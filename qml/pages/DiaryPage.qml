@@ -67,14 +67,8 @@ Page {
         load(error || "")
     }
 
-    // "520 kcal"; an entry the app can't read (a built-in or deleted
-    // recipe) adds " + ?", or makes it "? kcal" when it's all there is.
     function slotCalories(slotEntries) {
-        var known = slotEntries.filter(function(e) { return Nutrition.isKnown(e, Nutrition.foods, Nutrition.recipes) })
-        if (known.length === 0)
-            return "? kcal"
-        return Math.round(Nutrition.total(known, Nutrition.foods, Nutrition.recipes).calories) + " kcal"
-                + (known.length < slotEntries.length ? " + ?" : "")
+        return Math.round(Nutrition.total(slotEntries, Nutrition.foods, Nutrition.recipes).calories) + " kcal"
     }
 
     // The meal for a new entry: the first one, unless one is given.
@@ -120,20 +114,13 @@ Page {
     function copyDay() {
         var picker = pageStack.push("Sailfish.Silica.DatePickerDialog", { date: Store.addDays(day, 1) })
         picker.accepted.connect(function() {
-            // An entry of a built-in (IronStack #38) or deleted recipe
-            // can't be logged again: "Not a recipe you own."
-            var copied = entries.filter(function(e) { return Nutrition.isKnown(e, Nutrition.foods, Nutrition.recipes) })
-            var skipped = entries.length - copied.length
             loading = true
-            Nutrition.copyDay(api, copied, Store.isoDate(picker.date), function(ok, error) {
+            Nutrition.copyDay(api, isoDay, Store.isoDate(picker.date), function(ok, copied, error) {
                 loading = false
                 Nutrition.diaryEdited()
                 errorText = ok ? "" : error
                 if (ok)
                     day = picker.date
-                // After the day changed, which clears it.
-                if (ok && skipped)
-                    notice = qsTr("%n entries of a built-in or deleted recipe weren't copied.", "", skipped)
             })
         })
     }
@@ -281,7 +268,6 @@ Page {
                         delegate: ListItem {
                             id: entryItem
                             property var nutrition: Nutrition.forEntry(modelData, Nutrition.foods, Nutrition.recipes)
-                            property bool known: Nutrition.isKnown(modelData, Nutrition.foods, Nutrition.recipes)
                             contentHeight: Math.max(Theme.itemSizeSmall, entryColumn.height + 2 * Theme.paddingSmall)
                             onClicked: page.edit(modelData)
                             menu: ContextMenu {
@@ -310,23 +296,20 @@ Page {
                                     Label {
                                         width: parent.width - kcalLabel.width
                                         truncationMode: TruncationMode.Fade
-                                        text: known ? Nutrition.entryName(modelData, Nutrition.foods, Nutrition.recipes, qsTr("Quick entry"))
-                                                    : qsTr("Built-in or deleted recipe")
+                                        text: Nutrition.entryName(modelData, Nutrition.foods, Nutrition.recipes, qsTr("Quick entry"))
                                     }
                                     Label {
                                         id: kcalLabel
                                         color: Theme.highlightColor
-                                        text: known ? Math.round(nutrition.calories) + " kcal" : "? kcal"
+                                        text: Math.round(nutrition.calories) + " kcal"
                                     }
                                 }
                                 Label {
                                     width: parent.width
-                                    truncationMode: known ? TruncationMode.Fade : TruncationMode.None
-                                    wrapMode: known ? Text.NoWrap : Text.Wrap
+                                    truncationMode: TruncationMode.Fade
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.secondaryColor
-                                    text: !known ? qsTr("Not counted in the totals: the app can't read built-in or deleted recipes.")
-                                          : Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
+                                    text: Nutrition.quantityText(modelData, Nutrition.foods, page.texts)
                                           + " · " + qsTr("P") + " " + Math.round(nutrition.protein_grams)
                                           + " · " + qsTr("C") + " " + Math.round(nutrition.carbohydrate_grams)
                                           + " · " + qsTr("F") + " " + Math.round(nutrition.fat_grams)
