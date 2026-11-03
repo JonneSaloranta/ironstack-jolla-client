@@ -178,6 +178,14 @@ Page {
                     onClicked: page.save({ body_tracking_reminders_enabled: !checked })
                 }
                 TextSwitch {
+                    text: qsTr("Guided tours on the web")
+                    description: qsTr("A short tour the first time you open each part of the IronStack web. The same "
+                                      + "tours can be read in the app's Guide.")
+                    checked: page.profile ? page.profile.tutorials_enabled : false
+                    automaticCheck: false
+                    onClicked: page.save({ tutorials_enabled: !checked })
+                }
+                TextSwitch {
                     text: qsTr("Show BMI")
                     description: qsTr("Turns off the BMI card and its category ranges entirely.")
                     checked: page.profile ? page.profile.show_bmi : false
