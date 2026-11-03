@@ -16,7 +16,7 @@ How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 0.3.1 installed on 2026-11-03; 0.4.0 is waiting in its `/tmp`.
-0.4.0 installed on 2026-11-03; 0.5.0 is waiting in its `/tmp`.
+0.4.0 installed on 2026-11-03; 0.6.0 is waiting in its `/tmp`.
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
   history, records, exercises, body tracking, activities, stretching,
@@ -70,6 +70,7 @@ COMPATIBILITY.md and drop the row.
 | #43 cool-down suggestion | Ported `suggest_cooldown`; reads every exercise, routine and stretch, finds a done cool-down on the newest page of stretch sessions | Ask the server | `store.js` `suggestCooldown`, `CooldownCard.qml` |
 | #44 nutrition statistics and maintenance | Ported from `services.py`, `maintenance.py`, `trends.py`; reads the whole diary | Read them from the API | `nutritionstats.js`, `NutritionStatsPage.qml`, `NutritionPage.qml` |
 | #45 group unread counts your own message | Reads the thread again after sending to a group | Nothing; drop the extra read | `ChatPage.qml` `send` |
+| #46 API program edits don't bump the version | A coach editing a shared program in the app doesn't offer clients an update (on the web it does) | Nothing to change in the app | - |
 
 ## 4. Housekeeping
 
@@ -77,7 +78,7 @@ COMPATIBILITY.md and drop the row.
   no git remote yet.
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
-  (0.5.0 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
+  (0.6.0 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
   `sfdk -c target=SailfishOS-5.1.0.11-aarch64 check` on the aarch64 RPM
   (without the target it runs the i486 objdump and fails); write release notes once there's a
   public release.
