@@ -69,6 +69,10 @@ emulator to try the app, including connecting it to a local IronStack.
 Headless QML tests run inside the SDK build engine; see
 [docs/TESTING.md](docs/TESTING.md).
 
+## Remaining work
+
+See [docs/TODO.md](docs/TODO.md) and [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md).
+
 ## Server-side gaps
 
 Features that need IronStack API changes are tracked as issues labelled
