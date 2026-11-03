@@ -182,22 +182,6 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation>Tältä API-avaimelta puuttuu tarvittava oikeus: %1 - %2. Lisää se IronStackissa kohdassa Profiili &gt; API-avaimet.</translation>
     </message>
-    <message>
-        <source>Open Food Facts did not answer in time.</source>
-        <translation>Open Food Facts ei vastannut ajoissa.</translation>
-    </message>
-    <message>
-        <source>Can&apos;t reach Open Food Facts.</source>
-        <translation>Open Food Factsiin ei saada yhteyttä.</translation>
-    </message>
-    <message>
-        <source>Open Food Facts is busy. Wait a moment and try again.</source>
-        <translation>Open Food Facts on kiireinen. Odota hetki ja yritä uudelleen.</translation>
-    </message>
-    <message>
-        <source>Open Food Facts had an error (%1).</source>
-        <translation>Open Food Factsissa tapahtui virhe (%1).</translation>
-    </message>
 </context>
 <context>
     <name>CalculatorsPage</name>
@@ -396,6 +380,37 @@
     <message>
         <source>An estimate, not medical advice.</source>
         <translation>Arvio, ei lääketieteellinen neuvo.</translation>
+    </message>
+</context>
+<context>
+    <name>CooldownCard</name>
+    <message>
+        <source>Cool-down</source>
+        <translation>Jäähdyttely</translation>
+    </message>
+    <message>
+        <source>Cool down with a stretch?</source>
+        <translation>Jäähdyttelisitkö venyttelemällä?</translation>
+    </message>
+    <message>
+        <source>Stretching</source>
+        <translation>Venyttely</translation>
+    </message>
+    <message>
+        <source>Completed</source>
+        <translation>Valmis</translation>
+    </message>
+    <message>
+        <source>In progress</source>
+        <translation>Käynnissä</translation>
+    </message>
+    <message>
+        <source>Picked for the muscles you trained:</source>
+        <translation>Valittu treenaamiesi lihasten mukaan:</translation>
+    </message>
+    <message>
+        <source>Start cool-down</source>
+        <translation>Aloita jäähdyttely</translation>
     </message>
 </context>
 <context>
@@ -701,20 +716,9 @@
         <source>Nothing logged yet.</source>
         <translation>Ei vielä kirjauksia.</translation>
     </message>
-    <message numerus="yes">
-        <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
-        <translation>
-            <numerusform>%n valmiin tai poistetun reseptin merkintä jäi kopioimatta.</numerusform>
-            <numerusform>%n valmiin tai poistetun reseptin merkintää jäi kopioimatta.</numerusform>
-        </translation>
-    </message>
     <message>
-        <source>Built-in or deleted recipe</source>
-        <translation>Valmis tai poistettu resepti</translation>
-    </message>
-    <message>
-        <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
-        <translation>Ei mukana yhteissummissa: sovellus ei voi lukea valmiita eikä poistettuja reseptejä.</translation>
+        <source>Not sent yet</source>
+        <translation>Ei vielä lähetetty</translation>
     </message>
 </context>
 <context>
@@ -770,10 +774,6 @@
 </context>
 <context>
     <name>DietPlanPage</name>
-    <message>
-        <source>Built-in recipe</source>
-        <translation>Valmis resepti</translation>
-    </message>
     <message>
         <source>Delete</source>
         <translation>Poista</translation>
@@ -1798,6 +1798,81 @@
     </message>
 </context>
 <context>
+    <name>NutritionGoalDialog</name>
+    <message>
+        <source>A fat-loss goal needs a negative rate - you&apos;re asking to lose weight.</source>
+        <translation>Rasvanpudotustavoite tarvitsee negatiivisen tahdin - tavoitteenasi on laihtua.</translation>
+    </message>
+    <message>
+        <source>A muscle-gain goal needs a positive rate - you&apos;re asking to gain weight.</source>
+        <translation>Lihasmassan kasvatus tarvitsee positiivisen tahdin - tavoitteenasi on lihoa.</translation>
+    </message>
+    <message>
+        <source>A maintenance goal&apos;s rate should be 0 per week.</source>
+        <translation>Ylläpitotavoitteen tahdin tulisi olla 0 viikossa.</translation>
+    </message>
+    <message>
+        <source>Fat loss - aggressive</source>
+        <translation>Rasvanpudotus - aggressiivinen</translation>
+    </message>
+    <message>
+        <source>Fat loss - moderate</source>
+        <translation>Rasvanpudotus - kohtalainen</translation>
+    </message>
+    <message>
+        <source>Fat loss - conservative</source>
+        <translation>Rasvanpudotus - maltillinen</translation>
+    </message>
+    <message>
+        <source>Maintenance</source>
+        <translation>Ylläpito</translation>
+    </message>
+    <message>
+        <source>Muscle gain - lean bulk</source>
+        <translation>Lihasmassan kasvatus - kevyt bulkki</translation>
+    </message>
+    <message>
+        <source>Muscle gain - moderate bulk</source>
+        <translation>Lihasmassan kasvatus - kohtalainen bulkki</translation>
+    </message>
+    <message>
+        <source>Muscle gain - aggressive bulk</source>
+        <translation>Lihasmassan kasvatus - aggressiivinen bulkki</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>New goal</source>
+        <translation>Uusi tavoite</translation>
+    </message>
+    <message>
+        <source>Goal</source>
+        <translation>Tavoite</translation>
+    </message>
+    <message>
+        <source>Rate (%1/week)</source>
+        <translation>Tahti (%1/viikko)</translation>
+    </message>
+    <message>
+        <source>Negative to lose weight, positive to gain. Capped at a safe rate for your bodyweight.</source>
+        <translation>Negatiivinen laihtuaksesi, positiivinen lihoaksesi. Rajattu painollesi turvalliseen tahtiin.</translation>
+    </message>
+    <message>
+        <source>Target weight (%1, optional)</source>
+        <translation>Tavoitepaino (%1, valinnainen)</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation>Muistiinpanot</translation>
+    </message>
+    <message>
+        <source>The current goal and target are kept in the history. The new daily target is calculated from your nutrition profile, height and latest body weight.</source>
+        <translation>Nykyinen tavoite ja päivätavoite jäävät historiaan. Uusi päivätavoite lasketaan ravintoprofiilistasi, pituudestasi ja viimeisimmästä painostasi.</translation>
+    </message>
+</context>
+<context>
     <name>NutritionGoalsPage</name>
     <message>
         <source>Fat loss - aggressive</source>
@@ -1892,16 +1967,8 @@
         <translation>Rasva</translation>
     </message>
     <message>
-        <source>No goal set. Goals are set on the IronStack web.</source>
-        <translation>Tavoitetta ei ole asetettu. Tavoitteet asetetaan IronStackin webissä.</translation>
-    </message>
-    <message>
         <source>Nutrition profile</source>
         <translation>Ravintoprofiili</translation>
-    </message>
-    <message>
-        <source>No nutrition profile yet. It&apos;s created by the nutrition setup on the IronStack web.</source>
-        <translation>Ravintoprofiilia ei vielä ole. Se luodaan IronStackin webin ravinnon käyttöönotossa.</translation>
     </message>
     <message>
         <source>Age (years)</source>
@@ -1930,6 +1997,26 @@
     <message>
         <source>Earlier goals</source>
         <translation>Aiemmat tavoitteet</translation>
+    </message>
+    <message>
+        <source>Set up nutrition profile</source>
+        <translation>Luo ravintoprofiili</translation>
+    </message>
+    <message>
+        <source>New goal</source>
+        <translation>Uusi tavoite</translation>
+    </message>
+    <message>
+        <source>No goal set yet. Pull down to set one.</source>
+        <translation>Tavoitetta ei ole vielä asetettu. Vedä alas asettaaksesi sen.</translation>
+    </message>
+    <message>
+        <source>No goal set yet. Set up your nutrition profile first.</source>
+        <translation>Tavoitetta ei ole vielä asetettu. Luo ensin ravintoprofiili.</translation>
+    </message>
+    <message>
+        <source>No nutrition profile yet. Pull down to set it up: the daily target is calculated from it, your height (Settings) and your latest body weight.</source>
+        <translation>Ravintoprofiilia ei ole vielä. Vedä alas luodaksesi sen: päivätavoite lasketaan siitä, pituudestasi (Asetukset) ja viimeisimmästä painostasi.</translation>
     </message>
 </context>
 <context>
@@ -2007,10 +2094,6 @@
         <translation>Päivätavoite</translation>
     </message>
     <message>
-        <source>No goal set. Goals are set on the IronStack web.</source>
-        <translation>Tavoitetta ei ole asetettu. Tavoitteet asetetaan IronStackin webissä.</translation>
-    </message>
-    <message>
         <source>Today&apos;s plan</source>
         <translation>Tämän päivän suunnitelma</translation>
     </message>
@@ -2029,18 +2112,6 @@
     <message>
         <source>Low confidence</source>
         <translation>Matala luotettavuus</translation>
-    </message>
-    <message>
-        <source>Not enough logged weight yet - keep logging your weight regularly and check back in a couple of weeks.</source>
-        <translation>Painoa ei ole vielä kirjattu tarpeeksi - jatka painon säännöllistä kirjaamista ja tarkista tilanne muutaman viikon kuluttua.</translation>
-    </message>
-    <message>
-        <source>Target: %1 %3/week. Actual trend: %2 %3/week - on track.</source>
-        <translation>Tavoite: %1 %3/viikko. Toteutunut trendi: %2 %3/viikko - menossa oikeaan suuntaan.</translation>
-    </message>
-    <message>
-        <source>Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested adjustment: %5 kcal/day.</source>
-        <translation>Tavoite: %1 %3/viikko. Toteutunut trendi: %2 %3/viikko viimeisen %4 päivän aikana. Ehdotettu säätö: %5 kcal/vrk.</translation>
     </message>
     <message>
         <source>Not enough logged food yet: %1 of the %2 days needed in the last %3 days.</source>
@@ -2071,10 +2142,6 @@
         <translation>Toimiiko nykyinen tavoitteesi?</translation>
     </message>
     <message>
-        <source>Adjusting to %1 kcal/day is done on the IronStack web: the app can&apos;t change targets.</source>
-        <translation>Säätö %1 kcal:aan/vrk tehdään IronStackin verkkosivulla: sovellus ei voi muuttaa tavoitteita.</translation>
-    </message>
-    <message>
         <source>Observed maintenance</source>
         <translation>Toteutunut ylläpitotaso</translation>
     </message>
@@ -2085,6 +2152,14 @@
     <message>
         <source>An estimate of what you really burn, based on your food diary and weight. It doesn&apos;t change your target.</source>
         <translation>Arvio todellisesta kulutuksestasi ruokapäiväkirjan ja painon perusteella. Se ei muuta tavoitettasi.</translation>
+    </message>
+    <message>
+        <source>No goal set yet. Set one under Goal and profile.</source>
+        <translation>Tavoitetta ei ole vielä asetettu. Aseta se kohdassa Tavoite ja profiili.</translation>
+    </message>
+    <message>
+        <source>Adjust to %1 kcal/day</source>
+        <translation>Muuta tavoitteeksi %1 kcal/päivä</translation>
     </message>
 </context>
 <context>
@@ -2305,10 +2380,6 @@
 <context>
     <name>OpenFoodFactsPage</name>
     <message>
-        <source>Nutrition values missing</source>
-        <translation>Ravintoarvot puuttuvat</translation>
-    </message>
-    <message>
         <source>Open Food Facts</source>
         <translation>Open Food Facts</translation>
     </message>
@@ -2317,16 +2388,36 @@
         <translation>Tuotteen nimi tai viivakoodi</translation>
     </message>
     <message>
-        <source>Values are per 100 g or 100 ml. An added product becomes one of your own foods; Nutri-Score and NOVA group aren&apos;t kept.</source>
-        <translation>Arvot ovat 100 g:aa tai 100 ml:aa kohden. Lisätystä tuotteesta tulee oma ruokasi; Nutri-Scorea ja NOVA-ryhmää ei säilytetä.</translation>
-    </message>
-    <message>
         <source>Nothing found</source>
         <translation>Mitään ei löytynyt</translation>
     </message>
     <message>
         <source>Try another name, or the barcode under the stripes.</source>
         <translation>Kokeile toista nimeä tai viivojen alla olevaa viivakoodia.</translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation>kpl</translation>
+    </message>
+    <message>
+        <source>Open Food Facts is turned off on this IronStack server.</source>
+        <translation>Open Food Facts on poistettu käytöstä tällä IronStack-palvelimella.</translation>
+    </message>
+    <message>
+        <source>Open Food Facts is busy, try again in a minute.</source>
+        <translation>Open Food Facts on kiireinen, yritä uudelleen hetken päästä.</translation>
+    </message>
+    <message>
+        <source>Open Food Facts couldn&apos;t be reached.</source>
+        <translation>Open Food Factsiin ei saatu yhteyttä.</translation>
+    </message>
+    <message>
+        <source>Already in the food library</source>
+        <translation>Jo ruokakirjastossa</translation>
+    </message>
+    <message>
+        <source>Values are per 100 g or 100 ml. An added product is shared with everyone on your IronStack, like on the web.</source>
+        <translation>Arvot ovat 100 g:aa tai 100 ml:aa kohden. Lisätty tuote jaetaan kaikille IronStackisi käyttäjille, kuten webissä.</translation>
     </message>
 </context>
 <context>
@@ -2728,6 +2819,10 @@
         <source>Pull down to add one</source>
         <translation>Lisää vetämällä alas</translation>
     </message>
+    <message>
+        <source>Built-in</source>
+        <translation>Valmis resepti</translation>
+    </message>
 </context>
 <context>
     <name>RecipesPage</name>
@@ -2757,6 +2852,10 @@
     <message>
         <source>Pull down to create one</source>
         <translation>Luo vetämällä alas</translation>
+    </message>
+    <message>
+        <source>Built-in recipes</source>
+        <translation>Valmiit reseptit</translation>
     </message>
 </context>
 <context>
@@ -3086,16 +3185,12 @@
         <translation>Äänimerkki, kun pito alkaa, kun muut vaiheet päättyvät ja kun venyttely on valmis.</translation>
     </message>
     <message>
-        <source>Body tracking</source>
-        <translation>Kehon seuranta</translation>
-    </message>
-    <message>
         <source>Body tracking reminder</source>
         <translation>Kehon seurannan muistutus</translation>
     </message>
     <message>
-        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days. Kept on this phone - the web&apos;s own switch isn&apos;t available to the app.</source>
-        <translation>Näyttää etusivulla muistutuksen, kun et ole kirjannut kehon mittausta 14 päivään. Asetus on tässä puhelimessa - verkkosivun omaa asetusta sovellus ei näe.</translation>
+        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days.</source>
+        <translation>Näyttää kotisivulla muistutuksen, kun et ole kirjannut kehon mittausta 14 päivään.</translation>
     </message>
 </context>
 <context>
@@ -3310,10 +3405,6 @@
     <message>
         <source>Rest</source>
         <translation>Lepo</translation>
-    </message>
-    <message>
-        <source>%1 (copy)</source>
-        <translation>%1 (kopio)</translation>
     </message>
     <message>
         <source>Deactivate</source>
@@ -3749,6 +3840,10 @@
     <message>
         <source>reps</source>
         <translation>toistoa</translation>
+    </message>
+    <message>
+        <source>Not saved</source>
+        <translation>Ei tallennettu</translation>
     </message>
 </context>
 </TS>

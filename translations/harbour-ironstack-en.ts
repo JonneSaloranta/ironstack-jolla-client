@@ -182,22 +182,6 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Open Food Facts did not answer in time.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Can&apos;t reach Open Food Facts.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open Food Facts is busy. Wait a moment and try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open Food Facts had an error (%1).</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>CalculatorsPage</name>
@@ -395,6 +379,37 @@
     </message>
     <message>
         <source>An estimate, not medical advice.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CooldownCard</name>
+    <message>
+        <source>Cool-down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cool down with a stretch?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stretching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picked for the muscles you trained:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start cool-down</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -701,19 +716,8 @@
         <source>Nothing logged yet.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <source>%n entries of a built-in or deleted recipe weren&apos;t copied.</source>
-        <translation>
-            <numerusform>%n entry of a built-in or deleted recipe wasn&apos;t copied.</numerusform>
-            <numerusform>%n entries of a built-in or deleted recipe weren&apos;t copied.</numerusform>
-        </translation>
-    </message>
     <message>
-        <source>Built-in or deleted recipe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Not counted in the totals: the app can&apos;t read built-in or deleted recipes.</source>
+        <source>Not sent yet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -770,10 +774,6 @@
 </context>
 <context>
     <name>DietPlanPage</name>
-    <message>
-        <source>Built-in recipe</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Delete</source>
         <translation type="unfinished"></translation>
@@ -1798,6 +1798,81 @@
     </message>
 </context>
 <context>
+    <name>NutritionGoalDialog</name>
+    <message>
+        <source>A fat-loss goal needs a negative rate - you&apos;re asking to lose weight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A muscle-gain goal needs a positive rate - you&apos;re asking to gain weight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A maintenance goal&apos;s rate should be 0 per week.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - aggressive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - moderate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fat loss - conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maintenance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - lean bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - moderate bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muscle gain - aggressive bulk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rate (%1/week)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Negative to lose weight, positive to gain. Capped at a safe rate for your bodyweight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target weight (%1, optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The current goal and target are kept in the history. The new daily target is calculated from your nutrition profile, height and latest body weight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NutritionGoalsPage</name>
     <message>
         <source>Fat loss - aggressive</source>
@@ -1892,15 +1967,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No goal set. Goals are set on the IronStack web.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nutrition profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No nutrition profile yet. It&apos;s created by the nutrition setup on the IronStack web.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1929,6 +1996,26 @@
     </message>
     <message>
         <source>Earlier goals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set up nutrition profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New goal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No goal set yet. Pull down to set one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No goal set yet. Set up your nutrition profile first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No nutrition profile yet. Pull down to set it up: the daily target is calculated from it, your height (Settings) and your latest body weight.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2007,10 +2094,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No goal set. Goals are set on the IronStack web.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Today&apos;s plan</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2028,18 +2111,6 @@
     </message>
     <message>
         <source>Low confidence</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Not enough logged weight yet - keep logging your weight regularly and check back in a couple of weeks.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Target: %1 %3/week. Actual trend: %2 %3/week - on track.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Target: %1 %3/week. Actual trend: %2 %3/week over the last %4 days. Suggested adjustment: %5 kcal/day.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2071,10 +2142,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Adjusting to %1 kcal/day is done on the IronStack web: the app can&apos;t change targets.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Observed maintenance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2084,6 +2151,14 @@
     </message>
     <message>
         <source>An estimate of what you really burn, based on your food diary and weight. It doesn&apos;t change your target.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No goal set yet. Set one under Goal and profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adjust to %1 kcal/day</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2305,10 +2380,6 @@
 <context>
     <name>OpenFoodFactsPage</name>
     <message>
-        <source>Nutrition values missing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open Food Facts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2317,15 +2388,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Values are per 100 g or 100 ml. An added product becomes one of your own foods; Nutri-Score and NOVA group aren&apos;t kept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nothing found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Try another name, or the barcode under the stripes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pcs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts is turned off on this IronStack server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts is busy, try again in a minute.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Food Facts couldn&apos;t be reached.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Already in the food library</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Values are per 100 g or 100 ml. An added product is shared with everyone on your IronStack, like on the web.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2728,6 +2819,10 @@
         <source>Pull down to add one</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Built-in</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecipesPage</name>
@@ -2756,6 +2851,10 @@
     </message>
     <message>
         <source>Pull down to create one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Built-in recipes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3086,15 +3185,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Body tracking</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Body tracking reminder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days. Kept on this phone - the web&apos;s own switch isn&apos;t available to the app.</source>
+        <source>Shows a reminder on the home page when you haven&apos;t logged a body measurement in 14 days.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3309,10 +3404,6 @@
     </message>
     <message>
         <source>Rest</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 (copy)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3748,6 +3839,10 @@
     </message>
     <message>
         <source>reps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not saved</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
