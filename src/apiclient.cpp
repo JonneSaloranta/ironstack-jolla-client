@@ -2,6 +2,8 @@
 #include "settings.h"
 
 #include <QBuffer>
+#include <QCoreApplication>
+#include <QDateTime>
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -107,6 +109,66 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     timer->start(TimeoutMs);
 
     connect(reply, &QNetworkReply::finished, this, [this, reply]() { finish(reply); });
+}
+
+bool ApiClient::isOpenFoodFactsUrl(const QUrl &url)
+{
+    return url.isValid() && url.scheme() == QLatin1String("https") && url.port(-1) == -1
+            && url.userInfo().isEmpty()
+            && (url.host() == QLatin1String("search.openfoodfacts.org")
+                || url.host() == QLatin1String("world.openfoodfacts.org"));
+}
+
+void ApiClient::openFoodFacts(const QString &urlText, const QJSValue &callback)
+{
+    Handler handler = jsHandler(callback);
+    const QUrl url(urlText);
+    if (!isOpenFoodFactsUrl(url)) {
+        handler(false, 0, QVariant(), tr("Refused to follow a link to another server."));
+        return;
+    }
+    const qint64 minute = QDateTime::currentMSecsSinceEpoch() / 60000;
+    if (minute != m_offMinute) {
+        m_offMinute = minute;
+        m_offSearches = 0;
+        m_offReads = 0;
+    }
+    const bool search = url.host() == QLatin1String("search.openfoodfacts.org");
+    int &used = search ? m_offSearches : m_offReads;
+    if (used >= (search ? 8 : 12)) {
+        handler(false, 429, QVariant(), tr("Too many requests. Wait a moment and try again."));
+        return;
+    }
+    used++;
+
+    QNetworkRequest req(url);
+    req.setRawHeader("Accept", "application/json");
+    req.setRawHeader("User-Agent", QStringLiteral("harbour-ironstack/%1 (Sailfish OS IronStack client)")
+                     .arg(QCoreApplication::applicationVersion()).toUtf8());
+    req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
+    QNetworkReply *reply = m_network->get(req);
+    QTimer *timer = new QTimer(reply);
+    timer->setSingleShot(true);
+    connect(timer, &QTimer::timeout, reply, &QNetworkReply::abort);
+    timer->start(TimeoutMs);
+    connect(reply, &QNetworkReply::finished, this, [reply, handler]() {
+        reply->deleteLater();
+        const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+        const QVariant data = QJsonDocument::fromJson(reply->readAll()).toVariant();
+        // OFF answers an unknown barcode with 404 and {"status": 0}.
+        const bool ok = (status >= 200 && status < 300) || (status == 404 && data.isValid());
+        QString error;
+        if (!ok) {
+            if (status == 0)
+                error = reply->error() == QNetworkReply::OperationCanceledError
+                        ? tr("Open Food Facts did not answer in time.") : tr("Can't reach Open Food Facts.");
+            else if (status == 429 || status == 503)
+                error = tr("Open Food Facts is busy. Wait a moment and try again.");
+            else
+                error = tr("Open Food Facts had an error (%1).").arg(status);
+        }
+        handler(ok, status, data, error);
+    });
 }
 
 void ApiClient::finish(QNetworkReply *reply)

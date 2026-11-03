@@ -236,6 +236,39 @@ private slots:
         QCOMPARE(m_server->requests.size(), 0);
     }
 
+    void openFoodFactsUrls_data()
+    {
+        QTest::addColumn<QString>("url");
+        QTest::addColumn<bool>("allowed");
+        QTest::newRow("search") << "https://search.openfoodfacts.org/search?q=milk" << true;
+        QTest::newRow("product") << "https://world.openfoodfacts.org/api/v2/product/123.json" << true;
+        QTest::newRow("http") << "http://world.openfoodfacts.org/api/v2/product/123.json" << false;
+        QTest::newRow("other port") << "https://world.openfoodfacts.org:8443/" << false;
+        QTest::newRow("look-alike") << "https://world.openfoodfacts.org.evil.example/" << false;
+        QTest::newRow("user info") << "https://x@world.openfoodfacts.org/" << false;
+        QTest::newRow("the IronStack server") << "http://127.0.0.1:8000/api/v1/foods/" << false;
+    }
+
+    void openFoodFactsUrls()
+    {
+        QFETCH(QString, url);
+        QFETCH(bool, allowed);
+        QCOMPARE(ApiClient::isOpenFoodFactsUrl(QUrl(url)), allowed);
+    }
+
+    void openFoodFactsRefusesOtherHosts()
+    {
+        // Never a request to the IronStack server (or anywhere else), so
+        // the key can't leak through it either.
+        m_api->openFoodFacts(m_server->baseUrl() + QStringLiteral("/api/v1/foods/"), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("ok").toBool(), false);
+        QCOMPARE(result().property("error").toString(),
+                 QStringLiteral("Refused to follow a link to another server."));
+        QTest::qWait(100);
+        QCOMPARE(m_server->requests.size(), 0);
+    }
+
     void errorMessages_data()
     {
         QTest::addColumn<int>("status");

@@ -78,6 +78,22 @@ Page {
         PullDownMenu {
             busy: page.loading
             MenuItem {
+                text: qsTr("Find in Open Food Facts")
+                onClicked: {
+                    var off = pageStack.push(Qt.resolvedUrl("OpenFoodFactsPage.qml"))
+                    off.imported.connect(function(foodId) {
+                        // Picking: straight on with the food, as if it
+                        // had been tapped here. Browsing: open it.
+                        page.applyFilter()
+                        pageStack.pop(page, PageStackAction.Immediate)
+                        if (page.picking)
+                            page.picked("food", foodId)
+                        else
+                            pageStack.push(Qt.resolvedUrl("FoodPage.qml"), { foodId: foodId })
+                    })
+                }
+            }
+            MenuItem {
                 text: qsTr("New food")
                 onClicked: {
                     var dialog = pageStack.push(Qt.resolvedUrl("FoodEditDialog.qml"))
