@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
@@ -154,51 +154,100 @@ Page {
                 text: qsTr("Per day")
             }
 
-            // Period | days | mean | median | P | C | F
-            Row {
-                id: tableHeader
+            // Period | days | mean | median | P | C | F. Each number column
+            // is as wide as its widest text; with large text, when the
+            // period no longer fits beside them, it goes on a line of its own.
+            Item {
+                id: table
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2 * Theme.horizontalPageMargin
-                readonly property real first: width * 0.28
-                readonly property real cell: (width - first) / 6
-                Repeater {
-                    //: Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat
-                    model: [qsTr("Period"), qsTr("Days"), qsTr("Mean"), qsTr("Med."), qsTr("P"), qsTr("C"), qsTr("F")]
-                    Label {
-                        width: index === 0 ? tableHeader.first : tableHeader.cell
-                        horizontalAlignment: index === 0 ? Text.AlignLeft : Text.AlignRight
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.secondaryHighlightColor
-                        truncationMode: TruncationMode.Fade
-                        text: modelData
-                    }
-                }
-            }
+                height: tableColumn.height
 
-            Repeater {
-                model: page.periods
-                delegate: Row {
-                    x: Theme.horizontalPageMargin
-                    width: column.width - 2 * Theme.horizontalPageMargin
-                    property var s: modelData.summary
-                    Label {
-                        width: tableHeader.first
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        truncationMode: TruncationMode.Fade
-                        text: page.periodText(modelData.key)
-                    }
-                    Repeater {
-                        model: s.daysLogged
-                               ? [s.daysLogged + "/" + s.daysInRange, s.meanCalories, s.medianCalories,
-                                  Math.round(s.medianProtein), Math.round(s.medianCarbohydrate), Math.round(s.medianFat)]
+                //: Column headers: period, days logged, mean and median calories, protein, carbohydrates, fat
+                readonly property var headers: [qsTr("Period"), qsTr("Days"), qsTr("Mean"), qsTr("Med."), qsTr("P"), qsTr("C"), qsTr("F")]
+                readonly property var rows: page.periods.map(function(p) {
+                    var s = p.summary
+                    return {
+                        period: page.periodText(p.key),
+                        cells: s.daysLogged
+                               ? [s.daysLogged + "/" + s.daysInRange, String(s.meanCalories), String(s.medianCalories),
+                                  String(Math.round(s.medianProtein)), String(Math.round(s.medianCarbohydrate)),
+                                  String(Math.round(s.medianFat))]
                                : [s.daysLogged + "/" + s.daysInRange, "-", "-", "-", "-", "-"]
-                        Label {
-                            width: tableHeader.cell
-                            horizontalAlignment: Text.AlignRight
-                            font.pixelSize: Theme.fontSizeExtraSmall
-                            color: Theme.highlightColor
-                            truncationMode: TruncationMode.Fade
-                            text: modelData
+                    }
+                })
+                readonly property real gap: Theme.paddingMedium
+                readonly property var cellWidths: {
+                    var widths = []
+                    for (var c = 0; c < 6; c++) {
+                        var w = metrics.advanceWidth(headers[c + 1])
+                        rows.forEach(function(r) { w = Math.max(w, metrics.advanceWidth(r.cells[c])) })
+                        widths.push(Math.ceil(w) + gap)
+                    }
+                    return widths
+                }
+                readonly property real numbersWidth: cellWidths.reduce(function(a, b) { return a + b }, 0)
+                readonly property real periodWidth: {
+                    var w = metrics.advanceWidth(headers[0])
+                    rows.forEach(function(r) { w = Math.max(w, metrics.advanceWidth(r.period)) })
+                    return Math.ceil(w)
+                }
+                readonly property bool stacked: periodWidth + numbersWidth > width
+
+                FontMetrics {
+                    id: metrics
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                }
+
+                Column {
+                    id: tableColumn
+                    width: parent.width
+
+                    Row {
+                        anchors.right: parent.right
+                        Repeater {
+                            model: table.stacked ? table.headers.slice(1) : table.headers
+                            Label {
+                                width: table.stacked ? table.cellWidths[index]
+                                     : index === 0 ? table.width - table.numbersWidth : table.cellWidths[index - 1]
+                                horizontalAlignment: !table.stacked && index === 0 ? Text.AlignLeft : Text.AlignRight
+                                font.pixelSize: Theme.fontSizeExtraSmall
+                                color: Theme.secondaryHighlightColor
+                                text: modelData
+                            }
+                        }
+                    }
+
+                    Repeater {
+                        model: table.rows
+                        delegate: Column {
+                            width: tableColumn.width
+                            Label {
+                                visible: table.stacked
+                                width: parent.width
+                                font.pixelSize: Theme.fontSizeExtraSmall
+                                text: modelData.period
+                            }
+                            Row {
+                                anchors.right: parent.right
+                                Label {
+                                    visible: !table.stacked
+                                    width: table.width - table.numbersWidth
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    truncationMode: TruncationMode.Fade
+                                    text: modelData.period
+                                }
+                                Repeater {
+                                    model: modelData.cells
+                                    Label {
+                                        width: table.cellWidths[index]
+                                        horizontalAlignment: Text.AlignRight
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        color: Theme.highlightColor
+                                        text: modelData
+                                    }
+                                }
+                            }
                         }
                     }
                 }

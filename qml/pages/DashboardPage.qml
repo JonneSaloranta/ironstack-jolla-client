@@ -410,24 +410,30 @@ Page {
 
             // Body weight, like the web's dashboard stat and its "Log body
             // weight" link.
+            // With large text the link goes under the weight rather than
+            // fading the weight out.
             BackgroundItem {
+                id: bodyWeightItem
                 visible: page.bodyWeightType !== null
                 width: parent.width
-                height: Theme.itemSizeSmall
+                readonly property real room: width - 2 * Theme.horizontalPageMargin
+                readonly property bool sideBySide: weightLabel.implicitWidth + Theme.paddingLarge + logLabel.implicitWidth <= room
+                height: sideBySide ? Theme.itemSizeSmall : weightLabel.height + logLabel.height + 2 * Theme.paddingSmall
                 onClicked: page.logBodyWeight()
                 Label {
-                    anchors.verticalCenter: parent.verticalCenter
+                    id: weightLabel
                     x: Theme.horizontalPageMargin
-                    width: parent.width - 2 * Theme.horizontalPageMargin - logLabel.width
-                    truncationMode: TruncationMode.Fade
+                    y: bodyWeightItem.sideBySide ? (parent.height - height) / 2 : Theme.paddingSmall
+                    width: bodyWeightItem.sideBySide ? implicitWidth : bodyWeightItem.room
+                    wrapMode: Text.Wrap
                     text: qsTr("Body weight") + (page.bodyWeight
                           ? ": " + Store.formatMeasurement(page.bodyWeight.value, "weight", settings.unitSystem) : "")
                 }
                 Label {
                     id: logLabel
-                    anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.horizontalPageMargin
+                    y: bodyWeightItem.sideBySide ? (parent.height - height) / 2 : weightLabel.y + weightLabel.height
                     color: Theme.highlightColor
                     font.pixelSize: Theme.fontSizeSmall
                     text: qsTr("Log body weight")
