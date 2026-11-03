@@ -203,10 +203,18 @@ Landscape: stop the emulator, `sfdk emulator set orientation=landscape`, and
 start it again. Every page except training mode follows the device's
 orientation; training mode stays portrait on purpose (its controls are laid
 out for a thumb). Put the emulator back with `orientation=portrait`,
-`ambience ruska` and `fontsize normal` afterwards.
+`ambience ruska` and `fontsize normal` afterwards (then `emu.sh setup`
+again).
 
-Last checked (0.1, Sailfish OS 5.1, Jolla C2 model): dark and light themes,
-gigantic text and landscape all render without clipped or overlapping text.
+In landscape `emu.sh tap/swipe` still take portrait coordinates (the touch
+device doesn't rotate): a point (X, Y) on the 1600x720 landscape screen is
+`x = (1600 - X) * 720 / 1600`, `y = Y * 1600 / 720`. A pull-down is a drag
+with growing y; going back is a drag with shrinking x.
+
+Last checked (0.3, Sailfish OS 5.1, Jolla C2 model): dark and light themes,
+gigantic text and landscape render without clipped or overlapping text,
+including Progress, Nutrition statistics and the cover (0.3 fixed the
+statistics table and the dashboard's body weight at gigantic text).
 
 ## Faster QML iteration (optional)
 
