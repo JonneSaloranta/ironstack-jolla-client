@@ -43,6 +43,15 @@ Page {
         return Store.present(item.recipe) && !(Nutrition.recipes && Nutrition.recipes[item.recipe]) ? null : Math.round(n.calories)
     }
 
+    CoachLinks {
+        id: coach
+        kind: "diet-plans"
+        planId: page.planId
+        own: true
+        onUpdated: page.load()
+        onFailed: page.errorText = error
+    }
+
     function load(keepError) {
         loading = true
         Nutrition.ensure(api, function() {
@@ -83,6 +92,16 @@ Page {
 
         PullDownMenu {
             busy: page.loading
+            MenuItem {
+                visible: coach.updateAvailable
+                text: qsTr("Update from coach")
+                onClicked: coach.update()
+            }
+            MenuItem {
+                visible: coach.clients.length > 0
+                text: qsTr("Share with clients")
+                onClicked: coach.share()
+            }
             MenuItem {
                 text: qsTr("Delete")
                 onClicked: remorse.execute(qsTr("Deleting plan"), function() {

@@ -20,6 +20,7 @@ TestCase {
         return [
             { tag: "AchievementItem", path: "components/AchievementItem.qml" },
             { tag: "BarChart", path: "components/BarChart.qml" },
+            { tag: "CoachLinks", path: "components/CoachLinks.qml" },
             { tag: "CooldownCard", path: "components/CooldownCard.qml" },
             { tag: "DatePickerButton", path: "components/DatePickerButton.qml" },
             { tag: "DurationField", path: "components/DurationField.qml" },
@@ -42,7 +43,7 @@ TestCase {
 
     function test_pages_data() {
         return [
-            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "BlockedUsersPage", "ChatPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "FriendPickerDialog", "GroupEditDialog", "GroupPage", "HistoryPage", "LogSetDialog",
+            "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "BlockedUsersPage", "ChatPage", "ClientPage", "ClientsDialog", "CoachingPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "FriendPickerDialog", "GroupEditDialog", "GroupPage", "HistoryPage", "LogSetDialog",
             "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "NutritionStatsPage", "OpenFoodFactsPage", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "ProgressPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
             "SessionPage", "SettingsPage", "ShoppingListPage", "SocialPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TrainingPage", "UserSearchPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })

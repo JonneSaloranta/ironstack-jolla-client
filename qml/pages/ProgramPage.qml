@@ -24,6 +24,18 @@ Page {
 
     signal changed()
 
+    CoachLinks {
+        id: coach
+        kind: "programs"
+        planId: page.programId
+        own: page.editable
+        onUpdated: {
+            page.changed()
+            page.load()
+        }
+        onFailed: page.errorText = error
+    }
+
     function weekdayName(index) {
         // Django weekday: 0 = Monday. Qt.locale().dayName: 0 = Sunday.
         return Qt.locale().dayName((index + 1) % 7, Locale.ShortFormat)
@@ -128,6 +140,16 @@ Page {
 
         PullDownMenu {
             busy: page.loading
+            MenuItem {
+                visible: coach.updateAvailable
+                text: qsTr("Update from coach")
+                onClicked: coach.update()
+            }
+            MenuItem {
+                visible: coach.clients.length > 0
+                text: qsTr("Share with clients")
+                onClicked: coach.share()
+            }
             MenuItem {
                 visible: page.editable
                 text: qsTr("Delete program")
