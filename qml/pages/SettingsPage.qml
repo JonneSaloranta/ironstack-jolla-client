@@ -95,19 +95,6 @@ Page {
                 onClicked: settings.timerSound = !checked
             }
 
-            SectionHeader {
-                text: qsTr("Body tracking")
-            }
-
-            TextSwitch {
-                text: qsTr("Body tracking reminder")
-                description: qsTr("Shows a reminder on the home page when you haven't logged a body measurement "
-                                  + "in 14 days. Kept on this phone - the web's own switch isn't available to the app.")
-                checked: settings.bodyTrackingReminder
-                automaticCheck: false
-                onClicked: settings.bodyTrackingReminder = !checked
-            }
-
             // The IronStack profile, the same settings as the web's
             // Profile page; units apply here too.
             SectionHeader {
@@ -181,6 +168,14 @@ Page {
                         page.save({ height: text === "" ? null
                                                         : Store.displayToMeasurement(text, "length", settings.unitSystem) })
                     }
+                }
+                TextSwitch {
+                    text: qsTr("Body tracking reminder")
+                    description: qsTr("Shows a reminder on the home page when you haven't logged a body measurement "
+                                      + "in 14 days.")
+                    checked: page.profile ? page.profile.body_tracking_reminders_enabled : false
+                    automaticCheck: false
+                    onClicked: page.save({ body_tracking_reminders_enabled: !checked })
                 }
                 TextSwitch {
                     text: qsTr("Show BMI")

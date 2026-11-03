@@ -104,11 +104,4 @@ TestCase {
         compare(Progress.signed(1.5), "+1.5")
         compare(Progress.signed(-0.3), "-0.3")
     }
-
-    function test_bodyReminder() {
-        var now = new Date(2026, 10, 15, 12)
-        verify(Progress.needsBodyReminder(new Date(2026, 10, 1, 12).toISOString(), now))
-        verify(!Progress.needsBodyReminder(new Date(2026, 10, 1, 13).toISOString(), now))
-        verify(!Progress.needsBodyReminder(null, now))
-    }
 }

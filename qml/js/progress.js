@@ -164,17 +164,3 @@ function bodyProgress(readings, types, start, end, unitSystem) {
 function signed(value) {
     return (value > 0 ? "+" : "") + Store.formatNumber(value)
 }
-
-// --- body tracking reminder ---------------------------------------------------
-// The web's "Time to log your body measurements?" card
-// (apps.measurements.services.needs_body_tracking_reminder): 14 days or
-// more since the newest reading of any type. The web counts from the day
-// the account was made when there's no reading at all; the API doesn't
-// say when that was, so here a reading is needed.
-var BODY_TRACKING_REMINDER_DAYS = 14
-
-function needsBodyReminder(latestRecordedAt, now) {
-    if (!latestRecordedAt)
-        return false
-    return (now - new Date(latestRecordedAt)) / 86400000 >= BODY_TRACKING_REMINDER_DAYS
-}

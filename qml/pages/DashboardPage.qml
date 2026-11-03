@@ -2,7 +2,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
-import "../js/progress.js" as Progress
 
 Page {
     id: page
@@ -20,9 +19,9 @@ Page {
     // permission, which isn't an error here).
     property var bodyWeightType: null
     property var bodyWeight: null
-    // When the newest body measurement of any type was taken, for the
-    // web's "Time to log your body measurements?" reminder.
-    property string latestMeasurementAt: ""
+    // The web's "Time to log your body measurements?" card: the server's
+    // own rule and on/off setting (profile/).
+    property bool bodyReminder: false
     property string errorText: ""
     property bool offline: false
     property bool loading: false
@@ -51,9 +50,10 @@ Page {
         }
 
         api.request("GET", "profile/", null, function(ok, status, data, error) {
-            if (ok)
+            if (ok) {
                 settings.unitSystem = data.unit_system || "metric"
-            else
+                page.bodyReminder = data.needs_body_tracking_reminder === true
+            } else
                 page.failed(status, error)
             settle()
         })
@@ -151,11 +151,6 @@ Page {
                 return
             var type = (data.results || []).filter(Store.isBodyWeightType)[0] || null
             page.bodyWeightType = type
-            // Newest first: the latest reading of any type, and of body weight.
-            api.request("GET", "measurements/?page_size=1", null, function(ok2, status2, readings) {
-                if (ok2)
-                    page.latestMeasurementAt = (readings.results || []).length ? readings.results[0].recorded_at : ""
-            })
             if (type) {
                 api.request("GET", "measurements/?page_size=1&measurement_type=" + type.id, null,
                             function(ok3, status3, weights) {
@@ -172,6 +167,8 @@ Page {
             api.request("POST", "measurements/", dialog.body(), function(ok, status, data, error) {
                 if (!ok)
                     page.errorText = error
+                else
+                    page.bodyReminder = false
                 loadBodyWeight()
             })
         })
@@ -442,8 +439,7 @@ Page {
 
             // Like the web's card: only a nudge, never in the way.
             BackgroundItem {
-                visible: settings.bodyTrackingReminder
-                         && Progress.needsBodyReminder(page.latestMeasurementAt, new Date())
+                visible: page.bodyReminder
                 width: parent.width
                 height: reminderColumn.height + 2 * Theme.paddingMedium
                 onClicked: pageStack.push(Qt.resolvedUrl("MeasurementsPage.qml"))

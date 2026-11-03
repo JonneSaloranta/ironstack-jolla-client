@@ -17,10 +17,7 @@ class Settings : public QObject
     Q_PROPERTY(QString unitSystem READ unitSystem WRITE setUnitSystem NOTIFY unitSystemChanged)
     // Rest timer length after logging a set; 0 turns the timer off.
     Q_PROPERTY(int restSeconds READ restSeconds WRITE setRestSeconds NOTIFY restSecondsChanged)
-    // App-side preferences the IronStack API doesn't carry: the web's
-    // body tracking reminder switch isn't in the API profile, and the
-    // stretching timer's mute is kept per device on the web as well.
-    Q_PROPERTY(bool bodyTrackingReminder READ bodyTrackingReminder WRITE setBodyTrackingReminder NOTIFY bodyTrackingReminderChanged)
+    // The stretching timer's mute, kept per device like on the web.
     Q_PROPERTY(bool timerSound READ timerSound WRITE setTimerSound NOTIFY timerSoundChanged)
     // When the running rest period ends, in ms since the epoch; 0 = no rest
     // running. Runtime only, shared by the session page, the cover and the
@@ -43,8 +40,6 @@ public:
     void setUnitSystem(const QString &system);
     int restSeconds() const;
     void setRestSeconds(int seconds);
-    bool bodyTrackingReminder() const;
-    void setBodyTrackingReminder(bool on);
     bool timerSound() const;
     void setTimerSound(bool on);
     double restEndsAt() const { return m_restEndsAt; }
@@ -78,7 +73,6 @@ signals:
     void unitSystemChanged();
     void restSecondsChanged();
     void restEndsAtChanged();
-    void bodyTrackingReminderChanged();
     void timerSoundChanged();
     void activeSessionChanged();
 
