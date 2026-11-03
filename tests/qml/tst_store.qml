@@ -151,53 +151,6 @@ TestCase {
         compare(Store.recordValueText({ record_type: "max_weight", value: "100.00" }, "metric", "%1 reps"), "100 kg")
     }
 
-    // Answers like the API, synchronously; `failOn` makes one path fail.
-    function fakeApi(failOn) {
-        var api = { calls: [], nextId: 100 }
-        api.request = function(method, path, body, callback) {
-            api.calls.push({ method: method, path: path, body: body })
-            if (failOn && path === failOn && method === "POST") {
-                callback(false, 400, {}, "nope")
-                return
-            }
-            callback(true, method === "POST" ? 201 : 204, method === "POST" ? { id: api.nextId++ } : null, "")
-        }
-        return api
-    }
-
-    property var template: ({ id: 5, name: "5x5 Strength (A/B)", description: "d", is_continuous: false,
-                              is_template: true, workouts: [
-        { id: 7, name: "Workout A", order: 0, scheduled_weekday: 0, notes: "", prescriptions: [
-            { exercise: 1, order: 0, set_count: 5, min_reps: 5, max_reps: 5, target_weight: null,
-              progression_method: "linear", weight_increment: "2.50", notes: "" }] },
-        { id: 8, name: "Workout B", order: 1, scheduled_weekday: null, notes: "", prescriptions: [] }] })
-
-    function test_copyProgram() {
-        var api = fakeApi()
-        var result = null
-        Store.copyProgram(api, template, function(ok, id, error) { result = { ok: ok, id: id } })
-        verify(result.ok)
-        compare(result.id, 100)
-        compare(api.calls.map(function(c) { return c.method + " " + c.path }),
-                ["POST programs/", "POST workouts/", "POST prescriptions/", "POST workouts/"])
-        compare(api.calls[0].body.is_template, false)
-        compare(api.calls[1].body.program, 100)
-        compare(api.calls[2].body.workout, 101)
-        compare(api.calls[2].body.weight_increment, "2.50")
-        compare(api.calls[2].body.target_weight, null)
-        compare(api.calls[3].body.scheduled_weekday, null)
-    }
-
-    function test_copyProgram_failureCleansUp() {
-        var api = fakeApi("prescriptions/")
-        var result = null
-        Store.copyProgram(api, template, function(ok, id, error) { result = { ok: ok, error: error } })
-        verify(!result.ok)
-        compare(result.error, "nope")
-        var last = api.calls[api.calls.length - 1]
-        compare(last.method + " " + last.path, "DELETE programs/100/")
-    }
-
     function test_swapTarget() {
         compare(Store.swapTarget(3, 0, -1), -1)
         compare(Store.swapTarget(3, 0, 1), 1)
@@ -311,27 +264,6 @@ TestCase {
         // nothing today yet: the streak ends yesterday
         compare(summary.streak, 2)
         compare(Store.stretchSummary([], today).streak, 0)
-    }
-
-    function test_copyName() {
-        compare(Store.copyName("Venyttely (kopio)", []), "Venyttely (kopio)")
-        compare(Store.copyName("Venyttely (kopio)", ["Venyttely (kopio)", "Venyttely (kopio) 2"]),
-                "Venyttely (kopio) 3")
-    }
-
-    function test_copyRoutine() {
-        var api = fakeApi()
-        var result = null
-        Store.copyRoutine(api, { items: [{ stretch: 3, order: 0, hold_seconds: null, sets: 2, rest_seconds: 10 }] },
-                          "R (copy)", "d", function(ok, routine) { result = { ok: ok, id: routine.id } })
-        verify(result.ok)
-        compare(api.calls[1].path, "stretch-routine-items/")
-        compare(api.calls[1].body.routine, 100)
-        compare(api.calls[1].body.hold_seconds, null)
-        var failing = fakeApi("stretch-routine-items/")
-        Store.copyRoutine(failing, { items: [{ stretch: 3, order: 0, sets: 1 }] }, "R", "", function(ok) { result = ok })
-        verify(!result)
-        compare(failing.calls[failing.calls.length - 1].path, "stretch-routines/100/")
     }
 
     function test_parseDateAndIsToday() {

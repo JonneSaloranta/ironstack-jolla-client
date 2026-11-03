@@ -90,15 +90,15 @@ Page {
 
     function copy() {
         loading = true
-        Store.copyProgram(api, program, function(ok, newId, error) {
+        // The web's Copy: your own program with every workout and exercise.
+        api.request("POST", "programs/" + programId + "/copy/", null, function(ok, status, data, error) {
             loading = false
             if (!ok) {
                 errorText = error
                 return
             }
             changed()
-            // The copy, loaded fresh by its page.
-            Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("ProgramPage.qml"), { programId: newId }) })
+            Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("ProgramPage.qml"), { programId: data.id }) })
         })
     }
 

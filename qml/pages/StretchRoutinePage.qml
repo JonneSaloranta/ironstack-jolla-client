@@ -87,18 +87,16 @@ Page {
 
     function copy() {
         loading = true
-        api.request("GET", "stretch-routines/?page_size=100", null, function(ok, status, data) {
-            var taken = ok ? data.results.filter(function(r) { return r.is_custom }).map(function(r) { return r.name }) : []
-            var name = Store.copyName(qsTr("%1 (copy)").arg(Store.contentName(routine.name)), taken)
-            Store.copyRoutine(api, routine, name, Texts.contentText(routine.description), function(ok2, created, error) {
-                loading = false
-                if (!ok2) {
-                    errorText = error
-                    return
-                }
-                Store.stretchingChanged = true
-                Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: created }) })
-            })
+        // The web's "Copy to edit": named "<name> (copy)" in the profile's
+        // language by the server, items included.
+        api.request("POST", "stretch-routines/" + routine.id + "/copy/", null, function(ok, status, data, error) {
+            loading = false
+            if (!ok) {
+                errorText = error
+                return
+            }
+            Store.stretchingChanged = true
+            Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: data }) })
         })
     }
 

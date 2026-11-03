@@ -479,45 +479,6 @@ function stretchName(id) {
     return stretches && stretches[id] ? contentName(stretches[id].name) : "#" + id
 }
 
-// A free name for a copy, like the web's copy_routine: "<name> (copy)",
-// then "<name> (copy) 2", ... among `takenNames`.
-function copyName(baseName, takenNames) {
-    var name = baseName
-    var suffix = 2
-    while ((takenNames || []).indexOf(name) >= 0)
-        name = baseName + " " + suffix++
-    return name
-}
-
-// Copy a routine into your own (the web's "Copy to edit"): the new
-// routine, then its items one by one - no copy endpoint (IronStack #32).
-// A half-made copy is deleted again. done(ok, newRoutine, error)
-function copyRoutine(api, routine, name, description, done) {
-    api.request("POST", "stretch-routines/", { name: name, description: description || "" },
-                function(ok, status, created, error) {
-        if (!ok)
-            return done(false, null, error)
-        var items = (routine.items || []).slice()
-        function next() {
-            if (items.length === 0)
-                return done(true, created, "")
-            var item = items.shift()
-            api.request("POST", "stretch-routine-items/", {
-                routine: created.id, stretch: item.stretch, order: item.order,
-                hold_seconds: present(item.hold_seconds) ? item.hold_seconds : null,
-                sets: item.sets, rest_seconds: item.rest_seconds || 0
-            }, function(ok2, status2, data2, error2) {
-                if (ok2)
-                    return next()
-                api.request("DELETE", "stretch-routines/" + created.id + "/", null, function() {
-                    done(false, null, error2)
-                })
-            })
-        }
-        next()
-    })
-}
-
 // The index of the first step of the next stretch after `index`, or
 // steps.length - for "Skip stretch".
 function nextStretchStep(steps, index) {
@@ -713,75 +674,6 @@ function recordValueText(record, unitSystem, repsTemplate) {
 }
 
 // --- programs ----------------------------------------------------------------
-
-var PRESCRIPTION_FIELDS = ["exercise", "order", "set_count", "min_reps", "max_reps", "target_weight",
-                           "target_rpe", "target_rir", "progression_method", "weight_increment",
-                           "percentage_target", "notes"]
-
-// Copy a program (a template, say) into a new program of your own, like
-// the web's Copy (apps.programs.services.copy_program: same name,
-// description and kind, not a template, every workout and prescription).
-// The API has no copy endpoint (IronStack #32), so it's one request per
-// row; if one fails the half-made copy is deleted again.
-// done(ok, newProgramId, error)
-function copyProgram(api, program, done) {
-    var steps = []
-    var newProgramId = null
-    var workoutIds = {}
-
-    steps.push(function(next) {
-        api.request("POST", "programs/", {
-            name: program.name, description: program.description || "",
-            is_continuous: !!program.is_continuous, is_template: false
-        }, function(ok, status, data, error) {
-            if (!ok)
-                return next(error)
-            newProgramId = data.id
-            next()
-        })
-    })
-    ;(program.workouts || []).forEach(function(workout) {
-        steps.push(function(next) {
-            api.request("POST", "workouts/", {
-                program: newProgramId, name: workout.name, order: workout.order,
-                scheduled_weekday: present(workout.scheduled_weekday) ? workout.scheduled_weekday : null,
-                notes: workout.notes || ""
-            }, function(ok, status, data, error) {
-                if (!ok)
-                    return next(error)
-                workoutIds[workout.id] = data.id
-                next()
-            })
-        })
-        ;(workout.prescriptions || []).forEach(function(prescription) {
-            steps.push(function(next) {
-                var body = { workout: workoutIds[workout.id] }
-                PRESCRIPTION_FIELDS.forEach(function(field) {
-                    body[field] = present(prescription[field]) ? prescription[field] : (field === "notes" ? "" : null)
-                })
-                api.request("POST", "prescriptions/", body, function(ok, status, data, error) {
-                    next(ok ? undefined : error)
-                })
-            })
-        })
-    })
-
-    var at = 0
-    function next(error) {
-        if (error !== undefined) {
-            if (newProgramId === null)
-                return done(false, null, error)
-            api.request("DELETE", "programs/" + newProgramId + "/", null, function() {
-                done(false, null, error)
-            })
-            return
-        }
-        if (at === steps.length)
-            return done(true, newProgramId, "")
-        steps[at++](next)
-    }
-    next()
-}
 
 // The other row to swap `index` with when moving it up (-1) or down (+1)
 // in an `order`-sorted list, or -1 at the end of the list.
