@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.6.1
+Version:    0.6.2
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,9 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.6.2-1
+- The barcode scanner's viewfinder is upright.
+
 * Tue Nov 03 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.6.1-1
 - Lists longer than one page work behind a reverse proxy that gives the
   server another address (the diary said "Refused to follow a link to

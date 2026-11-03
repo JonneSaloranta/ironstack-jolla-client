@@ -16,7 +16,7 @@ How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 0.3.1 installed on 2026-11-03; 0.4.0 is waiting in its `/tmp`.
-0.6.0 installed on 2026-11-03; 0.6.1 is waiting in its `/tmp`.
+0.6.1 installed on 2026-11-04; 0.6.2 is waiting in its `/tmp`.
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
   history, records, exercises, body tracking, activities, stretching,
@@ -78,7 +78,7 @@ COMPATIBILITY.md and drop the row.
   no git remote yet.
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
-  (0.6.1 on 2026-11-03), so `rpm -Uvh` upgrades without `--force`; run
+  (0.6.2 on 2026-11-04), so `rpm -Uvh` upgrades without `--force`; run
   `sfdk -c target=SailfishOS-5.1.0.11-aarch64 check` on the aarch64 RPM
   (without the target it runs the i486 objdump and fails); write release notes once there's a
   public release.
