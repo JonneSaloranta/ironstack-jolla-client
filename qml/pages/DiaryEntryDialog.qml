@@ -61,6 +61,7 @@ Dialog {
                    || number(carbsField) !== null || number(fatField) !== null)
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -180,6 +181,9 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.entry ? dialog.entry.notes || "" : ""
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

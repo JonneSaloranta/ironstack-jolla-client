@@ -37,6 +37,7 @@ Dialog {
                && !isNaN(Store.displayToMeasurement(valueField.text, type.unit_kind, unitSystem))
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -103,6 +104,9 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.reading ? dialog.reading.notes || "" : ""
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

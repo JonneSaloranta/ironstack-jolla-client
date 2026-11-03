@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/store.js" as Store
 
 // A new exercise of your own, or changes to one (`exercise` set) - the
@@ -48,6 +49,7 @@ Dialog {
     Component.onCompleted: Store.ensureLookups(api, function() { lookupsLoaded = true })
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -140,6 +142,9 @@ Dialog {
                     automaticCheck: false
                     onClicked: dialog.secondary = dialog.toggle(dialog.secondary, modelData.id)
                 }
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

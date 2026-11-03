@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 
 // A new workout in a program, or changes to one (`workout` set) - the
 // web's workout form: name, the weekday it's scheduled for (none for a
@@ -28,6 +29,7 @@ Dialog {
     canAccept: nameField.text.trim() !== ""
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -69,6 +71,9 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.workout ? dialog.workout.notes || "" : ""
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

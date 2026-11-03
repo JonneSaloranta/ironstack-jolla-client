@@ -24,6 +24,7 @@ TestCase {
             { tag: "DurationField", path: "components/DurationField.qml" },
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
             { tag: "ExercisePanel", path: "components/ExercisePanel.qml" },
+            { tag: "KeyboardRoom", path: "components/KeyboardRoom.qml" },
             { tag: "LineChart", path: "components/LineChart.qml" },
             { tag: "MacroSummary", path: "components/MacroSummary.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },

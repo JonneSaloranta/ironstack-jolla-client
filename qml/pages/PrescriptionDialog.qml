@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/store.js" as Store
 
 // An exercise in a workout: sets, rep range, targets and progression - the
@@ -56,6 +57,7 @@ Dialog {
     canAccept: integer(setsField) > 0 && integer(minRepsField) > 0 && integer(maxRepsField) > 0 && repsValid
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -173,6 +175,9 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.prescription ? dialog.prescription.notes || "" : ""
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

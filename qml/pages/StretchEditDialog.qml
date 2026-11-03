@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/store.js" as Store
 
 // A stretch of your own, or changes to one (`stretch` set) - the web's
@@ -37,6 +38,7 @@ Dialog {
     Component.onCompleted: Store.ensureLookups(api, function() { lookupsLoaded = true })
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -96,6 +98,9 @@ Dialog {
                     automaticCheck: false
                     onClicked: dialog.toggle(modelData.id)
                 }
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

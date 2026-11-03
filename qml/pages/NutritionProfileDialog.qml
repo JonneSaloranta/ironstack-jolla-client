@@ -39,6 +39,7 @@ Dialog {
     }
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -131,6 +132,9 @@ Dialog {
                 inputMethodHints: Qt.ImhDigitsOnly
                 validator: IntValidator { bottom: 0; top: 20000 }
                 text: dialog.text(dialog.profile.self_reported_daily_calories)
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 

@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/store.js" as Store
 
 // Log a new set or edit an existing one. Every field is just a default -
@@ -53,6 +54,7 @@ Dialog {
     }
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -169,6 +171,9 @@ Dialog {
                 label: qsTr("Notes")
                 placeholderText: label
                 text: dialog.initialNotes
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
     }

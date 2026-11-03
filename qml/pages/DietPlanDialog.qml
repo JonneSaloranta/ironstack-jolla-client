@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
 
@@ -56,6 +57,7 @@ Dialog {
     }
 
     SilicaFlickable {
+        id: flickable
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
@@ -127,6 +129,9 @@ Dialog {
                     automaticCheck: false
                     onClicked: dialog.toggle(modelData.id)
                 }
+            }
+            KeyboardRoom {
+                flickable: flickable
             }
         }
 
