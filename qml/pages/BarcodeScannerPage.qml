@@ -45,10 +45,13 @@ Page {
 
     Camera {
         id: camera
-        captureMode: Camera.CaptureViewfinder
+        // Video mode, like the system camera's torch: the phone lights
+        // the torch only there (FlashVideoLight in viewfinder mode did
+        // nothing). Nothing is recorded.
+        captureMode: Camera.CaptureVideo
         focus.focusMode: Camera.FocusContinuous
         focus.focusPointMode: Camera.FocusPointCenter
-        flash.mode: page.torch ? Camera.FlashVideoLight : Camera.FlashOff
+        flash.mode: page.torch ? Camera.FlashTorch : Camera.FlashOff
         // Off whenever the page isn't on screen.
         cameraState: page.status === PageStatus.Active && Qt.application.active && !page.done
                      ? Camera.ActiveState : Camera.UnloadedState
