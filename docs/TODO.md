@@ -10,13 +10,15 @@ worth knowing, and housekeeping. Status per feature is in
 
 Every section has been tried in the emulator against the local IronStack
 (test user `jolla-emulator`), including the light theme, gigantic text and
-landscape. Nothing has been tried on real hardware yet.
+landscape. On the phone (2026-11-04) so far: the diary with the real
+account (which found the proxy link bug fixed in 0.6.1) and the barcode
+scanner's viewfinder (upright since 0.6.2).
 
 How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
-0.3.1 installed on 2026-11-03; 0.4.0 is waiting in its `/tmp`.
 0.6.1 installed on 2026-11-04; 0.6.2 is waiting in its `/tmp`.
+
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
   history, records, exercises, body tracking, activities, stretching,
@@ -31,11 +33,11 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 - [ ] **Open Food Facts through the server**: search by name and by
   barcode, add a product (Nutri-Score and NOVA shown on the food).
 - [ ] **Barcode scanning with the camera** (Foods > "Scan a barcode"):
-  the first launch asks for the new Camera permission; real packages
-  (EAN-13, EAN-8, UPC-E), dim light with the torch, a curved bottle.
-  Untried on hardware: whether `VideoOutput.grabToImage` gets the
-  viewfinder's picture on the phone (the emulator has no camera). If it
-  comes back empty, read the frames with a QVideoProbe in C++ instead.
+  the viewfinder works on the phone; still to see whether real packages
+  (EAN-13, EAN-8, UPC-E) are read, in dim light with the torch and on a
+  curved bottle. If nothing is ever read, `VideoOutput.grabToImage` may
+  come back empty on the phone - then read the frames with a QVideoProbe
+  in C++ instead.
 - [ ] **Offline logging**: with mobile data off, log a diary entry, a body
   weight, an activity and stretching; they wait as "saved on this phone"
   (the diary shows "Not sent yet") and go once the connection is back.
@@ -61,7 +63,7 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
 #26-#41 were fixed in IronStack 1.30.0 and are used by the app. Still
-open (2026-11-03). When one is fixed: make the change below, update
+open (2026-11-04). When one is fixed: make the change below, update
 COMPATIBILITY.md and drop the row.
 
 | Issue | Today in the app | When fixed | Where |
