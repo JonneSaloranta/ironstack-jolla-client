@@ -773,85 +773,85 @@
 <context>
     <name>DiaryPage</name>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="23"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="27"/>
         <source>%1 serving(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="23"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="27"/>
         <source>%1 portion(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="23"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="27"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="113"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="118"/>
         <source>Nothing logged for this meal yet to save as a recipe.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="132"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="137"/>
         <source>Copy this day to another date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="136"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="216"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="267"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="141"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="221"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="272"/>
         <source>Quick entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="140"/>
-        <location filename="../qml/pages/DiaryPage.qml" line="212"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="145"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="217"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="150"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="155"/>
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="175"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="180"/>
         <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="221"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="226"/>
         <source>Save as recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="243"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="248"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="247"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="252"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="281"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="286"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="282"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="287"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="283"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="288"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DiaryPage.qml" line="299"/>
+        <location filename="../qml/pages/DiaryPage.qml" line="304"/>
         <source>Nothing logged yet.</source>
         <translation type="unfinished"></translation>
     </message>

@@ -13,6 +13,10 @@ Page {
 
     property date day: new Date()
     property var entries: []
+    // The meals, copied from Nutrition.slots once ensure() is done: a
+    // library variable doesn't notify bindings, so a diary opened before
+    // the library was loaded would show no meals (nor their entries).
+    property var slots: []
     property var target: null
     property bool loading: false
     property string errorText: ""
@@ -34,6 +38,7 @@ Page {
                 errorText = error
                 return
             }
+            slots = Nutrition.slots || []
             Nutrition.entriesFor(api, isoDay, function(ok2, found, error2) {
                 loading = false
                 errorText = ok2 ? (keepError || "") : error2
@@ -54,7 +59,7 @@ Page {
 
     // The meal for a new entry: the first one, unless one is given.
     function defaultSlot() {
-        return (Nutrition.slots || [])[0] || null
+        return slots[0] || null
     }
 
     function addFood(slot) {
@@ -83,7 +88,7 @@ Page {
     }
 
     function edit(entry) {
-        var slot = (Nutrition.slots || []).filter(function(s) { return s.id === entry.meal_slot })[0] || null
+        var slot = slots.filter(function(s) { return s.id === entry.meal_slot })[0] || null
         var dialog = pageStack.push(Qt.resolvedUrl("DiaryEntryDialog.qml"), { entry: entry, slot: slot })
         dialog.accepted.connect(function() {
             api.request("PATCH", "diary-entries/" + entry.id + "/", dialog.body(), function(ok, status, data, error) {
@@ -197,7 +202,7 @@ Page {
             }
 
             Repeater {
-                model: Nutrition.slots || []
+                model: page.slots
                 delegate: Column {
                     property var slot: modelData
                     property var slotEntries: page.entriesOf(modelData.id)
