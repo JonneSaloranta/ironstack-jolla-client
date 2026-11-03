@@ -30,8 +30,8 @@ Page {
     function load() {
         loading = true
         var found = []
-        Store.fetchAll(api, "activities/?page_size=100", function(results) {
-            found = found.concat(results.filter(function(a) { return a.activity_type === type.id }))
+        Store.fetchAll(api, "activities/?page_size=100&activity_type=" + type.id, function(results) {
+            found = found.concat(results)
         }, function(ok, error) {
             loading = false
             errorText = ok ? "" : error

@@ -151,18 +151,18 @@ Page {
                 return
             var type = (data.results || []).filter(Store.isBodyWeightType)[0] || null
             page.bodyWeightType = type
-            // Newest first; the latest body weight is nearly always on the
-            // first page (the API can't filter by type, IronStack #29).
-            api.request("GET", "measurements/?page_size=100", null, function(ok2, status2, readings) {
-                if (!ok2)
-                    return
-                var results = readings.results || []
-                page.latestMeasurementAt = results.length ? results[0].recorded_at : ""
-                if (type)
-                    page.bodyWeight = results.filter(function(r) {
-                        return r.measurement_type === type.id
-                    })[0] || null
+            // Newest first: the latest reading of any type, and of body weight.
+            api.request("GET", "measurements/?page_size=1", null, function(ok2, status2, readings) {
+                if (ok2)
+                    page.latestMeasurementAt = (readings.results || []).length ? readings.results[0].recorded_at : ""
             })
+            if (type) {
+                api.request("GET", "measurements/?page_size=1&measurement_type=" + type.id, null,
+                            function(ok3, status3, weights) {
+                    if (ok3)
+                        page.bodyWeight = (weights.results || [])[0] || null
+                })
+            }
         })
     }
 

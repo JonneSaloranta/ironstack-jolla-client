@@ -4,8 +4,8 @@ import "../components"
 import "../js/store.js" as Store
 
 // Body tracking, like the web's: every measurement type with its latest
-// reading. All readings are fetched and grouped here - the API can't
-// filter them by type (IronStack #29).
+// reading. All readings are fetched in one go and grouped here: a request
+// per type would be one per type on every visit, against the rate limit.
 Page {
     id: page
 

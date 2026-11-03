@@ -37,8 +37,8 @@ Page {
     function load() {
         loading = true
         var found = []
-        Store.fetchAll(api, "measurements/?page_size=100", function(results) {
-            found = found.concat(results.filter(function(r) { return r.measurement_type === type.id }))
+        Store.fetchAll(api, "measurements/?page_size=100&measurement_type=" + type.id, function(results) {
+            found = found.concat(results)
         }, function(ok, error) {
             loading = false
             errorText = ok ? "" : error

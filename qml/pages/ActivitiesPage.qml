@@ -4,8 +4,8 @@ import "../components"
 import "../js/store.js" as Store
 
 // Activities, like the web's: every activity type with how many are
-// logged. Activities are fetched and grouped here - the API can't filter
-// them by type (IronStack #29).
+// logged. All activities are fetched in one go and grouped here: a request
+// per type would be one per type on every visit, against the rate limit.
 Page {
     id: page
 

@@ -295,8 +295,7 @@ function entriesSince(api, startIso, done) {
 }
 
 // Body weight readings (the built-in type) recorded from `since` (a Date)
-// on: measurements/ is newest first with no type filter (IronStack #29).
-// done(ok, readings, error) - no body weight type means no readings.
+// on. done(ok, readings, error) - no body weight type means no readings.
 function bodyWeightSince(api, since, done) {
     api.request("GET", "measurement-types/?page_size=100", null, function(ok, status, data, error) {
         if (!ok)
@@ -305,22 +304,11 @@ function bodyWeightSince(api, since, done) {
         if (!type)
             return done(true, [], "")
         var found = []
-        function page(path) {
-            api.request("GET", path, null, function(ok2, status2, data2, error2) {
-                if (!ok2)
-                    return done(false, [], error2)
-                var results = data2.results || []
-                results.forEach(function(r) {
-                    if (r.measurement_type === type.id && new Date(r.recorded_at) >= since)
-                        found.push(r)
-                })
-                var last = results[results.length - 1]
-                if (data2.next && last && new Date(last.recorded_at) >= since)
-                    page(data2.next)
-                else
-                    done(true, found, "")
-            })
-        }
-        page("measurements/?page_size=100")
+        Store.fetchAll(api, "measurements/?page_size=100&measurement_type=" + type.id
+                       + "&recorded_after=" + encodeURIComponent(since.toISOString()), function(results) {
+            found = found.concat(results)
+        }, function(ok2, error2) {
+            done(ok2, ok2 ? found : [], error2 || "")
+        })
     })
 }
