@@ -3,6 +3,7 @@
 
 #include <QBuffer>
 #include <QJsonDocument>
+#include <QLocale>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
@@ -57,6 +58,19 @@ ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
     };
 }
 
+// The phone's language, the one the app shows itself in: the server's
+// translated names (`display_name`, `exercise_display_name`, ...) then
+// match the rest of the page. English after it, the app's own fallback,
+// for a language the server doesn't have - else it would answer in the
+// IronStack profile's language.
+QByteArray ApiClient::acceptLanguage(const QLocale &locale)
+{
+    const QString language = locale.name().section(QLatin1Char('_'), 0, 0);
+    if (language.isEmpty() || language == QLatin1String("C") || language == QLatin1String("en"))
+        return QByteArrayLiteral("en");
+    return language.toLatin1() + ", en;q=0.5";
+}
+
 void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
                          const QString &path, const QVariant &body, Handler handler,
                          const QVariantMap &headers)
@@ -88,6 +102,7 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     QNetworkRequest req(url);
     req.setRawHeader("Authorization", "Bearer " + apiKey.toUtf8());
     req.setRawHeader("Accept", "application/json");
+    req.setRawHeader("Accept-Language", acceptLanguage());
     req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
     for (auto it = headers.constBegin(); it != headers.constEnd(); ++it)
         req.setRawHeader(it.key().toUtf8(), it.value().toString().toUtf8());

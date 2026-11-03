@@ -4,6 +4,7 @@
 #include <QHash>
 #include <QJSValue>
 #include <functional>
+#include <QLocale>
 #include <QObject>
 #include <QUrl>
 #include <QVariant>
@@ -69,6 +70,8 @@ public:
     static QString contextForPath(const QString &path);
     // "Create", "Read", "Update" or "Delete" - the permission a method needs.
     static QString permissionForMethod(const QString &method);
+    // The Accept-Language header for `locale`: its language, then English.
+    static QByteArray acceptLanguage(const QLocale &locale = QLocale());
 
 private:
 

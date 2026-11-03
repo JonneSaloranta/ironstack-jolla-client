@@ -306,6 +306,13 @@ private slots:
         QCOMPARE(ApiClient::contextForPath(path), context);
     }
 
+    void acceptLanguage()
+    {
+        QCOMPARE(ApiClient::acceptLanguage(QLocale(QStringLiteral("fi_FI"))), QByteArray("fi, en;q=0.5"));
+        QCOMPARE(ApiClient::acceptLanguage(QLocale(QStringLiteral("en_GB"))), QByteArray("en"));
+        QCOMPARE(ApiClient::acceptLanguage(QLocale::c()), QByteArray("en"));
+    }
+
     void permissionForMethod()
     {
         QCOMPARE(ApiClient::permissionForMethod(QStringLiteral("GET")), QStringLiteral("Read"));
