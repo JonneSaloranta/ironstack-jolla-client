@@ -21,6 +21,8 @@ later.
   and continued offline
 - Smart weight suggestion and last time's sets for each exercise, as on
   the web
+- In English, Finnish, Swedish, Estonian, Italian and Russian - the web's
+  languages
 - Built-in exercise, program and workout names in the phone's language,
   with the same translations as the web
 - Full view of a session for corrections: edit and delete sets, add

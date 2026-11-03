@@ -52,10 +52,12 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 
 ## 2. Development possible now
 
-- [ ] **More translations.** Only English and Finnish
-  (`translations/`); the web has more. New languages need the `.ts` file
-  in `harbour-ironstack.pro` and the built-in content names from
-  `tools/content-i18n/generate.py`.
+- [ ] **Swedish, Estonian, Italian and Russian checked by a native
+  speaker.** About half of their strings are the web's own translations;
+  the rest were written for the app (2026-11-03). New strings: run
+  `lupdate` (a build does), then `python3 -I tools/i18n/from-web.py
+  ../IronStack sv et it ru` takes what the web has and lists the rest.
+
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
 #26-#41 were fixed in IronStack 1.30.0 and are used by the app. Still
