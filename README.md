@@ -3,7 +3,8 @@
 Native Sailfish OS client (`harbour-ironstack`) for a self-hosted
 [IronStack](https://github.com/JonneSaloranta/ironstack) instance. Silica
 QML UI, a small C++ layer for networking and settings. Talks to IronStack's
-REST API (`/api/v1/`) with a per-user API key.
+REST API (`/api/v1/`) with a per-user API key; needs IronStack 1.30.0 or
+later.
 
 ## Features (0.1)
 
@@ -14,9 +15,10 @@ REST API (`/api/v1/`) with a per-user API key.
 - Training mode: one exercise at a time, big +/- steppers, one tap to log
   a set, prefilled from the previous set, last time or the program target;
   moves on to the next exercise by itself, swipe to go anywhere
-- Works without a connection: sets and finishing a workout are saved on
-  the phone and sent when the server can be reached; a workout in
-  progress can be opened and continued offline
+- Works without a connection: sets, finishing a workout, diary entries,
+  body measurements, activities and stretching are saved on the phone and
+  sent when the server can be reached; a workout in progress can be opened
+  and continued offline
 - Smart weight suggestion and last time's sets for each exercise, as on
   the web
 - Built-in exercise, program and workout names in the phone's language,
@@ -27,10 +29,12 @@ REST API (`/api/v1/`) with a per-user API key.
 - History and personal records; a Progress page like the web's (volume
   per week and muscle group, records, body measurement changes)
 - Nutrition: food diary, foods (also from Open Food Facts by name or
-  barcode), recipes, diet plans, statistics, observed maintenance and
-  whether your calorie target is working
+  barcode, through the server), recipes, diet plans, goals, statistics,
+  observed maintenance and whether your calorie target is working, with
+  the suggested adjustment one tap away
 - Body measurements with a reminder after 14 days, activities, and
-  stretching with a guided, chiming timer
+  stretching with a guided, chiming timer; a cool-down suggested after a
+  workout
 - Cover shows the workout in progress and its duration; otherwise today's
   calories and protein against the target, with a quick entry action
 - Metric or imperial display, following the IronStack profile setting

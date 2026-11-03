@@ -1,8 +1,9 @@
 # Remaining work
 
-Everything the API offers is in the app (0.3.1, 2026-11-03). What's left:
-testing on the phone, changes waiting on IronStack, a few limitations
-worth knowing, and housekeeping. Status per feature is in
+The app uses IronStack 1.30's API for training, body tracking, activities,
+stretching and nutrition (2026-11-03). What's left: testing on the phone,
+the new social/coaching/assistant API, changes waiting on IronStack, a few
+limitations worth knowing, and housekeeping. Status per feature is in
 [COMPATIBILITY.md](COMPATIBILITY.md); open bugs go in
 [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Remove an item when it's done.
 
@@ -28,8 +29,13 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 - [ ] **Cover**: today's calories and protein between workouts, updated
   after logging in the diary; "+" opens a quick entry; the workout timer
   and rest actions during a workout.
-- [ ] **Open Food Facts on mobile data**: search by name and by barcode,
-  add a product, the per-minute limits.
+- [ ] **Open Food Facts through the server**: search by name and by
+  barcode, add a product (Nutri-Score and NOVA shown on the food).
+- [ ] **Offline logging**: with mobile data off, log a diary entry, a body
+  weight, an activity and stretching; they wait as "saved on this phone"
+  (the diary shows "Not sent yet") and go once the connection is back.
+- [ ] **Guided stretching and the cool-down** after a finished workout,
+  with the screen off; a session started on the web picked up in the app.
 - [ ] **Dialogs save with one tap**, also with the keyboard open and after
   scrolling to the last field. (In the emulator they do; the earlier lost
   tap was the "Screenshot captured" banner, see EMULATOR.md.)
@@ -37,12 +43,13 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 
 ## 2. Development possible now
 
-- [ ] **Offline queue for more areas** once IronStack #31 adds
-  idempotency keys to `diary-entries/`, `measurements/`, `activities/`
-  and `stretch-sessions/`. Today only sets and finishing a workout are
-  queued (`SyncQueue`, used from `SessionController.qml`); the rest needs
-  a connection. Without the keys a retry after a lost response could log
-  twice, so don't queue them before #31.
+- [ ] **Social, coaching, the AI assistant and guided tours** (IronStack
+  #37, in the API since 1.30): friends, requests, blocking, messages and
+  groups; asking a trainer, a trainer's clients, importing shared plans;
+  the assistant's conversations and proposals; the web's tours. Each is a
+  new section, and friends/groups, coaching and the assistant each need an
+  API key with their own new permission area (the 403 message already
+  names it). Decide which are worth having on the phone first.
 - [ ] **Camera barcode scanning** for Open Food Facts. Harbour allows no
   barcode library and the camera needs its own permission, so the number
   is typed today. Possible outside Harbour (OpenRepos) with e.g. ZXing;
@@ -58,29 +65,15 @@ phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
 
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
-Nothing here is fixed yet (checked 2026-11-03). When one is: make the
-change below, regenerate `content.js` if relevant
-(`python3 -I tools/content-i18n/generate.py ../IronStack`), update
+#26-#41 were fixed in IronStack 1.30.0 and are used by the app. Still
+open (2026-11-03). When one is fixed: make the change below, update
 COMPATIBILITY.md and drop the row.
 
 | Issue | Today in the app | When fixed | Where |
 |---|---|---|---|
-| #26 diary date filter | Pages through all entries newest first; statistics read the whole diary | Ask for the day or range only | `nutrition.js` `entriesFor`, `nutritionstats.js` `entriesSince`, `NutritionStatsPage.qml` |
-| #27 entry nutrition | Works an entry out from today's food/recipe (old days may differ from the web); built-in and deleted recipes can't be counted | Use the entry's own nutrition; drop "Built-in or deleted recipe", `isKnown` and the "? kcal" headings | `nutrition.js` `forEntry`/`isKnown`/`daySummary`, `DiaryPage.qml`, `nutritionstats.js` |
-| #28 food search | Fetches the whole food library and searches it locally | Search on the server | `FoodsPage.qml`, `nutrition.js` `ensure` |
-| #29 measurement/activity filters | Fetches every reading and activity, groups them locally | Filter by type and date | `MeasurementsPage.qml`, `ActivitiesPage.qml`, `DashboardPage.qml`, `nutritionstats.js` `bodyWeightSince` |
-| #30 new PRs in the set response | Compares `records/` before and after a sync | Read the new records from the reply | `harbour-ironstack.qml` |
-| #31 idempotency for more endpoints | Diary, measurements, activities, stretching online only | Queue them like sets (section 2) | `SyncQueue`, the pages that `POST` them |
-| #32 copy a program or routine | Copies request by request, removes a half-made copy | One request | `store.js` `copyProgram`/`copyRoutine` |
-| #33 goals and targets writable | Read-only; "Is your current target working?" sends you to the web | Accept a suggested target in the app; edit goals | `NutritionPage.qml`, `NutritionGoalsPage.qml` |
-| #34 guided stretching | Played on the phone, logged as a quick log; no cool-down suggestion after a workout | Use the server's session; suggest a cool-down after a workout like the web | `StretchPlayerPage.qml`, `TrainingPage.qml` |
-| #35 analytics over time | Progress page and strength trend worked out from completed sessions | Read them from the API | `progress.js`, `ProgressPage.qml`, `ExerciseProgressPage.qml` |
-| #36 translated display names | Ships the web's translations in `content.js` / `content_texts.js` | Use the server's names; drop the generator | `store.js` `contentName`, `texts.js`, `tools/content-i18n/` |
-| #37 social, coaching, assistant, tutorials | Not in the app | New sections | - |
-| #38 built-in recipes not visible | Diet plans show "Built-in recipe" without details; the diary can't count or copy their entries | Show the recipe; count and copy its entries | `DietPlanPage.qml`, `DiaryPage.qml`, `nutrition.js` |
-| #39 null food/recipe crashes | Leaves the unused field out of the body | Nothing needed; the workaround can stay | `nutrition.js` `entryBody`, `DiaryEntryDialog.qml` |
-| #40 body tracking reminder setting, join date | Own switch in Settings; the reminder needs one reading first | Use the profile's setting; remind new users from their join date | `SettingsPage.qml`, `DashboardPage.qml`, `progress.js` `needsBodyReminder` |
-| #41 Open Food Facts import | Searches OFF itself and saves a plain food (no Nutri-Score, NOVA or OFF link, so the web can't refresh it) | Import through the API; drop the app's OFF client | `OpenFoodFactsPage.qml`, `openfoodfacts.js`, `ApiClient::openFoodFacts` |
+| #42 translated nested names and long texts | `display_name` isn't used; the app ships the web's catalog for every built-in name and text | Use the server's names and texts; drop the generator | `store.js` `contentName`, `texts.js`, `tools/content-i18n/` |
+| #43 cool-down suggestion | Ported `suggest_cooldown`; reads every exercise, routine and stretch, finds a done cool-down on the newest page of stretch sessions | Ask the server | `store.js` `suggestCooldown`, `CooldownCard.qml` |
+| #44 nutrition statistics and maintenance | Ported from `services.py`, `maintenance.py`, `trends.py`; reads the whole diary | Read them from the API | `nutritionstats.js`, `NutritionStatsPage.qml`, `NutritionPage.qml` |
 
 ## 4. Housekeeping
 

@@ -36,16 +36,16 @@ HTTP server on localhost:
 - `tst_store.qml` unit-tests the pure JavaScript helpers in
   `qml/js/store.js`: unit conversion, formatting, and the session rules
   shared by training mode and the full view (when an exercise is done,
-  which one is next, what to prefill, merging queued sets in).
+  which one is next, what to prefill, merging queued sets in), queued
+  writes shown before they're sent, guided stretching steps from a
+  session and the cool-down suggestion.
 
-- `tst_progress.qml`: the Progress page's figures (`progress.js`) - weekly
-  and muscle-group volume, records grouped by exercise, body measurement
-  changes, the body tracking reminder.
-- `tst_nutritionstats.qml`: nutrition statistics, the weight trend, observed
-  maintenance and the calorie adjustment suggestion (`nutritionstats.js`;
-  the expected figures are the ones IronStack's own `trends.py` gives for
-  the same readings), and turning an Open Food Facts product into a food
-  (`openfoodfacts.js`).
+- `tst_progress.qml`: the Progress page's figures (`progress.js`) - the
+  analytics endpoints' answers, records grouped by exercise, body
+  measurement changes.
+- `tst_nutritionstats.qml`: nutrition statistics, the weight trend and
+  observed maintenance (`nutritionstats.js`; the expected figures are the
+  ones IronStack's own `trends.py` gives for the same readings).
 - `tst_nutrition.qml` and `tst_calculators.qml`: nutrition maths and the
   calculators.
 

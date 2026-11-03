@@ -1719,7 +1719,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FoodsPage.qml" line="50"/>
-        <location filename="../qml/pages/FoodsPage.qml" line="154"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="157"/>
         <source>Foods</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1734,27 +1734,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="120"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="123"/>
         <source>Find in Open Food Facts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="136"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="139"/>
         <source>New food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="154"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="157"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="163"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="166"/>
         <source>Search foods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="200"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="203"/>
         <source>No foods found.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4372,68 +4372,68 @@
     <name>StretchesPage</name>
     <message>
         <location filename="../qml/pages/StretchesPage.qml" line="64"/>
-        <location filename="../qml/pages/StretchesPage.qml" line="111"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="114"/>
         <source>Dynamic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/StretchesPage.qml" line="64"/>
-        <location filename="../qml/pages/StretchesPage.qml" line="110"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="113"/>
         <source>Static</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="81"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="84"/>
         <source>New stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="99"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="102"/>
         <source>Add a stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="99"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="102"/>
         <source>Stretches</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="107"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="110"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="109"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="112"/>
         <source>All types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="115"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="118"/>
         <source>Muscle group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="118"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="121"/>
         <source>All muscle groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="132"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="135"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="161"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="164"/>
         <source>per side</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="162"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="165"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StretchesPage.qml" line="169"/>
+        <location filename="../qml/pages/StretchesPage.qml" line="172"/>
         <source>No stretches match.</source>
         <translation type="unfinished"></translation>
     </message>
