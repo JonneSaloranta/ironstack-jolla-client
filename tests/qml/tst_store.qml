@@ -5,6 +5,29 @@ import "../../qml/js/store.js" as Store
 TestCase {
     name: "Store"
 
+    // Stands in for Silica's PageStack: only `busy` matters.
+    QtObject {
+        id: fakeStack
+        property bool busy: false
+    }
+
+    function test_whenIdle() {
+        var runs = 0
+        fakeStack.busy = false
+        Store.whenIdle(fakeStack, function() { runs++ })
+        compare(runs, 1)
+
+        fakeStack.busy = true
+        Store.whenIdle(fakeStack, function() { runs++ })
+        compare(runs, 1)
+        fakeStack.busy = false
+        compare(runs, 2)
+        // once only
+        fakeStack.busy = true
+        fakeStack.busy = false
+        compare(runs, 2)
+    }
+
     function test_weightUnit() {
         compare(Store.weightUnit("metric"), "kg")
         compare(Store.weightUnit("imperial"), "lb")

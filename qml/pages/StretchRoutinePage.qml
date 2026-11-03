@@ -97,7 +97,7 @@ Page {
                     return
                 }
                 Store.stretchingChanged = true
-                pageStack.replace(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: created })
+                Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: created }) })
             })
         })
     }

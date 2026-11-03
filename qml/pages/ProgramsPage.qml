@@ -87,7 +87,7 @@ Page {
                                 return
                             }
                             page.load()
-                            pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), { programId: data.id })
+                            Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), { programId: data.id }) })
                         })
                     })
                 }

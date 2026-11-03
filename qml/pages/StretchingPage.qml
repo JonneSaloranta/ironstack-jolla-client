@@ -82,7 +82,7 @@ Page {
                                 return
                             }
                             page.load()
-                            pageStack.push(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: data })
+                            Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("StretchRoutinePage.qml"), { routine: data }) })
                         })
                     })
                 }

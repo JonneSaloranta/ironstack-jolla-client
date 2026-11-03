@@ -117,8 +117,10 @@ Page {
                 page.errorText = error
                 return
             }
-            pageStack.replaceAbove(pageStack.find(function(p) { return p.objectName === "dashboard" }) || null,
-                                   Qt.resolvedUrl("TrainingPage.qml"), { sessionId: data.id })
+            Store.whenIdle(pageStack, function() {
+                pageStack.replaceAbove(pageStack.find(function(p) { return p.objectName === "dashboard" }) || null,
+                                       Qt.resolvedUrl("TrainingPage.qml"), { sessionId: data.id })
+            })
         })
     }
 

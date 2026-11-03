@@ -7,6 +7,24 @@
 
 var LB_PER_KG = 2.20462262
 
+// --- navigation --------------------------------------------------------------
+
+// Runs action() once the page stack is idle. A page pushed from a reply
+// can come while a dialog is still closing, and Silica drops a push made
+// during a transition ("cannot push while transition is in progress"):
+// the page a new recipe, program or routine should open to never came.
+function whenIdle(pageStack, action) {
+    if (!pageStack.busy)
+        return action()
+    function idle() {
+        if (pageStack.busy)
+            return
+        pageStack.busyChanged.disconnect(idle)
+        action()
+    }
+    pageStack.busyChanged.connect(idle)
+}
+
 // --- built-in content names ------------------------------------------------
 // IronStack stores built-in exercises, programs and workouts in English and
 // the web translates their names when showing them; the API returns them

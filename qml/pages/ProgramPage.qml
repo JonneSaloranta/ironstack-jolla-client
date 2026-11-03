@@ -98,7 +98,7 @@ Page {
             }
             changed()
             // The copy, loaded fresh by its page.
-            pageStack.replace(Qt.resolvedUrl("ProgramPage.qml"), { programId: newId })
+            Store.whenIdle(pageStack, function() { pageStack.replace(Qt.resolvedUrl("ProgramPage.qml"), { programId: newId }) })
         })
     }
 

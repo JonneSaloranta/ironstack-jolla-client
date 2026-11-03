@@ -50,7 +50,7 @@ Page {
                             if (!ok)
                                 return page.load(error)
                             page.load()
-                            pageStack.push(Qt.resolvedUrl("DietPlanPage.qml"), { planId: data.id })
+                            Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("DietPlanPage.qml"), { planId: data.id }) })
                         })
                     })
                 }

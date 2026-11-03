@@ -134,7 +134,7 @@ Page {
                 return
             }
             Nutrition.changed = true
-            pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: recipeId })
+            Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: recipeId }) })
         })
     }
 

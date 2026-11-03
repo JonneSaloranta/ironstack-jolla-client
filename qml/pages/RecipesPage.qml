@@ -46,7 +46,7 @@ Page {
                             }
                             Nutrition.changed = true
                             page.load()
-                            pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: data.id })
+                            Store.whenIdle(pageStack, function() { pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: data.id }) })
                         })
                     })
                 }
