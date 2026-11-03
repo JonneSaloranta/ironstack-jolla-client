@@ -184,6 +184,25 @@
     </message>
 </context>
 <context>
+    <name>BlockedUsersPage</name>
+    <message>
+        <source>Blocked users</source>
+        <translation>Estetyt käyttäjät</translation>
+    </message>
+    <message>
+        <source>Unblock</source>
+        <translation>Poista esto</translation>
+    </message>
+    <message>
+        <source>Unblocking</source>
+        <translation>Poistetaan esto</translation>
+    </message>
+    <message>
+        <source>Nobody blocked</source>
+        <translation>Ketään ei ole estetty</translation>
+    </message>
+</context>
+<context>
     <name>CalculatorsPage</name>
     <message>
         <source>BMR and TDEE</source>
@@ -380,6 +399,29 @@
     <message>
         <source>An estimate, not medical advice.</source>
         <translation>Arvio, ei lääketieteellinen neuvo.</translation>
+    </message>
+</context>
+<context>
+    <name>ChatPage</name>
+    <message>
+        <source>Group info</source>
+        <translation>Ryhmän tiedot</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>No messages yet</source>
+        <translation>Ei vielä viestejä</translation>
+    </message>
+    <message>
+        <source>Say hello below</source>
+        <translation>Sano hei alla</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Viesti</translation>
     </message>
 </context>
 <context>
@@ -1417,6 +1459,146 @@
     </message>
 </context>
 <context>
+    <name>FriendPickerDialog</name>
+    <message>
+        <source>Choose</source>
+        <translation>Valitse</translation>
+    </message>
+    <message>
+        <source>Nobody to choose</source>
+        <translation>Ei ketään valittavana</translation>
+    </message>
+</context>
+<context>
+    <name>GroupEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Tallenna</translation>
+    </message>
+    <message>
+        <source>Edit group</source>
+        <translation>Muokkaa ryhmää</translation>
+    </message>
+    <message>
+        <source>New group</source>
+        <translation>Uusi ryhmä</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nimi</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Kuvaus</translation>
+    </message>
+</context>
+<context>
+    <name>GroupPage</name>
+    <message>
+        <source>Owner</source>
+        <translation>Omistaja</translation>
+    </message>
+    <message>
+        <source>Admin</source>
+        <translation>Ylläpitäjä</translation>
+    </message>
+    <message>
+        <source>Member</source>
+        <translation>Jäsen</translation>
+    </message>
+    <message>
+        <source>Invite a friend</source>
+        <translation>Kutsu kaveri</translation>
+    </message>
+    <message>
+        <source>Invited %1.</source>
+        <translation>%1 kutsuttu.</translation>
+    </message>
+    <message>
+        <source>New owner</source>
+        <translation>Uusi omistaja</translation>
+    </message>
+    <message>
+        <source>Delete group</source>
+        <translation>Poista ryhmä</translation>
+    </message>
+    <message>
+        <source>Deleting group</source>
+        <translation>Poistetaan ryhmä</translation>
+    </message>
+    <message>
+        <source>Leave group</source>
+        <translation>Poistu ryhmästä</translation>
+    </message>
+    <message>
+        <source>Leaving group</source>
+        <translation>Poistutaan ryhmästä</translation>
+    </message>
+    <message>
+        <source>Hand over ownership</source>
+        <translation>Luovuta omistajuus</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Unmute notifications</source>
+        <translation>Salli ilmoitukset</translation>
+    </message>
+    <message>
+        <source>Mute notifications</source>
+        <translation>Mykistä ilmoitukset</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n member(s)</source>
+        <translation>
+            <numerusform>%n jäsen</numerusform>
+            <numerusform>%n jäsentä</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Invite code</source>
+        <translation>Kutsukoodi</translation>
+    </message>
+    <message>
+        <source>Anyone with the code can join</source>
+        <translation>Kuka tahansa koodin tietävä voi liittyä</translation>
+    </message>
+    <message>
+        <source>Code</source>
+        <translation>Koodi</translation>
+    </message>
+    <message>
+        <source>New code</source>
+        <translation>Uusi koodi</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <translation>Jäsenet</translation>
+    </message>
+    <message>
+        <source>Make a member</source>
+        <translation>Tee jäseneksi</translation>
+    </message>
+    <message>
+        <source>Make an admin</source>
+        <translation>Tee ylläpitäjäksi</translation>
+    </message>
+    <message>
+        <source>Remove from group</source>
+        <translation>Poista ryhmästä</translation>
+    </message>
+    <message>
+        <source>Removing</source>
+        <translation>Poistetaan</translation>
+    </message>
+    <message>
+        <source>you</source>
+        <translation>sinä</translation>
+    </message>
+</context>
+<context>
     <name>HistoryPage</name>
     <message>
         <source>In progress</source>
@@ -1784,6 +1966,14 @@
     <message>
         <source>Progress</source>
         <translation>Edistyminen</translation>
+    </message>
+    <message>
+        <source>Friends and groups</source>
+        <translation>Kaverit ja ryhmät</translation>
+    </message>
+    <message>
+        <source>People</source>
+        <translation>Ihmiset</translation>
     </message>
 </context>
 <context>
@@ -3233,6 +3423,120 @@
     </message>
 </context>
 <context>
+    <name>SocialPage</name>
+    <message>
+        <source>Blocked users</source>
+        <translation>Estetyt käyttäjät</translation>
+    </message>
+    <message>
+        <source>Join a group</source>
+        <translation>Liity ryhmään</translation>
+    </message>
+    <message>
+        <source>Invite code</source>
+        <translation>Kutsukoodi</translation>
+    </message>
+    <message>
+        <source>New group</source>
+        <translation>Uusi ryhmä</translation>
+    </message>
+    <message>
+        <source>Add a friend</source>
+        <translation>Lisää kaveri</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>Friends and groups</source>
+        <translation>Kaverit ja ryhmät</translation>
+    </message>
+    <message>
+        <source>Waiting for your answer</source>
+        <translation>Odottaa vastaustasi</translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation>Hyväksy</translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation>Hylkää</translation>
+    </message>
+    <message>
+        <source>%1 wants to be friends</source>
+        <translation>%1 haluaa kaveriksi</translation>
+    </message>
+    <message>
+        <source>Join</source>
+        <translation>Liity</translation>
+    </message>
+    <message>
+        <source>%1 invites you to %2</source>
+        <translation>%1 kutsuu sinut ryhmään %2</translation>
+    </message>
+    <message>
+        <source>Friends</source>
+        <translation>Kaverit</translation>
+    </message>
+    <message>
+        <source>Unmute notifications</source>
+        <translation>Salli ilmoitukset</translation>
+    </message>
+    <message>
+        <source>Mute notifications</source>
+        <translation>Mykistä ilmoitukset</translation>
+    </message>
+    <message>
+        <source>Remove friend</source>
+        <translation>Poista kaveri</translation>
+    </message>
+    <message>
+        <source>Removing friend</source>
+        <translation>Poistetaan kaveri</translation>
+    </message>
+    <message>
+        <source>Block</source>
+        <translation>Estä</translation>
+    </message>
+    <message>
+        <source>Blocking</source>
+        <translation>Estetään</translation>
+    </message>
+    <message>
+        <source>muted</source>
+        <translation>mykistetty</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n new</source>
+        <translation>
+            <numerusform>%n uusi</numerusform>
+            <numerusform>%n uutta</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No friends yet. Pull down to add one by their username.</source>
+        <translation>Ei vielä kavereita. Vedä alas lisätäksesi kaverin käyttäjänimellä.</translation>
+    </message>
+    <message>
+        <source>Request sent to %1</source>
+        <translation>Pyyntö lähetetty: %1</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation>Ryhmät</translation>
+    </message>
+    <message>
+        <source>Group info</source>
+        <translation>Ryhmän tiedot</translation>
+    </message>
+    <message>
+        <source>No groups yet. Pull down to start one or join with an invite code.</source>
+        <translation>Ei vielä ryhmiä. Vedä alas perustaaksesi ryhmän tai liittyäksesi kutsukoodilla.</translation>
+    </message>
+</context>
+<context>
     <name>StretchEditDialog</name>
     <message>
         <source>Save</source>
@@ -3739,6 +4043,33 @@
     <message>
         <source>No connection. Sets are saved on this phone and sent later.</source>
         <translation>Ei yhteyttä. Sarjat tallennetaan puhelimeen ja lähetetään myöhemmin.</translation>
+    </message>
+</context>
+<context>
+    <name>UserSearchPage</name>
+    <message>
+        <source>Add a friend</source>
+        <translation>Lisää kaveri</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Käyttäjänimi</translation>
+    </message>
+    <message>
+        <source>Request sent</source>
+        <translation>Pyyntö lähetetty</translation>
+    </message>
+    <message>
+        <source>Send request</source>
+        <translation>Lähetä pyyntö</translation>
+    </message>
+    <message>
+        <source>Nobody found</source>
+        <translation>Ketään ei löytynyt</translation>
+    </message>
+    <message>
+        <source>Friends and people who allow friend requests are found by their username.</source>
+        <translation>Kaverit ja kaveripyynnöt sallivat käyttäjät löytyvät käyttäjänimellä.</translation>
     </message>
 </context>
 <context>

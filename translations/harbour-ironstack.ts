@@ -179,48 +179,71 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="203"/>
+        <location filename="../src/apiclient.cpp" line="207"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="205"/>
+        <location filename="../src/apiclient.cpp" line="209"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="207"/>
+        <location filename="../src/apiclient.cpp" line="211"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="212"/>
+        <location filename="../src/apiclient.cpp" line="216"/>
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="215"/>
+        <location filename="../src/apiclient.cpp" line="219"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="218"/>
+        <location filename="../src/apiclient.cpp" line="222"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="220"/>
+        <location filename="../src/apiclient.cpp" line="224"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="248"/>
+        <location filename="../src/apiclient.cpp" line="252"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="249"/>
+        <location filename="../src/apiclient.cpp" line="253"/>
         <source>Request failed (%1).</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BlockedUsersPage</name>
+    <message>
+        <location filename="../qml/pages/BlockedUsersPage.qml" line="35"/>
+        <source>Blocked users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BlockedUsersPage.qml" line="51"/>
+        <source>Unblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BlockedUsersPage.qml" line="54"/>
+        <source>Unblocking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BlockedUsersPage.qml" line="74"/>
+        <source>Nobody blocked</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -469,6 +492,34 @@
     <message>
         <location filename="../qml/pages/CalculatorsPage.qml" line="242"/>
         <source>An estimate, not medical advice.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChatPage</name>
+    <message>
+        <location filename="../qml/pages/ChatPage.qml" line="109"/>
+        <source>Group info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChatPage.qml" line="113"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChatPage.qml" line="164"/>
+        <source>No messages yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChatPage.qml" line="165"/>
+        <source>Say hello below</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChatPage.qml" line="178"/>
+        <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -974,68 +1025,68 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="98"/>
         <location filename="../qml/pages/DietPlanPage.qml" line="100"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="102"/>
         <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="111"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="113"/>
         <source>Deactivate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="111"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="113"/>
         <source>Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="115"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="117"/>
         <source>Shopping list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="119"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="121"/>
         <source>Log for date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="131"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="133"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="144"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="146"/>
         <source>Daily target</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="145"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="147"/>
         <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="146"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="148"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="147"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="149"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="184"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="186"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="185"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="187"/>
         <source>serving(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DietPlanPage.qml" line="201"/>
+        <location filename="../qml/pages/DietPlanPage.qml" line="203"/>
         <source>Nothing planned</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1760,6 +1811,178 @@
     </message>
 </context>
 <context>
+    <name>FriendPickerDialog</name>
+    <message>
+        <location filename="../qml/pages/FriendPickerDialog.qml" line="19"/>
+        <source>Choose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FriendPickerDialog.qml" line="36"/>
+        <source>Nobody to choose</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupEditDialog</name>
+    <message>
+        <location filename="../qml/pages/GroupEditDialog.qml" line="22"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupEditDialog.qml" line="23"/>
+        <source>Edit group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupEditDialog.qml" line="23"/>
+        <source>New group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupEditDialog.qml" line="28"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupEditDialog.qml" line="37"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupPage</name>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="27"/>
+        <source>Owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="29"/>
+        <source>Admin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="30"/>
+        <source>Member</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="82"/>
+        <location filename="../qml/pages/GroupPage.qml" line="157"/>
+        <source>Invite a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="86"/>
+        <source>Invited %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="94"/>
+        <source>New owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="116"/>
+        <source>Delete group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="117"/>
+        <source>Deleting group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="125"/>
+        <source>Leave group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="126"/>
+        <source>Leaving group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="134"/>
+        <source>Hand over ownership</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="139"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="149"/>
+        <source>Unmute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="150"/>
+        <source>Mute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/GroupPage.qml" line="167"/>
+        <source>%n member(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="187"/>
+        <source>Invite code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="191"/>
+        <source>Anyone with the code can join</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="198"/>
+        <source>Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="204"/>
+        <source>New code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="209"/>
+        <source>Members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="230"/>
+        <source>Make a member</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="230"/>
+        <source>Make an admin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="235"/>
+        <source>Remove from group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="238"/>
+        <source>Removing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/GroupPage.qml" line="250"/>
+        <source>you</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HistoryPage</name>
     <message>
         <location filename="../qml/pages/HistoryPage.qml" line="71"/>
@@ -2139,78 +2362,88 @@
 <context>
     <name>MenuPage</name>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="26"/>
+        <location filename="../qml/pages/MenuPage.qml" line="27"/>
         <source>Exercises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="27"/>
+        <location filename="../qml/pages/MenuPage.qml" line="28"/>
         <source>Programs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="28"/>
+        <location filename="../qml/pages/MenuPage.qml" line="29"/>
         <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="29"/>
+        <location filename="../qml/pages/MenuPage.qml" line="30"/>
         <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="30"/>
+        <location filename="../qml/pages/MenuPage.qml" line="31"/>
         <source>Personal records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="31"/>
+        <location filename="../qml/pages/MenuPage.qml" line="32"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="32"/>
+        <location filename="../qml/pages/MenuPage.qml" line="33"/>
         <source>Body tracking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="33"/>
+        <location filename="../qml/pages/MenuPage.qml" line="34"/>
         <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="34"/>
+        <location filename="../qml/pages/MenuPage.qml" line="35"/>
         <source>Stretching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="35"/>
-        <location filename="../qml/pages/MenuPage.qml" line="47"/>
+        <location filename="../qml/pages/MenuPage.qml" line="36"/>
+        <location filename="../qml/pages/MenuPage.qml" line="49"/>
         <source>Nutrition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="36"/>
+        <location filename="../qml/pages/MenuPage.qml" line="37"/>
         <source>Food diary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="43"/>
-        <source>Training</source>
+        <location filename="../qml/pages/MenuPage.qml" line="38"/>
+        <source>Friends and groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MenuPage.qml" line="45"/>
+        <source>Training</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="47"/>
         <source>Body and activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="48"/>
+        <location filename="../qml/pages/MenuPage.qml" line="51"/>
+        <source>People</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MenuPage.qml" line="52"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MenuPage.qml" line="55"/>
+        <location filename="../qml/pages/MenuPage.qml" line="59"/>
         <source>IronStack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2218,12 +2451,12 @@
 <context>
     <name>NameDialog</name>
     <message>
-        <location filename="../qml/pages/NameDialog.qml" line="19"/>
+        <location filename="../qml/pages/NameDialog.qml" line="20"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NameDialog.qml" line="25"/>
+        <location filename="../qml/pages/NameDialog.qml" line="11"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3997,6 +4230,149 @@
     </message>
 </context>
 <context>
+    <name>SocialPage</name>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="109"/>
+        <source>Blocked users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="113"/>
+        <location filename="../qml/pages/SocialPage.qml" line="116"/>
+        <source>Join a group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="116"/>
+        <source>Invite code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="123"/>
+        <source>New group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="132"/>
+        <source>Add a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="136"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="146"/>
+        <source>Friends and groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="156"/>
+        <source>Waiting for your answer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="166"/>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="170"/>
+        <location filename="../qml/pages/SocialPage.qml" line="195"/>
+        <source>Decline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="180"/>
+        <source>%1 wants to be friends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="191"/>
+        <source>Join</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="205"/>
+        <source>%1 invites you to %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="211"/>
+        <source>Friends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="221"/>
+        <source>Unmute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="221"/>
+        <source>Mute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="226"/>
+        <source>Remove friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="229"/>
+        <source>Removing friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="235"/>
+        <source>Block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="238"/>
+        <source>Blocking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="249"/>
+        <source>muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/pages/SocialPage.qml" line="257"/>
+        <location filename="../qml/pages/SocialPage.qml" line="309"/>
+        <source>%n new</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="267"/>
+        <source>No friends yet. Pull down to add one by their username.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="278"/>
+        <source>Request sent to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="283"/>
+        <source>Groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="292"/>
+        <source>Group info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SocialPage.qml" line="319"/>
+        <source>No groups yet. Pull down to start one or join with an invite code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StretchEditDialog</name>
     <message>
         <location filename="../qml/pages/StretchEditDialog.qml" line="48"/>
@@ -4620,6 +4996,39 @@
     <message>
         <location filename="../qml/pages/TrainingPage.qml" line="230"/>
         <source>Pull down to add an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UserSearchPage</name>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="54"/>
+        <source>Add a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="61"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="88"/>
+        <source>Request sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="88"/>
+        <source>Send request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="94"/>
+        <source>Nobody found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/UserSearchPage.qml" line="95"/>
+        <source>Friends and people who allow friend requests are found by their username.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -184,6 +184,25 @@
     </message>
 </context>
 <context>
+    <name>BlockedUsersPage</name>
+    <message>
+        <source>Blocked users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unblocking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nobody blocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CalculatorsPage</name>
     <message>
         <source>BMR and TDEE</source>
@@ -379,6 +398,29 @@
     </message>
     <message>
         <source>An estimate, not medical advice.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChatPage</name>
+    <message>
+        <source>Group info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No messages yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Say hello below</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1417,6 +1459,146 @@
     </message>
 </context>
 <context>
+    <name>FriendPickerDialog</name>
+    <message>
+        <source>Choose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nobody to choose</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupEditDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupPage</name>
+    <message>
+        <source>Owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Admin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Member</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invite a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invited %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leave group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hand over ownership</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n member(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Invite code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anyone with the code can join</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make a member</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make an admin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove from group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>you</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HistoryPage</name>
     <message>
         <source>In progress</source>
@@ -1783,6 +1965,14 @@
     </message>
     <message>
         <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends and groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>People</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3233,6 +3423,120 @@
     </message>
 </context>
 <context>
+    <name>SocialPage</name>
+    <message>
+        <source>Blocked users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join a group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invite code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends and groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waiting for your answer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 wants to be friends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 invites you to %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>muted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n new</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No friends yet. Pull down to add one by their username.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Request sent to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Group info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No groups yet. Pull down to start one or join with an invite code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StretchEditDialog</name>
     <message>
         <source>Save</source>
@@ -3738,6 +4042,33 @@
     </message>
     <message>
         <source>No connection. Sets are saved on this phone and sent later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UserSearchPage</name>
+    <message>
+        <source>Add a friend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Request sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nobody found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends and people who allow friend requests are found by their username.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
