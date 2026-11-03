@@ -19,6 +19,7 @@ Page {
         ListElement { section: "body"; title: "Stretching"; icon: "image://theme/icon-m-gesture"; target: "StretchingPage.qml" }
         ListElement { section: "people"; title: "Friends and groups"; icon: "image://theme/icon-m-chat"; target: "SocialPage.qml" }
         ListElement { section: "people"; title: "Coaching"; icon: "image://theme/icon-m-users"; target: "CoachingPage.qml" }
+        ListElement { section: "people"; title: "AI assistant"; icon: "image://theme/icon-m-outline-chat"; target: "AssistantPage.qml" }
         ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
     }
 
@@ -38,6 +39,7 @@ Page {
         case "Food diary": return qsTr("Food diary")
         case "Friends and groups": return qsTr("Friends and groups")
         case "Coaching": return qsTr("Coaching")
+        case "AI assistant": return qsTr("AI assistant")
         }
         return title
     }
