@@ -66,14 +66,21 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
 
     QUrl url;
     if (path.startsWith(QStringLiteral("http://")) || path.startsWith(QStringLiteral("https://"))) {
-        url = QUrl(path);
-        // Never send the key anywhere but the configured server.
-        if (url.scheme() != root.scheme() || url.host() != root.host()
-                || url.port(-1) != root.port(-1)) {
+        // A page's "next" link is absolute, built by the server from the
+        // request it saw - behind a reverse proxy that can be http:// or
+        // another host or port than the address the app uses. Only its
+        // API path and query are kept and asked from the configured
+        // server, so the key never goes anywhere else.
+        const QUrl link(path);
+        const QString linkPath = link.path();
+        const int api = linkPath.indexOf(QStringLiteral("/api/v1/"));
+        if (!link.isValid() || api < 0) {
             if (handler)
                 handler(false, 0, QVariant(), tr("Refused to follow a link to another server."));
             return;
         }
+        url = root.resolved(QUrl(linkPath.mid(api + 8)));
+        url.setQuery(link.query());
     } else {
         url = root.resolved(QUrl(path));
     }

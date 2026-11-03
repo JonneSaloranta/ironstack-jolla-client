@@ -211,25 +211,38 @@ private slots:
         QVERIFY(m_server->requests.first().startsWith("GET /api/v1/sessions/?page=2 HTTP/1.1"));
     }
 
-    void refusesOtherServers_data()
+    void linksStayOnTheConfiguredServer_data()
     {
         QTest::addColumn<QString>("url");
-        QTest::newRow("other host") << "http://evil.example/api/v1/profile/";
-        QTest::newRow("other port") << "http://127.0.0.1:1/api/v1/profile/";
-        QTest::newRow("other scheme") << "https://127.0.0.1:%1/api/v1/profile/";
+        // A "next" link as a server behind a proxy may build it.
+        QTest::newRow("other host") << "http://evil.example/api/v1/sessions/?page=2";
+        QTest::newRow("other port") << "http://127.0.0.1:1/api/v1/sessions/?page=2";
+        QTest::newRow("other scheme") << "https://127.0.0.1:%1/api/v1/sessions/?page=2";
+        QTest::newRow("under a path") << "https://example.org/ironstack/api/v1/sessions/?page=2";
     }
 
-    void refusesOtherServers()
+    void linksStayOnTheConfiguredServer()
     {
-        // The API key must never be sent anywhere but the configured server.
+        // The API key must never be sent anywhere but the configured server:
+        // only the link's API path and query are asked from it.
         QFETCH(QString, url);
         if (url.contains(QStringLiteral("%1")))
             url = url.arg(m_server->port());
+        m_server->body = "{\"results\": []}";
         m_api->request(QStringLiteral("GET"), url, QJSValue(QJSValue::NullValue), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("ok").toBool(), true);
+        QCOMPARE(m_server->requests.size(), 1);
+        QVERIFY(m_server->requests.first().startsWith("GET /api/v1/sessions/?page=2 HTTP/1.1"));
+    }
+
+    void refusesLinksOutsideTheApi()
+    {
+        m_api->request(QStringLiteral("GET"), QStringLiteral("http://evil.example/steal?key=1"),
+                       QJSValue(QJSValue::NullValue), makeCallback());
         WAIT_FOR_RESULT();
         QCOMPARE(result().property("ok").toBool(), false);
         QCOMPARE(result().property("status").toInt(), 0);
-        // Refused up front - not merely a connection that happened to fail.
         QCOMPARE(result().property("error").toString(),
                  QStringLiteral("Refused to follow a link to another server."));
         QTest::qWait(100);
