@@ -21,6 +21,33 @@ function zero() {
     return n
 }
 
+// nutrition/daily-totals/'s `totals` (decimal strings) as numbers, an
+// unknown optional nutrient still null.
+function fromTotals(totals) {
+    var n = zero()
+    FIELDS.forEach(function(f) {
+        if (totals && Store.present(totals[f]))
+            n[f] = number(totals[f])
+    })
+    return n
+}
+
+// A nutrition/stats/ summary with numbers, in the page's names; a zero one
+// for null (nothing loaded yet).
+function statsSummary(s) {
+    s = s || {}
+    return {
+        daysLogged: s.days_logged || 0,
+        daysInRange: s.days_in_range || 0,
+        meanCalories: Math.round(number(s.mean_calories) || 0),
+        medianCalories: Math.round(number(s.median_calories) || 0),
+        medianProtein: number(s.median_protein_grams) || 0,
+        medianCarbohydrate: number(s.median_carbohydrate_grams) || 0,
+        medianFat: number(s.median_fat_grams) || 0,
+        possibleLoggingGaps: !!s.possible_logging_gaps
+    }
+}
+
 function number(value) {
     var n = Store.parseNumber(value)
     return isNaN(n) ? null : n

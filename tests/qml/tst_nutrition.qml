@@ -71,6 +71,33 @@ TestCase {
         compare(Nutrition.quantityText({ food: 99, quantity: "2.00" }, foods, { piece: "pcs" }), "2")
     }
 
+    function test_fromTotals() {
+        var n = Nutrition.fromTotals({ calories: "2300.00", protein_grams: "120.50", carbohydrate_grams: "210.00",
+                                       fat_grams: "75.00", fiber_grams: "8.20", sugar_grams: null,
+                                       saturated_fat_grams: null, sodium_mg: null })
+        compare(n.calories, 2300)
+        compare(n.protein_grams, 120.5)
+        compare(n.fiber_grams, 8.2)
+        compare(n.sugar_grams, null)
+        compare(Nutrition.fromTotals(null).calories, 0)
+    }
+
+    function test_statsSummary() {
+        var s = Nutrition.statsSummary({ days_logged: 20, days_in_range: 30, mean_calories: "2263",
+                                         median_calories: "2260", median_protein_grams: "120.0",
+                                         median_carbohydrate_grams: "210.5", median_fat_grams: "75.0",
+                                         possible_logging_gaps: true })
+        compare(s.daysLogged, 20)
+        compare(s.daysInRange, 30)
+        compare(s.meanCalories, 2263)
+        compare(s.medianCarbohydrate, 210.5)
+        compare(s.possibleLoggingGaps, true)
+        s = Nutrition.statsSummary(null)
+        compare(s.daysLogged, 0)
+        compare(s.meanCalories, 0)
+        compare(s.possibleLoggingGaps, false)
+    }
+
     function test_daySummary() {
         var totals = { calories: "387.40", protein_grams: "30.60", carbohydrate_grams: "25.00", fat_grams: "12.00" }
         var target = { daily_calories: 2200, protein_grams: "160.00", ended_at: null }

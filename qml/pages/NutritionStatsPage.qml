@@ -3,25 +3,22 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
-import "../js/nutritionstats.js" as Stats
 
 // The web's nutrition statistics: the last 30 days (days logged, mean and
 // typical calories, median macros), the same for fixed periods, and daily
-// calories with the target line. Worked out from the whole diary (the "All
-// time" period needs every day), with each entry's logged nutrition.
+// calories with the target line - all from nutrition/stats/.
 Page {
     id: page
 
-    property var totals: ({})
-    property string firstDay: ""
     property var target: null
     property bool loading: false
     property string errorText: ""
 
-    readonly property var today: new Date()
-    readonly property var summary: Stats.stats(totals, today, Stats.STATS_WINDOW_DAYS)
-    readonly property var periods: Stats.periods(totals, today, firstDay || null)
-    readonly property var history: Stats.calorieHistory(totals, today, Stats.STATS_WINDOW_DAYS)
+    property var summary: Nutrition.statsSummary(null)
+    // [{ key, summary }], the fixed periods.
+    property var periods: []
+    // [{ x: time, value: kcal or null }], the chart's days through today.
+    property var history: []
 
     function periodText(key) {
         switch (key) {
@@ -46,22 +43,18 @@ Page {
             if (ok)
                 target = Nutrition.currentTarget(data.results)
         })
-        Nutrition.ensure(api, function(ok, error) {
+        api.request("GET", "nutrition/stats/?range=30d", null, function(ok, status, data, error) {
+            loading = false
             if (!ok) {
-                loading = false
                 errorText = error
                 return
             }
-            Stats.entriesSince(api, null, function(ok2, entries, error2) {
-                loading = false
-                if (!ok2) {
-                    errorText = error2
-                    return
-                }
-                totals = Stats.dailyTotals(entries, Nutrition.foods, Nutrition.recipes)
-                firstDay = entries.reduce(function(first, e) {
-                    return !first || e.date < first ? e.date : first
-                }, "")
+            summary = Nutrition.statsSummary(data.period.summary)
+            periods = (data.periods || []).map(function(p) {
+                return { key: p.key, summary: Nutrition.statsSummary(p.summary) }
+            })
+            history = (data.daily || []).map(function(d) {
+                return { x: Store.parseDate(d.date).getTime(), value: d.calories }
             })
         })
     }
@@ -267,7 +260,7 @@ Page {
             }
 
             BarChart {
-                visible: page.summary.daysLogged > 0 || page.history[page.history.length - 1].value !== null
+                visible: page.history.some(function(d) { return d.value !== null })
                 unit: "kcal"
                 reference: page.target ? page.target.daily_calories : NaN
                 bars: page.history.map(function(d) {
@@ -281,7 +274,7 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryHighlightColor
-                text: page.summary.daysLogged === 0 && page.history[page.history.length - 1].value === null
+                text: !page.loading && !page.history.some(function(d) { return d.value !== null })
                       ? qsTr("Log a few days in your food diary to see your trend here.")
                       : page.target
                         ? qsTr("Dashed line: your current target, %1 kcal. It's the same on every day, even if "

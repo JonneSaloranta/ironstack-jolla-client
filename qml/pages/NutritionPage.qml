@@ -3,15 +3,14 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
 import "../js/nutrition.js" as Nutrition
-import "../js/nutritionstats.js" as Stats
 
 // Nutrition, like the web's dashboard: today's calories and macros against
 // the daily target, the current goal, today's diet plan, whether the
 // target is working and the observed maintenance. Everything else -
 // diary, foods, recipes, plans, shopping, stats, calculators, profile - is
 // in the pull-down. The calorie adjustment is IronStack's own and can be
-// accepted here; the observed maintenance is worked out from the diary and
-// body weight like the web's (apps/nutrition/maintenance.py).
+// accepted here; so is the observed maintenance (nutrition/maintenance/),
+// its explanation written here from its figures in the phone's language.
 Page {
     id: page
 
@@ -19,12 +18,10 @@ Page {
     property var target: null
     property var goal: null
     property var activePlan: null
-    // Diary day totals for the last 28 finished days and today.
-    property var dayTotals: null
-    property var weights: null
-    property string weightError: ""
-    readonly property var maintenance: dayTotals !== null && weights !== null
-                                       ? Stats.estimateMaintenance(dayTotals, weights, new Date()) : null
+    // nutrition/maintenance/: { calories, confidence, reason, window_days,
+    // days_logged, mean_calories, possible_logging_gaps,
+    // weight_rate_kg_per_week, weight_days, span_days }.
+    property var maintenance: null
     // nutrition/adjustment-suggestion/: { action, suggested_daily_calories,
     // confidence, reason } - reason in the IronStack profile's language.
     property var suggestion: null
@@ -72,24 +69,34 @@ Page {
         })
     }
 
+    // The server's thresholds (apps/nutrition/maintenance.py, trends.py),
+    // only for saying what's missing: the estimate itself is the server's.
+    readonly property int maintenanceMinFoodDays: 14
+    readonly property int trendMinDistinctDays: 4
+    readonly property int trendMinSpanDays: 14
+
+    // The server's `reason` in the phone's language and the weight unit:
+    // which step it stopped at shows from the figures it left null.
     function maintenanceText(m) {
         if (!m)
             return ""
-        switch (m.reason) {
-        case "food":
-            return qsTr("Not enough logged food yet: %1 of the %2 days needed in the last %3 days.")
-                    .arg(m.stats.daysLogged).arg(Stats.MAINTENANCE_MIN_FOOD_DAYS).arg(Stats.MAINTENANCE_WINDOW_DAYS)
-        case "weight":
-            return qsTr("Not enough logged weight yet: it takes at least %1 weigh-in days over %2 days.")
-                    .arg(Stats.MIN_DISTINCT_DAYS).arg(Stats.MIN_SPAN_DAYS)
-        case "implausible":
+        if (m.calories === null || m.calories === undefined) {
+            if (m.days_logged === null || m.days_logged === undefined)
+                return m.reason || ""
+            if (m.days_logged < maintenanceMinFoodDays)
+                return qsTr("Not enough logged food yet: %1 of the %2 days needed in the last %3 days.")
+                        .arg(m.days_logged).arg(maintenanceMinFoodDays).arg(m.window_days)
+            if (m.weight_rate_kg_per_week === null)
+                return qsTr("Not enough logged weight yet: it takes at least %1 weigh-in days over %2 days.")
+                        .arg(trendMinDistinctDays).arg(trendMinSpanDays)
             return qsTr("The logged food and weight don't add up to a believable figure yet. Some days may be "
                         + "only partly logged.")
         }
         var text = qsTr("You ate %1 kcal/day on average while your weight changed %2 %3/week over the last %4 days.")
-                .arg(m.stats.meanCalories).arg(rateText(m.trend.rate)).arg(Store.weightUnit(settings.unitSystem))
-                .arg(m.trend.spanDays)
-        if (m.stats.possibleLoggingGaps)
+                .arg(Math.round(Store.parseNumber(m.mean_calories)))
+                .arg(rateText(Store.parseNumber(m.weight_rate_kg_per_week)))
+                .arg(Store.weightUnit(settings.unitSystem)).arg(m.span_days)
+        if (m.possible_logging_gaps)
             text += " " + qsTr("Some days may be only partly logged, which makes this estimate too low.")
         return text
     }
@@ -104,18 +111,11 @@ Page {
             if (--pending === 0)
                 loading = false
         }
-        Nutrition.ensure(api, function(ok, error) {
-            if (!ok)
-                return settle(false, error)
-            var today = new Date()
-            var since = Store.isoDate(Store.addDays(today, -Stats.MAINTENANCE_WINDOW_DAYS))
-            Stats.entriesSince(api, since, function(ok2, entries, error2) {
-                if (ok2) {
-                    dayTotals = Stats.dailyTotals(entries, Nutrition.foods, Nutrition.recipes)
-                    totals = dayTotals[Store.isoDate(today)] || Nutrition.zero()
-                }
-                settle(ok2, error2)
-            })
+        api.request("GET", "nutrition/daily-totals/?date=" + Store.isoDate(new Date()), null,
+                    function(ok, status, data, error) {
+            if (ok)
+                totals = Nutrition.fromTotals(data.totals)
+            settle(ok, error)
         })
         api.request("GET", "nutrition-targets/?page_size=100", null, function(ok, status, data, error) {
             if (ok)
@@ -127,13 +127,9 @@ Page {
                 goal = Nutrition.currentGoal(data.results)
             settle(ok, error)
         })
-        // Body weight needs the measurements permission; without it only
-        // the two cards below say so.
-        var weightsSince = new Date(Date.now() - Stats.MAINTENANCE_WINDOW_DAYS * 86400000)
-        Stats.bodyWeightSince(api, weightsSince, function(ok, readings, error) {
-            weights = ok ? readings : null
-            weightError = ok ? "" : error
-            settle(true, "")
+        api.request("GET", "nutrition/maintenance/", null, function(ok, status, data, error) {
+            maintenance = ok ? data : null
+            settle(ok, error)
         })
         api.request("GET", "nutrition/adjustment-suggestion/", null, function(ok, status, data, error) {
             suggestion = ok ? data : null
@@ -305,7 +301,7 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
-                text: page.weightError ? page.weightError : page.maintenanceText(page.maintenance)
+                text: page.maintenanceText(page.maintenance)
             }
             Label {
                 x: Theme.horizontalPageMargin
