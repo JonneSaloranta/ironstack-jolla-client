@@ -7,20 +7,6 @@ it's done.
 
 ## Testing
 
-- [ ] **Nutrition in the emulator.** Only the overview, logging a food to
-  the diary and viewing a diet plan were tried. Still to try against the
-  local IronStack (test user `jolla-emulator`):
-  - diary: date picker (quick entry, edit, delete, copy a day, save a
-    meal as a recipe and previous/next day tried 2026-11-03)
-  - foods: food page Nutri-Score and NOVA, deleting your own food
-    (creating and editing tried 2026-11-03, every label value sent)
-  - recipes: creating one from the Recipes page (ingredients, logging to
-    the diary and deleting tried 2026-11-03)
-  - goal and profile page; editing the profile (needs a profile made by
-    the web's nutrition onboarding first)
-  - diet plans: create (diet builder), activate/deactivate, log for a date,
-    rename, delete; shopping list, trips, shopping days, ticking items
-  - calculators: every calculator, metric and imperial
 - [ ] **Everything on the phone.** Build aarch64 in
   `~/Projektit/build-ironstack-aarch64`, copy the RPM to `/tmp` on the
   phone, install with `devel-su rpm -Uvh` (needs the user's terminal), go
