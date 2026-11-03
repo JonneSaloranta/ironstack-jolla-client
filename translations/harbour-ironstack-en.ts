@@ -433,6 +433,21 @@
     </message>
 </context>
 <context>
+    <name>BarcodeScannerPage</name>
+    <message>
+        <source>Scan a barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The camera can&apos;t be used. Check that IronStack may use it (Settings &gt; Apps), or type the number instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hold the barcode inside the frame, about a hand&apos;s width away.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BlockedUsersPage</name>
     <message>
         <source>Blocked users</source>
@@ -1844,6 +1859,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Scan a barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find in Open Food Facts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>New food</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1857,10 +1880,6 @@
     </message>
     <message>
         <source>No foods found.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Find in Open Food Facts</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3036,6 +3055,10 @@
     </message>
     <message>
         <source>Values are per 100 g or 100 ml. An added product is shared with everyone on your IronStack, like on the web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scan a barcode</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

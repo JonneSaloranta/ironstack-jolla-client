@@ -433,6 +433,21 @@
     </message>
 </context>
 <context>
+    <name>BarcodeScannerPage</name>
+    <message>
+        <source>Scan a barcode</source>
+        <translation>Skannaa viivakoodi</translation>
+    </message>
+    <message>
+        <source>The camera can&apos;t be used. Check that IronStack may use it (Settings &gt; Apps), or type the number instead.</source>
+        <translation>Kameraa ei voi käyttää. Tarkista, että IronStack saa käyttää sitä (Asetukset &gt; Sovellukset), tai kirjoita numero.</translation>
+    </message>
+    <message>
+        <source>Hold the barcode inside the frame, about a hand&apos;s width away.</source>
+        <translation>Pidä viivakoodi kehyksen sisällä, noin kämmenen leveyden päässä.</translation>
+    </message>
+</context>
+<context>
     <name>BlockedUsersPage</name>
     <message>
         <source>Blocked users</source>
@@ -1825,43 +1840,47 @@
     <name>FoodsPage</name>
     <message>
         <source>Recipes</source>
-        <translation>Reseptit</translation>
+        <translation type="unfinished">Reseptit</translation>
     </message>
     <message>
         <source>serving</source>
-        <translation>annos</translation>
+        <translation type="unfinished">annos</translation>
     </message>
     <message>
         <source>Foods</source>
-        <translation>Ruoat</translation>
+        <translation type="unfinished">Ruoat</translation>
     </message>
     <message>
         <source>pcs</source>
-        <translation>kpl</translation>
+        <translation type="unfinished">kpl</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation>Oma</translation>
+        <translation type="unfinished">Oma</translation>
     </message>
     <message>
-        <source>New food</source>
-        <translation>Uusi ruoka</translation>
-    </message>
-    <message>
-        <source>Add food</source>
-        <translation>Lisää ruoka</translation>
-    </message>
-    <message>
-        <source>Search foods</source>
-        <translation>Hae ruokia</translation>
-    </message>
-    <message>
-        <source>No foods found.</source>
-        <translation>Ruokia ei löytynyt.</translation>
+        <source>Scan a barcode</source>
+        <translation>Skannaa viivakoodi</translation>
     </message>
     <message>
         <source>Find in Open Food Facts</source>
-        <translation>Hae Open Food Factsista</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New food</source>
+        <translation type="unfinished">Uusi ruoka</translation>
+    </message>
+    <message>
+        <source>Add food</source>
+        <translation type="unfinished">Lisää ruoka</translation>
+    </message>
+    <message>
+        <source>Search foods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No foods found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3037,6 +3056,10 @@
     <message>
         <source>Values are per 100 g or 100 ml. An added product is shared with everyone on your IronStack, like on the web.</source>
         <translation>Arvot ovat 100 g:aa tai 100 ml:aa kohden. Lisätty tuote jaetaan kaikille IronStackisi käyttäjille, kuten webissä.</translation>
+    </message>
+    <message>
+        <source>Scan a barcode</source>
+        <translation>Skannaa viivakoodi</translation>
     </message>
 </context>
 <context>

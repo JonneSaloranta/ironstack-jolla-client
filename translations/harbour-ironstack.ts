@@ -536,6 +536,24 @@
     </message>
 </context>
 <context>
+    <name>BarcodeScannerPage</name>
+    <message>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="92"/>
+        <source>Scan a barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="103"/>
+        <source>The camera can&apos;t be used. Check that IronStack may use it (Settings &gt; Apps), or type the number instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/BarcodeScannerPage.qml" line="104"/>
+        <source>Hold the barcode inside the frame, about a hand&apos;s width away.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BlockedUsersPage</name>
     <message>
         <location filename="../qml/pages/BlockedUsersPage.qml" line="35"/>
@@ -2278,7 +2296,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FoodsPage.qml" line="50"/>
-        <location filename="../qml/pages/FoodsPage.qml" line="157"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="164"/>
         <source>Foods</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2293,27 +2311,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="123"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="138"/>
+        <source>Scan a barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FoodsPage.qml" line="142"/>
         <source>Find in Open Food Facts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="139"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="146"/>
         <source>New food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="157"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="164"/>
         <source>Add food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="166"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="173"/>
         <source>Search foods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FoodsPage.qml" line="203"/>
+        <location filename="../qml/pages/FoodsPage.qml" line="210"/>
         <source>No foods found.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3721,52 +3744,57 @@
 <context>
     <name>OpenFoodFactsPage</name>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="29"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="32"/>
         <source>pcs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="49"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="52"/>
         <source>Open Food Facts is turned off on this IronStack server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="51"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="54"/>
         <source>Open Food Facts is busy, try again in a minute.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="53"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="56"/>
         <source>Open Food Facts couldn&apos;t be reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="56"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="59"/>
         <source>Already in the food library</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="93"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="119"/>
+        <source>Scan a barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="128"/>
         <source>Open Food Facts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="103"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="138"/>
         <source>Product name or barcode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="118"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="153"/>
         <source>Values are per 100 g or 100 ml. An added product is shared with everyone on your IronStack, like on the web.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="153"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="188"/>
         <source>Nothing found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="154"/>
+        <location filename="../qml/pages/OpenFoodFactsPage.qml" line="189"/>
         <source>Try another name, or the barcode under the stripes.</source>
         <translation type="unfinished"></translation>
     </message>
