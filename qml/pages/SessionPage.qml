@@ -235,8 +235,11 @@ Page {
                             MenuItem {
                                 text: qsTr("Delete")
                                 onClicked: {
+                                    // The menu (and names in its scope) is gone by
+                                    // the time the remorse runs out.
                                     var set = setItem.set
-                                    setItem.remorseDelete(function() { controller.deleteSet(set) })
+                                    var target = controller
+                                    setItem.remorseDelete(function() { target.deleteSet(set) })
                                 }
                             }
                         }
