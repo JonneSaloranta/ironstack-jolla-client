@@ -21,7 +21,7 @@ unread - with no warnings or errors in the app's output.
 How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
 phone's own terminal (EMULATOR.md "Building for a phone"). The phone has
-0.7.0 (2026-11-04); 0.9.0 is waiting in its `/tmp`. For the app's
+0.7.0 (2026-11-04); 0.9.1 is waiting in its `/tmp`. For the app's
 messages, use Settings > App log (0.8.0 on) or start it from the
 terminal with `harbour-ironstack 2>&1 | tee /tmp/ironstack.log`.
 
@@ -95,7 +95,7 @@ stay hidden. When the release is out:
   no git remote yet.
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
-  (0.9.0 on 2026-11-04), so `rpm -Uvh` upgrades without `--force`; run
+  (0.9.1 on 2026-11-04), so `rpm -Uvh` upgrades without `--force`; run
   `sfdk -c target=SailfishOS-5.1.0.11-aarch64 check` on the aarch64 RPM
   (without the target it runs the i486 objdump and fails); write release notes once there's a
   public release.

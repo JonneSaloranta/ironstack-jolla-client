@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.9.0
+Version:    0.9.1
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,10 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.9.1-1
+- An AI assistant suggestion of a kind the app doesn't know yet is shown
+  with a note to create it on the web, not as a diet plan.
+
 * Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.9.0-1
 - With IronStack's next release: images of your own exercises from the
   gallery, a "this week" summary, how long a workout takes and the time
