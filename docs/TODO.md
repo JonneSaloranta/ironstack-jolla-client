@@ -59,6 +59,11 @@ terminal with `harbour-ironstack 2>&1 | tee /tmp/ironstack.log`.
 - [ ] **Text sizes and landscape** on the phone's own screen.
 - [ ] **The app log**: Settings > App log at Debug, then Share it by email
   (the emulator has no share targets) and Copy it into another app.
+- [ ] **With IronStack's next release** (#47-#51, see section 3): an image
+  of your own exercise from the phone's gallery (the first launch asks for
+  Pictures and Media index), "This week" on the dashboard, duration
+  estimates on programs and the time left in training mode, the trainer
+  switches on the coaching page, and a recipe the assistant suggests.
 
 ## 2. Development possible now
 
@@ -70,17 +75,19 @@ terminal with `harbour-ironstack 2>&1 | tee /tmp/ironstack.log`.
 
 ## 3. Waiting on IronStack (issues on JonneSaloranta/ironstack)
 
-#26-#46 were fixed in IronStack 1.30.0 and 1.31.0 and are used by the
-app. Still open (2026-11-04). When one is fixed: make the change below,
-update COMPATIBILITY.md and drop the row.
+#26-#46 were fixed in IronStack 1.30.0 and 1.31.0. #47-#51 are fixed on
+IronStack's dev branch (2026-11-04, not released yet) and the app already
+uses them when the server has them; with a 1.31 server those features
+stay hidden. When the release is out:
 
-| Issue | Today in the app | When fixed | Where |
-|---|---|---|---|
-| #48 images of your own exercises | Shown, not added or removed | Add from the camera or gallery, remove | `ExercisePage.qml` |
-| #49 "this week" summary range | Dashboard offers 7 days, 30 days, all time | Add "This week" like the web | `DashboardPage.qml` |
-| #50 workout duration estimates | Not shown | Estimate on a workout before starting, time left in training mode | `WorkoutPage.qml`, `ProgramPage.qml`, `TrainingPage.qml` |
-| #51 personal trainer settings | Becoming a trainer is a web setting | Switches on the coaching page | `CoachingPage.qml` |
-| #47 translated names still missing in `up-next/` (program), stretch sessions' `name`, the coaching client page and shared plans | `Store.shown` falls back to the app's copy of the web's catalog for these | Drop the fallback, `content.js`, `content_texts.js` and `tools/content-i18n/` (old offline caches then show English until refreshed) | `store.js` `contentName`, `texts.js` |
+- [ ] Note its version in COMPATIBILITY.md and README.md in place of "dev
+  branch", and try the five against the real server on the phone.
+- [ ] Once the app can require that version: drop the 1.31 fallbacks -
+  `weekRange` in `DashboardPage.qml`, the 404 messages in
+  `ExercisePage.qml` and `SessionController.qml`, and (#47) the app's copy
+  of the web's catalog: `Store.contentName`'s fallback, `content.js`,
+  `content_texts.js` and `tools/content-i18n/` (old offline caches then
+  show English until refreshed).
 
 ## 4. Housekeeping
 

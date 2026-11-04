@@ -4,17 +4,20 @@ Native Sailfish OS client (`harbour-ironstack`) for a self-hosted
 [IronStack](https://github.com/JonneSaloranta/ironstack) instance. Silica
 QML UI, a small C++ layer for networking and settings. Talks to IronStack's
 REST API (`/api/v1/`) with a per-user API key; needs IronStack 1.31.0 or
-later.
+later. Exercise images, "this week", duration estimates and the trainer
+switches need IronStack's next release (its dev branch today).
 
 ## Features (0.1)
 
 - Connect with a server address and API key
-- Dashboard: workout in progress or up next, last 7 days, recent PRs,
-  achievements
-- Programs and workouts, start a session from a workout or freeform
+- Dashboard: workout in progress or up next, this week or the last 7
+  days, recent PRs, achievements
+- Programs and workouts with how long each takes, start a session from a
+  workout or freeform; your own exercises with images from the gallery
 - Training mode: one exercise at a time, big +/- steppers, one tap to log
   a set, prefilled from the previous set, last time or the program target;
-  moves on to the next exercise by itself, swipe to go anywhere
+  moves on to the next exercise by itself, swipe to go anywhere; the time
+  left beside the time spent
 - Works without a connection: sets, finishing a workout, diary entries,
   body measurements, activities and stretching are saved on the phone and
   sent when the server can be reached; a workout in progress can be opened
@@ -38,7 +41,8 @@ later.
   stretching with a guided, chiming timer; a cool-down suggested after a
   workout
 - Friends, groups and messages; coaching (ask a trainer, shared plans,
-  a trainer's clients); the AI assistant; the web's guided tours as a
+  a trainer's clients, becoming a trainer); the AI assistant, which can
+  also suggest recipes; the web's guided tours as a
   guide
 - Cover shows the workout in progress and its duration; otherwise today's
   calories and protein against the target, with a quick entry action
