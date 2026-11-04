@@ -2,12 +2,13 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/assistant.js" as Assistant
+import "../js/nutrition.js" as Nutrition
 
 // One conversation with the AI assistant, like the web's: your messages
 // and its replies, which are written on the server - the page asks every
-// 1.5 s how far a reply has got and what it's doing. A diet plan or
-// program it suggests is a card: "Create" makes it (inactive, to review
-// like any other), "Dismiss" doesn't.
+// 1.5 s how far a reply has got and what it's doing. A diet plan,
+// program or recipe it suggests is a card: "Create" makes it (a plan or
+// program inactive, to review like any other), "Dismiss" doesn't.
 Page {
     id: page
 
@@ -91,11 +92,30 @@ Page {
             load()
             if (!ok || action !== "accept")
                 return
-            if (data.kind === "program")
+            if (data.kind === "program") {
                 pageStack.push(Qt.resolvedUrl("ProgramPage.qml"), { programId: data.created_id })
-            else
+            } else if (data.kind === "recipe") {
+                // New foods may have come with it.
+                Nutrition.changed = true
+                pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: data.created_id })
+            } else {
                 pageStack.push(Qt.resolvedUrl("DietPlanPage.qml"), { planId: data.created_id })
+            }
         })
+    }
+
+    function kindText(kind) {
+        return kind === "program" ? qsTr("Program") : kind === "recipe" ? qsTr("Recipe") : qsTr("Diet plan")
+    }
+
+    function recipeText(payload) {
+        if (!payload || !payload.per_serving)
+            return ""
+        var per = payload.per_serving
+        return qsTr("Makes %n serving(s)", "", payload.servings) + "\n"
+                + qsTr("Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g")
+                  .arg(per.calories).arg(Math.round(per.protein_grams)).arg(Math.round(per.carbohydrate_grams))
+                  .arg(Math.round(per.fat_grams))
     }
 
     function activityText(m) {
@@ -186,7 +206,16 @@ Page {
                         width: parent.width
                         wrapMode: Text.Wrap
                         color: Theme.highlightColor
-                        text: (modelData.kind === "program" ? qsTr("Program") : qsTr("Diet plan")) + ": " + modelData.title
+                        text: page.kindText(modelData.kind) + ": " + modelData.title
+                    }
+                    // A recipe's servings and calories, as on the web's card.
+                    Label {
+                        visible: modelData.kind === "recipe" && text.length > 0
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryHighlightColor
+                        text: page.recipeText(modelData.payload)
                     }
                     Label {
                         visible: !Assistant.isOpen(modelData)
