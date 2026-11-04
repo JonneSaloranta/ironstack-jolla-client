@@ -14,6 +14,12 @@ class Settings : public QObject
     Q_PROPERTY(QString baseUrl READ baseUrl WRITE setBaseUrl NOTIFY baseUrlChanged)
     Q_PROPERTY(QString apiKey READ apiKey WRITE setApiKey NOTIFY apiKeyChanged)
     Q_PROPERTY(bool configured READ configured NOTIFY configuredChanged)
+    // Standalone mode (docs/STANDALONE.md): no server, everything is kept
+    // on the phone and answered by the local backend.
+    Q_PROPERTY(bool standalone READ standalone WRITE setStandalone NOTIFY standaloneChanged)
+    // In standalone mode, whether what needs a server is shown dimmed
+    // (true, the default) or not at all.
+    Q_PROPERTY(bool showServerFeatures READ showServerFeatures WRITE setShowServerFeatures NOTIFY showServerFeaturesChanged)
     Q_PROPERTY(QString unitSystem READ unitSystem WRITE setUnitSystem NOTIFY unitSystemChanged)
     // Rest timer length after logging a set; 0 turns the timer off.
     Q_PROPERTY(int restSeconds READ restSeconds WRITE setRestSeconds NOTIFY restSecondsChanged)
@@ -39,6 +45,10 @@ public:
     QString apiKey() const;
     void setApiKey(const QString &key);
     bool configured() const;
+    bool standalone() const;
+    void setStandalone(bool on);
+    bool showServerFeatures() const;
+    void setShowServerFeatures(bool on);
     QString unitSystem() const;
     void setUnitSystem(const QString &system);
     int restSeconds() const;
@@ -78,6 +88,8 @@ signals:
     void baseUrlChanged();
     void apiKeyChanged();
     void configuredChanged();
+    void standaloneChanged();
+    void showServerFeaturesChanged();
     void unitSystemChanged();
     void restSecondsChanged();
     void restEndsAtChanged();

@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
                      QLocale().uiLanguages().value(0), QLocale().name()));
 
     ApiClient api(&settings);
+    api.setDataDir(SailfishApp::pathTo(QStringLiteral("qml/data")).toLocalFile());
     // ~/.local/share/org.ironstack/harbour-ironstack/ - inside the sandbox.
     SyncQueue queue(&api, QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
                     + QStringLiteral("/pending.json"));

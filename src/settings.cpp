@@ -57,7 +57,39 @@ void Settings::setApiKey(const QString &key)
 
 bool Settings::configured() const
 {
-    return !baseUrl().isEmpty() && !apiKey().isEmpty();
+    return standalone() || (!baseUrl().isEmpty() && !apiKey().isEmpty());
+}
+
+bool Settings::standalone() const
+{
+    return m_settings.value(QStringLiteral("mode/standalone"), false).toBool();
+}
+
+void Settings::setStandalone(bool on)
+{
+    if (on == standalone())
+        return;
+    const bool wasConfigured = configured();
+    m_settings.setValue(QStringLiteral("mode/standalone"), on);
+    // What was cached or under way belongs to the other mode.
+    clearActiveSession();
+    m_settings.remove(QStringLiteral("cache"));
+    emit standaloneChanged();
+    if (wasConfigured != configured())
+        emit configuredChanged();
+}
+
+bool Settings::showServerFeatures() const
+{
+    return m_settings.value(QStringLiteral("mode/showServerFeatures"), true).toBool();
+}
+
+void Settings::setShowServerFeatures(bool on)
+{
+    if (on == showServerFeatures())
+        return;
+    m_settings.setValue(QStringLiteral("mode/showServerFeatures"), on);
+    emit showServerFeaturesChanged();
 }
 
 QString Settings::unitSystem() const

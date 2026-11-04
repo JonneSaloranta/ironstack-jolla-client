@@ -28,7 +28,9 @@ public:
     ApiClient(Settings *settings, QObject *parent = nullptr);
 
     void setEngine(QQmlEngine *engine) { m_engine = engine; }
-    bool busy() const { return !m_pending.isEmpty(); }
+    bool busy() const { return !m_pending.isEmpty() || m_localPending > 0; }
+    // Where readData() reads from: the app's qml/data directory.
+    void setDataDir(const QString &dir) { m_dataDir = dir; }
 
     // path is relative to /api/v1/ ("sessions/") or an absolute URL on the
     // same server (a paginated response's "next").
@@ -40,6 +42,20 @@ public:
     Q_INVOKABLE void requestWith(const QString &baseUrl, const QString &apiKey,
                                  const QString &method, const QString &path,
                                  const QJSValue &body, const QJSValue &callback);
+
+    // Like requestWith(), with extra headers (an Idempotency-Key) - the
+    // transfer to a server, which always goes over the network.
+    Q_INVOKABLE void requestTo(const QString &baseUrl, const QString &apiKey, const QString &method,
+                               const QString &path, const QJSValue &body, const QJSValue &headers,
+                               const QJSValue &callback);
+
+    // Standalone mode (Settings::standalone): request(), send() and
+    // upload() go to `handler(method, path, body)` instead of the
+    // network; it returns {status, data} the way the server would answer.
+    // requestWith() and requestTo() always use the network.
+    Q_INVOKABLE void setLocalBackend(const QJSValue &handler);
+    // A bundled data file (seed.json) by plain name; "" if there's none.
+    Q_INVOKABLE QString readData(const QString &name) const;
 
     // POSTs `filePath` (an image) as multipart field `field`, with
     // `fields` (a JS object of strings) next to it - IronStack's
@@ -81,8 +97,15 @@ private:
                Handler handler, int timeoutMs);
     void finish(QNetworkReply *reply);
     Handler jsHandler(const QJSValue &callback, const QString &request);
-    static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply,
-                                const QString &method);
+    void localRequest(const QString &method, const QString &path, const QVariant &body, Handler handler);
+
+public:
+    // The message shown for a failed request: `path` as requested,
+    // `timedOut` for a status 0 that ran out of time.
+    static QString messageFor(int status, const QVariant &data, const QString &path,
+                              const QString &method, bool timedOut);
+
+private:
 
 public:
     // The API key context (IronStack docs/API.md "Contexts and
@@ -110,6 +133,9 @@ private:
     QNetworkAccessManager *m_network;
     QQmlEngine *m_engine = nullptr;
     QHash<QNetworkReply *, Pending> m_pending;
+    QJSValue m_localBackend;
+    int m_localPending = 0;
+    QString m_dataDir;
 };
 
 #endif

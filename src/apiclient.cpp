@@ -3,6 +3,9 @@
 #include "settings.h"
 
 #include <QBuffer>
+#include <QDir>
+#include <QStandardPaths>
+#include <QUuid>
 #include <QDateTime>
 #include <QFile>
 #include <QFileInfo>
@@ -38,7 +41,88 @@ ApiClient::ApiClient(Settings *settings, QObject *parent)
 void ApiClient::request(const QString &method, const QString &path,
                         const QJSValue &body, const QJSValue &callback)
 {
+    if (m_settings->standalone()) {
+        const QVariant variantBody = (body.isUndefined() || body.isNull()) ? QVariant() : body.toVariant();
+        const QString request = method.toUpper() + QLatin1Char(' ') + logPath(QUrl(path), false);
+        localRequest(method, path, variantBody, jsHandler(callback, request));
+        return;
+    }
     requestWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, callback);
+}
+
+void ApiClient::requestTo(const QString &baseUrl, const QString &apiKey, const QString &method,
+                          const QString &path, const QJSValue &body, const QJSValue &headers,
+                          const QJSValue &callback)
+{
+    const QVariant variantBody = (body.isUndefined() || body.isNull()) ? QVariant() : body.toVariant();
+    const QString request = method.toUpper() + QLatin1Char(' ') + logPath(QUrl(path), false);
+    sendWith(baseUrl, apiKey, method, path, variantBody, jsHandler(callback, request),
+             headers.toVariant().toMap());
+}
+
+void ApiClient::setLocalBackend(const QJSValue &handler)
+{
+    m_localBackend = handler;
+}
+
+void ApiClient::localRequest(const QString &method, const QString &path, const QVariant &body, Handler handler)
+{
+    // Answered on the next turn of the event loop, like a network reply:
+    // pages count their requests before any callback runs.
+    if (++m_localPending == 1 && m_pending.isEmpty())
+        emit busyChanged();
+    const qint64 started = QDateTime::currentMSecsSinceEpoch();
+    QTimer::singleShot(0, this, [this, method, path, body, handler, started]() {
+        int status = 503;
+        QVariant data;
+        QJSValue backend(m_localBackend);
+        if (backend.isCallable() && m_engine) {
+            const QJSValue result = backend.call(QJSValueList() << method.toUpper() << path
+                                                 << m_engine->toScriptValue(body));
+            if (result.isError()) {
+                qCCritical(lcApi, "Local backend error on %s %s: %s (%s:%d)", qPrintable(method.toUpper()),
+                           qPrintable(logPath(QUrl(path), false)), qPrintable(result.toString()),
+                           qPrintable(QUrl(result.property(QStringLiteral("fileName")).toString()).fileName()),
+                           result.property(QStringLiteral("lineNumber")).toInt());
+                status = 500;
+            } else {
+                status = result.property(QStringLiteral("status")).toInt();
+                const QJSValue value = result.property(QStringLiteral("data"));
+                if (!value.isUndefined() && !value.isNull())
+                    data = value.toVariant();
+            }
+        } else {
+            qCWarning(lcApi, "Local backend not ready for %s %s", qPrintable(method.toUpper()),
+                      qPrintable(logPath(QUrl(path), false)));
+        }
+        const bool ok = status >= 200 && status < 300;
+        const QString error = ok ? QString()
+                : status == 503 ? tr("The data on this phone isn't ready yet.")
+                : status >= 500 ? tr("Something went wrong with the data on this phone. The app log has the details.")
+                : messageFor(status, data, path, method, false);
+        const qint64 ms = QDateTime::currentMSecsSinceEpoch() - started;
+        if (ok)
+            qCDebug(lcApi, "local %s %s %d (%lld ms)", qPrintable(method.toUpper()),
+                    qPrintable(logPath(QUrl(path), Logger::keeps(Logger::Debug))), status, ms);
+        else
+            qCWarning(lcApi, "local %s %s failed: %d %s (%lld ms)", qPrintable(method.toUpper()),
+                      qPrintable(logPath(QUrl(path), false)), status, qPrintable(error), ms);
+        if (--m_localPending == 0 && m_pending.isEmpty())
+            emit busyChanged();
+        if (handler)
+            handler(ok, status, data, error);
+    });
+}
+
+QString ApiClient::readData(const QString &name) const
+{
+    // Only a plain file name in the app's own data directory.
+    if (m_dataDir.isEmpty() || name.isEmpty() || name.contains(QLatin1Char('/')) || name.startsWith(QLatin1Char('.')))
+        return QString();
+    QFile file(m_dataDir + QLatin1Char('/') + name);
+    if (!file.open(QIODevice::ReadOnly))
+        return QString();
+    return QString::fromUtf8(file.readAll());
 }
 
 void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
@@ -56,6 +140,10 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
 void ApiClient::send(const QString &method, const QString &path, const QVariant &body, Handler handler,
                      const QVariantMap &headers)
 {
+    if (m_settings->standalone()) {
+        localRequest(method, path, body, handler);
+        return;
+    }
     sendWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, handler, headers);
 }
 
@@ -170,6 +258,27 @@ void ApiClient::upload(const QString &path, const QString &field, const QString 
         return;
     }
 
+    if (m_settings->standalone()) {
+        // Kept in the app's data directory, the local backend gets its URL.
+        const QString dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+                + QStringLiteral("/images");
+        QDir().mkpath(dir);
+        const QString target = dir + QLatin1Char('/') + QUuid::createUuid().toString().mid(1, 36)
+                + QLatin1Char('.') + QFileInfo(fileName).suffix();
+        QFile out(target);
+        if (!out.open(QIODevice::WriteOnly) || out.write(image) != image.size()) {
+            qCWarning(lcApi, "Can't save the image on the phone");
+            if (handler)
+                handler(false, 0, QVariant(), tr("Can't save that image on this phone."));
+            return;
+        }
+        out.close();
+        QVariantMap localBody = fields.toVariant().toMap();
+        localBody.insert(field, QUrl::fromLocalFile(target).toString());
+        localRequest(QStringLiteral("POST"), path, localBody, handler);
+        return;
+    }
+
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
     const QVariantMap extra = fields.toVariant().toMap();
     for (auto it = extra.constBegin(); it != extra.constEnd(); ++it) {
@@ -264,7 +373,9 @@ void ApiClient::finish(QNetworkReply *reply)
         data = QJsonDocument::fromJson(raw).toVariant();
 
     const bool ok = status >= 200 && status < 300;
-    const QString error = ok ? QString() : errorMessage(status, data, reply, pending.method);
+    const QString error = ok ? QString()
+            : messageFor(status, data, reply->url().path(), pending.method,
+                         reply->error() == QNetworkReply::OperationCanceledError);
 
     // The request in the app's log (Logger): never the key or a body.
     const qint64 ms = QDateTime::currentMSecsSinceEpoch() - pending.startedMs;
@@ -366,19 +477,19 @@ QString ApiClient::permissionForMethod(const QString &method)
     return QStringLiteral("Read");
 }
 
-QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply *reply,
-                                const QString &method)
+QString ApiClient::messageFor(int status, const QVariant &data, const QString &path,
+                              const QString &method, bool timedOut)
 {
     switch (status) {
     case 0:
-        if (reply->error() == QNetworkReply::OperationCanceledError)
+        if (timedOut)
             return tr("The server did not answer in time.");
         return tr("Can't reach the server.");
     case 401:
         return tr("The API key was not accepted. It may have been revoked.");
     case 403: {
         // Name what to tick on the key in IronStack (Profile > API keys).
-        const QString context = contextForPath(reply->url().path());
+        const QString context = contextForPath(path);
         if (!context.isEmpty())
             return tr("This API key does not have the permission it needs: %1 - %2. "
                       "Add it in IronStack under Profile > API keys.")
