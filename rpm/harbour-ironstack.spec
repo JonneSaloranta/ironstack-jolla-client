@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.6.3
+Version:    0.7.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,13 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.7.0-1
+- Needs IronStack 1.31.0 or later.
+- Built-in names and texts come translated from IronStack, in the
+  phone's language.
+- The cool-down suggestion, nutrition statistics and observed
+  maintenance come from IronStack: fewer requests, no whole-diary reads.
+
 * Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.6.3-1
 - The barcode scanner's torch lights up.
 
