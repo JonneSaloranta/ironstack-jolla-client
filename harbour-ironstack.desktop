@@ -6,6 +6,6 @@ Exec=harbour-ironstack
 Name=IronStack
 
 [X-Sailjail]
-Permissions=Internet;Audio;Camera
+Permissions=Internet;Audio;Camera;Pictures;MediaIndexing
 OrganizationName=org.ironstack
 ApplicationName=harbour-ironstack

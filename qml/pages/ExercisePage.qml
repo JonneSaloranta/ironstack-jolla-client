@@ -1,12 +1,14 @@
-import QtQuick 2.0
+import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Sailfish.Pickers 1.0
 import "../components"
 import "../js/store.js" as Store
 import "../js/texts.js" as Texts
 
 // One exercise, like the web's exercise page and guide: what it works,
 // how to do it (instructions and images, translated like the web), and
-// your records for it. Your own exercises can be edited or deactivated.
+// your records for it. Your own exercises can be edited or deactivated,
+// and get images from the gallery (IronStack #48).
 Page {
     id: page
 
@@ -54,6 +56,64 @@ Page {
         })
     }
 
+    property bool uploading: false
+    // The image picked, shown in the caption dialog once the picker has
+    // closed itself (it pops after telling its selection).
+    property string pickedImage: ""
+
+    // From the gallery (a photo taken with the camera is there too), with
+    // an optional caption.
+    function addImage() {
+        var picker = pageStack.push(imagePicker)
+        picker.selectedContentPropertiesChanged.connect(function() {
+            pickedImage = picker.selectedContentProperties.filePath || ""
+        })
+    }
+
+    function confirmImage() {
+        var path = pickedImage
+        pickedImage = ""
+        var dialog = pageStack.push(Qt.resolvedUrl("ExerciseImageDialog.qml"), { source: "file://" + path })
+        dialog.accepted.connect(function() { page.upload(path, dialog.caption) })
+    }
+
+    function upload(path, caption) {
+        uploading = true
+        var images = exercise.images || []
+        var order = images.length ? Math.max.apply(null, images.map(function(i) { return i.order })) + 1 : 0
+        api.upload("exercises/" + exerciseId + "/images/", "image", path,
+                   { caption: caption, order: String(order) }, function(ok, status, data, error) {
+            uploading = false
+            // An IronStack from before #48 has no such endpoint.
+            errorText = ok ? "" : status === 404 || status === 405
+                             ? qsTr("Your IronStack server can't take images from the app yet. Update it, "
+                                    + "or add the image on the web.")
+                             : error
+            if (ok)
+                load()
+        })
+    }
+
+    function deleteImage(id) {
+        api.request("DELETE", "exercises/" + exerciseId + "/images/" + id + "/", null, function(ok, status, data, error) {
+            errorText = ok ? "" : error
+            load()
+        })
+    }
+
+    // Not from onStatusChanged itself: a push there changes the status
+    // it's handling.
+    Timer {
+        id: confirmTimer
+        interval: 0
+        onTriggered: page.confirmImage()
+    }
+
+    Component {
+        id: imagePicker
+        ImagePickerPage {}
+    }
+
     function deactivate() {
         api.request("DELETE", "exercises/" + exerciseId + "/", null, function(ok, status, data, error) {
             if (!ok) {
@@ -67,7 +127,9 @@ Page {
 
     Component.onCompleted: load()
     onStatusChanged: {
-        if (status === PageStatus.Active && exercise !== null && Store.exercisesChanged)
+        if (status === PageStatus.Active && pickedImage !== "")
+            confirmTimer.start()
+        else if (status === PageStatus.Active && exercise !== null && Store.exercisesChanged)
             load()
     }
 
@@ -81,7 +143,7 @@ Page {
 
         PullDownMenu {
             visible: page.editable || page.exercise !== null
-            busy: page.loading
+            busy: page.loading || page.uploading
             MenuItem {
                 visible: page.editable
                 text: qsTr("Deactivate")
@@ -104,6 +166,12 @@ Page {
                         })
                     })
                 }
+            }
+            MenuItem {
+                visible: page.editable
+                enabled: !page.uploading
+                text: qsTr("Add image")
+                onClicked: page.addImage()
             }
             MenuItem {
                 visible: page.exercise !== null
@@ -171,27 +239,50 @@ Page {
             Repeater {
                 id: images
                 model: page.exercise ? page.exercise.images : []
-                delegate: Column {
-                    x: Theme.horizontalPageMargin
-                    width: page.width - 2 * Theme.horizontalPageMargin
-                    spacing: Theme.paddingSmall
-                    Image {
-                        width: parent.width
-                        fillMode: Image.PreserveAspectFit
-                        source: modelData.image
-                        asynchronous: true
-                        BusyIndicator {
-                            anchors.centerIn: parent
-                            running: parent.status === Image.Loading
+                // Your own exercise's images can be removed (press and hold).
+                delegate: ListItem {
+                    id: imageItem
+                    width: page.width
+                    contentHeight: imageColumn.height + Theme.paddingSmall
+                    menu: page.editable ? imageMenu : null
+                    Component {
+                        id: imageMenu
+                        ContextMenu {
+                            MenuItem {
+                                text: qsTr("Delete image")
+                                onClicked: {
+                                    // The menu is gone by the time the remorse runs out,
+                                    // and names in its scope with it.
+                                    var id = modelData.id
+                                    var target = page
+                                    imageItem.remorseDelete(function() { target.deleteImage(id) })
+                                }
+                            }
                         }
                     }
-                    Label {
-                        visible: text !== ""
-                        width: parent.width
-                        wrapMode: Text.Wrap
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.secondaryColor
-                        text: [modelData.caption, modelData.attribution].filter(function(part) { return part }).join(" - ")
+                    Column {
+                        id: imageColumn
+                        x: Theme.horizontalPageMargin
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        spacing: Theme.paddingSmall
+                        Image {
+                            width: parent.width
+                            fillMode: Image.PreserveAspectFit
+                            source: modelData.image
+                            asynchronous: true
+                            BusyIndicator {
+                                anchors.centerIn: parent
+                                running: parent.status === Image.Loading
+                            }
+                        }
+                        Label {
+                            visible: text !== ""
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                            text: [modelData.caption, modelData.attribution].filter(function(part) { return part }).join(" - ")
+                        }
                     }
                 }
             }
