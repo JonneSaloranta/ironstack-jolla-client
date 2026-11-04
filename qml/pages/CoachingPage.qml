@@ -6,8 +6,9 @@ import "../js/social.js" as Social
 // Coaching, like the web's: your coaches and the plans they've shared
 // (import a copy to use it), requests waiting for an answer, and - for a
 // personal trainer - their clients. Ask a trainer from the pull-down.
-// Being a trainer is switched on in the IronStack web's profile. Needs an
-// API key with the "Coaching" area.
+// Being a trainer is switched at the bottom (profile/'s
+// is_personal_trainer and accepting_new_clients, IronStack #51 - hidden
+// on a server without them). Needs an API key with the "Coaching" area.
 Page {
     id: page
 
@@ -17,6 +18,8 @@ Page {
     property var outgoing: []
     property var sharedPrograms: []
     property var sharedPlans: []
+    // profile/, for the trainer switches.
+    property var profile: null
     property bool loading: false
     property string errorText: ""
 
@@ -27,7 +30,7 @@ Page {
 
     function load(keepError) {
         loading = true
-        var pending = 5
+        var pending = 6
         var failure = keepError || ""
         function settle(ok, error) {
             if (!ok && error)
@@ -64,7 +67,23 @@ Page {
             }
             settle(ok, error)
         })
+        api.request("GET", "profile/", null, function(ok, status, data, error) {
+            if (ok)
+                profile = data
+            settle(ok, error)
+        })
         settle(true, "")
+    }
+
+    // Saved as it's switched, like Settings. Turning trainer off doesn't
+    // end a coaching relationship (the server's rule).
+    function saveProfile(changes) {
+        api.request("PATCH", "profile/", changes, function(ok, status, data, error) {
+            if (ok)
+                profile = data
+            else
+                errorText = error
+        })
     }
 
     function act(method, path, body) {
@@ -273,6 +292,30 @@ Page {
                         text: modelData.coachee.display_name || modelData.coachee.username
                     }
                 }
+            }
+
+            SectionHeader {
+                visible: trainerSwitch.visible
+                text: qsTr("Personal trainer")
+            }
+            TextSwitch {
+                id: trainerSwitch
+                visible: page.profile !== null && page.profile.is_personal_trainer !== undefined
+                text: qsTr("I'm a personal trainer / coach")
+                description: qsTr("Lets you build gym programs and diet plans other users can request you coach "
+                                  + "them on. Turning this off doesn't end any coaching relationship you already have.")
+                checked: visible && page.profile.is_personal_trainer
+                automaticCheck: false
+                onClicked: page.saveProfile({ is_personal_trainer: !checked })
+            }
+            TextSwitch {
+                visible: trainerSwitch.visible && page.profile.is_personal_trainer
+                text: qsTr("Accepting new coaching requests")
+                description: qsTr("Off stops new coaching requests from reaching you. Existing coaching "
+                                  + "relationships, and any request you already received, are unaffected.")
+                checked: visible && page.profile.accepting_new_clients
+                automaticCheck: false
+                onClicked: page.saveProfile({ accepting_new_clients: !checked })
             }
         }
 
