@@ -76,6 +76,10 @@ update COMPATIBILITY.md and drop the row.
 
 | Issue | Today in the app | When fixed | Where |
 |---|---|---|---|
+| #48 images of your own exercises | Shown, not added or removed | Add from the camera or gallery, remove | `ExercisePage.qml` |
+| #49 "this week" summary range | Dashboard offers 7 days, 30 days, all time | Add "This week" like the web | `DashboardPage.qml` |
+| #50 workout duration estimates | Not shown | Estimate on a workout before starting, time left in training mode | `WorkoutPage.qml`, `ProgramPage.qml`, `TrainingPage.qml` |
+| #51 personal trainer settings | Becoming a trainer is a web setting | Switches on the coaching page | `CoachingPage.qml` |
 | #47 translated names still missing in `up-next/` (program), stretch sessions' `name`, the coaching client page and shared plans | `Store.shown` falls back to the app's copy of the web's catalog for these | Drop the fallback, `content.js`, `content_texts.js` and `tools/content-i18n/` (old offline caches then show English until refreshed) | `store.js` `contentName`, `texts.js` |
 
 ## 4. Housekeeping
