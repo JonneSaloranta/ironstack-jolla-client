@@ -1,0 +1,10 @@
+version: 2
+
+# Weekly pull requests for the actions pinned by SHA in
+# .github/workflows/ci.yml. The SDK image's digest there is updated by
+# hand, with SFOS_RELEASE, when the app moves to a newer SDK.
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
