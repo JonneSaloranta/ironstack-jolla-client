@@ -1,0 +1,4260 @@
+{
+ "activity_types": [
+  {
+   "active": true,
+   "builtin_key": "Running",
+   "id": 1,
+   "is_custom": false,
+   "name": "Running",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Walking",
+   "id": 2,
+   "is_custom": false,
+   "name": "Walking",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Cycling",
+   "id": 3,
+   "is_custom": false,
+   "name": "Cycling",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Swimming",
+   "id": 4,
+   "is_custom": false,
+   "name": "Swimming",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Hiking",
+   "id": 5,
+   "is_custom": false,
+   "name": "Hiking",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Rowing",
+   "id": 6,
+   "is_custom": false,
+   "name": "Rowing",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Yoga",
+   "id": 7,
+   "is_custom": false,
+   "name": "Yoga",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Other",
+   "id": 8,
+   "is_custom": false,
+   "name": "Other",
+   "owner": null
+  }
+ ],
+ "equipment": [
+  {
+   "builtin_key": "Barbell",
+   "id": 1,
+   "name": "Barbell"
+  },
+  {
+   "builtin_key": "Dumbbell",
+   "id": 2,
+   "name": "Dumbbell"
+  },
+  {
+   "builtin_key": "Machine",
+   "id": 3,
+   "name": "Machine"
+  },
+  {
+   "builtin_key": "Cable",
+   "id": 4,
+   "name": "Cable"
+  },
+  {
+   "builtin_key": "Bodyweight",
+   "id": 5,
+   "name": "Bodyweight"
+  },
+  {
+   "builtin_key": "Kettlebell",
+   "id": 6,
+   "name": "Kettlebell"
+  },
+  {
+   "builtin_key": "Resistance Band",
+   "id": 7,
+   "name": "Resistance Band"
+  }
+ ],
+ "exercises": [
+  {
+   "active": true,
+   "builtin_key": "Barbell Back Squat",
+   "description": "",
+   "equipment": 1,
+   "id": 1,
+   "images": [
+    {
+     "attribution": "Workout Guru - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 56,
+     "image": "exercise_images/1-barbell-back-squat.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- The barbell full squat is a compound exercise that targets multiple muscle groups in the lower body, including the quadriceps, hamstrings, and glutes.\n- Proper form is crucial for maximizing results and preventing injuries during the barbell full squat. This includes maintaining a shoulder-width stance, creating whole body tension, controlling your descent, and maintaining proper depth and knee positioning.\n- Assistance moves such as the front squat, goblet squat, split squat, and Bulgarian split squat can help improve your performance in the barbell full squat by targeting specific muscle groups and improving overall technique.\n- To achieve new personal records in your back squat, gradually increase weight over time, vary rep ranges and sets to stimulate muscle growth, and prioritize rest and recovery between training sessions.",
+   "instructions_attribution": "fabrice - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Barbell Back Squat",
+   "owner": null,
+   "primary_muscle_groups": [
+    6
+   ],
+   "secondary_muscle_groups": [
+    8,
+    7
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Barbell Bench Press",
+   "description": "",
+   "equipment": 1,
+   "id": 2,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 57,
+     "image": "exercise_images/2-barbell-bench-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Lay down on a bench, the bar should be directly above your eyes, the knees are somewhat angled and the feet are firmly on the floor. Concentrate, breath deeply and grab the bar more than shoulder wide. Bring it slowly down till it briefly touches your chest at the height of your nipples. Push the bar up.\nIf you train with a high weight it is advisable to have a spotter that can help you up if you can't lift the weight on your own.\nWith the width of the grip you can also control which part of the chest is trained more:\n- wide grip: outer chest muscles\n- narrow grip: inner chest muscles and triceps",
+   "instructions_attribution": "sistab2 - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Barbell Bench Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    1
+   ],
+   "secondary_muscle_groups": [
+    3,
+    5
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Conventional Deadlift",
+   "description": "",
+   "equipment": 1,
+   "id": 3,
+   "images": [
+    {
+     "attribution": "philip - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 58,
+     "image": "exercise_images/3-conventional-deadlift.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Stand firmly, with your feet slightly more than shoulder wide apart. Stand directly behind the bar where it should barely touch your shin, your feet pointing a bit out. Bend down with a straight back, the knees also pointing somewhat out. Grab the bar with a shoulder wide grip, one overhand, one underhand (mixed grip).\nPull the weight up. At the highest point make a slight hollow back and pull the bar back. Hold 1 or 2 seconds that position. Go down, making sure the back is not bent. Once down you can either go back again as soon as the weights touch the floor, or make a pause, depending on the weight.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Conventional Deadlift",
+   "owner": null,
+   "primary_muscle_groups": [
+    2,
+    7
+   ],
+   "secondary_muscle_groups": [
+    11,
+    8
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Overhead Press",
+   "description": "",
+   "equipment": 1,
+   "id": 4,
+   "images": [
+    {
+     "attribution": "nishant0712 - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 59,
+     "image": "exercise_images/4-overhead-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Setup: Stand with feet together and grip the bar slightly wider than shoulders.\n- Position: Rest the bar on your upper chest.\n- Press: Brace your core and push the bar straight up until your arms lock out.\n- Finish: Control the bar back down to your chest.",
+   "instructions_attribution": "nishant0712 - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Overhead Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    3
+   ],
+   "secondary_muscle_groups": [
+    5
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Barbell Row",
+   "description": "",
+   "equipment": 1,
+   "id": 5,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 60,
+     "image": "exercise_images/5-barbell-row.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Holding a barbell with a pronated grip (palms facing down), bend your knees slightly and bring your torso forward, by bending at the waist, while keeping the back straight until it is almost parallel to the floor. Tip: Make sure that you keep the head up. The barbell should hang directly in front of you as your arms hang perpendicular to the floor and your torso. This is your starting position.\n- Now, while keeping the torso stationary, breathe out and lift the barbell to you. Keep the elbows close to the body and only use the forearms to hold the weight. At the top contracted position, squeeze the back muscles and hold for a brief pause.\n- Then inhale and slowly lower the barbell back to the starting position.\n- Repeat for the recommended amount of repetitions.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Barbell Row",
+   "owner": null,
+   "primary_muscle_groups": [
+    2
+   ],
+   "secondary_muscle_groups": [
+    4
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Pull-Up",
+   "description": "",
+   "equipment": 5,
+   "id": 6,
+   "images": [
+    {
+     "attribution": "Imobard - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 61,
+     "image": "exercise_images/6-pull-up.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Grab the pull up bar with a wide grip, the body is hanging freely. Keep your chest out and pull yourself up till your chin reaches the bar or it touches your neck, if you want to pull behind you. Go with a slow and controlled movement down, always keeping the chest out.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Pull-Up",
+   "owner": null,
+   "primary_muscle_groups": [
+    2
+   ],
+   "secondary_muscle_groups": [
+    4
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Dumbbell Bench Press",
+   "description": "",
+   "equipment": 2,
+   "id": 7,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 62,
+     "image": "exercise_images/7-dumbbell-bench-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Setup and Starting Position: Sit at the end of a flat bench with a dumbbell resting vertically against each thigh. Carefully lean back while driving the dumbbells toward your chest with your knees.\n- The “Leg Drive” and Posture: Plant your feet firmly on the floor. Retract your shoulder blades (press them together against the bench) and maintain a slight natural lumbar curve.\n- Starting Position: Push the dumbbells toward the ceiling. Your wrists should be aligned with your elbows. Rotate the dumbbells slightly inward (about 45 degrees) so that your elbows do not splay out too far to the sides, thereby protecting your shoulders.\n- Eccentric Phase (Lowering): Lower the dumbbells in a controlled manner toward the sides of your chest. Your elbows should lower at an angle of about 45–60 degrees relative to your body. Feel the stretch in the lower part of your chest.\n- Concentric Phase (Lift): Push the weight upward in a slight arc (toward the center), without letting the dumbbells collide at the top or fully locking out your elbows to maintain muscle tension. Exhale as you lift.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Dumbbell Bench Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    1
+   ],
+   "secondary_muscle_groups": [
+    3,
+    5
+   ],
+   "weight_input_mode": "per_hand"
+  },
+  {
+   "active": true,
+   "builtin_key": "Dumbbell Shoulder Press",
+   "description": "",
+   "equipment": 2,
+   "id": 8,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 63,
+     "image": "exercise_images/8-dumbbell-shoulder-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Sit on a bench, the back rest should be almost vertical. Take two dumbbells and bring them up to shoulder height, the palms and the elbows point during the whole exercise to the front. Press the weights up, at the highest point they come very near but don't touch. Go slowly down and repeat.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Dumbbell Shoulder Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    3
+   ],
+   "secondary_muscle_groups": [
+    5
+   ],
+   "weight_input_mode": "per_hand"
+  },
+  {
+   "active": true,
+   "builtin_key": "Dumbbell Bicep Curl",
+   "description": "",
+   "equipment": 2,
+   "id": 9,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 64,
+     "image": "exercise_images/9-dumbbell-bicep-curl.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Hold two dumbbells, the arms are streched, the hands are on your side, the palms face inwards. Bend the arms and bring the weight with a fast movement up. At the same time, rotate your arms by 90 degrees at the very beginning of the movement. At the highest point, rotate a little the weights further outwards. Without a pause, bring them down, slowly.\nDon't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Dumbbell Bicep Curl",
+   "owner": null,
+   "primary_muscle_groups": [
+    4
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "per_hand"
+  },
+  {
+   "active": true,
+   "builtin_key": "Triceps Pushdown",
+   "description": "",
+   "equipment": 4,
+   "id": 10,
+   "images": [
+    {
+     "attribution": "anto.kreegyr - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 65,
+     "image": "exercise_images/10-triceps-pushdown.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Stand facing a cable machine with a straight or angled bar attached to the high pulley. Grip the bar with an overhand grip, elbows tucked in at your sides. Keeping your upper arms still, push the bar down until your arms are fully extended, then let it rise back under control without letting your elbows drift forward.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Triceps Pushdown",
+   "owner": null,
+   "primary_muscle_groups": [
+    5
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Lat Pulldown",
+   "description": "",
+   "equipment": 4,
+   "id": 11,
+   "images": [
+    {
+     "attribution": "Franpol - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 66,
+     "image": "exercise_images/11-lat-pulldown.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Sit at the lat pulldown machine with your thighs secured under the pad, and grip the bar wider than shoulder-width. Lean back very slightly, then pull the bar down so it passes close to your chin and touches your upper chest, keeping the rest of your body still. Let the bar rise back under control until your arms are fully extended.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Lat Pulldown",
+   "owner": null,
+   "primary_muscle_groups": [
+    2
+   ],
+   "secondary_muscle_groups": [
+    4
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Leg Press",
+   "description": "",
+   "equipment": 3,
+   "id": 12,
+   "images": [
+    {
+     "attribution": "wger.de - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 67,
+     "image": "exercise_images/12-leg-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Sit in the leg press machine with your back flat against the pad and feet shoulder-width apart on the platform. Unlock the safety catches and lower the platform by bending your knees to about a 90° angle, keeping your lower back pressed against the pad. Push through your heels to extend your legs back to the starting position without locking your knees out completely.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Leg Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    6
+   ],
+   "secondary_muscle_groups": [
+    8,
+    7
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Leg Curl",
+   "description": "",
+   "equipment": 3,
+   "id": 13,
+   "images": [
+    {
+     "attribution": "Franpol - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 68,
+     "image": "exercise_images/13-leg-curl.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Lie face down on the leg curl machine with the pad resting just above your heels and your knees just off the edge of the bench. Curl your legs up by bending your knees, bringing your heels toward your glutes, then lower back down under control without letting the weight stack slam down.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Leg Curl",
+   "owner": null,
+   "primary_muscle_groups": [
+    7
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Calf Raise",
+   "description": "",
+   "equipment": 3,
+   "id": 14,
+   "images": [
+    {
+     "attribution": "clafal - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 69,
+     "image": "exercise_images/14-calf-raise.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Get onto the calf raises machine, you should able to completely push your calves down. Stand straight, don't make a hollow back and don't bend your legs. Pull yourself up as high as you can. Make a small pause of 1 - 2 seconds and go slowly down.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Calf Raise",
+   "owner": null,
+   "primary_muscle_groups": [
+    9
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Plank",
+   "description": "",
+   "equipment": 5,
+   "id": 15,
+   "images": [
+    {
+     "attribution": "utkb - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 70,
+     "image": "exercise_images/15-plank.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Get into a position on the floor supporting your weight on your forearms and toes. Arms are bent and directly below the shoulder.\nKeep your body straight at all times and hold this position as long as possible. To increase difficulty an arm or leg can be raised while performing this exercise.",
+   "instructions_attribution": "YYCfit / BFad07 - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Plank",
+   "owner": null,
+   "primary_muscle_groups": [
+    10
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Romanian Deadlift",
+   "description": "",
+   "equipment": 1,
+   "id": 16,
+   "images": [
+    {
+     "attribution": "wger.de - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 71,
+     "image": "exercise_images/16-romanian-deadlift.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Stand holding a barbell in front of your thighs with a shoulder-width overhand grip. Keeping your back flat and knees only slightly bent, push your hips back and lower the bar down the front of your legs until you feel a stretch in your hamstrings. Drive your hips forward to return to standing, keeping the bar close to your legs throughout.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Romanian Deadlift",
+   "owner": null,
+   "primary_muscle_groups": [
+    7
+   ],
+   "secondary_muscle_groups": [
+    2,
+    8
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Front Squat",
+   "description": "",
+   "equipment": 1,
+   "id": 17,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 72,
+     "image": "exercise_images/17-front-squat.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Rest the bar across the front of your shoulders, elbows raised high to keep it in place, using either a clean grip or crossed arms. Keeping your torso upright, bend your knees and hips to lower into a squat until your thighs are at least parallel to the floor, then drive back up through your heels to standing.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Front Squat",
+   "owner": null,
+   "primary_muscle_groups": [
+    6
+   ],
+   "secondary_muscle_groups": [
+    8
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Incline Barbell Bench Press",
+   "description": "",
+   "equipment": 1,
+   "id": 18,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 73,
+     "image": "exercise_images/18-incline-barbell-bench-press.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Lie back on an incline bench set to about 30-45°, feet flat on the floor. Grip the bar slightly wider than shoulder-width and unrack it over your upper chest. Lower the bar under control to your upper chest, then press it back up until your arms are fully extended.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Incline Barbell Bench Press",
+   "owner": null,
+   "primary_muscle_groups": [
+    1
+   ],
+   "secondary_muscle_groups": [
+    3,
+    5
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Hip Thrust",
+   "description": "",
+   "equipment": 1,
+   "id": 19,
+   "images": [
+    {
+     "attribution": "AlucardEvil40 - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 74,
+     "image": "exercise_images/19-hip-thrust.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Sit on the floor with your upper back against a bench and a loaded barbell rolled over your hips (use a pad for comfort). Plant your feet flat on the floor, knees bent. Drive through your heels to lift your hips up until your body forms a straight line from shoulders to knees, squeezing your glutes at the top, then lower back down under control.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Hip Thrust",
+   "owner": null,
+   "primary_muscle_groups": [
+    8
+   ],
+   "secondary_muscle_groups": [
+    7
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Seated Cable Row",
+   "description": "",
+   "equipment": 4,
+   "id": 20,
+   "images": [
+    {
+     "attribution": "Franpol - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 75,
+     "image": "exercise_images/20-seated-cable-row.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Take a seat on the machine with your feet planted, a little wider than shoulder width. Drive the heels, and squeeze the glutes. Grab onto the cable handle.\n- Sit up tall with a slight bend through the knees. Tighten up the abs and low back to maintain a perpendicular angle to the floor with your torso.\n- Roll the shoulders back and down. Squeeze them together as you row, thinking about pinching a pencil in between them. As you do this, pull the handle back towards you, landing right above your belly button.\n- Pause here for a moment before returning the handle, still squeezing the shoulder blades. Once you've returned the weight to the stack, then allow the shoulder blades to relax, without pulling the torso forward.\n- Repeat the movement.",
+   "instructions_attribution": "Franpol - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "compound",
+   "name": "Seated Cable Row",
+   "owner": null,
+   "primary_muscle_groups": [
+    2
+   ],
+   "secondary_muscle_groups": [
+    4
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Face Pull",
+   "description": "",
+   "equipment": 4,
+   "id": 21,
+   "images": [
+    {
+     "attribution": "AlucardEvil40 - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 76,
+     "image": "exercise_images/21-face-pull.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Attach a rope handle to a cable machine set at upper-chest to head height. Grip the rope with both hands, palms facing each other, and step back to create tension. Pull the rope toward your face, leading with your elbows and flaring them out wide, squeezing your shoulder blades together at the end, then return under control.",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Face Pull",
+   "owner": null,
+   "primary_muscle_groups": [
+    3
+   ],
+   "secondary_muscle_groups": [
+    2
+   ],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Lateral Raise",
+   "description": "",
+   "equipment": 2,
+   "id": 22,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 77,
+     "image": "exercise_images/22-lateral-raise.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "This exercise works the deltoid muscle of the shoulder. The movement starts with the arms straight, and the hands holding weights at the sides or in front of the body. Body is in a slight forward-leaning position with hips and knees bent a little. Arms are kept straight or slightly bent, and raised through an arc of movement in the coronal plane that terminates when the hands are at approximately shoulder height. Weights are lowered to the starting position, completing one rep. When using a cable machine the individual stands with the coronal plane in line with the pulley, which is at or near the ground. The exercise can be completed one shoulder at a time (with the other hand used to stabilize the body against the weight moved), or with both hands simultaneously if two parallel pulleys are available.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Lateral Raise",
+   "owner": null,
+   "primary_muscle_groups": [
+    3
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "per_hand"
+  },
+  {
+   "active": true,
+   "builtin_key": "Hammer Curl",
+   "description": "",
+   "equipment": 2,
+   "id": 23,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 78,
+     "image": "exercise_images/23-hammer-curl.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Start: Hold dumbbells at your sides with palms facing your torso.\n- Curl: Lift the weights toward your shoulders while maintaining the neutral grip (like holding a hammer).\n- Squeeze: Contract the biceps at the top without moving your elbows forward.\n- Lower: Slowly return to the starting position with full control.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Hammer Curl",
+   "owner": null,
+   "primary_muscle_groups": [
+    4
+   ],
+   "secondary_muscle_groups": [
+    11
+   ],
+   "weight_input_mode": "per_hand"
+  },
+  {
+   "active": true,
+   "builtin_key": "Skull Crusher",
+   "description": "",
+   "equipment": 1,
+   "id": 24,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 79,
+     "image": "exercise_images/24-skull-crusher.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Hold the SZ-bar and lay down on a flat bench in such a way that around 1/4 of your head is over the edge. Stretch your arms with the bar and bend them so that the bar is lowered. Just before it touches your forehead, push it up.\nPay attention to your elbows and arms: only the triceps are doing the work, the rest of the arms should not move.",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Skull Crusher",
+   "owner": null,
+   "primary_muscle_groups": [
+    5
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Ab Wheel Rollout",
+   "description": "",
+   "equipment": 5,
+   "id": 25,
+   "images": [
+    {
+     "attribution": "wger.de - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 80,
+     "image": "exercise_images/25-ab-wheel-rollout.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "- Starting Position: Kneel on the floor with the ab wheel in front of you.\n- Grip the Wheel: Hold the handles firmly.\n- Roll Out: Slowly roll the wheel forward, extending your body while keeping your core tight.\n- Return: Pull the wheel back towards your knees, maintaining tension in your core.",
+   "instructions_attribution": "lhegedus - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Ab Wheel Rollout",
+   "owner": null,
+   "primary_muscle_groups": [
+    10
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Barbell Shrug",
+   "description": "",
+   "equipment": 1,
+   "id": 26,
+   "images": [
+    {
+     "attribution": "Everkinetic - CC-BY-SA 3.0, via wger.de",
+     "caption": "",
+     "id": 81,
+     "image": "exercise_images/26-barbell-shrug.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Take a barbell and stand with a straight body, the arms are hanging freely in front of you. Lift from this position the shoulders as high as you can, but don't bend the arms during the movement. On the highest point, make a short pause of 1 or 2 seconds before returning slowly to the initial position.\nWhen training with a higher weight, make sure that you still do the whole movement!",
+   "instructions_attribution": "wger.de - CC-BY-SA",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Barbell Shrug",
+   "owner": null,
+   "primary_muscle_groups": [
+    12
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Straight-Arm Pulldown",
+   "description": "",
+   "equipment": 4,
+   "id": 27,
+   "images": [
+    {
+     "attribution": "barry - CC-BY-SA 4.0, via wger.de",
+     "caption": "",
+     "id": 82,
+     "image": "exercise_images/27-straight-arm-pulldown.jpg",
+     "order": 0
+    }
+   ],
+   "instructions": "Keep arms straight but not locked, pulling with your lats, not your shoulders.\nDon’t let your shoulders shrug up during the movement.",
+   "instructions_attribution": "barry - CC-BY-SA, via wger.de",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Straight-Arm Pulldown",
+   "owner": null,
+   "primary_muscle_groups": [
+    13
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  },
+  {
+   "active": true,
+   "builtin_key": "Side Plank",
+   "description": "",
+   "equipment": 5,
+   "id": 28,
+   "images": [],
+   "instructions": "",
+   "instructions_attribution": "",
+   "is_custom": false,
+   "movement_type": "isolation",
+   "name": "Side Plank",
+   "owner": null,
+   "primary_muscle_groups": [
+    14
+   ],
+   "secondary_muscle_groups": [],
+   "weight_input_mode": "total"
+  }
+ ],
+ "foods": [
+  {
+   "active": true,
+   "brand": "Quaker",
+   "builtin_key": "Quaker Oats",
+   "calories": 375,
+   "carbohydrate_grams": "60.00",
+   "energy_kj": null,
+   "fat_grams": "8.00",
+   "fiber_grams": "9.00",
+   "id": 1,
+   "name": "Quaker Oats",
+   "nova_group": null,
+   "nutri_score": "a",
+   "off_id": "3168930003632",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "11.00",
+   "salt_grams": null,
+   "saturated_fat_grams": "1.50",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 4,
+   "starch_grams": null,
+   "sugar_grams": "1.10"
+  },
+  {
+   "active": true,
+   "brand": "Tesco",
+   "builtin_key": "Free range British eggs",
+   "calories": 131,
+   "carbohydrate_grams": "0.00",
+   "energy_kj": null,
+   "fat_grams": "9.00",
+   "fiber_grams": "0.00",
+   "id": 2,
+   "name": "Free range British eggs",
+   "nova_group": 1,
+   "nutri_score": "a",
+   "off_id": "5051140150471",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "12.60",
+   "salt_grams": null,
+   "saturated_fat_grams": "2.50",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 153,
+   "starch_grams": null,
+   "sugar_grams": "0.00"
+  },
+  {
+   "active": true,
+   "brand": "",
+   "builtin_key": "Fresh Banana - Each",
+   "calories": 78,
+   "carbohydrate_grams": "18.00",
+   "energy_kj": null,
+   "fat_grams": "0.26",
+   "fiber_grams": null,
+   "id": 3,
+   "name": "Fresh Banana - Each",
+   "nova_group": null,
+   "nutri_score": null,
+   "off_id": "00040112",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "0.87",
+   "salt_grams": null,
+   "saturated_fat_grams": null,
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": null,
+   "starch_grams": null,
+   "sugar_grams": null
+  },
+  {
+   "active": true,
+   "brand": "Skippy",
+   "builtin_key": "Creamy Peanut Butter",
+   "calories": 605,
+   "carbohydrate_grams": "16.60",
+   "energy_kj": null,
+   "fat_grams": "43.40",
+   "fiber_grams": "7.70",
+   "id": 4,
+   "name": "Creamy Peanut Butter",
+   "nova_group": null,
+   "nutri_score": "c",
+   "off_id": "0037600106009",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "26.90",
+   "salt_grams": null,
+   "saturated_fat_grams": "9.40",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 400,
+   "starch_grams": null,
+   "sugar_grams": "11.40"
+  },
+  {
+   "active": true,
+   "brand": "Nature's Own",
+   "builtin_key": "100% Whole Wheat Bread",
+   "calories": 214,
+   "carbohydrate_grams": "50.00",
+   "energy_kj": null,
+   "fat_grams": "1.92",
+   "fiber_grams": "7.69",
+   "id": 5,
+   "name": "100% Whole Wheat Bread",
+   "nova_group": 4,
+   "nutri_score": "a",
+   "off_id": "0072250037129",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "11.54",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.00",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 538,
+   "starch_grams": null,
+   "sugar_grams": "3.85"
+  },
+  {
+   "active": true,
+   "brand": "M&S food",
+   "builtin_key": "chicken breast fillets skinless",
+   "calories": 108,
+   "carbohydrate_grams": "0.10",
+   "energy_kj": null,
+   "fat_grams": "1.20",
+   "fiber_grams": "0.50",
+   "id": 6,
+   "name": "chicken breast fillets skinless",
+   "nova_group": 1,
+   "nutri_score": "a",
+   "off_id": "29304707",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "24.30",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.40",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 52,
+   "starch_grams": null,
+   "sugar_grams": "0.10"
+  },
+  {
+   "active": true,
+   "brand": "bibigo",
+   "builtin_key": "Cooked Sticky White Rice Medium Grain",
+   "calories": 148,
+   "carbohydrate_grams": "33.81",
+   "energy_kj": null,
+   "fat_grams": "0.48",
+   "fiber_grams": "1.43",
+   "id": 7,
+   "name": "Cooked Sticky White Rice Medium Grain",
+   "nova_group": 3,
+   "nutri_score": "a",
+   "off_id": "0807176541005",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "2.86",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.00",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 5,
+   "starch_grams": null,
+   "sugar_grams": "0.00"
+  },
+  {
+   "active": true,
+   "brand": "Raw Seafoods  Inc.",
+   "builtin_key": "Sockeye salmon fillets",
+   "calories": 150,
+   "carbohydrate_grams": "0.00",
+   "energy_kj": null,
+   "fat_grams": "7.08",
+   "fiber_grams": "0.00",
+   "id": 8,
+   "name": "Sockeye salmon fillets",
+   "nova_group": 1,
+   "nutri_score": "a",
+   "off_id": "0889396000265",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "22.12",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.88",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 62,
+   "starch_grams": null,
+   "sugar_grams": "0.00"
+  },
+  {
+   "active": true,
+   "brand": "Fresh Produce",
+   "builtin_key": "Raw Sweet Potato Fries",
+   "calories": 82,
+   "carbohydrate_grams": "20.00",
+   "energy_kj": null,
+   "fat_grams": "0.00",
+   "fiber_grams": "3.50",
+   "id": 9,
+   "name": "Raw Sweet Potato Fries",
+   "nova_group": 1,
+   "nutri_score": "b",
+   "off_id": "0087738172100",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "1.18",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.00",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 59,
+   "starch_grams": null,
+   "sugar_grams": "4.71"
+  },
+  {
+   "active": true,
+   "brand": "Sainsbury's",
+   "builtin_key": "Broccoli florets",
+   "calories": 43,
+   "carbohydrate_grams": "3.20",
+   "energy_kj": null,
+   "fat_grams": "0.60",
+   "fiber_grams": "4.00",
+   "id": 10,
+   "name": "Broccoli florets",
+   "nova_group": 1,
+   "nutri_score": "a",
+   "off_id": "00512947",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "4.30",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.20",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 8,
+   "starch_grams": null,
+   "sugar_grams": "1.90"
+  },
+  {
+   "active": true,
+   "brand": "No Name",
+   "builtin_key": "chopped spinach",
+   "calories": 40,
+   "carbohydrate_grams": "5.33",
+   "energy_kj": null,
+   "fat_grams": "0.67",
+   "fiber_grams": "4.00",
+   "id": 11,
+   "name": "chopped spinach",
+   "nova_group": 1,
+   "nutri_score": null,
+   "off_id": "0060383030827",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "4.00",
+   "salt_grams": null,
+   "saturated_fat_grams": null,
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 100,
+   "starch_grams": null,
+   "sugar_grams": null
+  },
+  {
+   "active": true,
+   "brand": "FAGE",
+   "builtin_key": "Total 5% Fat Greek Yogurt",
+   "calories": 93,
+   "carbohydrate_grams": "3.00",
+   "energy_kj": null,
+   "fat_grams": "5.00",
+   "fiber_grams": null,
+   "id": 12,
+   "name": "Total 5% Fat Greek Yogurt",
+   "nova_group": null,
+   "nutri_score": null,
+   "off_id": "5201054017432",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "9.00",
+   "salt_grams": null,
+   "saturated_fat_grams": null,
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": null,
+   "starch_grams": null,
+   "sugar_grams": null
+  },
+  {
+   "active": true,
+   "brand": "Danone",
+   "builtin_key": "Cottage Cheese",
+   "calories": 88,
+   "carbohydrate_grams": "1.40",
+   "energy_kj": null,
+   "fat_grams": "3.30",
+   "fiber_grams": "0.00",
+   "id": 13,
+   "name": "Cottage Cheese",
+   "nova_group": 3,
+   "nutri_score": "a",
+   "off_id": "3033491922466",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "12.00",
+   "salt_grams": null,
+   "saturated_fat_grams": "2.40",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 0,
+   "starch_grams": null,
+   "sugar_grams": "1.60"
+  },
+  {
+   "active": true,
+   "brand": "KIRKLAND",
+   "builtin_key": "ALBACORE SOLID WHITE TUNA IN WATER",
+   "calories": 106,
+   "carbohydrate_grams": "0.00",
+   "energy_kj": null,
+   "fat_grams": "2.02",
+   "fiber_grams": "0.00",
+   "id": 14,
+   "name": "ALBACORE SOLID WHITE TUNA IN WATER",
+   "nova_group": 4,
+   "nutri_score": "a",
+   "off_id": "0096619977819",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "21.72",
+   "salt_grams": null,
+   "saturated_fat_grams": "0.00",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 0,
+   "starch_grams": null,
+   "sugar_grams": "0.00"
+  },
+  {
+   "active": true,
+   "brand": "INITIA FOOD",
+   "builtin_key": "Amandes décortiquées",
+   "calories": 616,
+   "carbohydrate_grams": "13.00",
+   "energy_kj": null,
+   "fat_grams": "52.00",
+   "fiber_grams": "12.00",
+   "id": 15,
+   "name": "Amandes décortiquées",
+   "nova_group": null,
+   "nutri_score": "a",
+   "off_id": "3760181141226",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "22.00",
+   "salt_grams": null,
+   "saturated_fat_grams": "5.00",
+   "serving_size": "100.00",
+   "serving_unit": "g",
+   "sodium_mg": 8,
+   "starch_grams": null,
+   "sugar_grams": "4.00"
+  },
+  {
+   "active": true,
+   "brand": "MONINI",
+   "builtin_key": "Extra virgin olive oil",
+   "calories": 828,
+   "carbohydrate_grams": "0.00",
+   "energy_kj": null,
+   "fat_grams": "92.00",
+   "fiber_grams": null,
+   "id": 16,
+   "name": "Extra virgin olive oil",
+   "nova_group": null,
+   "nutri_score": "b",
+   "off_id": "8005510007961",
+   "other_nutrients": [],
+   "owner": null,
+   "polyols_grams": null,
+   "protein_grams": "0.00",
+   "salt_grams": null,
+   "saturated_fat_grams": "14.00",
+   "serving_size": "100.00",
+   "serving_unit": "ml",
+   "sodium_mg": 0,
+   "starch_grams": null,
+   "sugar_grams": "0.00"
+  }
+ ],
+ "meal_slots": [
+  {
+   "active": true,
+   "builtin_key": "Breakfast",
+   "id": 1,
+   "is_custom": false,
+   "name": "Breakfast",
+   "order": 0,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Lunch",
+   "id": 2,
+   "is_custom": false,
+   "name": "Lunch",
+   "order": 2,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Dinner",
+   "id": 3,
+   "is_custom": false,
+   "name": "Dinner",
+   "order": 4,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Evening snack",
+   "id": 4,
+   "is_custom": false,
+   "name": "Evening snack",
+   "order": 5,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Morning snack",
+   "id": 5,
+   "is_custom": false,
+   "name": "Morning snack",
+   "order": 1,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Afternoon snack",
+   "id": 6,
+   "is_custom": false,
+   "name": "Afternoon snack",
+   "order": 3,
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Other",
+   "id": 7,
+   "is_custom": false,
+   "name": "Other",
+   "order": 6,
+   "owner": null
+  }
+ ],
+ "measurement_types": [
+  {
+   "active": true,
+   "builtin_key": "Body weight",
+   "id": 1,
+   "is_custom": false,
+   "name": "Body weight",
+   "owner": null,
+   "unit_kind": "weight"
+  },
+  {
+   "active": true,
+   "builtin_key": "Body fat %",
+   "id": 2,
+   "is_custom": false,
+   "name": "Body fat %",
+   "owner": null,
+   "unit_kind": "percentage"
+  },
+  {
+   "active": true,
+   "builtin_key": "Waist",
+   "id": 3,
+   "is_custom": false,
+   "name": "Waist",
+   "owner": null,
+   "unit_kind": "length"
+  },
+  {
+   "active": true,
+   "builtin_key": "Chest",
+   "id": 4,
+   "is_custom": false,
+   "name": "Chest",
+   "owner": null,
+   "unit_kind": "length"
+  },
+  {
+   "active": true,
+   "builtin_key": "Arm",
+   "id": 5,
+   "is_custom": false,
+   "name": "Arm",
+   "owner": null,
+   "unit_kind": "length"
+  },
+  {
+   "active": true,
+   "builtin_key": "Thigh",
+   "id": 6,
+   "is_custom": false,
+   "name": "Thigh",
+   "owner": null,
+   "unit_kind": "length"
+  },
+  {
+   "active": true,
+   "builtin_key": "Hip",
+   "id": 7,
+   "is_custom": false,
+   "name": "Hip",
+   "owner": null,
+   "unit_kind": "length"
+  },
+  {
+   "active": true,
+   "builtin_key": "Neck",
+   "id": 8,
+   "is_custom": false,
+   "name": "Neck",
+   "owner": null,
+   "unit_kind": "length"
+  }
+ ],
+ "muscle_groups": [
+  {
+   "builtin_key": "Chest",
+   "id": 1,
+   "name": "Chest"
+  },
+  {
+   "builtin_key": "Back",
+   "id": 2,
+   "name": "Back"
+  },
+  {
+   "builtin_key": "Shoulders",
+   "id": 3,
+   "name": "Shoulders"
+  },
+  {
+   "builtin_key": "Biceps",
+   "id": 4,
+   "name": "Biceps"
+  },
+  {
+   "builtin_key": "Triceps",
+   "id": 5,
+   "name": "Triceps"
+  },
+  {
+   "builtin_key": "Quads",
+   "id": 6,
+   "name": "Quads"
+  },
+  {
+   "builtin_key": "Hamstrings",
+   "id": 7,
+   "name": "Hamstrings"
+  },
+  {
+   "builtin_key": "Glutes",
+   "id": 8,
+   "name": "Glutes"
+  },
+  {
+   "builtin_key": "Calves",
+   "id": 9,
+   "name": "Calves"
+  },
+  {
+   "builtin_key": "Abs",
+   "id": 10,
+   "name": "Abs"
+  },
+  {
+   "builtin_key": "Forearms",
+   "id": 11,
+   "name": "Forearms"
+  },
+  {
+   "builtin_key": "Traps",
+   "id": 12,
+   "name": "Traps"
+  },
+  {
+   "builtin_key": "Lats",
+   "id": 13,
+   "name": "Lats"
+  },
+  {
+   "builtin_key": "Obliques",
+   "id": 14,
+   "name": "Obliques"
+  }
+ ],
+ "programs": [
+  {
+   "builtin_key": "Full Body A/B/C",
+   "description": "A classic three-day full-body template: one squat/press/row day, one deadlift/press/pull day, and one accessory-focused day. Copy it and adjust weights/increments to your own.",
+   "id": 1,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "Full Body A/B/C",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 1,
+     "name": "Workout A",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 1,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 1
+      },
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 2,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 1
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 3,
+       "max_reps": 10,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 1
+      }
+     ],
+     "program": 1,
+     "scheduled_weekday": 0
+    },
+    {
+     "id": 2,
+     "name": "Workout B",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 3,
+       "exercise_name": "Conventional Deadlift",
+       "id": 4,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 1,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 2
+      },
+      {
+       "exercise": 4,
+       "exercise_name": "Overhead Press",
+       "id": 5,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 2
+      },
+      {
+       "exercise": 11,
+       "exercise_name": "Lat Pulldown",
+       "id": 6,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 2
+      }
+     ],
+     "program": 1,
+     "scheduled_weekday": 2
+    },
+    {
+     "id": 3,
+     "name": "Workout C",
+     "notes": "",
+     "order": 2,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 7,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 3
+      },
+      {
+       "exercise": 7,
+       "exercise_name": "Dumbbell Bench Press",
+       "id": 8,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 3
+      },
+      {
+       "exercise": 9,
+       "exercise_name": "Dumbbell Bicep Curl",
+       "id": 9,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 3
+      },
+      {
+       "exercise": 10,
+       "exercise_name": "Triceps Pushdown",
+       "id": 10,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 3
+      }
+     ],
+     "program": 1,
+     "scheduled_weekday": 4
+    }
+   ]
+  },
+  {
+   "builtin_key": "Arnold Split (6-Day)",
+   "description": "The classic 6-day bodybuilding split popularized by Arnold Schwarzenegger in the 1970s: chest/back, shoulders/arms, and legs, each trained twice a week. Rotate through all three workouts, then repeat - not tied to fixed calendar days.",
+   "id": 2,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "Arnold Split (6-Day)",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 4,
+     "name": "Chest & Back",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 11,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 4
+      },
+      {
+       "exercise": 7,
+       "exercise_name": "Dumbbell Bench Press",
+       "id": 12,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 4
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 13,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 4
+      },
+      {
+       "exercise": 11,
+       "exercise_name": "Lat Pulldown",
+       "id": 14,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 4
+      },
+      {
+       "exercise": 6,
+       "exercise_name": "Pull-Up",
+       "id": 15,
+       "max_reps": 10,
+       "min_reps": 5,
+       "notes": "",
+       "order": 4,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 4
+      }
+     ],
+     "program": 2,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 5,
+     "name": "Shoulders & Arms",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 4,
+       "exercise_name": "Overhead Press",
+       "id": 16,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 5
+      },
+      {
+       "exercise": 8,
+       "exercise_name": "Dumbbell Shoulder Press",
+       "id": 17,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 5
+      },
+      {
+       "exercise": 9,
+       "exercise_name": "Dumbbell Bicep Curl",
+       "id": 18,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 5
+      },
+      {
+       "exercise": 10,
+       "exercise_name": "Triceps Pushdown",
+       "id": 19,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 5
+      }
+     ],
+     "program": 2,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 6,
+     "name": "Legs",
+     "notes": "",
+     "order": 2,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 20,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 6
+      },
+      {
+       "exercise": 12,
+       "exercise_name": "Leg Press",
+       "id": 21,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 6
+      },
+      {
+       "exercise": 13,
+       "exercise_name": "Leg Curl",
+       "id": 22,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 6
+      },
+      {
+       "exercise": 14,
+       "exercise_name": "Calf Raise",
+       "id": 23,
+       "max_reps": 15,
+       "min_reps": 12,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 6
+      }
+     ],
+     "program": 2,
+     "scheduled_weekday": null
+    }
+   ]
+  },
+  {
+   "builtin_key": "Push/Pull/Legs",
+   "description": "A widely used 3-day split organized by movement pattern rather than body part: pushing muscles, pulling muscles, then legs. Popular for both strength and bodybuilding goals.",
+   "id": 3,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "Push/Pull/Legs",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 7,
+     "name": "Push",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 24,
+       "max_reps": 8,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 7
+      },
+      {
+       "exercise": 4,
+       "exercise_name": "Overhead Press",
+       "id": 25,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 7
+      },
+      {
+       "exercise": 8,
+       "exercise_name": "Dumbbell Shoulder Press",
+       "id": 26,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 7
+      },
+      {
+       "exercise": 10,
+       "exercise_name": "Triceps Pushdown",
+       "id": 27,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 7
+      }
+     ],
+     "program": 3,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 8,
+     "name": "Pull",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 3,
+       "exercise_name": "Conventional Deadlift",
+       "id": 28,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 8
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 29,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 8
+      },
+      {
+       "exercise": 11,
+       "exercise_name": "Lat Pulldown",
+       "id": 30,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 8
+      },
+      {
+       "exercise": 9,
+       "exercise_name": "Dumbbell Bicep Curl",
+       "id": 31,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 8
+      }
+     ],
+     "program": 3,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 9,
+     "name": "Legs",
+     "notes": "",
+     "order": 2,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 32,
+       "max_reps": 8,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 9
+      },
+      {
+       "exercise": 12,
+       "exercise_name": "Leg Press",
+       "id": 33,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 9
+      },
+      {
+       "exercise": 13,
+       "exercise_name": "Leg Curl",
+       "id": 34,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 9
+      },
+      {
+       "exercise": 14,
+       "exercise_name": "Calf Raise",
+       "id": 35,
+       "max_reps": 15,
+       "min_reps": 12,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 9
+      }
+     ],
+     "program": 3,
+     "scheduled_weekday": null
+    }
+   ]
+  },
+  {
+   "builtin_key": "5x5 Strength (A/B)",
+   "description": "A classic beginner barbell strength program: two alternating full-body workouts built around low-rep, high-set compound lifts with linear weight progression each session.",
+   "id": 4,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "5x5 Strength (A/B)",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 10,
+     "name": "Workout A",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 36,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 5,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 10
+      },
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 37,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 5,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 10
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 38,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 5,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 10
+      }
+     ],
+     "program": 4,
+     "scheduled_weekday": 0
+    },
+    {
+     "id": 11,
+     "name": "Workout B",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 39,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 5,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 11
+      },
+      {
+       "exercise": 4,
+       "exercise_name": "Overhead Press",
+       "id": 40,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 5,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 11
+      },
+      {
+       "exercise": 3,
+       "exercise_name": "Conventional Deadlift",
+       "id": 41,
+       "max_reps": 5,
+       "min_reps": 5,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 1,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 11
+      }
+     ],
+     "program": 4,
+     "scheduled_weekday": 2
+    }
+   ]
+  },
+  {
+   "builtin_key": "Upper/Lower Split (4-Day)",
+   "description": "A 4-day split alternating upper-body and lower-body sessions twice each per week - a common middle ground between full-body and single-muscle-group routines, popular for balancing strength and volume without training every day.",
+   "id": 5,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "Upper/Lower Split (4-Day)",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 12,
+     "name": "Upper A",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 42,
+       "max_reps": 8,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 12
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 43,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 12
+      },
+      {
+       "exercise": 4,
+       "exercise_name": "Overhead Press",
+       "id": 44,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 12
+      },
+      {
+       "exercise": 11,
+       "exercise_name": "Lat Pulldown",
+       "id": 45,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 12
+      },
+      {
+       "exercise": 9,
+       "exercise_name": "Dumbbell Bicep Curl",
+       "id": 46,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 4,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 12
+      }
+     ],
+     "program": 5,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 13,
+     "name": "Lower A",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 47,
+       "max_reps": 8,
+       "min_reps": 5,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "linear",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 13
+      },
+      {
+       "exercise": 16,
+       "exercise_name": "Romanian Deadlift",
+       "id": 48,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 13
+      },
+      {
+       "exercise": 12,
+       "exercise_name": "Leg Press",
+       "id": 49,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 13
+      },
+      {
+       "exercise": 14,
+       "exercise_name": "Calf Raise",
+       "id": 50,
+       "max_reps": 15,
+       "min_reps": 12,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 13
+      }
+     ],
+     "program": 5,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 14,
+     "name": "Upper B",
+     "notes": "",
+     "order": 2,
+     "prescriptions": [
+      {
+       "exercise": 18,
+       "exercise_name": "Incline Barbell Bench Press",
+       "id": 51,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 14
+      },
+      {
+       "exercise": 20,
+       "exercise_name": "Seated Cable Row",
+       "id": 52,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 14
+      },
+      {
+       "exercise": 8,
+       "exercise_name": "Dumbbell Shoulder Press",
+       "id": 53,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 14
+      },
+      {
+       "exercise": 21,
+       "exercise_name": "Face Pull",
+       "id": 54,
+       "max_reps": 15,
+       "min_reps": 12,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 14
+      },
+      {
+       "exercise": 24,
+       "exercise_name": "Skull Crusher",
+       "id": 55,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 4,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 14
+      }
+     ],
+     "program": 5,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 15,
+     "name": "Lower B",
+     "notes": "",
+     "order": 3,
+     "prescriptions": [
+      {
+       "exercise": 17,
+       "exercise_name": "Front Squat",
+       "id": 56,
+       "max_reps": 10,
+       "min_reps": 6,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 15
+      },
+      {
+       "exercise": 19,
+       "exercise_name": "Hip Thrust",
+       "id": 57,
+       "max_reps": 12,
+       "min_reps": 8,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 15
+      },
+      {
+       "exercise": 13,
+       "exercise_name": "Leg Curl",
+       "id": 58,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 2,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 15
+      },
+      {
+       "exercise": 14,
+       "exercise_name": "Calf Raise",
+       "id": 59,
+       "max_reps": 15,
+       "min_reps": 12,
+       "notes": "",
+       "order": 3,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 4,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 15
+      }
+     ],
+     "program": 5,
+     "scheduled_weekday": null
+    }
+   ]
+  },
+  {
+   "builtin_key": "German Volume Training",
+   "description": "The classic 10x10 high-volume method: one main lift per workout done for ten sets of ten reps at a fixed, moderate weight, paired with a lighter accessory movement. Brutal on paper, simple in practice - built for muscle growth, not 1-rep-max testing.",
+   "id": 6,
+   "is_continuous": false,
+   "is_system_template": true,
+   "is_template": true,
+   "name": "German Volume Training",
+   "owner": null,
+   "version": 1,
+   "workouts": [
+    {
+     "id": 16,
+     "name": "Workout A",
+     "notes": "",
+     "order": 0,
+     "prescriptions": [
+      {
+       "exercise": 1,
+       "exercise_name": "Barbell Back Squat",
+       "id": 60,
+       "max_reps": 10,
+       "min_reps": 10,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "manual",
+       "set_count": 10,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 16
+      },
+      {
+       "exercise": 13,
+       "exercise_name": "Leg Curl",
+       "id": 61,
+       "max_reps": 12,
+       "min_reps": 10,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "double_progression",
+       "set_count": 3,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 16
+      }
+     ],
+     "program": 6,
+     "scheduled_weekday": null
+    },
+    {
+     "id": 17,
+     "name": "Workout B",
+     "notes": "",
+     "order": 1,
+     "prescriptions": [
+      {
+       "exercise": 2,
+       "exercise_name": "Barbell Bench Press",
+       "id": 62,
+       "max_reps": 10,
+       "min_reps": 10,
+       "notes": "",
+       "order": 0,
+       "percentage_target": null,
+       "progression_method": "manual",
+       "set_count": 10,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 17
+      },
+      {
+       "exercise": 5,
+       "exercise_name": "Barbell Row",
+       "id": 63,
+       "max_reps": 10,
+       "min_reps": 10,
+       "notes": "",
+       "order": 1,
+       "percentage_target": null,
+       "progression_method": "manual",
+       "set_count": 10,
+       "target_rir": null,
+       "target_rpe": null,
+       "target_weight": null,
+       "weight_increment": "2.50",
+       "workout": 17
+      }
+     ],
+     "program": 6,
+     "scheduled_weekday": null
+    }
+   ]
+  }
+ ],
+ "recipes": [
+  {
+   "builtin_key": "Bulk breakfast - Oats & peanut butter",
+   "id": 1,
+   "ingredients": [
+    {
+     "food": 1,
+     "id": 1,
+     "order": 0,
+     "quantity": "90.00",
+     "recipe": 1
+    },
+    {
+     "food": 3,
+     "id": 2,
+     "order": 1,
+     "quantity": "120.00",
+     "recipe": 1
+    },
+    {
+     "food": 4,
+     "id": 3,
+     "order": 2,
+     "quantity": "25.00",
+     "recipe": 1
+    },
+    {
+     "food": 12,
+     "id": 4,
+     "order": 3,
+     "quantity": "150.00",
+     "recipe": 1
+    }
+   ],
+   "instructions": "Mix the oats into the yogurt, top with banana slices and peanut butter.",
+   "name": "Bulk breakfast - Oats & peanut butter",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Bulk breakfast - Eggs on toast",
+   "id": 2,
+   "ingredients": [
+    {
+     "food": 2,
+     "id": 5,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 2
+    },
+    {
+     "food": 5,
+     "id": 6,
+     "order": 1,
+     "quantity": "90.00",
+     "recipe": 2
+    },
+    {
+     "food": 4,
+     "id": 7,
+     "order": 2,
+     "quantity": "20.00",
+     "recipe": 2
+    },
+    {
+     "food": 16,
+     "id": 8,
+     "order": 3,
+     "quantity": "10.00",
+     "recipe": 2
+    }
+   ],
+   "instructions": "Fry or scramble the eggs, serve on toasted bread with peanut butter and a drizzle of olive oil.",
+   "name": "Bulk breakfast - Eggs on toast",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Bulk lunch - Chicken & rice bowl",
+   "id": 3,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 9,
+     "order": 0,
+     "quantity": "200.00",
+     "recipe": 3
+    },
+    {
+     "food": 7,
+     "id": 10,
+     "order": 1,
+     "quantity": "300.00",
+     "recipe": 3
+    },
+    {
+     "food": 16,
+     "id": 11,
+     "order": 2,
+     "quantity": "15.00",
+     "recipe": 3
+    },
+    {
+     "food": 10,
+     "id": 12,
+     "order": 3,
+     "quantity": "100.00",
+     "recipe": 3
+    }
+   ],
+   "instructions": "Cook the chicken and rice, toss with olive oil, serve with steamed broccoli.",
+   "name": "Bulk lunch - Chicken & rice bowl",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Bulk lunch - Tuna & sweet potato",
+   "id": 4,
+   "ingredients": [
+    {
+     "food": 14,
+     "id": 13,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 4
+    },
+    {
+     "food": 9,
+     "id": 14,
+     "order": 1,
+     "quantity": "300.00",
+     "recipe": 4
+    },
+    {
+     "food": 16,
+     "id": 15,
+     "order": 2,
+     "quantity": "15.00",
+     "recipe": 4
+    },
+    {
+     "food": 11,
+     "id": 16,
+     "order": 3,
+     "quantity": "80.00",
+     "recipe": 4
+    }
+   ],
+   "instructions": "Roast the sweet potato, flake in the tuna, drizzle with olive oil and serve with spinach.",
+   "name": "Bulk lunch - Tuna & sweet potato",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Bulk dinner - Salmon & rice",
+   "id": 5,
+   "ingredients": [
+    {
+     "food": 8,
+     "id": 17,
+     "order": 0,
+     "quantity": "200.00",
+     "recipe": 5
+    },
+    {
+     "food": 7,
+     "id": 18,
+     "order": 1,
+     "quantity": "250.00",
+     "recipe": 5
+    },
+    {
+     "food": 16,
+     "id": 19,
+     "order": 2,
+     "quantity": "10.00",
+     "recipe": 5
+    },
+    {
+     "food": 10,
+     "id": 20,
+     "order": 3,
+     "quantity": "120.00",
+     "recipe": 5
+    }
+   ],
+   "instructions": "Pan-sear the salmon, serve over rice with steamed broccoli and a little olive oil.",
+   "name": "Bulk dinner - Salmon & rice",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Bulk dinner - Chicken & sweet potato",
+   "id": 6,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 21,
+     "order": 0,
+     "quantity": "220.00",
+     "recipe": 6
+    },
+    {
+     "food": 9,
+     "id": 22,
+     "order": 1,
+     "quantity": "280.00",
+     "recipe": 6
+    },
+    {
+     "food": 15,
+     "id": 23,
+     "order": 2,
+     "quantity": "20.00",
+     "recipe": 6
+    },
+    {
+     "food": 16,
+     "id": 24,
+     "order": 3,
+     "quantity": "10.00",
+     "recipe": 6
+    }
+   ],
+   "instructions": "Roast the chicken and sweet potato together, top with crushed almonds and olive oil.",
+   "name": "Bulk dinner - Chicken & sweet potato",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner breakfast - Egg & spinach scramble",
+   "id": 7,
+   "ingredients": [
+    {
+     "food": 2,
+     "id": 25,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 7
+    },
+    {
+     "food": 11,
+     "id": 26,
+     "order": 1,
+     "quantity": "100.00",
+     "recipe": 7
+    },
+    {
+     "food": 13,
+     "id": 27,
+     "order": 2,
+     "quantity": "100.00",
+     "recipe": 7
+    }
+   ],
+   "instructions": "Scramble the eggs with the spinach, serve with cottage cheese on the side.",
+   "name": "Fatburner breakfast - Egg & spinach scramble",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner breakfast - Greek yogurt bowl",
+   "id": 8,
+   "ingredients": [
+    {
+     "food": 12,
+     "id": 28,
+     "order": 0,
+     "quantity": "200.00",
+     "recipe": 8
+    },
+    {
+     "food": 3,
+     "id": 29,
+     "order": 1,
+     "quantity": "80.00",
+     "recipe": 8
+    },
+    {
+     "food": 15,
+     "id": 30,
+     "order": 2,
+     "quantity": "10.00",
+     "recipe": 8
+    }
+   ],
+   "instructions": "Top the yogurt with sliced banana and a few crushed almonds.",
+   "name": "Fatburner breakfast - Greek yogurt bowl",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner lunch - Chicken & broccoli",
+   "id": 9,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 31,
+     "order": 0,
+     "quantity": "200.00",
+     "recipe": 9
+    },
+    {
+     "food": 10,
+     "id": 32,
+     "order": 1,
+     "quantity": "200.00",
+     "recipe": 9
+    },
+    {
+     "food": 16,
+     "id": 33,
+     "order": 2,
+     "quantity": "5.00",
+     "recipe": 9
+    }
+   ],
+   "instructions": "Grill the chicken, steam the broccoli, finish with a light drizzle of olive oil.",
+   "name": "Fatburner lunch - Chicken & broccoli",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner lunch - Tuna & spinach salad",
+   "id": 10,
+   "ingredients": [
+    {
+     "food": 14,
+     "id": 34,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 10
+    },
+    {
+     "food": 11,
+     "id": 35,
+     "order": 1,
+     "quantity": "100.00",
+     "recipe": 10
+    },
+    {
+     "food": 16,
+     "id": 36,
+     "order": 2,
+     "quantity": "5.00",
+     "recipe": 10
+    }
+   ],
+   "instructions": "Toss the tuna with the spinach and a small drizzle of olive oil.",
+   "name": "Fatburner lunch - Tuna & spinach salad",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner dinner - Salmon & greens",
+   "id": 11,
+   "ingredients": [
+    {
+     "food": 8,
+     "id": 37,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 11
+    },
+    {
+     "food": 10,
+     "id": 38,
+     "order": 1,
+     "quantity": "200.00",
+     "recipe": 11
+    },
+    {
+     "food": 11,
+     "id": 39,
+     "order": 2,
+     "quantity": "80.00",
+     "recipe": 11
+    }
+   ],
+   "instructions": "Bake the salmon, serve with steamed broccoli and spinach.",
+   "name": "Fatburner dinner - Salmon & greens",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Fatburner dinner - Chicken & cottage cheese",
+   "id": 12,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 40,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 12
+    },
+    {
+     "food": 13,
+     "id": 41,
+     "order": 1,
+     "quantity": "150.00",
+     "recipe": 12
+    },
+    {
+     "food": 11,
+     "id": 42,
+     "order": 2,
+     "quantity": "100.00",
+     "recipe": 12
+    }
+   ],
+   "instructions": "Grill the chicken, serve with cottage cheese and wilted spinach.",
+   "name": "Fatburner dinner - Chicken & cottage cheese",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced breakfast - Oats & yogurt",
+   "id": 13,
+   "ingredients": [
+    {
+     "food": 1,
+     "id": 43,
+     "order": 0,
+     "quantity": "60.00",
+     "recipe": 13
+    },
+    {
+     "food": 12,
+     "id": 44,
+     "order": 1,
+     "quantity": "150.00",
+     "recipe": 13
+    },
+    {
+     "food": 3,
+     "id": 45,
+     "order": 2,
+     "quantity": "100.00",
+     "recipe": 13
+    }
+   ],
+   "instructions": "Mix the oats into the yogurt and top with sliced banana.",
+   "name": "Balanced breakfast - Oats & yogurt",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced breakfast - Eggs on toast",
+   "id": 14,
+   "ingredients": [
+    {
+     "food": 2,
+     "id": 46,
+     "order": 0,
+     "quantity": "100.00",
+     "recipe": 14
+    },
+    {
+     "food": 5,
+     "id": 47,
+     "order": 1,
+     "quantity": "60.00",
+     "recipe": 14
+    },
+    {
+     "food": 16,
+     "id": 48,
+     "order": 2,
+     "quantity": "5.00",
+     "recipe": 14
+    }
+   ],
+   "instructions": "Fry or scramble the eggs, serve on toasted bread with a little olive oil.",
+   "name": "Balanced breakfast - Eggs on toast",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced lunch - Chicken & rice",
+   "id": 15,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 49,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 15
+    },
+    {
+     "food": 7,
+     "id": 50,
+     "order": 1,
+     "quantity": "180.00",
+     "recipe": 15
+    },
+    {
+     "food": 10,
+     "id": 51,
+     "order": 2,
+     "quantity": "100.00",
+     "recipe": 15
+    },
+    {
+     "food": 16,
+     "id": 52,
+     "order": 3,
+     "quantity": "8.00",
+     "recipe": 15
+    }
+   ],
+   "instructions": "Cook the chicken and rice, serve with steamed broccoli and olive oil.",
+   "name": "Balanced lunch - Chicken & rice",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced lunch - Tuna sandwich",
+   "id": 16,
+   "ingredients": [
+    {
+     "food": 14,
+     "id": 53,
+     "order": 0,
+     "quantity": "100.00",
+     "recipe": 16
+    },
+    {
+     "food": 5,
+     "id": 54,
+     "order": 1,
+     "quantity": "90.00",
+     "recipe": 16
+    },
+    {
+     "food": 11,
+     "id": 55,
+     "order": 2,
+     "quantity": "40.00",
+     "recipe": 16
+    }
+   ],
+   "instructions": "Mix the tuna with the spinach, serve between slices of toasted bread.",
+   "name": "Balanced lunch - Tuna sandwich",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced dinner - Salmon & sweet potato",
+   "id": 17,
+   "ingredients": [
+    {
+     "food": 8,
+     "id": 56,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 17
+    },
+    {
+     "food": 9,
+     "id": 57,
+     "order": 1,
+     "quantity": "200.00",
+     "recipe": 17
+    },
+    {
+     "food": 11,
+     "id": 58,
+     "order": 2,
+     "quantity": "60.00",
+     "recipe": 17
+    }
+   ],
+   "instructions": "Bake the salmon and sweet potato, serve with wilted spinach.",
+   "name": "Balanced dinner - Salmon & sweet potato",
+   "owner": null,
+   "servings": 1
+  },
+  {
+   "builtin_key": "Balanced dinner - Chicken & vegetables",
+   "id": 18,
+   "ingredients": [
+    {
+     "food": 6,
+     "id": 59,
+     "order": 0,
+     "quantity": "150.00",
+     "recipe": 18
+    },
+    {
+     "food": 10,
+     "id": 60,
+     "order": 1,
+     "quantity": "150.00",
+     "recipe": 18
+    },
+    {
+     "food": 9,
+     "id": 61,
+     "order": 2,
+     "quantity": "100.00",
+     "recipe": 18
+    },
+    {
+     "food": 16,
+     "id": 62,
+     "order": 3,
+     "quantity": "8.00",
+     "recipe": 18
+    }
+   ],
+   "instructions": "Roast the chicken with the broccoli and sweet potato, finish with olive oil.",
+   "name": "Balanced dinner - Chicken & vegetables",
+   "owner": null,
+   "servings": 1
+  }
+ ],
+ "stretch_routines": [
+  {
+   "active": true,
+   "builtin_key": "Lower Body Cool-Down",
+   "description": "Five static stretches for the legs and hips after a lower-body workout.",
+   "id": 1,
+   "is_custom": false,
+   "items": [
+    {
+     "hold_seconds": 30,
+     "id": 1,
+     "order": 0,
+     "rest_seconds": 10,
+     "routine": 1,
+     "sets": 1,
+     "stretch": 1
+    },
+    {
+     "hold_seconds": 30,
+     "id": 2,
+     "order": 1,
+     "rest_seconds": 10,
+     "routine": 1,
+     "sets": 1,
+     "stretch": 2
+    },
+    {
+     "hold_seconds": 30,
+     "id": 3,
+     "order": 2,
+     "rest_seconds": 10,
+     "routine": 1,
+     "sets": 1,
+     "stretch": 4
+    },
+    {
+     "hold_seconds": 30,
+     "id": 4,
+     "order": 3,
+     "rest_seconds": 10,
+     "routine": 1,
+     "sets": 1,
+     "stretch": 8
+    },
+    {
+     "hold_seconds": 30,
+     "id": 5,
+     "order": 4,
+     "rest_seconds": 10,
+     "routine": 1,
+     "sets": 1,
+     "stretch": 11
+    }
+   ],
+   "name": "Lower Body Cool-Down",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Upper Body Cool-Down",
+   "description": "Chest, shoulders, arms and neck after an upper-body workout.",
+   "id": 2,
+   "is_custom": false,
+   "items": [
+    {
+     "hold_seconds": 30,
+     "id": 6,
+     "order": 0,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 14
+    },
+    {
+     "hold_seconds": 30,
+     "id": 7,
+     "order": 1,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 15
+    },
+    {
+     "hold_seconds": 30,
+     "id": 8,
+     "order": 2,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 16
+    },
+    {
+     "hold_seconds": 30,
+     "id": 9,
+     "order": 3,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 17
+    },
+    {
+     "hold_seconds": 45,
+     "id": 10,
+     "order": 4,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 18
+    },
+    {
+     "hold_seconds": 20,
+     "id": 11,
+     "order": 5,
+     "rest_seconds": 10,
+     "routine": 2,
+     "sets": 1,
+     "stretch": 24
+    }
+   ],
+   "name": "Upper Body Cool-Down",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Full Body Stretch",
+   "description": "About ten minutes of static stretching from head to toe.",
+   "id": 3,
+   "is_custom": false,
+   "items": [
+    {
+     "hold_seconds": 30,
+     "id": 12,
+     "order": 0,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 27
+    },
+    {
+     "hold_seconds": 45,
+     "id": 13,
+     "order": 1,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 18
+    },
+    {
+     "hold_seconds": 30,
+     "id": 14,
+     "order": 2,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 13
+    },
+    {
+     "hold_seconds": 30,
+     "id": 15,
+     "order": 3,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 2
+    },
+    {
+     "hold_seconds": 30,
+     "id": 16,
+     "order": 4,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 6
+    },
+    {
+     "hold_seconds": 30,
+     "id": 17,
+     "order": 5,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 8
+    },
+    {
+     "hold_seconds": 30,
+     "id": 18,
+     "order": 6,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 22
+    },
+    {
+     "hold_seconds": 30,
+     "id": 19,
+     "order": 7,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 14
+    },
+    {
+     "hold_seconds": 30,
+     "id": 20,
+     "order": 8,
+     "rest_seconds": 10,
+     "routine": 3,
+     "sets": 1,
+     "stretch": 15
+    }
+   ],
+   "name": "Full Body Stretch",
+   "owner": null
+  },
+  {
+   "active": true,
+   "builtin_key": "Morning Mobility",
+   "description": "Gentle dynamic movements to wake the body up, or as a warm-up.",
+   "id": 4,
+   "is_custom": false,
+   "items": [
+    {
+     "hold_seconds": 30,
+     "id": 21,
+     "order": 0,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 27
+    },
+    {
+     "hold_seconds": 30,
+     "id": 22,
+     "order": 1,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 28
+    },
+    {
+     "hold_seconds": 30,
+     "id": 23,
+     "order": 2,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 29
+    },
+    {
+     "hold_seconds": 30,
+     "id": 24,
+     "order": 3,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 30
+    },
+    {
+     "hold_seconds": 30,
+     "id": 25,
+     "order": 4,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 31
+    },
+    {
+     "hold_seconds": 30,
+     "id": 26,
+     "order": 5,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 32
+    },
+    {
+     "hold_seconds": 45,
+     "id": 27,
+     "order": 6,
+     "rest_seconds": 10,
+     "routine": 4,
+     "sets": 1,
+     "stretch": 12
+    }
+   ],
+   "name": "Morning Mobility",
+   "owner": null
+  }
+ ],
+ "stretches": [
+  {
+   "active": true,
+   "builtin_key": "Standing Quad Stretch",
+   "default_hold_seconds": 30,
+   "id": 1,
+   "instructions": "- Stand tall and hold onto a wall or chair for balance.\n- Bend one knee and grab that ankle behind you.\n- Pull the heel gently towards your glutes, keeping the knees together and the hips pushed slightly forward.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    6
+   ],
+   "name": "Standing Quad Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Kneeling Hip Flexor Stretch",
+   "default_hold_seconds": 30,
+   "id": 2,
+   "instructions": "- Kneel on one knee with the other foot flat on the floor in front of you.\n- Tuck the pelvis under and squeeze the glute of the kneeling leg.\n- Shift your hips forward until you feel a stretch at the front of the hip.\n- Keep the torso upright; hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    8,
+    6
+   ],
+   "name": "Kneeling Hip Flexor Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Couch Stretch",
+   "default_hold_seconds": 45,
+   "id": 3,
+   "instructions": "- Kneel with your back to a wall or couch and slide one shin up against it.\n- Step the other foot forward into a lunge.\n- Slowly raise your torso upright while squeezing the glute of the back leg.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    6
+   ],
+   "name": "Couch Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Standing Hamstring Stretch",
+   "default_hold_seconds": 30,
+   "id": 4,
+   "instructions": "- Place one heel on a low step or bench with the leg straight.\n- Keep your back flat and hinge forward from the hips.\n- Stop when you feel a stretch along the back of the thigh.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    7
+   ],
+   "name": "Standing Hamstring Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Lying Hamstring Stretch",
+   "default_hold_seconds": 30,
+   "id": 5,
+   "instructions": "- Lie on your back with both legs extended.\n- Raise one leg, holding behind the thigh or calf (or use a towel around the foot).\n- Keep the knee as straight as is comfortable and pull the leg gently towards you.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    7
+   ],
+   "name": "Lying Hamstring Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Seated Forward Fold",
+   "default_hold_seconds": 30,
+   "id": 6,
+   "instructions": "- Sit with both legs straight out in front of you.\n- Lengthen your spine, then hinge forward from the hips.\n- Reach towards your feet without forcing it.\n- Breathe slowly and relax a little deeper on each exhale.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    7
+   ],
+   "name": "Seated Forward Fold",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Wide-Leg Forward Fold",
+   "default_hold_seconds": 30,
+   "id": 7,
+   "instructions": "- Stand with your feet wide apart and toes pointing forward.\n- Hinge forward from the hips with a flat back.\n- Let your hands rest on the floor or your shins.\n- Relax your head and neck, and come up slowly.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    7
+   ],
+   "name": "Wide-Leg Forward Fold",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Figure-Four Stretch",
+   "default_hold_seconds": 30,
+   "id": 8,
+   "instructions": "- Lie on your back with both knees bent.\n- Cross one ankle over the opposite knee.\n- Pull the lower leg towards your chest by holding behind the thigh.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    8
+   ],
+   "name": "Figure-Four Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Pigeon Pose",
+   "default_hold_seconds": 45,
+   "id": 9,
+   "instructions": "- From hands and knees, bring one knee forward behind the same wrist.\n- Extend the other leg straight back.\n- Square your hips and lower your torso over the front leg as far as is comfortable.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    8,
+    6
+   ],
+   "name": "Pigeon Pose",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Knee-to-Chest Stretch",
+   "default_hold_seconds": 30,
+   "id": 10,
+   "instructions": "- Lie on your back with both legs extended.\n- Pull one knee towards your chest with both hands.\n- Keep the other leg relaxed on the floor.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    8
+   ],
+   "name": "Knee-to-Chest Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Wall Calf Stretch",
+   "default_hold_seconds": 30,
+   "id": 11,
+   "instructions": "- Stand facing a wall with your hands on it.\n- Step one foot back, keeping that leg straight and the heel on the floor.\n- Lean into the wall until you feel a stretch in the calf.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    9
+   ],
+   "name": "Wall Calf Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Deep Squat Hold",
+   "default_hold_seconds": 45,
+   "id": 12,
+   "instructions": "- Stand with your feet a little wider than hip-width.\n- Sit down into the deepest squat you can hold with your heels on the floor.\n- Use your elbows to gently press the knees outwards.\n- Keep your chest up and breathe.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    9,
+    8,
+    6
+   ],
+   "name": "Deep Squat Hold",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Downward Dog",
+   "default_hold_seconds": 30,
+   "id": 13,
+   "instructions": "- Start on hands and knees, then lift your hips up and back.\n- Straighten your arms and legs as far as is comfortable to form an inverted V.\n- Press your heels towards the floor and your chest towards your thighs.\n- Keep breathing slowly.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    9,
+    7,
+    3
+   ],
+   "name": "Downward Dog",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Doorway Chest Stretch",
+   "default_hold_seconds": 30,
+   "id": 14,
+   "instructions": "- Stand in a doorway and place your forearms on the frame at shoulder height.\n- Step one foot forward.\n- Lean gently forward until you feel a stretch across the chest.\n- Keep your shoulders down and away from your ears.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    1,
+    3
+   ],
+   "name": "Doorway Chest Stretch",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Cross-Body Shoulder Stretch",
+   "default_hold_seconds": 30,
+   "id": 15,
+   "instructions": "- Bring one arm straight across your chest.\n- Use the other hand to press it gently towards your body, above the elbow.\n- Keep the shoulder down and relaxed.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    3
+   ],
+   "name": "Cross-Body Shoulder Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Overhead Triceps Stretch",
+   "default_hold_seconds": 30,
+   "id": 16,
+   "instructions": "- Raise one arm overhead and bend the elbow so the hand drops behind your head.\n- Use the other hand to gently push the elbow down and back.\n- Keep your head up and your ribs down.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    13,
+    5
+   ],
+   "name": "Overhead Triceps Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Biceps Wall Stretch",
+   "default_hold_seconds": 30,
+   "id": 17,
+   "instructions": "- Stand side-on to a wall and place your palm on it slightly behind you, arm straight at shoulder height.\n- Slowly turn your body away from the wall.\n- Stop when you feel a stretch along the front of the arm.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    4,
+    1
+   ],
+   "name": "Biceps Wall Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Child's Pose",
+   "default_hold_seconds": 45,
+   "id": 18,
+   "instructions": "- Kneel and sit back on your heels with the knees apart.\n- Walk your hands forward and lower your chest towards the floor.\n- Reach your arms long and let your forehead rest down.\n- Breathe into your back.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    13
+   ],
+   "name": "Child's Pose",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Standing Side Bend",
+   "default_hold_seconds": 30,
+   "id": 19,
+   "instructions": "- Stand with your feet hip-width apart.\n- Raise one arm overhead.\n- Lean to the opposite side, reaching up and over without twisting.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    13,
+    14
+   ],
+   "name": "Standing Side Bend",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Thread the Needle",
+   "default_hold_seconds": 30,
+   "id": 20,
+   "instructions": "- Start on hands and knees.\n- Slide one arm under your body towards the opposite side, palm up.\n- Lower that shoulder and the side of your head towards the floor.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    3
+   ],
+   "name": "Thread the Needle",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Cobra Stretch",
+   "default_hold_seconds": 30,
+   "id": 21,
+   "instructions": "- Lie face down with your hands under your shoulders.\n- Press up slowly, lifting your chest while the hips stay on the floor.\n- Keep your shoulders away from your ears.\n- Only go as high as your lower back is comfortable.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    10
+   ],
+   "name": "Cobra Stretch",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Supine Spinal Twist",
+   "default_hold_seconds": 30,
+   "id": 22,
+   "instructions": "- Lie on your back with your arms out to the sides.\n- Bend one knee and let it fall across your body to the opposite side.\n- Keep both shoulders on the floor and turn your head the other way.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    8,
+    14
+   ],
+   "name": "Supine Spinal Twist",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Upper Back Stretch",
+   "default_hold_seconds": 30,
+   "id": 23,
+   "instructions": "- Clasp your hands in front of you at shoulder height.\n- Round your upper back and push your hands away.\n- Let your head drop gently between your arms.\n- Feel the stretch between your shoulder blades.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    2,
+    12
+   ],
+   "name": "Upper Back Stretch",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Neck Side Stretch",
+   "default_hold_seconds": 20,
+   "id": 24,
+   "instructions": "- Sit or stand tall with your shoulders relaxed.\n- Tilt your ear towards one shoulder.\n- Optionally rest the hand on that side gently on your head, without pulling.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    12
+   ],
+   "name": "Neck Side Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Wrist Flexor Stretch",
+   "default_hold_seconds": 20,
+   "id": 25,
+   "instructions": "- Extend one arm straight in front of you, palm up.\n- Use the other hand to gently pull the fingers down and back.\n- Keep the elbow straight.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    11
+   ],
+   "name": "Wrist Flexor Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Wrist Extensor Stretch",
+   "default_hold_seconds": 20,
+   "id": 26,
+   "instructions": "- Extend one arm straight in front of you, palm down.\n- Use the other hand to gently bend the wrist down towards you.\n- Keep the elbow straight.\n- Hold, then switch sides.",
+   "is_custom": false,
+   "kind": "static",
+   "muscle_groups": [
+    11
+   ],
+   "name": "Wrist Extensor Stretch",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "Cat-Cow",
+   "default_hold_seconds": 30,
+   "id": 27,
+   "instructions": "- Start on hands and knees.\n- Inhale as you drop your belly and lift your chest and tailbone.\n- Exhale as you round your back and tuck your chin.\n- Move slowly with your breath.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    10,
+    2
+   ],
+   "name": "Cat-Cow",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Arm Circles",
+   "default_hold_seconds": 30,
+   "id": 28,
+   "instructions": "- Stand tall with your arms out to the sides.\n- Draw small circles, gradually making them bigger.\n- Switch direction halfway through.\n- Keep the movement smooth and controlled.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    3
+   ],
+   "name": "Arm Circles",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Hip Circles",
+   "default_hold_seconds": 30,
+   "id": 29,
+   "instructions": "- Stand with your hands on your hips and feet hip-width apart.\n- Draw big, slow circles with your hips.\n- Switch direction halfway through.\n- Keep your upper body still.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    8
+   ],
+   "name": "Hip Circles",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Torso Rotations",
+   "default_hold_seconds": 30,
+   "id": 30,
+   "instructions": "- Stand with your feet shoulder-width apart and arms relaxed.\n- Rotate your upper body from side to side, letting the arms swing.\n- Keep your hips facing forward.\n- Gradually increase the range of motion.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    2,
+    14
+   ],
+   "name": "Torso Rotations",
+   "owner": null,
+   "per_side": false
+  },
+  {
+   "active": true,
+   "builtin_key": "Leg Swings",
+   "default_hold_seconds": 30,
+   "id": 31,
+   "instructions": "- Stand side-on to a wall and hold it for balance.\n- Swing the outside leg forward and back in a controlled arc.\n- Let the range grow gradually with each swing.\n- Then switch sides.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    8,
+    7,
+    6
+   ],
+   "name": "Leg Swings",
+   "owner": null,
+   "per_side": true
+  },
+  {
+   "active": true,
+   "builtin_key": "World's Greatest Stretch",
+   "default_hold_seconds": 30,
+   "id": 32,
+   "instructions": "- Step into a long lunge and place both hands on the floor inside the front foot.\n- Drop the inside elbow towards the front ankle.\n- Rotate and reach that same arm up towards the ceiling.\n- Return and repeat slowly, then switch sides.",
+   "is_custom": false,
+   "kind": "dynamic",
+   "muscle_groups": [
+    2,
+    8,
+    7,
+    6
+   ],
+   "name": "World's Greatest Stretch",
+   "owner": null,
+   "per_side": true
+  }
+ ],
+ "version": "e8a782159e4e"
+}
