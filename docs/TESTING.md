@@ -27,6 +27,10 @@ HTTP server on localhost:
   document on the way into C++)
 - `SyncQueue`: order, nothing lost without a connection or across a
   restart, retry on 5xx, a rejected request dropped and reported
+- `Logger` (the app log): the level filter, a line on start whatever the
+  level, an API key masked wherever it appears, rotation keeping the
+  newest lines in order, and request paths without their query below
+  Debug
 
 ### Barcodes (`tests/barcode`)
 

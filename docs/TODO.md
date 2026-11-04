@@ -11,14 +11,19 @@ worth knowing, and housekeeping. Status per feature is in
 Every section has been tried in the emulator against the local IronStack
 (test user `jolla-emulator`), including the light theme, gigantic text and
 landscape. On the phone (2026-11-04) so far: the diary with the real
-account (which found the proxy link bug fixed in 0.6.1) and the barcode
-scanner's viewfinder (upright since 0.6.2).
+account (which found the proxy link bug fixed in 0.6.1), the barcode
+scanner's viewfinder (upright since 0.6.2), and 0.7.0's changes against
+IronStack 1.31.0 - the nutrition dashboard and its observed maintenance,
+the statistics page, the cool-down card on a finished workout, built-in
+names in Finnish and a group no longer counting your own message as
+unread - with no warnings or errors in the app's output.
 
 How: `tools/build.sh aarch64`, copy the RPM to `/tmp` on the phone,
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm` in the
-phone's own terminal (EMULATOR.md "Building for a phone"). The phone had
-0.6.3 installed on 2026-11-04; 0.7.0 is waiting in its `/tmp` (needs
-IronStack 1.31.0 on the server).
+phone's own terminal (EMULATOR.md "Building for a phone"). The phone has
+0.7.0 (2026-11-04). For the app's messages, use Settings > App log (from
+the next version on) or start it from the terminal with
+`harbour-ironstack 2>&1 | tee /tmp/ironstack.log`.
 
 - [ ] **Every section with the real account**: training (start, log sets,
   rest timer and its notification with the screen off, finish), programs,
@@ -52,6 +57,8 @@ IronStack 1.31.0 on the server).
   scrolling to the last field. (In the emulator they do; the earlier lost
   tap was the "Screenshot captured" banner, see EMULATOR.md.)
 - [ ] **Text sizes and landscape** on the phone's own screen.
+- [ ] **The app log**: Settings > App log at Debug, then Share it by email
+  (the emulator has no share targets) and Copy it into another app.
 
 ## 2. Development possible now
 

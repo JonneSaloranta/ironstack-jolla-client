@@ -43,6 +43,8 @@ later.
 - Cover shows the workout in progress and its duration; otherwise today's
   calories and protein against the target, with a quick entry action
 - Metric or imperial display, following the IronStack profile setting
+- An app log (Settings > Troubleshooting) to copy or share when something
+  goes wrong, from errors only up to every request
 
 ## API key
 
