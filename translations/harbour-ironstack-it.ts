@@ -264,6 +264,10 @@
         <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation>Per porzione circa %1 kcal · proteine %2 g · carboidrati %3 g · grassi %4 g</translation>
     </message>
+    <message>
+        <source>This app can&apos;t create this suggestion yet. Create it in the assistant on the web.</source>
+        <translation>Questa app non può ancora creare questo suggerimento. Crealo nell&apos;assistente sul web.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantPage</name>

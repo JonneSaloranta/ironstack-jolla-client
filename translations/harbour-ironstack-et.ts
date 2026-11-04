@@ -264,6 +264,10 @@
         <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation>Portsjonis umbes %1 kcal · valk %2 g · süsivesikud %3 g · rasv %4 g</translation>
     </message>
+    <message>
+        <source>This app can&apos;t create this suggestion yet. Create it in the assistant on the web.</source>
+        <translation>See rakendus ei oska seda soovitust veel luua. Loo see veebis assistendis.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantPage</name>

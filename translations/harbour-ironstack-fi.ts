@@ -264,6 +264,10 @@
         <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation>Annoksessa noin %1 kcal · proteiini %2 g · hiilihydraatit %3 g · rasva %4 g</translation>
     </message>
+    <message>
+        <source>This app can&apos;t create this suggestion yet. Create it in the assistant on the web.</source>
+        <translation>Tämä sovellus ei vielä osaa luoda tätä ehdotusta. Luo se avustajassa webissä.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantPage</name>

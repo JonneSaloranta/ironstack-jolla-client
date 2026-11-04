@@ -264,6 +264,10 @@
         <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation>Per portion cirka %1 kcal · protein %2 g · kolhydrater %3 g · fett %4 g</translation>
     </message>
+    <message>
+        <source>This app can&apos;t create this suggestion yet. Create it in the assistant on the web.</source>
+        <translation>Appen kan inte skapa det här förslaget ännu. Skapa det i assistenten på webben.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantPage</name>

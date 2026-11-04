@@ -232,95 +232,100 @@
 <context>
     <name>AssistantChatPage</name>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="124"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="130"/>
         <source>Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="124"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="130"/>
         <source>Writing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="155"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="161"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="163"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="169"/>
         <source>New conversation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="196"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="202"/>
         <source>The reply failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="108"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="113"/>
         <source>Program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="108"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="114"/>
         <source>Diet plan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="108"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="113"/>
         <source>Recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/AssistantChatPage.qml" line="115"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="121"/>
         <source>Makes %n serving(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="116"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="122"/>
         <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AssistantChatPage.qml" line="224"/>
+        <source>This app can&apos;t create this suggestion yet. Create it in the assistant on the web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="239"/>
         <source>Created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="224"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="239"/>
         <source>Dismissed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="229"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="245"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="233"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="249"/>
         <source>Dismiss</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="243"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="259"/>
         <source>Ask about your training or food</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="244"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="260"/>
         <source>For example: make me a 3-day program, or how is my weight trending?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="257"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="273"/>
         <source>Wait for the reply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="257"/>
-        <location filename="../qml/pages/AssistantChatPage.qml" line="258"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="273"/>
+        <location filename="../qml/pages/AssistantChatPage.qml" line="274"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
