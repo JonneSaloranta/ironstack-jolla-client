@@ -1,5 +1,7 @@
 # IronStack for Sailfish OS
 
+[![CI](https://github.com/JonneSaloranta/ironstack-jolla-client/actions/workflows/ci.yml/badge.svg)](https://github.com/JonneSaloranta/ironstack-jolla-client/actions/workflows/ci.yml)
+
 Native Sailfish OS client (`harbour-ironstack`) for a self-hosted
 [IronStack](https://github.com/JonneSaloranta/ironstack) instance. Silica
 QML UI, a small C++ layer for networking and settings. Talks to IronStack's
@@ -68,6 +70,15 @@ Create one in IronStack under Profile > API keys with:
 
 A key can leave out the parts you don't use; the app then tells you which
 permission a section needs instead of showing it.
+
+## Download
+
+Each version's RPMs (aarch64 for a phone, armv7hl for an older 32-bit
+one, i486 for the emulator) are on the
+[releases page](https://github.com/JonneSaloranta/ironstack-jolla-client/releases),
+built by CI when `VERSION` is bumped on master - see
+[docs/RELEASING.md](docs/RELEASING.md). Install on the phone in developer
+mode with `devel-su rpm -Uvh harbour-ironstack-<version>-1.aarch64.rpm`.
 
 ## Building
 

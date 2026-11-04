@@ -234,9 +234,10 @@ scp RPMS/harbour-ironstack-<version>-1.aarch64.rpm defaultuser@<phone>:/tmp/
 
 On the phone (developer mode), in its own terminal or over ssh:
 `devel-su rpm -Uvh /tmp/harbour-ironstack-<version>-1.aarch64.rpm`.
-`rpm -Uvh` only upgrades to a higher version, so bump `Version` in
-`rpm/harbour-ironstack.spec` and add a `%changelog` entry for every package
-(or reinstall the same version with `--force`).
+`rpm -Uvh` only upgrades to a higher version, so bump the repo-root
+`VERSION` and add a CHANGELOG.md section for every package (or reinstall
+the same version with `--force`); see [RELEASING.md](RELEASING.md). A
+released version's RPMs are also on the GitHub release page.
 
 ## Troubleshooting
 
