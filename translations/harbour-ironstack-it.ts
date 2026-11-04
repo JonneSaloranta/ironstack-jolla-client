@@ -2104,6 +2104,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation>Condividi il registro dell&apos;app</translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation>Svuota il registro</translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation>Svuotamento del registro</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Condividi</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>Copia negli appunti</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Aggiorna</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Registro dell&apos;app</translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation>Le ultime %1 righe di %2. Copia e Condividi le includono tutte, con le versioni dell&apos;app e del sistema.</translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation>Copia e Condividi aggiungono le versioni dell&apos;app e del sistema.</translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation>Il registro è vuoto</translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation>Per vedere di più qui, scegli Info o Debug in Impostazioni &gt; Registro dell&apos;app.</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>Copiato</translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation>Elenca le richieste fatte al tuo server e il loro esito, mai la tua chiave API né ciò che hai registrato.</translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3872,6 +3927,38 @@
     <message>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation>IronStack per Sailfish OS è software libero con licenza GNU AGPL v3.</translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation>Risoluzione dei problemi</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Registro dell&apos;app</translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation>Cosa scrive l&apos;app nel suo registro. Più dettagli aiutano a trovare un problema; non contiene mai la tua chiave API né ciò che hai registrato.</translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation>Solo errori</translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation>Avvisi</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Debug</translation>
+    </message>
+    <message>
+        <source>Show app log</source>
+        <translation>Mostra il registro dell&apos;app</translation>
     </message>
 </context>
 <context>

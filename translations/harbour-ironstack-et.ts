@@ -2104,6 +2104,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation>Jaga rakenduse logi</translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation>Tühjenda logi</translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation>Logi tühjendamine</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Jaga</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>Kopeeri lõikelauale</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Värskenda</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Rakenduse logi</translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation>Uusimad %1 rida %2-st. Kopeeri ja Jaga võtavad kõik read koos rakenduse ja süsteemi versioonidega.</translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation>Kopeeri ja Jaga lisavad rakenduse ja süsteemi versioonid.</translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation>Logi on tühi</translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation>Siin rohkema nägemiseks vali Info või Debug jaotises Seaded &gt; Rakenduse logi.</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>Kopeeritud</translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation>See näitab sinu serverile tehtud päringuid ja nende tulemust, mitte kunagi sinu API-võtit ega midagi, mida oled sisestanud.</translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3872,6 +3927,38 @@
     <message>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation>IronStack Sailfish OS-ile on vaba tarkvara GNU AGPL v3 litsentsi all.</translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation>Tõrkeotsing</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Rakenduse logi</translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation>Mida rakendus oma logisse kirjutab. Täpsem logi aitab probleemi leida; see ei sisalda kunagi sinu API-võtit ega sinu sisestatud andmeid.</translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation>Ainult vead</translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation>Hoiatused</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Debug</translation>
+    </message>
+    <message>
+        <source>Show app log</source>
+        <translation>Näita rakenduse logi</translation>
     </message>
 </context>
 <context>

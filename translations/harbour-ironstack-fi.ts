@@ -2104,6 +2104,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation>Jaa sovelluksen loki</translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation>Tyhjennä loki</translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation>Tyhjennetään lokia</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Jaa</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>Kopioi leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Päivitä</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Sovelluksen loki</translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation>Uusimmat %1/%2 riviä. Kopioi ja Jaa ottavat ne kaikki mukaan sovelluksen ja järjestelmän versioiden kanssa.</translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation>Kopioi ja Jaa lisäävät sovelluksen ja järjestelmän versiot.</translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation>Loki on tyhjä</translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation>Jos haluat nähdä tässä enemmän, valitse Info tai Debug kohdassa Asetukset &gt; Sovelluksen loki.</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>Kopioitu</translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation>Siinä näkyvät palvelimellesi tehdyt pyynnöt ja niiden tulos, ei koskaan API-avaintasi eikä mitään kirjaamaasi.</translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3872,6 +3927,38 @@
     <message>
         <source>A short tour the first time you open each part of the IronStack web. The same tours can be read in the app&apos;s Guide.</source>
         <translation>Lyhyt esittely, kun avaat IronStackin webin osion ensimmäisen kerran. Samat kierrokset voi lukea sovelluksen Oppaasta.</translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation>Vianmääritys</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Sovelluksen loki</translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation>Mitä sovellus kirjoittaa lokiinsa. Tarkempi loki auttaa ongelman selvittämisessä; siinä ei ole koskaan API-avaintasi eikä kirjaamiasi tietoja.</translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation>Vain virheet</translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation>Varoitukset</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Debug</translation>
+    </message>
+    <message>
+        <source>Show app log</source>
+        <translation>Näytä sovelluksen loki</translation>
     </message>
 </context>
 <context>

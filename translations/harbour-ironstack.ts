@@ -174,52 +174,52 @@
 <context>
     <name>ApiClient</name>
     <message>
-        <location filename="../src/apiclient.cpp" line="93"/>
+        <location filename="../src/apiclient.cpp" line="106"/>
         <source>Refused to follow a link to another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="229"/>
+        <location filename="../src/apiclient.cpp" line="270"/>
         <source>The server did not answer in time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="231"/>
+        <location filename="../src/apiclient.cpp" line="271"/>
         <source>Can&apos;t reach the server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="233"/>
+        <location filename="../src/apiclient.cpp" line="273"/>
         <source>The API key was not accepted. It may have been revoked.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="238"/>
+        <location filename="../src/apiclient.cpp" line="278"/>
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="241"/>
+        <location filename="../src/apiclient.cpp" line="281"/>
         <source>This API key does not have permission for that.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="244"/>
+        <location filename="../src/apiclient.cpp" line="284"/>
         <source>Not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="246"/>
+        <location filename="../src/apiclient.cpp" line="286"/>
         <source>Too many requests. Wait a moment and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="274"/>
+        <location filename="../src/apiclient.cpp" line="314"/>
         <source>The server had an error (%1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/apiclient.cpp" line="275"/>
+        <location filename="../src/apiclient.cpp" line="315"/>
         <source>Request failed (%1).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2610,6 +2610,76 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="53"/>
+        <source>Share app log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="66"/>
+        <source>Clear log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="68"/>
+        <source>Clearing the log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="74"/>
+        <location filename="../qml/pages/LogPage.qml" line="94"/>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="78"/>
+        <location filename="../qml/pages/LogPage.qml" line="90"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="82"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="105"/>
+        <source>App log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="115"/>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="117"/>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="118"/>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="137"/>
+        <source>The log is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="138"/>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LogPage.qml" line="147"/>
+        <source>Copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <location filename="../qml/pages/LogSetDialog.qml" line="64"/>
@@ -4779,16 +4849,56 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="249"/>
-        <source>About</source>
+        <source>Troubleshooting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="253"/>
-        <source>Version</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
+        <source>App log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
+        <source>Errors only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
+        <source>Warnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="262"/>
+        <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="263"/>
+        <source>Debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="270"/>
+        <source>Show app log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="275"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="279"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="289"/>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation type="unfinished"></translation>
     </message>

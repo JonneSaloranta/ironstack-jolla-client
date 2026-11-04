@@ -2104,6 +2104,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3871,6 +3926,38 @@
     </message>
     <message>
         <source>A short tour the first time you open each part of the IronStack web. The same tours can be read in the app&apos;s Guide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show app log</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -2109,6 +2109,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation>Поделиться журналом приложения</translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation>Очистить журнал</translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation>Очистка журнала</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Поделиться</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>Копировать в буфер обмена</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Обновить</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Журнал приложения</translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation>Последние %1 из %2 строк. «Копировать» и «Поделиться» берут все строки вместе с версиями приложения и системы.</translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation>«Копировать» и «Поделиться» добавляют версии приложения и системы.</translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation>Журнал пуст</translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation>Чтобы видеть здесь больше, выберите «Инфо» или «Отладка» в разделе Настройки &gt; Журнал приложения.</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>Скопировано</translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation>В нём видны запросы к вашему серверу и их результат, но никогда не ваш API-ключ и не то, что вы записали.</translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3883,6 +3938,38 @@
     <message>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation>IronStack для Sailfish OS — свободное ПО под лицензией GNU AGPL v3.</translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation>Устранение неполадок</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Журнал приложения</translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation>Что приложение пишет в свой журнал. Больше подробностей помогает найти проблему; в нём никогда нет вашего API-ключа и того, что вы записали.</translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation>Только ошибки</translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation>Предупреждения</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Инфо</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Отладка</translation>
+    </message>
+    <message>
+        <source>Show app log</source>
+        <translation>Показать журнал приложения</translation>
     </message>
 </context>
 <context>

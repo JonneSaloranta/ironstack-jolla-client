@@ -2104,6 +2104,61 @@
     </message>
 </context>
 <context>
+    <name>LogPage</name>
+    <message>
+        <source>Share app log</source>
+        <translation>Dela appens logg</translation>
+    </message>
+    <message>
+        <source>Clear log</source>
+        <translation>Töm loggen</translation>
+    </message>
+    <message>
+        <source>Clearing the log</source>
+        <translation>Tömmer loggen</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Dela</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>Kopiera till urklipp</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Uppdatera</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Appens logg</translation>
+    </message>
+    <message>
+        <source>The newest %1 of %2 lines. Copy and Share take all of them, with the app and system versions.</source>
+        <translation>De senaste %1 av %2 raderna. Kopiera och Dela tar med alla, med appens och systemets versioner.</translation>
+    </message>
+    <message>
+        <source>Copy and Share add the app and system versions.</source>
+        <translation>Kopiera och Dela lägger till appens och systemets versioner.</translation>
+    </message>
+    <message>
+        <source>The log is empty</source>
+        <translation>Loggen är tom</translation>
+    </message>
+    <message>
+        <source>To see more here, choose Info or Debug under Settings &gt; App log.</source>
+        <translation>Välj Info eller Debug under Inställningar &gt; Appens logg för att se mer här.</translation>
+    </message>
+    <message>
+        <source>Copied</source>
+        <translation>Kopierat</translation>
+    </message>
+    <message>
+        <source>It lists the requests made to your server and how they went, never your API key or anything you&apos;ve logged.</source>
+        <translation>Den visar förfrågningarna till din server och hur de gick, aldrig din API-nyckel eller något du har loggat.</translation>
+    </message>
+</context>
+<context>
     <name>LogSetDialog</name>
     <message>
         <source>Save</source>
@@ -3872,6 +3927,38 @@
     <message>
         <source>IronStack for Sailfish OS is free software under the GNU AGPL v3.</source>
         <translation>IronStack för Sailfish OS är fri programvara under GNU AGPL v3.</translation>
+    </message>
+    <message>
+        <source>Troubleshooting</source>
+        <translation>Felsökning</translation>
+    </message>
+    <message>
+        <source>App log</source>
+        <translation>Appens logg</translation>
+    </message>
+    <message>
+        <source>What the app writes in its log. More detail helps find a problem; it never includes your API key or what you&apos;ve logged.</source>
+        <translation>Vad appen skriver i sin logg. Mer detaljer hjälper att hitta ett problem; den innehåller aldrig din API-nyckel eller det du har loggat.</translation>
+    </message>
+    <message>
+        <source>Errors only</source>
+        <translation>Endast fel</translation>
+    </message>
+    <message>
+        <source>Warnings</source>
+        <translation>Varningar</translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <source>Debug</source>
+        <translation>Debug</translation>
+    </message>
+    <message>
+        <source>Show app log</source>
+        <translation>Visa appens logg</translation>
     </message>
 </context>
 <context>
