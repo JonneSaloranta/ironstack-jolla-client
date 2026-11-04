@@ -99,6 +99,20 @@ void Settings::setTimerSound(bool on)
     emit timerSoundChanged();
 }
 
+int Settings::logLevel() const
+{
+    return qBound(0, m_settings.value(QStringLiteral("log/level"), 2).toInt(), 3);
+}
+
+void Settings::setLogLevel(int level)
+{
+    level = qBound(0, level, 3);
+    if (level == logLevel())
+        return;
+    m_settings.setValue(QStringLiteral("log/level"), level);
+    emit logLevelChanged();
+}
+
 void Settings::setRestEndsAt(double endsAt)
 {
     if (endsAt == m_restEndsAt)

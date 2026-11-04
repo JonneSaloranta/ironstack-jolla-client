@@ -1,4 +1,6 @@
 #include <QGuiApplication>
+#include <QLocale>
+#include <QSysInfo>
 #include <QNetworkConfigurationManager>
 #include <QStandardPaths>
 #include <QQmlContext>
@@ -11,6 +13,7 @@
 
 #include "apiclient.h"
 #include "barcode.h"
+#include "logger.h"
 #include "settings.h"
 #include "syncqueue.h"
 
@@ -35,6 +38,18 @@ int main(int argc, char *argv[])
     }
 
     Settings settings;
+    // ~/.local/share/org.ironstack/harbour-ironstack/ironstack.log, for
+    // Settings > "App log" (copied or shared when reporting a problem).
+    Logger logger(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+                  + QStringLiteral("/ironstack.log"));
+    logger.setLevel(settings.logLevel());
+    QObject::connect(&settings, &Settings::logLevelChanged,
+                     &logger, [&]() { logger.setLevel(settings.logLevel()); });
+    Logger::install(&logger);
+    logger.note(QStringLiteral("harbour-ironstack %1 started (%2, language %3, region %4)")
+                .arg(QStringLiteral(APP_VERSION), QSysInfo::prettyProductName(),
+                     QLocale().uiLanguages().value(0), QLocale().name()));
+
     ApiClient api(&settings);
     // ~/.local/share/org.ironstack/harbour-ironstack/ - inside the sandbox.
     SyncQueue queue(&api, QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
@@ -48,10 +63,15 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty(QStringLiteral("settings"), &settings);
     view->rootContext()->setContextProperty(QStringLiteral("api"), &api);
     view->rootContext()->setContextProperty(QStringLiteral("syncQueue"), &queue);
+    view->rootContext()->setContextProperty(QStringLiteral("appLog"), &logger);
     BarcodeReader barcodeReader;
     view->rootContext()->setContextProperty(QStringLiteral("barcodeReader"), &barcodeReader);
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
 
-    return app->exec();
+    const int result = app->exec();
+    // The view and its QML go before the logger.
+    view.reset();
+    Logger::install(nullptr);
+    return result;
 }

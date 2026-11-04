@@ -246,6 +246,32 @@ Page {
             }
 
             SectionHeader {
+                text: qsTr("Troubleshooting")
+            }
+
+            // Listed from least to most; settings.logLevel is 3 (errors)
+            // down to 0 (debug).
+            ComboBox {
+                label: qsTr("App log")
+                description: qsTr("What the app writes in its log. More detail helps find a problem; it never "
+                                  + "includes your API key or what you've logged.")
+                currentIndex: 3 - settings.logLevel
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("Errors only") }
+                    MenuItem { text: qsTr("Warnings") }
+                    MenuItem { text: qsTr("Info") }
+                    MenuItem { text: qsTr("Debug") }
+                }
+                onCurrentIndexChanged: settings.logLevel = 3 - currentIndex
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Show app log")
+                onClicked: pageStack.push(Qt.resolvedUrl("LogPage.qml"))
+            }
+
+            SectionHeader {
                 text: qsTr("About")
             }
 

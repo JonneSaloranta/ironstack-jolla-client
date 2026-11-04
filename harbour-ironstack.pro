@@ -12,13 +12,15 @@ SOURCES += \
     src/apiclient.cpp \
     src/settings.cpp \
     src/syncqueue.cpp \
-    src/barcode.cpp
+    src/barcode.cpp \
+    src/logger.cpp
 
 HEADERS += \
     src/apiclient.h \
     src/settings.h \
     src/syncqueue.h \
-    src/barcode.h
+    src/barcode.h \
+    src/logger.h
 
 DISTFILES += \
     qml/harbour-ironstack.qml \

@@ -19,6 +19,9 @@ class Settings : public QObject
     Q_PROPERTY(int restSeconds READ restSeconds WRITE setRestSeconds NOTIFY restSecondsChanged)
     // The stretching timer's mute, kept per device like on the web.
     Q_PROPERTY(bool timerSound READ timerSound WRITE setTimerSound NOTIFY timerSoundChanged)
+    // What the app's own log keeps (Logger::Level): 0 debug, 1 info,
+    // 2 warnings (default), 3 errors only.
+    Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel NOTIFY logLevelChanged)
     // When the running rest period ends, in ms since the epoch; 0 = no rest
     // running. Runtime only, shared by the session page, the cover and the
     // end-of-rest notification.
@@ -42,6 +45,8 @@ public:
     void setRestSeconds(int seconds);
     bool timerSound() const;
     void setTimerSound(bool on);
+    int logLevel() const;
+    void setLogLevel(int level);
     double restEndsAt() const { return m_restEndsAt; }
     void setRestEndsAt(double endsAt);
 
@@ -77,6 +82,7 @@ signals:
     void restSecondsChanged();
     void restEndsAtChanged();
     void timerSoundChanged();
+    void logLevelChanged();
     void activeSessionChanged();
 
 private:

@@ -8,6 +8,7 @@
 #include <QtTest>
 
 #include "apiclient.h"
+#include "logger.h"
 #include "settings.h"
 #include "syncqueue.h"
 
@@ -556,6 +557,83 @@ private slots:
         QCOMPARE(m_settings->activeSessionId(), -1);
         QCOMPARE(m_settings->restEndsAt(), 0.0);
         QCOMPARE(m_settings->baseUrl(), m_server->baseUrl());
+    }
+
+    void loggerLevels()
+    {
+        QTemporaryDir dir;
+        Logger logger(dir.path() + QStringLiteral("/logs/app.log"));
+        const QMessageLogContext context;
+        logger.setLevel(Logger::Warning);
+        logger.handle(QtDebugMsg, context, QStringLiteral("a debug line"));
+        logger.handle(QtInfoMsg, context, QStringLiteral("an info line"));
+        logger.handle(QtWarningMsg, context, QStringLiteral("a warning line"));
+        logger.handle(QtCriticalMsg, context, QStringLiteral("an error line"));
+        QString text = logger.text();
+        QVERIFY(!text.contains(QStringLiteral("debug line")));
+        QVERIFY(!text.contains(QStringLiteral("info line")));
+        QVERIFY(text.contains(QStringLiteral(" W a warning line\n")));
+        QVERIFY(text.contains(QStringLiteral(" E an error line\n")));
+
+        logger.setLevel(Logger::Debug);
+        logger.handle(QtDebugMsg, context, QStringLiteral("a debug line"));
+        QVERIFY(logger.text().contains(QStringLiteral(" D a debug line")));
+
+        logger.setLevel(Logger::Error);
+        logger.handle(QtWarningMsg, context, QStringLiteral("not kept"));
+        QVERIFY(!logger.text().contains(QStringLiteral("not kept")));
+
+        logger.note(QStringLiteral("app started"));
+        QVERIFY(logger.text().contains(QStringLiteral(" - app started\n")));
+
+        logger.clear();
+        QCOMPARE(logger.text(), QString());
+        logger.handle(QtCriticalMsg, context, QStringLiteral("after clearing"));
+        QVERIFY(logger.text().contains(QStringLiteral("after clearing")));
+    }
+
+    void loggerMasksKeys()
+    {
+        QTemporaryDir dir;
+        Logger logger(dir.path() + QStringLiteral("/app.log"));
+        logger.handle(QtWarningMsg, QMessageLogContext(),
+                      QStringLiteral("Authorization: Bearer isk_LtWQAuQjs3cr3t_Value-9 sent"));
+        logger.handle(QtWarningMsg, QMessageLogContext(),
+                      QStringLiteral("{\"key\": \"isk_AbCdEfGhs3cr3t-x_y\"}"));
+        const QString text = logger.text();
+        QVERIFY(!text.contains(QStringLiteral("s3cr3t")));
+        QVERIFY(text.contains(QStringLiteral("Authorization: Bearer *** sent")));
+        QVERIFY(text.contains(QStringLiteral("{\"key\": \"isk_***\"}")));
+        // the full report too, with the versions on top
+        QVERIFY(logger.report().startsWith(QStringLiteral("IronStack for Sailfish OS")));
+        QVERIFY(!logger.report().contains(QStringLiteral("s3cr3t")));
+    }
+
+    void loggerRotates()
+    {
+        QTemporaryDir dir;
+        const QString path = dir.path() + QStringLiteral("/app.log");
+        Logger logger(path);
+        const QString line(1000, QLatin1Char('x'));
+        const int lines = int(Logger::MaxFileSize / 1000) * 2 + 10;
+        for (int i = 0; i < lines; i++)
+            logger.handle(QtWarningMsg, QMessageLogContext(), QString::number(i) + QLatin1Char(' ') + line);
+        QVERIFY(QFileInfo(path).size() <= Logger::MaxFileSize);
+        QVERIFY(QFileInfo::exists(path + QStringLiteral(".1")));
+        // the newest line is kept, the oldest are gone, oldest first
+        const QString text = logger.text();
+        QVERIFY(text.contains(QStringLiteral(" W %1 x").arg(lines - 1)));
+        QVERIFY(!text.contains(QStringLiteral(" W 0 x")));
+        const QStringList kept = text.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+        QVERIFY(kept.first().section(QLatin1Char(' '), 3, 3).toInt()
+                < kept.last().section(QLatin1Char(' '), 3, 3).toInt());
+    }
+
+    void logPath()
+    {
+        const QUrl url(QStringLiteral("https://example.org/api/v1/diary-entries/?date=2026-11-04"));
+        QCOMPARE(ApiClient::logPath(url, false), QStringLiteral("diary-entries/"));
+        QCOMPARE(ApiClient::logPath(url, true), QStringLiteral("diary-entries/?date=2026-11-04"));
     }
 };
 

@@ -59,7 +59,7 @@ private:
                   const QString &path, const QVariant &body, Handler handler,
                   const QVariantMap &headers = QVariantMap());
     void finish(QNetworkReply *reply);
-    Handler jsHandler(const QJSValue &callback);
+    Handler jsHandler(const QJSValue &callback, const QString &request);
     static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply,
                                 const QString &method);
 
@@ -70,6 +70,9 @@ public:
     static QString contextForPath(const QString &path);
     // "Create", "Read", "Update" or "Delete" - the permission a method needs.
     static QString permissionForMethod(const QString &method);
+    // A request's URL as the log shows it: the path under /api/v1/, the
+    // query only when `withQuery` (it can hold search words and dates).
+    static QString logPath(const QUrl &url, bool withQuery);
     // The Accept-Language header for `locale`: its language, then English.
     static QByteArray acceptLanguage(const QLocale &locale = QLocale());
 
@@ -79,6 +82,7 @@ private:
         Handler handler;
         bool usesSavedKey;
         QString method;
+        qint64 startedMs;
     };
 
     Settings *m_settings;

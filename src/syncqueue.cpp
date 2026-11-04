@@ -6,8 +6,11 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QJsonDocument>
+#include <QLoggingCategory>
 #include <QSaveFile>
 #include <QUuid>
+
+Q_LOGGING_CATEGORY(lcSync, "sync")
 
 namespace {
 const QString IdempotencyKey = QStringLiteral("idempotencyKey");
@@ -29,8 +32,10 @@ SyncQueue::SyncQueue(ApiClient *api, const QString &storagePath, QObject *parent
     m_retryTimer.setSingleShot(true);
     connect(&m_retryTimer, &QTimer::timeout, this, &SyncQueue::flush);
     load();
-    if (!m_items.isEmpty())
+    if (!m_items.isEmpty()) {
+        qCInfo(lcSync, "%d change(s) waiting from before", m_items.size());
         QTimer::singleShot(0, this, &SyncQueue::flush);
+    }
 }
 
 int SyncQueue::enqueue(const QString &method, const QString &path, const QJSValue &body)
@@ -51,6 +56,8 @@ int SyncQueue::enqueueVariant(const QString &method, const QString &path, const 
         item.insert(IdempotencyKey, newIdempotencyKey());
     item.insert(QStringLiteral("queuedAt"), QDateTime::currentDateTimeUtc().toString(Qt::ISODate));
     m_items.append(item);
+    qCInfo(lcSync, "queued #%d %s %s (%d waiting)", id, qPrintable(method.toUpper()),
+           qPrintable(ApiClient::logPath(QUrl(path), false)), m_items.size());
     save();
     emit itemsChanged();
     flush();
@@ -99,6 +106,7 @@ void SyncQueue::sendNext()
         }
         const bool retryLater = status == 0 || status == 401 || status == 429 || status >= 500;
         if (!ok && retryLater) {
+            qCInfo(lcSync, "#%d not sent (%d), trying again later", id, status);
             setSyncing(false);
             setLastError(error);
             m_retryTimer.start();
@@ -107,10 +115,14 @@ void SyncQueue::sendNext()
         m_items.removeFirst();
         save();
         emit itemsChanged();
-        if (ok)
+        if (ok) {
+            qCInfo(lcSync, "sent #%d", id);
             emit itemSynced(id, method, path, data);
-        else
+        } else {
+            qCWarning(lcSync, "#%d %s %s rejected and dropped: %d %s", id, qPrintable(method),
+                      qPrintable(ApiClient::logPath(QUrl(path), false)), status, qPrintable(error));
             emit itemFailed(id, method, path, status, error);
+        }
         sendNext();
     }, headers);
 }

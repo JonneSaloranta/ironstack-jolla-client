@@ -1,7 +1,10 @@
 #include "apiclient.h"
+#include "logger.h"
 #include "settings.h"
 
 #include <QBuffer>
+#include <QDateTime>
+#include <QLoggingCategory>
 #include <QJsonDocument>
 #include <QLocale>
 #include <QNetworkAccessManager>
@@ -14,6 +17,8 @@
 namespace {
 const int TimeoutMs = 20000;
 }
+
+Q_LOGGING_CATEGORY(lcApi, "api")
 
 ApiClient::ApiClient(Settings *settings, QObject *parent)
     : QObject(parent)
@@ -36,7 +41,8 @@ void ApiClient::requestWith(const QString &baseUrl, const QString &apiKey,
     // arrives as a QVariant wrapping a QJSValue, which QJsonDocument
     // silently turns into an empty body.
     const QVariant variantBody = (body.isUndefined() || body.isNull()) ? QVariant() : body.toVariant();
-    sendWith(baseUrl, apiKey, method, path, variantBody, jsHandler(callback));
+    const QString request = method.toUpper() + QLatin1Char(' ') + logPath(QUrl(path), false);
+    sendWith(baseUrl, apiKey, method, path, variantBody, jsHandler(callback, request));
 }
 
 void ApiClient::send(const QString &method, const QString &path, const QVariant &body, Handler handler,
@@ -45,16 +51,20 @@ void ApiClient::send(const QString &method, const QString &path, const QVariant 
     sendWith(m_settings->baseUrl(), m_settings->apiKey(), method, path, body, handler, headers);
 }
 
-ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
+ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback, const QString &request)
 {
-    return [this, callback](bool ok, int status, const QVariant &data, const QString &error) {
+    return [this, callback, request](bool ok, int status, const QVariant &data, const QString &error) {
         QJSValue cb(callback);
         if (!cb.isCallable())
             return;
         QJSValue jsData = m_engine ? m_engine->toScriptValue(data) : QJSValue();
         QJSValue result = cb.call(QJSValueList() << ok << status << jsData << error);
+        // A JavaScript error in the page's callback would otherwise vanish.
         if (result.isError())
-            qWarning("ApiClient callback error: %s", qPrintable(result.toString()));
+            qCCritical(lcApi, "JavaScript error handling %s: %s (%s:%d)", qPrintable(request),
+                       qPrintable(result.toString()),
+                       qPrintable(QUrl(result.property(QStringLiteral("fileName")).toString()).fileName()),
+                       result.property(QStringLiteral("lineNumber")).toInt());
     };
 }
 
@@ -122,7 +132,8 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     buffer->open(QIODevice::ReadOnly);
     QNetworkReply *reply = m_network->sendCustomRequest(req, method.toUpper().toLatin1(), buffer);
     buffer->setParent(reply);
-    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey(), method.toUpper() });
+    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey(), method.toUpper(),
+                                      QDateTime::currentMSecsSinceEpoch() });
     if (m_pending.size() == 1)
         emit busyChanged();
 
@@ -149,6 +160,22 @@ void ApiClient::finish(QNetworkReply *reply)
 
     const bool ok = status >= 200 && status < 300;
     const QString error = ok ? QString() : errorMessage(status, data, reply, pending.method);
+
+    // The request in the app's log (Logger): never the key or a body.
+    const qint64 ms = QDateTime::currentMSecsSinceEpoch() - pending.startedMs;
+    if (ok && Logger::keeps(Logger::Debug)) {
+        qCDebug(lcApi, "%s %s %d (%lld ms, %d bytes)", qPrintable(pending.method),
+                qPrintable(logPath(reply->url(), true)), status, ms, raw.size());
+    } else if (ok) {
+        qCInfo(lcApi, "%s %s %d (%lld ms)", qPrintable(pending.method),
+               qPrintable(logPath(reply->url(), false)), status, ms);
+    } else {
+        // Without an HTTP status, Qt's own reason (DNS, TLS, refused...).
+        const QString detail = status == 0 ? QStringLiteral(" - ") + reply->errorString() : QString();
+        qCWarning(lcApi, "%s %s failed: %d %s (%lld ms)%s", qPrintable(pending.method),
+                  qPrintable(logPath(reply->url(), false)), status, qPrintable(error), ms,
+                  qPrintable(detail));
+    }
 
     if (status == 401 && pending.usesSavedKey)
         emit unauthorized();
@@ -211,6 +238,17 @@ QString ApiClient::contextForPath(const QString &path)
     return contexts.value(first);
 }
 
+QString ApiClient::logPath(const QUrl &url, bool withQuery)
+{
+    QString path = url.path();
+    const int api = path.indexOf(QStringLiteral("/api/v1/"));
+    if (api >= 0)
+        path = path.mid(api + 8);
+    if (withQuery && url.hasQuery())
+        path += QLatin1Char('?') + url.query();
+    return path;
+}
+
 QString ApiClient::permissionForMethod(const QString &method)
 {
     const QString upper = method.toUpper();
@@ -230,7 +268,6 @@ QString ApiClient::errorMessage(int status, const QVariant &data, QNetworkReply 
     case 0:
         if (reply->error() == QNetworkReply::OperationCanceledError)
             return tr("The server did not answer in time.");
-        qWarning("ApiClient: %s", qPrintable(reply->errorString()));
         return tr("Can't reach the server.");
     case 401:
         return tr("The API key was not accepted. It may have been revoked.");
