@@ -2,6 +2,49 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>Achievements</name>
+    <message>
+        <source>Longest streak</source>
+        <translation>Самая длинная серия</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n день</numerusform>
+            <numerusform>%n дня</numerusform>
+            <numerusform>%n дней</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Workouts completed</source>
+        <translation>Тренировок выполнено</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n workout(s)</source>
+        <translation>
+            <numerusform>%n тренировка</numerusform>
+            <numerusform>%n тренировки</numerusform>
+            <numerusform>%n тренировок</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Личных рекордов</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n PR(s)</source>
+        <translation>
+            <numerusform>%n рекорд</numerusform>
+            <numerusform>%n рекорда</numerusform>
+            <numerusform>%n рекордов</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Total weight lifted</source>
+        <translation>Всего поднято веса</translation>
+    </message>
+</context>
+<context>
     <name>ActivitiesPage</name>
     <message>
         <source>New activity type</source>
@@ -187,6 +230,18 @@
     <message>
         <source>Can&apos;t read that image.</source>
         <translation>Не удаётся прочитать изображение.</translation>
+    </message>
+    <message>
+        <source>The data on this phone isn&apos;t ready yet.</source>
+        <translation>Данные на телефоне ещё не готовы.</translation>
+    </message>
+    <message>
+        <source>Something went wrong with the data on this phone. The app log has the details.</source>
+        <translation>С данными на телефоне что-то пошло не так. Подробности в журнале приложения.</translation>
+    </message>
+    <message>
+        <source>Can&apos;t save that image on this phone.</source>
+        <translation>Не удаётся сохранить изображение на телефоне.</translation>
     </message>
 </context>
 <context>
@@ -1085,6 +1140,10 @@
     <message>
         <source>This week</source>
         <translation>Эта неделя</translation>
+    </message>
+    <message>
+        <source>On this phone</source>
+        <translation>На этом телефоне</translation>
     </message>
 </context>
 <context>
@@ -2184,6 +2243,85 @@
     </message>
 </context>
 <context>
+    <name>Local</name>
+    <message>
+        <source>This field may not be blank.</source>
+        <translation>Это поле не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>Not a valid choice.</source>
+        <translation>Недопустимый вариант.</translation>
+    </message>
+    <message>
+        <source>Built-in exercises can&apos;t be changed.</source>
+        <translation>Встроенные упражнения нельзя изменить.</translation>
+    </message>
+    <message>
+        <source>Images of built-in exercises can&apos;t be changed.</source>
+        <translation>Изображения встроенных упражнений нельзя изменить.</translation>
+    </message>
+    <message>
+        <source>No file was submitted.</source>
+        <translation>Файл не был отправлен.</translation>
+    </message>
+    <message>
+        <source>A valid number is required.</source>
+        <translation>Требуется корректное число.</translation>
+    </message>
+    <message>
+        <source>Built-in templates can&apos;t be changed - copy one first.</source>
+        <translation>Встроенные шаблоны нельзя изменить - сначала скопируйте.</translation>
+    </message>
+    <message>
+        <source>Not a program you can change.</source>
+        <translation>Эту программу нельзя изменить.</translation>
+    </message>
+    <message>
+        <source>Not an exercise you can use.</source>
+        <translation>Это упражнение недоступно.</translation>
+    </message>
+    <message>
+        <source>Ensure this value is greater than or equal to 1.</source>
+        <translation>Значение должно быть не меньше 1.</translation>
+    </message>
+    <message>
+        <source>Max reps can&apos;t be below min reps.</source>
+        <translation>Максимум повторений не может быть меньше минимума.</translation>
+    </message>
+    <message>
+        <source>RPE goes from 1 to 10.</source>
+        <translation>RPE - от 1 до 10.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can change.</source>
+        <translation>Эту тренировку нельзя изменить.</translation>
+    </message>
+    <message>
+        <source>Not available without a server.</source>
+        <translation>Недоступно без сервера.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can start.</source>
+        <translation>Эту тренировку нельзя начать.</translation>
+    </message>
+    <message>
+        <source>This workout has already ended.</source>
+        <translation>Эта тренировка уже завершена.</translation>
+    </message>
+    <message>
+        <source>Not your workout session.</source>
+        <translation>Это не ваша тренировка.</translation>
+    </message>
+    <message>
+        <source>A valid integer is required.</source>
+        <translation>Требуется целое число.</translation>
+    </message>
+    <message>
+        <source>This field is required.</source>
+        <translation>Обязательное поле.</translation>
+    </message>
+</context>
+<context>
     <name>LogPage</name>
     <message>
         <source>Share app log</source>
@@ -2306,6 +2444,18 @@
     <message>
         <source>Connect</source>
         <translation>Подключиться</translation>
+    </message>
+    <message>
+        <source>No server?</source>
+        <translation>Нет сервера?</translation>
+    </message>
+    <message>
+        <source>The app also works on its own, keeping everything on this phone.</source>
+        <translation>Приложение работает и само по себе, храня всё на этом телефоне.</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Использовать без сервера</translation>
     </message>
 </context>
 <context>
@@ -3540,6 +3690,97 @@
     </message>
 </context>
 <context>
+    <name>Progression</name>
+    <message>
+        <source>No completed history for this exercise yet - starting at the prescribed target.</source>
+        <translation>Пока нет завершённой истории по этому упражнению - начинаем с заданной цели.</translation>
+    </message>
+    <message>
+        <source>Manual progression - you control the next weight and target.</source>
+        <translation>Ручная прогрессия - вы сами контролируете следующий вес и цель.</translation>
+    </message>
+    <message>
+        <source>Missed the target %1 sessions in a row at %2 kg - even maintenance loading should come down, to %3 kg.</source>
+        <translation>Цель не достигнута %1 раз подряд при весе %2 кг - даже поддерживающую нагрузку стоит снизить до %3 кг.</translation>
+    </message>
+    <message>
+        <source>Maintenance - keeping the same load.</source>
+        <translation>Поддержание - сохраняем ту же нагрузку.</translation>
+    </message>
+    <message>
+        <source>Hit every rep last session at %1 kg - adding %2 kg.</source>
+        <translation>Все повторения выполнены в прошлый раз с весом %1 кг - добавляем %2 кг.</translation>
+    </message>
+    <message>
+        <source>Missed target reps %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Целевые повторения не достигнуты %1 раз подряд при весе %2 кг - рекомендуется снижение до %3 кг.</translation>
+    </message>
+    <message>
+        <source>Missed target reps last session at %1 kg - try the same weight again before increasing.</source>
+        <translation>Целевые повторения не достигнуты в прошлый раз при весе %1 кг - попробуйте тот же вес ещё раз перед увеличением.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range on every set at %1 kg - adding %2 kg and resetting to the bottom of the range.</source>
+        <translation>Достигнут верх диапазона повторений в каждом подходе при весе %1 кг - добавляем %2 кг и возвращаемся к нижней границе диапазона.</translation>
+    </message>
+    <message>
+        <source>Still within your rep range at %1 kg - repeat the same weight and aim for more reps next time.</source>
+        <translation>Всё ещё в пределах диапазона повторений при весе %1 кг - повторите тот же вес и в следующий раз стремитесь к большему числу повторений.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range for %1 sessions in a row at %2 kg - adding %3 kg.</source>
+        <translation>Верхняя граница диапазона повторений достигнута %1 раз подряд при весе %2 кг - добавляем %3 кг.</translation>
+    </message>
+    <message>
+        <source>Within your rep range at %1 kg - keep working toward the top of the range before increasing.</source>
+        <translation>В пределах диапазона повторений при весе %1 кг - продолжайте двигаться к верхней границе перед увеличением.</translation>
+    </message>
+    <message>
+        <source>No percentage target configured on this prescription.</source>
+        <translation>Для этого предписания не задана процентная цель.</translation>
+    </message>
+    <message>
+        <source>No 1RM available yet - log a set first, or enter your 1RM manually.</source>
+        <translation>1ПМ пока недоступен - сначала запишите подход или введите 1ПМ вручную.</translation>
+    </message>
+    <message>
+        <source>your latest estimated-1RM PR</source>
+        <translation>ваш последний рекорд оценённого 1ПМ</translation>
+    </message>
+    <message>
+        <source>a live estimate from your most recent set</source>
+        <translation>актуальная оценка по последнему подходу</translation>
+    </message>
+    <message>
+        <source>%1% of %2 kg (%3) = %4 kg.</source>
+        <translation>%1% от %2 кг (%3) = %4 кг.</translation>
+    </message>
+    <message>
+        <source>No RIR logged against a target yet - log sets with RIR to use this method.</source>
+        <translation>RIR ещё не записан относительно цели - записывайте подходы с RIR, чтобы использовать этот метод.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - more in reserve than planned, adding %3 kg.</source>
+        <translation>Целевой RIR %1, фактический %2 - резерва больше, чем планировалось, добавляем %3 кг.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - notably closer to failure than planned, easing back to %3 kg.</source>
+        <translation>Целевой RIR %1, фактический %2 - заметно ближе к отказу, чем планировалось, снижаем до %3 кг.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - close enough to plan, hold the weight.</source>
+        <translation>Целевой RIR %1, фактический %2 - достаточно близко к плану, оставляем вес прежним.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Нижняя граница диапазона повторений не достигнута %1 раз подряд при весе %2 кг - рекомендуется снижение до %3 кг.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range last session at %1 kg - try the same weight again.</source>
+        <translation>Нижняя граница диапазона повторений не достигнута в прошлый раз при весе %1 кг - попробуйте тот же вес ещё раз.</translation>
+    </message>
+</context>
+<context>
     <name>QuantityDialog</name>
     <message>
         <source>Save</source>
@@ -3684,6 +3925,33 @@
     </message>
 </context>
 <context>
+    <name>Records</name>
+    <message>
+        <source>Max weight</source>
+        <translation>Максимальный вес</translation>
+    </message>
+    <message>
+        <source>Rep PR</source>
+        <translation>Рекорд по повторениям</translation>
+    </message>
+    <message>
+        <source>Rep-specific PR</source>
+        <translation>Рекорд для конкретного числа повторений</translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <translation>Оценённый 1ПМ</translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation>Объём подхода</translation>
+    </message>
+    <message>
+        <source>Session volume</source>
+        <translation>Объём тренировки</translation>
+    </message>
+</context>
+<context>
     <name>RecordsPage</name>
     <message>
         <source>Personal records</source>
@@ -3761,6 +4029,64 @@
     <message>
         <source>Rest (seconds)</source>
         <translation>Отдых (секунды)</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeatureLabel</name>
+    <message>
+        <source>Not without a server yet</source>
+        <translation>Пока не без сервера</translation>
+    </message>
+    <message>
+        <source>Needs an IronStack server</source>
+        <translation>Нужен сервер IronStack</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeaturePage</name>
+    <message>
+        <source>Add friends on your IronStack server, message them and form groups to train together.</source>
+        <translation>Добавляйте друзей на своём сервере IronStack, переписывайтесь и создавайте группы для совместных тренировок.</translation>
+    </message>
+    <message>
+        <source>Ask a personal trainer to coach you, take the programs and diet plans they share - or coach others yourself.</source>
+        <translation>Попросите персонального тренера тренировать вас и используйте программы и планы питания, которыми он делится, - или тренируйте других сами.</translation>
+    </message>
+    <message>
+        <source>Ask the AI assistant about your training and food. It can make you a program, a diet plan or a recipe.</source>
+        <translation>Спросите ИИ-помощника о своих тренировках и питании. Он может составить программу, план питания или рецепт.</translation>
+    </message>
+    <message>
+        <source>The guided tours of IronStack&apos;s web pages.</source>
+        <translation>Экскурсии по веб-страницам IronStack.</translation>
+    </message>
+    <message>
+        <source>See who else on your IronStack server has been training lately.</source>
+        <translation>Смотрите, кто ещё на вашем сервере IronStack тренировался в последнее время.</translation>
+    </message>
+    <message>
+        <source>Find foods in Open Food Facts by name or barcode, with their nutrition.</source>
+        <translation>Ищите продукты в Open Food Facts по названию или штрихкоду, с их пищевой ценностью.</translation>
+    </message>
+    <message>
+        <source>Body measurements with their trends, activities like running or cycling, and guided stretching.</source>
+        <translation>Замеры тела с динамикой, активности вроде бега или велосипеда и растяжка с подсказками.</translation>
+    </message>
+    <message>
+        <source>A food diary, your foods and recipes, calorie and macro goals, diet plans and statistics.</source>
+        <translation>Дневник питания, ваши продукты и рецепты, цели по калориям и БЖУ, планы питания и статистика.</translation>
+    </message>
+    <message>
+        <source>This part isn&apos;t in the app&apos;s offline mode yet; it comes in a later version. It works now when the app is connected to an IronStack server.</source>
+        <translation>Этой части пока нет в автономном режиме приложения; она появится в следующей версии. Она уже работает, когда приложение подключено к серверу IronStack.</translation>
+    </message>
+    <message>
+        <source>This needs an IronStack server: it&apos;s about other people, or done on the server. Moving the data on this phone to a server comes in a later version.</source>
+        <translation>Для этого нужен сервер IronStack: речь о других людях или о том, что делает сервер. Перенос данных с телефона на сервер появится в следующей версии.</translation>
+    </message>
+    <message>
+        <source>To hide what needs a server, turn off &quot;Show what needs a server&quot; in Settings.</source>
+        <translation>Чтобы скрыть то, что требует сервера, выключите «Показывать то, что требует сервера» в настройках.</translation>
     </message>
 </context>
 <context>
@@ -4046,6 +4372,46 @@
         <source>Show app log</source>
         <translation>Показать журнал приложения</translation>
     </message>
+    <message>
+        <source>Back up the data on this phone</source>
+        <translation>Резервная копия данных телефона</translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation>Профиль</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Данные</translation>
+    </message>
+    <message>
+        <source>Kept</source>
+        <translation>Хранятся</translation>
+    </message>
+    <message>
+        <source>On this phone only</source>
+        <translation>Только на этом телефоне</translation>
+    </message>
+    <message>
+        <source>Show what needs a server</source>
+        <translation>Показывать то, что требует сервера</translation>
+    </message>
+    <message>
+        <source>Friends, coaching, the AI assistant and the parts not yet in this mode, dimmed. Off hides them.</source>
+        <translation>Друзья, тренерство, ИИ-помощник и разделы, которых ещё нет в этом режиме, - приглушённо. Если выключить, они скрыты.</translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation>Резервная копия</translation>
+    </message>
+    <message>
+        <source>Use a server instead</source>
+        <translation>Использовать сервер</translation>
+    </message>
+    <message>
+        <source>What you&apos;ve logged stays on this phone but isn&apos;t shown while the app uses a server. Moving it to a server comes in a later version.</source>
+        <translation>Записанное остаётся на этом телефоне, но не показывается, пока приложение работает с сервером. Перенос на сервер появится в следующей версии.</translation>
+    </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
@@ -4199,6 +4565,29 @@
     <message>
         <source>No groups yet. Pull down to start one or join with an invite code.</source>
         <translation>Групп пока нет. Потяните вниз, чтобы создать группу или вступить по коду приглашения.</translation>
+    </message>
+</context>
+<context>
+    <name>StandaloneDialog</name>
+    <message>
+        <source>Start</source>
+        <translation>Начать</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Использовать без сервера</translation>
+    </message>
+    <message>
+        <source>Everything you log is kept on this phone only. Back it up now and then: there&apos;s no copy anywhere else.</source>
+        <translation>Всё, что вы записываете, хранится только на этом телефоне. Время от времени делайте резервную копию: другой копии нет.</translation>
+    </message>
+    <message>
+        <source>Training works as with a server: IronStack&apos;s exercises and program templates, your own programs, training mode with weight suggestions, history, records and progress. Body tracking and nutrition come to this mode in later versions.</source>
+        <translation>Тренировки работают как с сервером: упражнения и шаблоны программ IronStack, свои программы, режим тренировки с подсказками веса, история, рекорды и прогресс. Отслеживание тела и питание появятся в этом режиме в следующих версиях.</translation>
+    </message>
+    <message>
+        <source>Friends and groups, coaching, the AI assistant and food search need an IronStack server. They&apos;re shown dimmed so you know they&apos;re there; Settings can hide them.</source>
+        <translation>Друзья и группы, тренерство, ИИ-помощник и поиск продуктов требуют сервера IronStack. Они показаны приглушённо, чтобы вы знали о них; в настройках их можно скрыть.</translation>
     </message>
 </context>
 <context>

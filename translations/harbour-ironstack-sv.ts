@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="sv_SE">
 <context>
+    <name>Achievements</name>
+    <message>
+        <source>Longest streak</source>
+        <translation>Längsta sviten</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagar</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Workouts completed</source>
+        <translation>Träningspass genomförda</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n workout(s)</source>
+        <translation>
+            <numerusform>%n träningspass</numerusform>
+            <numerusform>%n träningspass</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Personliga rekord</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n PR(s)</source>
+        <translation>
+            <numerusform>%n PR</numerusform>
+            <numerusform>%n PR</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Total weight lifted</source>
+        <translation>Total lyft vikt</translation>
+    </message>
+</context>
+<context>
     <name>ActivitiesPage</name>
     <message>
         <source>New activity type</source>
@@ -185,6 +225,18 @@
     <message>
         <source>Can&apos;t read that image.</source>
         <translation>Det går inte att läsa bilden.</translation>
+    </message>
+    <message>
+        <source>The data on this phone isn&apos;t ready yet.</source>
+        <translation>Datan på telefonen är inte redo än.</translation>
+    </message>
+    <message>
+        <source>Something went wrong with the data on this phone. The app log has the details.</source>
+        <translation>Något gick fel med datan på telefonen. Appens logg har detaljerna.</translation>
+    </message>
+    <message>
+        <source>Can&apos;t save that image on this phone.</source>
+        <translation>Det går inte att spara bilden på telefonen.</translation>
     </message>
 </context>
 <context>
@@ -1082,6 +1134,10 @@
     <message>
         <source>This week</source>
         <translation>Den här veckan</translation>
+    </message>
+    <message>
+        <source>On this phone</source>
+        <translation>På den här telefonen</translation>
     </message>
 </context>
 <context>
@@ -2178,6 +2234,85 @@
     </message>
 </context>
 <context>
+    <name>Local</name>
+    <message>
+        <source>This field may not be blank.</source>
+        <translation>Det här fältet får inte vara tomt.</translation>
+    </message>
+    <message>
+        <source>Not a valid choice.</source>
+        <translation>Inte ett giltigt val.</translation>
+    </message>
+    <message>
+        <source>Built-in exercises can&apos;t be changed.</source>
+        <translation>Inbyggda övningar kan inte ändras.</translation>
+    </message>
+    <message>
+        <source>Images of built-in exercises can&apos;t be changed.</source>
+        <translation>Bilder av inbyggda övningar kan inte ändras.</translation>
+    </message>
+    <message>
+        <source>No file was submitted.</source>
+        <translation>Ingen fil skickades.</translation>
+    </message>
+    <message>
+        <source>A valid number is required.</source>
+        <translation>Ett giltigt tal krävs.</translation>
+    </message>
+    <message>
+        <source>Built-in templates can&apos;t be changed - copy one first.</source>
+        <translation>Inbyggda mallar kan inte ändras - kopiera en först.</translation>
+    </message>
+    <message>
+        <source>Not a program you can change.</source>
+        <translation>Inte ett program du kan ändra.</translation>
+    </message>
+    <message>
+        <source>Not an exercise you can use.</source>
+        <translation>Inte en övning du kan använda.</translation>
+    </message>
+    <message>
+        <source>Ensure this value is greater than or equal to 1.</source>
+        <translation>Värdet måste vara minst 1.</translation>
+    </message>
+    <message>
+        <source>Max reps can&apos;t be below min reps.</source>
+        <translation>Max antal reps kan inte vara under min.</translation>
+    </message>
+    <message>
+        <source>RPE goes from 1 to 10.</source>
+        <translation>RPE går från 1 till 10.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can change.</source>
+        <translation>Inte ett pass du kan ändra.</translation>
+    </message>
+    <message>
+        <source>Not available without a server.</source>
+        <translation>Inte tillgängligt utan server.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can start.</source>
+        <translation>Inte ett pass du kan starta.</translation>
+    </message>
+    <message>
+        <source>This workout has already ended.</source>
+        <translation>Det här passet har redan avslutats.</translation>
+    </message>
+    <message>
+        <source>Not your workout session.</source>
+        <translation>Inte ditt träningspass.</translation>
+    </message>
+    <message>
+        <source>A valid integer is required.</source>
+        <translation>Ett giltigt heltal krävs.</translation>
+    </message>
+    <message>
+        <source>This field is required.</source>
+        <translation>Detta fält måste fyllas i.</translation>
+    </message>
+</context>
+<context>
     <name>LogPage</name>
     <message>
         <source>Share app log</source>
@@ -2300,6 +2435,18 @@
     <message>
         <source>Connect</source>
         <translation>Anslut</translation>
+    </message>
+    <message>
+        <source>No server?</source>
+        <translation>Ingen server?</translation>
+    </message>
+    <message>
+        <source>The app also works on its own, keeping everything on this phone.</source>
+        <translation>Appen fungerar också på egen hand och sparar allt på telefonen.</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Använd utan server</translation>
     </message>
 </context>
 <context>
@@ -3531,6 +3678,97 @@
     </message>
 </context>
 <context>
+    <name>Progression</name>
+    <message>
+        <source>No completed history for this exercise yet - starting at the prescribed target.</source>
+        <translation>Ingen genomförd historik för denna övning ännu - startar vid det föreskrivna målet.</translation>
+    </message>
+    <message>
+        <source>Manual progression - you control the next weight and target.</source>
+        <translation>Manuell progression - du styr nästa vikt och mål.</translation>
+    </message>
+    <message>
+        <source>Missed the target %1 sessions in a row at %2 kg - even maintenance loading should come down, to %3 kg.</source>
+        <translation>Missade målet %1 pass i rad vid %2 kg - även underhållsbelastningen bör sänkas, till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Maintenance - keeping the same load.</source>
+        <translation>Underhåll - behåller samma belastning.</translation>
+    </message>
+    <message>
+        <source>Hit every rep last session at %1 kg - adding %2 kg.</source>
+        <translation>Klarade alla repetitioner senaste passet vid %1 kg - lägger till %2 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Missade repetitionsmålet %1 pass i rad vid %2 kg - rekommenderar avlastning till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps last session at %1 kg - try the same weight again before increasing.</source>
+        <translation>Missade repetitionsmålet senaste passet vid %1 kg - prova samma vikt igen innan du ökar.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range on every set at %1 kg - adding %2 kg and resetting to the bottom of the range.</source>
+        <translation>Nådde toppen av repetitionsintervallet i varje set vid %1 kg - lägger till %2 kg och återställer till intervallets botten.</translation>
+    </message>
+    <message>
+        <source>Still within your rep range at %1 kg - repeat the same weight and aim for more reps next time.</source>
+        <translation>Fortfarande inom repetitionsintervallet vid %1 kg - upprepa samma vikt och sikta på fler repetitioner nästa gång.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range for %1 sessions in a row at %2 kg - adding %3 kg.</source>
+        <translation>Nådde toppen av repetitionsintervallet %1 pass i rad vid %2 kg - lägger till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Within your rep range at %1 kg - keep working toward the top of the range before increasing.</source>
+        <translation>Inom repetitionsintervallet vid %1 kg - fortsätt jobba mot toppen av intervallet innan du ökar.</translation>
+    </message>
+    <message>
+        <source>No percentage target configured on this prescription.</source>
+        <translation>Inget procentmål har konfigurerats för denna föreskrift.</translation>
+    </message>
+    <message>
+        <source>No 1RM available yet - log a set first, or enter your 1RM manually.</source>
+        <translation>Ingen 1RM tillgänglig ännu - logga ett set först, eller ange din 1RM manuellt.</translation>
+    </message>
+    <message>
+        <source>your latest estimated-1RM PR</source>
+        <translation>ditt senaste uppskattade 1RM-PR</translation>
+    </message>
+    <message>
+        <source>a live estimate from your most recent set</source>
+        <translation>en aktuell uppskattning från ditt senaste set</translation>
+    </message>
+    <message>
+        <source>%1% of %2 kg (%3) = %4 kg.</source>
+        <translation>%1% av %2 kg (%3) = %4 kg.</translation>
+    </message>
+    <message>
+        <source>No RIR logged against a target yet - log sets with RIR to use this method.</source>
+        <translation>Ingen RIR loggad mot ett mål ännu - logga set med RIR för att använda denna metod.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - more in reserve than planned, adding %3 kg.</source>
+        <translation>Mål-RIR %1, faktiskt %2 - mer i reserv än planerat, lägger till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - notably closer to failure than planned, easing back to %3 kg.</source>
+        <translation>Mål-RIR %1, faktiskt %2 - märkbart närmare utmattning än planerat, lättar till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - close enough to plan, hold the weight.</source>
+        <translation>Mål-RIR %1, faktiskt %2 - nära nog planen, behåll vikten.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Missade botten av repetitionsintervallet %1 pass i rad vid %2 kg - rekommenderar avlastning till %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range last session at %1 kg - try the same weight again.</source>
+        <translation>Missade botten av repetitionsintervallet senaste passet vid %1 kg - prova samma vikt igen.</translation>
+    </message>
+</context>
+<context>
     <name>QuantityDialog</name>
     <message>
         <source>Save</source>
@@ -3673,6 +3911,33 @@
     </message>
 </context>
 <context>
+    <name>Records</name>
+    <message>
+        <source>Max weight</source>
+        <translation>Maxvikt</translation>
+    </message>
+    <message>
+        <source>Rep PR</source>
+        <translation>Repetitions-PR</translation>
+    </message>
+    <message>
+        <source>Rep-specific PR</source>
+        <translation>Repetitionsspecifikt PR</translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <translation>Uppskattad 1RM</translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation>Setvolym</translation>
+    </message>
+    <message>
+        <source>Session volume</source>
+        <translation>Passets volym</translation>
+    </message>
+</context>
+<context>
     <name>RecordsPage</name>
     <message>
         <source>Personal records</source>
@@ -3750,6 +4015,64 @@
     <message>
         <source>Rest (seconds)</source>
         <translation>Vila (sekunder)</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeatureLabel</name>
+    <message>
+        <source>Not without a server yet</source>
+        <translation>Inte utan server än</translation>
+    </message>
+    <message>
+        <source>Needs an IronStack server</source>
+        <translation>Kräver en IronStack-server</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeaturePage</name>
+    <message>
+        <source>Add friends on your IronStack server, message them and form groups to train together.</source>
+        <translation>Lägg till vänner på din IronStack-server, skicka meddelanden och bilda grupper för att träna tillsammans.</translation>
+    </message>
+    <message>
+        <source>Ask a personal trainer to coach you, take the programs and diet plans they share - or coach others yourself.</source>
+        <translation>Be en personlig tränare att coacha dig och använd programmen och kostplanerna hen delar - eller coacha andra själv.</translation>
+    </message>
+    <message>
+        <source>Ask the AI assistant about your training and food. It can make you a program, a diet plan or a recipe.</source>
+        <translation>Fråga AI-assistenten om din träning och kost. Den kan göra ett program, en kostplan eller ett recept åt dig.</translation>
+    </message>
+    <message>
+        <source>The guided tours of IronStack&apos;s web pages.</source>
+        <translation>De guidade turerna genom IronStacks webbsidor.</translation>
+    </message>
+    <message>
+        <source>See who else on your IronStack server has been training lately.</source>
+        <translation>Se vilka andra på din IronStack-server som har tränat på sistone.</translation>
+    </message>
+    <message>
+        <source>Find foods in Open Food Facts by name or barcode, with their nutrition.</source>
+        <translation>Sök livsmedel i Open Food Facts efter namn eller streckkod, med näringsvärden.</translation>
+    </message>
+    <message>
+        <source>Body measurements with their trends, activities like running or cycling, and guided stretching.</source>
+        <translation>Kroppsmått med trender, aktiviteter som löpning eller cykling, och guidad stretching.</translation>
+    </message>
+    <message>
+        <source>A food diary, your foods and recipes, calorie and macro goals, diet plans and statistics.</source>
+        <translation>Matdagbok, dina livsmedel och recept, kalori- och makromål, kostplaner och statistik.</translation>
+    </message>
+    <message>
+        <source>This part isn&apos;t in the app&apos;s offline mode yet; it comes in a later version. It works now when the app is connected to an IronStack server.</source>
+        <translation>Den här delen finns inte i appens offlineläge än; den kommer i en senare version. Den fungerar redan när appen är ansluten till en IronStack-server.</translation>
+    </message>
+    <message>
+        <source>This needs an IronStack server: it&apos;s about other people, or done on the server. Moving the data on this phone to a server comes in a later version.</source>
+        <translation>Det här kräver en IronStack-server: det handlar om andra personer eller görs på servern. Att flytta datan på telefonen till en server kommer i en senare version.</translation>
+    </message>
+    <message>
+        <source>To hide what needs a server, turn off &quot;Show what needs a server&quot; in Settings.</source>
+        <translation>Stäng av &quot;Visa det som kräver en server&quot; i Inställningar för att dölja det.</translation>
     </message>
 </context>
 <context>
@@ -4034,6 +4357,46 @@
         <source>Show app log</source>
         <translation>Visa appens logg</translation>
     </message>
+    <message>
+        <source>Back up the data on this phone</source>
+        <translation>Säkerhetskopiera datan på telefonen</translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation>Profil</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Kept</source>
+        <translation>Sparas</translation>
+    </message>
+    <message>
+        <source>On this phone only</source>
+        <translation>Endast på den här telefonen</translation>
+    </message>
+    <message>
+        <source>Show what needs a server</source>
+        <translation>Visa det som kräver en server</translation>
+    </message>
+    <message>
+        <source>Friends, coaching, the AI assistant and the parts not yet in this mode, dimmed. Off hides them.</source>
+        <translation>Vänner, coachning, AI-assistenten och delarna som inte finns i det här läget än, nedtonade. Av döljer dem.</translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation>Säkerhetskopiera</translation>
+    </message>
+    <message>
+        <source>Use a server instead</source>
+        <translation>Använd en server i stället</translation>
+    </message>
+    <message>
+        <source>What you&apos;ve logged stays on this phone but isn&apos;t shown while the app uses a server. Moving it to a server comes in a later version.</source>
+        <translation>Det du har loggat stannar på telefonen men visas inte medan appen använder en server. Att flytta det till en server kommer i en senare version.</translation>
+    </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
@@ -4186,6 +4549,29 @@
     <message>
         <source>No groups yet. Pull down to start one or join with an invite code.</source>
         <translation>Inga grupper än. Dra ner för att starta en eller gå med med en inbjudningskod.</translation>
+    </message>
+</context>
+<context>
+    <name>StandaloneDialog</name>
+    <message>
+        <source>Start</source>
+        <translation>Starta</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Använd utan server</translation>
+    </message>
+    <message>
+        <source>Everything you log is kept on this phone only. Back it up now and then: there&apos;s no copy anywhere else.</source>
+        <translation>Allt du loggar sparas bara på den här telefonen. Säkerhetskopiera då och då: det finns ingen kopia någon annanstans.</translation>
+    </message>
+    <message>
+        <source>Training works as with a server: IronStack&apos;s exercises and program templates, your own programs, training mode with weight suggestions, history, records and progress. Body tracking and nutrition come to this mode in later versions.</source>
+        <translation>Träningen fungerar som med en server: IronStacks övningar och programmallar, egna program, träningsläge med viktförslag, historik, rekord och framsteg. Kroppsmätning och kost kommer till det här läget i senare versioner.</translation>
+    </message>
+    <message>
+        <source>Friends and groups, coaching, the AI assistant and food search need an IronStack server. They&apos;re shown dimmed so you know they&apos;re there; Settings can hide them.</source>
+        <translation>Vänner och grupper, coachning, AI-assistenten och matsökning kräver en IronStack-server. De visas nedtonade så att du vet att de finns; Inställningar kan dölja dem.</translation>
     </message>
 </context>
 <context>

@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="it_IT">
 <context>
+    <name>Achievements</name>
+    <message>
+        <source>Longest streak</source>
+        <translation>Serie più lunga</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n giorno</numerusform>
+            <numerusform>%n giorni</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Workouts completed</source>
+        <translation>Allenamenti completati</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n workout(s)</source>
+        <translation>
+            <numerusform>%n allenamento</numerusform>
+            <numerusform>%n allenamenti</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Record personali</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n PR(s)</source>
+        <translation>
+            <numerusform>%n record</numerusform>
+            <numerusform>%n record</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Total weight lifted</source>
+        <translation>Peso totale sollevato</translation>
+    </message>
+</context>
+<context>
     <name>ActivitiesPage</name>
     <message>
         <source>New activity type</source>
@@ -185,6 +225,18 @@
     <message>
         <source>Can&apos;t read that image.</source>
         <translation>Impossibile leggere l&apos;immagine.</translation>
+    </message>
+    <message>
+        <source>The data on this phone isn&apos;t ready yet.</source>
+        <translation>I dati sul telefono non sono ancora pronti.</translation>
+    </message>
+    <message>
+        <source>Something went wrong with the data on this phone. The app log has the details.</source>
+        <translation>Qualcosa è andato storto con i dati sul telefono. I dettagli sono nel registro dell&apos;app.</translation>
+    </message>
+    <message>
+        <source>Can&apos;t save that image on this phone.</source>
+        <translation>Impossibile salvare l&apos;immagine sul telefono.</translation>
     </message>
 </context>
 <context>
@@ -1082,6 +1134,10 @@
     <message>
         <source>This week</source>
         <translation>Questa settimana</translation>
+    </message>
+    <message>
+        <source>On this phone</source>
+        <translation>Su questo telefono</translation>
     </message>
 </context>
 <context>
@@ -2178,6 +2234,85 @@
     </message>
 </context>
 <context>
+    <name>Local</name>
+    <message>
+        <source>This field may not be blank.</source>
+        <translation>Questo campo non può essere vuoto.</translation>
+    </message>
+    <message>
+        <source>Not a valid choice.</source>
+        <translation>Scelta non valida.</translation>
+    </message>
+    <message>
+        <source>Built-in exercises can&apos;t be changed.</source>
+        <translation>Gli esercizi predefiniti non si possono modificare.</translation>
+    </message>
+    <message>
+        <source>Images of built-in exercises can&apos;t be changed.</source>
+        <translation>Le immagini degli esercizi predefiniti non si possono modificare.</translation>
+    </message>
+    <message>
+        <source>No file was submitted.</source>
+        <translation>Nessun file inviato.</translation>
+    </message>
+    <message>
+        <source>A valid number is required.</source>
+        <translation>È richiesto un numero valido.</translation>
+    </message>
+    <message>
+        <source>Built-in templates can&apos;t be changed - copy one first.</source>
+        <translation>I modelli predefiniti non si possono modificare: copiane prima uno.</translation>
+    </message>
+    <message>
+        <source>Not a program you can change.</source>
+        <translation>Non è un programma che puoi modificare.</translation>
+    </message>
+    <message>
+        <source>Not an exercise you can use.</source>
+        <translation>Non è un esercizio che puoi usare.</translation>
+    </message>
+    <message>
+        <source>Ensure this value is greater than or equal to 1.</source>
+        <translation>Il valore deve essere almeno 1.</translation>
+    </message>
+    <message>
+        <source>Max reps can&apos;t be below min reps.</source>
+        <translation>Le ripetizioni massime non possono essere inferiori alle minime.</translation>
+    </message>
+    <message>
+        <source>RPE goes from 1 to 10.</source>
+        <translation>L&apos;RPE va da 1 a 10.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can change.</source>
+        <translation>Non è un allenamento che puoi modificare.</translation>
+    </message>
+    <message>
+        <source>Not available without a server.</source>
+        <translation>Non disponibile senza un server.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can start.</source>
+        <translation>Non è un allenamento che puoi iniziare.</translation>
+    </message>
+    <message>
+        <source>This workout has already ended.</source>
+        <translation>Questo allenamento è già terminato.</translation>
+    </message>
+    <message>
+        <source>Not your workout session.</source>
+        <translation>Non è la tua sessione.</translation>
+    </message>
+    <message>
+        <source>A valid integer is required.</source>
+        <translation>È richiesto un numero intero valido.</translation>
+    </message>
+    <message>
+        <source>This field is required.</source>
+        <translation>Questo campo è obbligatorio.</translation>
+    </message>
+</context>
+<context>
     <name>LogPage</name>
     <message>
         <source>Share app log</source>
@@ -2300,6 +2435,18 @@
     <message>
         <source>Connect</source>
         <translation>Connetti</translation>
+    </message>
+    <message>
+        <source>No server?</source>
+        <translation>Nessun server?</translation>
+    </message>
+    <message>
+        <source>The app also works on its own, keeping everything on this phone.</source>
+        <translation>L&apos;app funziona anche da sola, tenendo tutto su questo telefono.</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Usa senza server</translation>
     </message>
 </context>
 <context>
@@ -3531,6 +3678,97 @@
     </message>
 </context>
 <context>
+    <name>Progression</name>
+    <message>
+        <source>No completed history for this exercise yet - starting at the prescribed target.</source>
+        <translation>Ancora nessuno storico completato per questo esercizio: si parte dal target prescritto.</translation>
+    </message>
+    <message>
+        <source>Manual progression - you control the next weight and target.</source>
+        <translation>Progressione manuale: controlli tu il prossimo peso e obiettivo.</translation>
+    </message>
+    <message>
+        <source>Missed the target %1 sessions in a row at %2 kg - even maintenance loading should come down, to %3 kg.</source>
+        <translation>Obiettivo mancato per %1 sessioni di fila a %2 kg - anche il carico di mantenimento dovrebbe scendere, a %3 kg.</translation>
+    </message>
+    <message>
+        <source>Maintenance - keeping the same load.</source>
+        <translation>Mantenimento: si mantiene lo stesso carico.</translation>
+    </message>
+    <message>
+        <source>Hit every rep last session at %1 kg - adding %2 kg.</source>
+        <translation>Ripetizioni completate tutte nell&apos;ultima sessione a %1 kg - si aggiungono %2 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Ripetizioni target mancate per %1 sessioni di fila a %2 kg - si consiglia uno scarico a %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps last session at %1 kg - try the same weight again before increasing.</source>
+        <translation>Ripetizioni target mancate nell&apos;ultima sessione a %1 kg - riprova lo stesso peso prima di aumentare.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range on every set at %1 kg - adding %2 kg and resetting to the bottom of the range.</source>
+        <translation>Raggiunto il vertice dell&apos;intervallo di ripetizioni in ogni serie a %1 kg - si aggiungono %2 kg e si torna alla base dell&apos;intervallo.</translation>
+    </message>
+    <message>
+        <source>Still within your rep range at %1 kg - repeat the same weight and aim for more reps next time.</source>
+        <translation>Ancora nell&apos;intervallo di ripetizioni a %1 kg - ripeti lo stesso peso e punta a più ripetizioni la prossima volta.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range for %1 sessions in a row at %2 kg - adding %3 kg.</source>
+        <translation>Raggiunto il vertice dell&apos;intervallo di ripetizioni per %1 sessioni di fila a %2 kg - si aggiungono %3 kg.</translation>
+    </message>
+    <message>
+        <source>Within your rep range at %1 kg - keep working toward the top of the range before increasing.</source>
+        <translation>Nell&apos;intervallo di ripetizioni a %1 kg - continua a lavorare verso il vertice dell&apos;intervallo prima di aumentare.</translation>
+    </message>
+    <message>
+        <source>No percentage target configured on this prescription.</source>
+        <translation>Nessun obiettivo percentuale configurato per questa prescrizione.</translation>
+    </message>
+    <message>
+        <source>No 1RM available yet - log a set first, or enter your 1RM manually.</source>
+        <translation>Nessun 1RM disponibile ancora: registra prima una serie oppure inserisci il tuo 1RM manualmente.</translation>
+    </message>
+    <message>
+        <source>your latest estimated-1RM PR</source>
+        <translation>il tuo ultimo record di 1RM stimato</translation>
+    </message>
+    <message>
+        <source>a live estimate from your most recent set</source>
+        <translation>una stima in tempo reale dalla tua ultima serie</translation>
+    </message>
+    <message>
+        <source>%1% of %2 kg (%3) = %4 kg.</source>
+        <translation>%1% di %2 kg (%3) = %4 kg.</translation>
+    </message>
+    <message>
+        <source>No RIR logged against a target yet - log sets with RIR to use this method.</source>
+        <translation>Nessun RIR registrato rispetto a un target ancora: registra le serie con RIR per usare questo metodo.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - more in reserve than planned, adding %3 kg.</source>
+        <translation>RIR target %1, effettivo %2 - più margine del previsto, si aggiungono %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - notably closer to failure than planned, easing back to %3 kg.</source>
+        <translation>RIR target %1, effettivo %2 - notevolmente più vicino al cedimento del previsto, si allenta a %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - close enough to plan, hold the weight.</source>
+        <translation>RIR target %1, effettivo %2 - abbastanza vicino al piano, mantieni il peso.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Base dell&apos;intervallo di ripetizioni mancata per %1 sessioni di fila a %2 kg - si consiglia uno scarico a %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range last session at %1 kg - try the same weight again.</source>
+        <translation>Base dell&apos;intervallo di ripetizioni mancata nell&apos;ultima sessione a %1 kg - riprova lo stesso peso.</translation>
+    </message>
+</context>
+<context>
     <name>QuantityDialog</name>
     <message>
         <source>Save</source>
@@ -3673,6 +3911,33 @@
     </message>
 </context>
 <context>
+    <name>Records</name>
+    <message>
+        <source>Max weight</source>
+        <translation>Peso massimo</translation>
+    </message>
+    <message>
+        <source>Rep PR</source>
+        <translation>Record di ripetizioni</translation>
+    </message>
+    <message>
+        <source>Rep-specific PR</source>
+        <translation>Record specifico per ripetizioni</translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <translation>1RM stimato</translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation>Volume della serie</translation>
+    </message>
+    <message>
+        <source>Session volume</source>
+        <translation>Volume della sessione</translation>
+    </message>
+</context>
+<context>
     <name>RecordsPage</name>
     <message>
         <source>Personal records</source>
@@ -3750,6 +4015,64 @@
     <message>
         <source>Rest (seconds)</source>
         <translation>Recupero (secondi)</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeatureLabel</name>
+    <message>
+        <source>Not without a server yet</source>
+        <translation>Non ancora senza server</translation>
+    </message>
+    <message>
+        <source>Needs an IronStack server</source>
+        <translation>Richiede un server IronStack</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeaturePage</name>
+    <message>
+        <source>Add friends on your IronStack server, message them and form groups to train together.</source>
+        <translation>Aggiungi amici sul tuo server IronStack, scrivi loro e crea gruppi per allenarvi insieme.</translation>
+    </message>
+    <message>
+        <source>Ask a personal trainer to coach you, take the programs and diet plans they share - or coach others yourself.</source>
+        <translation>Chiedi a un personal trainer di seguirti e usa i programmi e i piani alimentari che condivide, oppure allena tu gli altri.</translation>
+    </message>
+    <message>
+        <source>Ask the AI assistant about your training and food. It can make you a program, a diet plan or a recipe.</source>
+        <translation>Chiedi all&apos;assistente IA del tuo allenamento e della tua alimentazione. Può prepararti un programma, un piano alimentare o una ricetta.</translation>
+    </message>
+    <message>
+        <source>The guided tours of IronStack&apos;s web pages.</source>
+        <translation>Le visite guidate delle pagine web di IronStack.</translation>
+    </message>
+    <message>
+        <source>See who else on your IronStack server has been training lately.</source>
+        <translation>Guarda chi altro sul tuo server IronStack si è allenato di recente.</translation>
+    </message>
+    <message>
+        <source>Find foods in Open Food Facts by name or barcode, with their nutrition.</source>
+        <translation>Cerca alimenti in Open Food Facts per nome o codice a barre, con i valori nutrizionali.</translation>
+    </message>
+    <message>
+        <source>Body measurements with their trends, activities like running or cycling, and guided stretching.</source>
+        <translation>Misure corporee con i loro andamenti, attività come corsa o ciclismo e stretching guidato.</translation>
+    </message>
+    <message>
+        <source>A food diary, your foods and recipes, calorie and macro goals, diet plans and statistics.</source>
+        <translation>Un diario alimentare, i tuoi alimenti e ricette, obiettivi di calorie e macro, piani alimentari e statistiche.</translation>
+    </message>
+    <message>
+        <source>This part isn&apos;t in the app&apos;s offline mode yet; it comes in a later version. It works now when the app is connected to an IronStack server.</source>
+        <translation>Questa parte non è ancora nella modalità offline dell&apos;app; arriverà in una versione successiva. Funziona già quando l&apos;app è collegata a un server IronStack.</translation>
+    </message>
+    <message>
+        <source>This needs an IronStack server: it&apos;s about other people, or done on the server. Moving the data on this phone to a server comes in a later version.</source>
+        <translation>Questo richiede un server IronStack: riguarda altre persone o viene fatto sul server. Lo spostamento dei dati del telefono su un server arriverà in una versione successiva.</translation>
+    </message>
+    <message>
+        <source>To hide what needs a server, turn off &quot;Show what needs a server&quot; in Settings.</source>
+        <translation>Per nascondere ciò che richiede un server, disattiva &quot;Mostra ciò che richiede un server&quot; nelle Impostazioni.</translation>
     </message>
 </context>
 <context>
@@ -4034,6 +4357,46 @@
         <source>Show app log</source>
         <translation>Mostra il registro dell&apos;app</translation>
     </message>
+    <message>
+        <source>Back up the data on this phone</source>
+        <translation>Esegui il backup dei dati del telefono</translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation>Profilo</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Dati</translation>
+    </message>
+    <message>
+        <source>Kept</source>
+        <translation>Conservati</translation>
+    </message>
+    <message>
+        <source>On this phone only</source>
+        <translation>Solo su questo telefono</translation>
+    </message>
+    <message>
+        <source>Show what needs a server</source>
+        <translation>Mostra ciò che richiede un server</translation>
+    </message>
+    <message>
+        <source>Friends, coaching, the AI assistant and the parts not yet in this mode, dimmed. Off hides them.</source>
+        <translation>Amici, coaching, l&apos;assistente IA e le parti non ancora in questa modalità, attenuati. Disattivato li nasconde.</translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation>Backup</translation>
+    </message>
+    <message>
+        <source>Use a server instead</source>
+        <translation>Usa un server</translation>
+    </message>
+    <message>
+        <source>What you&apos;ve logged stays on this phone but isn&apos;t shown while the app uses a server. Moving it to a server comes in a later version.</source>
+        <translation>Ciò che hai registrato resta su questo telefono ma non viene mostrato mentre l&apos;app usa un server. Lo spostamento su un server arriverà in una versione successiva.</translation>
+    </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
@@ -4186,6 +4549,29 @@
     <message>
         <source>No groups yet. Pull down to start one or join with an invite code.</source>
         <translation>Ancora nessun gruppo. Trascina in basso per crearne uno o unirti con un codice di invito.</translation>
+    </message>
+</context>
+<context>
+    <name>StandaloneDialog</name>
+    <message>
+        <source>Start</source>
+        <translation>Inizia</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Usa senza server</translation>
+    </message>
+    <message>
+        <source>Everything you log is kept on this phone only. Back it up now and then: there&apos;s no copy anywhere else.</source>
+        <translation>Tutto ciò che registri resta solo su questo telefono. Fai un backup ogni tanto: non c&apos;è nessuna copia altrove.</translation>
+    </message>
+    <message>
+        <source>Training works as with a server: IronStack&apos;s exercises and program templates, your own programs, training mode with weight suggestions, history, records and progress. Body tracking and nutrition come to this mode in later versions.</source>
+        <translation>L&apos;allenamento funziona come con un server: esercizi e modelli di programma di IronStack, i tuoi programmi, la modalità allenamento con i pesi suggeriti, storico, record e progressi. Monitoraggio corporeo e alimentazione arriveranno in questa modalità nelle prossime versioni.</translation>
+    </message>
+    <message>
+        <source>Friends and groups, coaching, the AI assistant and food search need an IronStack server. They&apos;re shown dimmed so you know they&apos;re there; Settings can hide them.</source>
+        <translation>Amici e gruppi, coaching, l&apos;assistente IA e la ricerca alimenti richiedono un server IronStack. Sono mostrati attenuati perché tu sappia che esistono; le Impostazioni possono nasconderli.</translation>
     </message>
 </context>
 <context>

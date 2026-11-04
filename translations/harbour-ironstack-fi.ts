@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fi_FI">
 <context>
+    <name>Achievements</name>
+    <message>
+        <source>Longest streak</source>
+        <translation>Pisin putki</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n päivä</numerusform>
+            <numerusform>%n päivää</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Workouts completed</source>
+        <translation>Treenejä tehty</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n workout(s)</source>
+        <translation>
+            <numerusform>%n treeni</numerusform>
+            <numerusform>%n treeniä</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation>Ennätyksiä</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n PR(s)</source>
+        <translation>
+            <numerusform>%n ennätys</numerusform>
+            <numerusform>%n ennätystä</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Total weight lifted</source>
+        <translation>Nostettu paino yhteensä</translation>
+    </message>
+</context>
+<context>
     <name>ActivitiesPage</name>
     <message>
         <source>New activity type</source>
@@ -185,6 +225,18 @@
     <message>
         <source>Can&apos;t read that image.</source>
         <translation>Kuvaa ei voi lukea.</translation>
+    </message>
+    <message>
+        <source>The data on this phone isn&apos;t ready yet.</source>
+        <translation>Puhelimen tiedot eivät ole vielä valmiina.</translation>
+    </message>
+    <message>
+        <source>Something went wrong with the data on this phone. The app log has the details.</source>
+        <translation>Puhelimen tietojen kanssa meni jotain vikaan. Sovelluksen lokissa on lisätiedot.</translation>
+    </message>
+    <message>
+        <source>Can&apos;t save that image on this phone.</source>
+        <translation>Kuvaa ei voi tallentaa puhelimeen.</translation>
     </message>
 </context>
 <context>
@@ -1082,6 +1134,10 @@
     <message>
         <source>This week</source>
         <translation>Tämä viikko</translation>
+    </message>
+    <message>
+        <source>On this phone</source>
+        <translation>Tässä puhelimessa</translation>
     </message>
 </context>
 <context>
@@ -2178,6 +2234,85 @@
     </message>
 </context>
 <context>
+    <name>Local</name>
+    <message>
+        <source>This field may not be blank.</source>
+        <translation>Tämä kenttä ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>Not a valid choice.</source>
+        <translation>Ei kelvollinen valinta.</translation>
+    </message>
+    <message>
+        <source>Built-in exercises can&apos;t be changed.</source>
+        <translation>Valmiita liikkeitä ei voi muuttaa.</translation>
+    </message>
+    <message>
+        <source>Images of built-in exercises can&apos;t be changed.</source>
+        <translation>Valmiiden liikkeiden kuvia ei voi muuttaa.</translation>
+    </message>
+    <message>
+        <source>No file was submitted.</source>
+        <translation>Tiedostoa ei lähetetty.</translation>
+    </message>
+    <message>
+        <source>A valid number is required.</source>
+        <translation>Anna kelvollinen luku.</translation>
+    </message>
+    <message>
+        <source>Built-in templates can&apos;t be changed - copy one first.</source>
+        <translation>Valmiita mallipohjia ei voi muuttaa - kopioi ensin omaksesi.</translation>
+    </message>
+    <message>
+        <source>Not a program you can change.</source>
+        <translation>Et voi muuttaa tätä ohjelmaa.</translation>
+    </message>
+    <message>
+        <source>Not an exercise you can use.</source>
+        <translation>Et voi käyttää tätä liikettä.</translation>
+    </message>
+    <message>
+        <source>Ensure this value is greater than or equal to 1.</source>
+        <translation>Arvon on oltava vähintään 1.</translation>
+    </message>
+    <message>
+        <source>Max reps can&apos;t be below min reps.</source>
+        <translation>Toistojen yläraja ei voi olla alarajaa pienempi.</translation>
+    </message>
+    <message>
+        <source>RPE goes from 1 to 10.</source>
+        <translation>RPE on väliltä 1-10.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can change.</source>
+        <translation>Et voi muuttaa tätä treeniä.</translation>
+    </message>
+    <message>
+        <source>Not available without a server.</source>
+        <translation>Ei käytettävissä ilman palvelinta.</translation>
+    </message>
+    <message>
+        <source>Not a workout you can start.</source>
+        <translation>Et voi aloittaa tätä treeniä.</translation>
+    </message>
+    <message>
+        <source>This workout has already ended.</source>
+        <translation>Tämä treeni on jo päättynyt.</translation>
+    </message>
+    <message>
+        <source>Not your workout session.</source>
+        <translation>Ei sinun treenisi.</translation>
+    </message>
+    <message>
+        <source>A valid integer is required.</source>
+        <translation>Anna kelvollinen kokonaisluku.</translation>
+    </message>
+    <message>
+        <source>This field is required.</source>
+        <translation>Tämä kenttä vaaditaan.</translation>
+    </message>
+</context>
+<context>
     <name>LogPage</name>
     <message>
         <source>Share app log</source>
@@ -2300,6 +2435,18 @@
     <message>
         <source>Create an API key in your IronStack instance under Profile &gt; API keys. It needs read access to profile, exercises, programs, records and analytics, and create, read, update and delete access to workouts.</source>
         <translation>Luo API-avain IronStackissa kohdassa Profiili &gt; API-avaimet. Se tarvitsee lukuoikeuden profiiliin, liikkeisiin, ohjelmiin, ennätyksiin ja analytiikkaan sekä luonti-, luku-, muokkaus- ja poisto-oikeuden treeneihin.</translation>
+    </message>
+    <message>
+        <source>No server?</source>
+        <translation>Ei palvelinta?</translation>
+    </message>
+    <message>
+        <source>The app also works on its own, keeping everything on this phone.</source>
+        <translation>Sovellus toimii myös itsenäisesti, ja kaikki pysyy tässä puhelimessa.</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Käytä ilman palvelinta</translation>
     </message>
 </context>
 <context>
@@ -3531,6 +3678,97 @@
     </message>
 </context>
 <context>
+    <name>Progression</name>
+    <message>
+        <source>No completed history for this exercise yet - starting at the prescribed target.</source>
+        <translation>Tälle liikkeelle ei vielä ole suoritushistoriaa - aloitetaan ohjelmoidusta tavoitteesta.</translation>
+    </message>
+    <message>
+        <source>Manual progression - you control the next weight and target.</source>
+        <translation>Manuaalinen progressio - hallitset itse seuraavan painon ja tavoitteen.</translation>
+    </message>
+    <message>
+        <source>Missed the target %1 sessions in a row at %2 kg - even maintenance loading should come down, to %3 kg.</source>
+        <translation>Tavoite jäi saavuttamatta %1 kertaa peräkkäin painolla %2 kg - jopa ylläpitokuorman pitäisi laskea, %3 kg:aan.</translation>
+    </message>
+    <message>
+        <source>Maintenance - keeping the same load.</source>
+        <translation>Ylläpito - sama kuorma pysyy.</translation>
+    </message>
+    <message>
+        <source>Hit every rep last session at %1 kg - adding %2 kg.</source>
+        <translation>Kaikki toistot onnistuivat viime kerralla painolla %1 kg - lisätään %2 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Toistotavoite jäi saavuttamatta %1 kertaa peräkkäin painolla %2 kg - suositellaan keventämistä painoon %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed target reps last session at %1 kg - try the same weight again before increasing.</source>
+        <translation>Toistotavoite jäi saavuttamatta viime kerralla painolla %1 kg - kokeile samaa painoa uudelleen ennen nostoa.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range on every set at %1 kg - adding %2 kg and resetting to the bottom of the range.</source>
+        <translation>Toistoväli täyttyi ylärajaan asti joka sarjassa painolla %1 kg - lisätään %2 kg ja palataan välin alarajalle.</translation>
+    </message>
+    <message>
+        <source>Still within your rep range at %1 kg - repeat the same weight and aim for more reps next time.</source>
+        <translation>Yhä toistovälin sisällä painolla %1 kg - toista sama paino ja tavoittele enemmän toistoja ensi kerralla.</translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range for %1 sessions in a row at %2 kg - adding %3 kg.</source>
+        <translation>Toistovälin yläraja täyttyi %1 kertaa peräkkäin painolla %2 kg - lisätään %3 kg.</translation>
+    </message>
+    <message>
+        <source>Within your rep range at %1 kg - keep working toward the top of the range before increasing.</source>
+        <translation>Toistovälin sisällä painolla %1 kg - jatka kohti välin ylärajaa ennen nostoa.</translation>
+    </message>
+    <message>
+        <source>No percentage target configured on this prescription.</source>
+        <translation>Tälle ohjelmoinnille ei ole asetettu prosenttitavoitetta.</translation>
+    </message>
+    <message>
+        <source>No 1RM available yet - log a set first, or enter your 1RM manually.</source>
+        <translation>1RM:ää ei vielä ole saatavilla - kirjaa ensin sarja tai syötä 1RM manuaalisesti.</translation>
+    </message>
+    <message>
+        <source>your latest estimated-1RM PR</source>
+        <translation>viimeisin arvioitu 1RM-ennätys</translation>
+    </message>
+    <message>
+        <source>a live estimate from your most recent set</source>
+        <translation>tuore arvio viimeisimmästä sarjasta</translation>
+    </message>
+    <message>
+        <source>%1% of %2 kg (%3) = %4 kg.</source>
+        <translation>%1% painosta %2 kg (%3) = %4 kg.</translation>
+    </message>
+    <message>
+        <source>No RIR logged against a target yet - log sets with RIR to use this method.</source>
+        <translation>RIR:ää ei vielä ole kirjattu tavoitetta vasten - kirjaa sarjoja RIR:llä käyttääksesi tätä menetelmää.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - more in reserve than planned, adding %3 kg.</source>
+        <translation>Tavoite-RIR %1, toteutunut %2 - enemmän reserviä kuin suunniteltu, lisätään %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - notably closer to failure than planned, easing back to %3 kg.</source>
+        <translation>Tavoite-RIR %1, toteutunut %2 - huomattavasti lähempänä uupumusta kuin suunniteltu, kevennetään painoon %3 kg.</translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - close enough to plan, hold the weight.</source>
+        <translation>Tavoite-RIR %1, toteutunut %2 - riittävän lähellä suunnitelmaa, pidetään sama paino.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation>Toistovälin alaraja jäi saavuttamatta %1 kertaa peräkkäin painolla %2 kg - suositellaan keventämistä painoon %3 kg.</translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range last session at %1 kg - try the same weight again.</source>
+        <translation>Toistovälin alaraja jäi saavuttamatta viime kerralla painolla %1 kg - kokeile samaa painoa uudelleen.</translation>
+    </message>
+</context>
+<context>
     <name>QuantityDialog</name>
     <message>
         <source>Save</source>
@@ -3673,6 +3911,33 @@
     </message>
 </context>
 <context>
+    <name>Records</name>
+    <message>
+        <source>Max weight</source>
+        <translation>Maksimipaino</translation>
+    </message>
+    <message>
+        <source>Rep PR</source>
+        <translation>Toistoennätys</translation>
+    </message>
+    <message>
+        <source>Rep-specific PR</source>
+        <translation>Toistokohtainen ennätys</translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <translation>Arvioitu 1RM</translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation>Sarjan volyymi</translation>
+    </message>
+    <message>
+        <source>Session volume</source>
+        <translation>Treenin volyymi</translation>
+    </message>
+</context>
+<context>
     <name>RecordsPage</name>
     <message>
         <source>Personal records</source>
@@ -3750,6 +4015,64 @@
     <message>
         <source>Rest (seconds)</source>
         <translation>Lepo (sekuntia)</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeatureLabel</name>
+    <message>
+        <source>Not without a server yet</source>
+        <translation>Ei vielä ilman palvelinta</translation>
+    </message>
+    <message>
+        <source>Needs an IronStack server</source>
+        <translation>Vaatii IronStack-palvelimen</translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeaturePage</name>
+    <message>
+        <source>Add friends on your IronStack server, message them and form groups to train together.</source>
+        <translation>Lisää kavereita IronStack-palvelimeltasi, lähetä heille viestejä ja perustakaa ryhmiä treenataksenne yhdessä.</translation>
+    </message>
+    <message>
+        <source>Ask a personal trainer to coach you, take the programs and diet plans they share - or coach others yourself.</source>
+        <translation>Pyydä personal traineria valmentamaan sinua ja ota käyttöön hänen jakamansa ohjelmat ja ruokavaliot - tai valmenna itse muita.</translation>
+    </message>
+    <message>
+        <source>Ask the AI assistant about your training and food. It can make you a program, a diet plan or a recipe.</source>
+        <translation>Kysy tekoälyavustajalta treenistäsi ja ruokailustasi. Se voi tehdä sinulle ohjelman, ruokavalion tai reseptin.</translation>
+    </message>
+    <message>
+        <source>The guided tours of IronStack&apos;s web pages.</source>
+        <translation>IronStackin web-sivujen opastetut kierrokset.</translation>
+    </message>
+    <message>
+        <source>See who else on your IronStack server has been training lately.</source>
+        <translation>Näe, ketkä muut IronStack-palvelimellasi ovat treenanneet viime aikoina.</translation>
+    </message>
+    <message>
+        <source>Find foods in Open Food Facts by name or barcode, with their nutrition.</source>
+        <translation>Hae ruokia Open Food Factsista nimellä tai viivakoodilla ravintoarvoineen.</translation>
+    </message>
+    <message>
+        <source>Body measurements with their trends, activities like running or cycling, and guided stretching.</source>
+        <translation>Kehon mittaukset ja niiden kehitys, aktiviteetit kuten juoksu tai pyöräily sekä ohjattu venyttely.</translation>
+    </message>
+    <message>
+        <source>A food diary, your foods and recipes, calorie and macro goals, diet plans and statistics.</source>
+        <translation>Ruokapäiväkirja, omat ruoat ja reseptit, kalori- ja makrotavoitteet, ruokavaliot ja tilastot.</translation>
+    </message>
+    <message>
+        <source>This part isn&apos;t in the app&apos;s offline mode yet; it comes in a later version. It works now when the app is connected to an IronStack server.</source>
+        <translation>Tämä osa ei ole vielä sovelluksen offline-tilassa, vaan tulee myöhemmässä versiossa. Se toimii jo nyt, kun sovellus on yhdistetty IronStack-palvelimeen.</translation>
+    </message>
+    <message>
+        <source>This needs an IronStack server: it&apos;s about other people, or done on the server. Moving the data on this phone to a server comes in a later version.</source>
+        <translation>Tämä vaatii IronStack-palvelimen: se liittyy muihin ihmisiin tai tehdään palvelimella. Puhelimen tietojen siirto palvelimelle tulee myöhemmässä versiossa.</translation>
+    </message>
+    <message>
+        <source>To hide what needs a server, turn off &quot;Show what needs a server&quot; in Settings.</source>
+        <translation>Piilota palvelinta vaativat kohdat poistamalla Asetuksista &quot;Näytä palvelinta vaativat&quot;.</translation>
     </message>
 </context>
 <context>
@@ -4034,6 +4357,46 @@
         <source>Show app log</source>
         <translation>Näytä sovelluksen loki</translation>
     </message>
+    <message>
+        <source>Back up the data on this phone</source>
+        <translation>Varmuuskopioi puhelimen tiedot</translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation>Profiili</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Tiedot</translation>
+    </message>
+    <message>
+        <source>Kept</source>
+        <translation>Tallessa</translation>
+    </message>
+    <message>
+        <source>On this phone only</source>
+        <translation>Vain tässä puhelimessa</translation>
+    </message>
+    <message>
+        <source>Show what needs a server</source>
+        <translation>Näytä palvelinta vaativat</translation>
+    </message>
+    <message>
+        <source>Friends, coaching, the AI assistant and the parts not yet in this mode, dimmed. Off hides them.</source>
+        <translation>Kaverit, valmennus, tekoälyavustaja ja osat, jotka eivät vielä ole tässä tilassa, himmennettyinä. Pois päältä piilottaa ne.</translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation>Varmuuskopioi</translation>
+    </message>
+    <message>
+        <source>Use a server instead</source>
+        <translation>Käytä palvelinta</translation>
+    </message>
+    <message>
+        <source>What you&apos;ve logged stays on this phone but isn&apos;t shown while the app uses a server. Moving it to a server comes in a later version.</source>
+        <translation>Kirjaamasi tiedot jäävät tähän puhelimeen, mutta niitä ei näytetä, kun sovellus käyttää palvelinta. Niiden siirto palvelimelle tulee myöhemmässä versiossa.</translation>
+    </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
@@ -4186,6 +4549,29 @@
     <message>
         <source>No groups yet. Pull down to start one or join with an invite code.</source>
         <translation>Ei vielä ryhmiä. Vedä alas perustaaksesi ryhmän tai liittyäksesi kutsukoodilla.</translation>
+    </message>
+</context>
+<context>
+    <name>StandaloneDialog</name>
+    <message>
+        <source>Start</source>
+        <translation>Aloita</translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation>Käytä ilman palvelinta</translation>
+    </message>
+    <message>
+        <source>Everything you log is kept on this phone only. Back it up now and then: there&apos;s no copy anywhere else.</source>
+        <translation>Kaikki kirjaamasi tallennetaan vain tähän puhelimeen. Varmuuskopioi silloin tällöin: muualla ei ole kopiota.</translation>
+    </message>
+    <message>
+        <source>Training works as with a server: IronStack&apos;s exercises and program templates, your own programs, training mode with weight suggestions, history, records and progress. Body tracking and nutrition come to this mode in later versions.</source>
+        <translation>Treenaus toimii kuten palvelimen kanssa: IronStackin liikkeet ja ohjelmapohjat, omat ohjelmat, treenitila painoehdotuksineen, historia, ennätykset ja edistyminen. Kehon seuranta ja ravinto tulevat tähän tilaan myöhemmissä versioissa.</translation>
+    </message>
+    <message>
+        <source>Friends and groups, coaching, the AI assistant and food search need an IronStack server. They&apos;re shown dimmed so you know they&apos;re there; Settings can hide them.</source>
+        <translation>Kaverit ja ryhmät, valmennus, tekoälyavustaja ja ruokahaku vaativat IronStack-palvelimen. Ne näytetään himmennettyinä, jotta tiedät niiden olevan olemassa; Asetuksista ne voi piilottaa.</translation>
     </message>
 </context>
 <context>
