@@ -1,6 +1,6 @@
 Name:       harbour-ironstack
 Summary:    IronStack training log client
-Version:    0.7.0
+Version:    0.8.0
 Release:    1
 License:    AGPLv3
 URL:        https://github.com/JonneSaloranta/ironstack
@@ -42,6 +42,12 @@ desktop-file-install --delete-original \
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
+* Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.8.0-1
+- An app log under Settings > Troubleshooting: errors, warnings, info or
+  debug, copied or shared to report a problem.
+- Server names and texts follow the phone's language even when its
+  region format is another one.
+
 * Wed Nov 04 2026 Jonne Saloranta <saloranta.jonne@gmail.com> - 0.7.0-1
 - Needs IronStack 1.31.0 or later.
 - Built-in names and texts come translated from IronStack, in the
