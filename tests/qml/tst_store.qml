@@ -293,7 +293,7 @@ TestCase {
         compare(Store.contentName("", "fi"), "")
         compare(Store.contentName(undefined, "fi"), undefined)
         // without a language: the device's, like the rest of the UI
-        compare(Store.contentLanguage(), Qt.locale().name.split("_")[0])
+        compare(Store.contentLanguage(), Qt.locale().uiLanguages[0].split(/[-_]/)[0])
         compare(Store.contentName("Skull Crusher"), Store.contentName("Skull Crusher", Store.contentLanguage()))
     }
 

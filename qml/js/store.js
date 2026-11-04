@@ -36,8 +36,11 @@ function whenIdle(pageStack, action) {
 // tools/content-i18n/generate.py). A name with no translation - a user's
 // own exercise, say - is shown as typed, the same as on the web.
 
+// The UI language (the app's translation's), not the region format's.
 function contentLanguage() {
-    return Qt.locale().name.split("_")[0]
+    var locale = Qt.locale()
+    var ui = locale.uiLanguages && locale.uiLanguages.length ? locale.uiLanguages[0] : locale.name
+    return ui.split(/[-_]/)[0]
 }
 
 // The `display_*` twin of a stored field: "name" -> "display_name",

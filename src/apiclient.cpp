@@ -65,7 +65,10 @@ ApiClient::Handler ApiClient::jsHandler(const QJSValue &callback)
 // IronStack profile's language.
 QByteArray ApiClient::acceptLanguage(const QLocale &locale)
 {
-    const QString language = locale.name().section(QLatin1Char('_'), 0, 0);
+    // The UI language, which picks the app's translation too - not
+    // name(), which follows the region format and can be another one.
+    const QString ui = locale.uiLanguages().value(0, locale.name());
+    const QString language = ui.section(QLatin1Char('-'), 0, 0).section(QLatin1Char('_'), 0, 0);
     if (language.isEmpty() || language == QLatin1String("C") || language == QLatin1String("en"))
         return QByteArrayLiteral("en");
     return language.toLatin1() + ", en;q=0.5";
