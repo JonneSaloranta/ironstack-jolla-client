@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import Nemo.KeepAlive 1.2
 import Nemo.Notifications 1.0
 import "js/store.js" as Store
+import "components"
 
 ApplicationWindow {
     id: appWindow
@@ -13,6 +14,9 @@ ApplicationWindow {
     allowedOrientations: defaultAllowedOrientations
     // Silica pages are portrait-only unless told otherwise.
     _defaultPageOrientations: defaultAllowedOrientations
+
+    // Answers the app's requests in standalone mode.
+    LocalBackend {}
 
     Connections {
         target: api

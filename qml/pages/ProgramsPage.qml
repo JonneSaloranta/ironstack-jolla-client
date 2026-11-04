@@ -22,6 +22,11 @@ Page {
         var templates = []
         // A coach's shared programs are left out; without the coaching
         // permission there are none to tell apart.
+        if (settings.standalone) {
+            Store.coachIds = []
+            loadPrograms(own, templates)
+            return
+        }
         api.request("GET", "coaching/coaches/", null, function(ok, status, data) {
             Store.coachIds = ok ? (data || []).map(function(r) { return r.coach.id }) : []
             loadPrograms(own, templates)

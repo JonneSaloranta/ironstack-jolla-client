@@ -55,6 +55,18 @@ so it isn't rediscovered).
 | Copying a program template | done | `programs/<id>/copy/`, like the web's Copy. |
 | Social, coaching, assistant, tutorials | done | See "Other areas". Friends/groups, coaching and the assistant each need an API key with their own permission area; a 403 names it. |
 
+## Standalone mode
+
+Without a server (docs/STANDALONE.md) the app's local backend answers
+the training endpoints the same way: exercises, programs, sessions and
+sets, records (detected and rebuilt with apps/records' rules), the
+weight suggestion (apps/progression, all seven methods, the web's
+wording), up next, analytics and achievements. Differences: duration
+estimates use the server's default formula only (always "rough"), and
+achievements are the phone's own user. Body tracking, activities,
+stretching and nutrition are to come; social, coaching, the assistant,
+the guide and food search need a server and are shown dimmed.
+
 ## Other areas
 
 | Area | Status | Server gaps |

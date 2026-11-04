@@ -675,6 +675,102 @@ private slots:
         QVERIFY(ApiClient::uploadImage(dir.path() + QStringLiteral("/missing.jpg"), &name, &type).isEmpty());
     }
 
+    // Standalone mode: a JS handler answers instead of the network.
+    QJSValue localHandler(const QString &body)
+    {
+        return m_engine->evaluate(QStringLiteral("(function(method, path, body) {"
+                                                 "  calls = (typeof calls === 'undefined' ? [] : calls);"
+                                                 "  calls.push(method + ' ' + path + ' ' + JSON.stringify(body));"
+                                                 "  %1 })").arg(body));
+    }
+
+    void standaloneAnswersLocally()
+    {
+        m_settings->setStandalone(true);
+        QVERIFY(m_settings->configured());
+        m_api->setLocalBackend(localHandler(QStringLiteral("return { status: 201, data: { id: 7 } }")));
+        QVariantMap body;
+        body.insert(QStringLiteral("reps"), 5);
+        m_api->request(QStringLiteral("post"), QStringLiteral("sets/"), m_engine->toScriptValue(body), makeCallback());
+        // Never inside request() itself, like a network reply.
+        QVERIFY(result().isUndefined());
+        QVERIFY(m_api->busy());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("ok").toBool(), true);
+        QCOMPARE(result().property("status").toInt(), 201);
+        QCOMPARE(result().property("data").property("id").toInt(), 7);
+        QCOMPARE(m_engine->globalObject().property("calls").property(0).toString(),
+                 QStringLiteral("POST sets/ {\"reps\":5}"));
+        QVERIFY(m_server->requests.isEmpty());
+        QTRY_VERIFY(!m_api->busy());
+        m_settings->setStandalone(false);
+    }
+
+    void standaloneErrors()
+    {
+        m_settings->setStandalone(true);
+        m_api->setLocalBackend(localHandler(QStringLiteral("return { status: 400, data: { name: ['Required.'] } }")));
+        m_api->request(QStringLiteral("POST"), QStringLiteral("exercises/"), QJSValue(), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("ok").toBool(), false);
+        QCOMPARE(result().property("error").toString(), QStringLiteral("name: Required."));
+
+        // A bug in the backend is a 500, not a crash.
+        m_api->setLocalBackend(localHandler(QStringLiteral("return undefinedThing.x")));
+        m_api->request(QStringLiteral("GET"), QStringLiteral("sessions/"), QJSValue(), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("status").toInt(), 500);
+        m_settings->setStandalone(false);
+    }
+
+    void standaloneKeepsLoginAndTransferOnTheNetwork()
+    {
+        m_settings->setStandalone(true);
+        m_api->setLocalBackend(localHandler(QStringLiteral("return { status: 200, data: {} }")));
+        m_server->body = "{\"username\": \"someone\"}";
+        m_api->requestWith(m_server->baseUrl(), QStringLiteral("isk_typed"), QStringLiteral("GET"),
+                           QStringLiteral("profile/"), QJSValue(), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("data").property("username").toString(), QStringLiteral("someone"));
+
+        QVariantMap headers;
+        headers.insert(QStringLiteral("Idempotency-Key"), QStringLiteral("abc-123"));
+        m_api->requestTo(m_server->baseUrl(), QStringLiteral("isk_typed"), QStringLiteral("POST"),
+                         QStringLiteral("sets/"), QJSValue(), m_engine->toScriptValue(headers), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(m_server->requests.size(), 2);
+        QVERIFY(m_server->requests.at(1).contains("Idempotency-Key: abc-123"));
+        QVERIFY(m_server->requests.at(1).contains("Authorization: Bearer isk_typed"));
+        m_settings->setStandalone(false);
+    }
+
+    void standaloneQueueGoesLocal()
+    {
+        QTemporaryDir dir;
+        m_settings->setStandalone(true);
+        m_api->setLocalBackend(localHandler(QStringLiteral("return { status: 201, data: { new_records: [] } }")));
+        SyncQueue queue(m_api, dir.path() + QStringLiteral("/pending.json"));
+        QSignalSpy synced(&queue, &SyncQueue::itemSynced);
+        queue.enqueueVariant(QStringLiteral("POST"), QStringLiteral("sets/"), QVariantMap());
+        QTRY_COMPARE(synced.count(), 1);
+        QCOMPARE(queue.count(), 0);
+        QVERIFY(m_server->requests.isEmpty());
+        m_settings->setStandalone(false);
+    }
+
+    void readDataOnlyPlainNames()
+    {
+        QTemporaryDir dir;
+        QFile file(dir.path() + QStringLiteral("/seed.json"));
+        QVERIFY(file.open(QIODevice::WriteOnly));
+        file.write("{\"version\": 1}");
+        file.close();
+        m_api->setDataDir(dir.path());
+        QCOMPARE(m_api->readData(QStringLiteral("seed.json")), QStringLiteral("{\"version\": 1}"));
+        QCOMPARE(m_api->readData(QStringLiteral("../seed.json")), QString());
+        QCOMPARE(m_api->readData(QStringLiteral("missing.json")), QString());
+    }
+
     void uploadSendsMultipart()
     {
         m_server->status = 201;

@@ -27,9 +27,11 @@ TestCase {
             { tag: "ErrorBanner", path: "components/ErrorBanner.qml" },
             { tag: "ExercisePanel", path: "components/ExercisePanel.qml" },
             { tag: "LineChart", path: "components/LineChart.qml" },
+            { tag: "LocalBackend", path: "components/LocalBackend.qml" },
             { tag: "MacroSummary", path: "components/MacroSummary.qml" },
             { tag: "RecordItem", path: "components/RecordItem.qml" },
             { tag: "RestTimer", path: "components/RestTimer.qml" },
+            { tag: "ServerFeatureLabel", path: "components/ServerFeatureLabel.qml" },
             { tag: "SessionController", path: "components/SessionController.qml" },
             { tag: "SetItem", path: "components/SetItem.qml" },
             { tag: "StatItem", path: "components/StatItem.qml" },
@@ -45,7 +47,7 @@ TestCase {
         return [
             "ActivitiesPage", "ActivityDialog", "ActivityHistoryPage", "AssistantChatPage", "AssistantPage", "AssistantSettingsPage", "BarcodeScannerPage", "BlockedUsersPage", "ChatPage", "ClientPage", "ClientsDialog", "CoachUpdateDialog", "CoachingPage", "CalculatorsPage", "DashboardPage", "DiaryEntryDialog", "DiaryPage", "DietPlanDialog", "DietPlanPage", "DietPlansPage", "ExerciseEditDialog", "ExerciseImageDialog", "ExercisePage", "ExercisePickerPage", "ExerciseProgressPage", "FoodEditDialog", "FoodPage", "FoodsPage", "FriendPickerDialog", "GuidePage", "GroupEditDialog", "GroupPage", "HistoryPage", "LogSetDialog",
             "LogPage", "LoginPage", "MeasurementDialog", "MeasurementHistoryPage", "MeasurementTypeDialog", "MeasurementsPage", "MenuPage", "NameDialog", "NutritionGoalDialog", "NutritionGoalsPage", "NutritionPage", "NutritionProfileDialog", "NutritionStatsPage", "OpenFoodFactsPage", "PrescriptionDialog", "ProgramEditDialog", "ProgramPage", "ProgramsPage", "ProgressPage", "QuantityDialog", "RecipeEditDialog", "RecipePage", "RecipesPage", "RecordsPage", "RoutineEditDialog", "RoutineItemDialog",
-            "SessionPage", "SettingsPage", "ShoppingListPage", "SocialPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TourPage", "TrainingPage", "UserSearchPage", "WorkoutEditDialog", "WorkoutPage"
+            "ServerFeaturePage", "SessionPage", "SettingsPage", "StandaloneDialog", "ShoppingListPage", "SocialPage", "StretchEditDialog", "StretchPage", "StretchPlayerPage", "StretchRoutinePage", "StretchSessionDialog", "StretchSessionsPage", "StretchesPage", "StretchingPage", "TourPage", "TrainingPage", "UserSearchPage", "WorkoutEditDialog", "WorkoutPage"
         ].map(function(name) { return { tag: name, path: "pages/" + name + ".qml" } })
     }
     function test_pages(data) { compile(data.path) }

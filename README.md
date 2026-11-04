@@ -9,9 +9,11 @@ REST API (`/api/v1/`) with a per-user API key; needs IronStack 1.31.0 or
 later. Exercise images, "this week", duration estimates and the trainer
 switches need IronStack's next release (its dev branch today).
 
-## Features (0.1)
+## Features
 
-- Connect with a server address and API key
+- Connect with a server address and API key - or use the app without a
+  server, everything kept on the phone (training for now; see
+  [docs/STANDALONE.md](docs/STANDALONE.md))
 - Dashboard: workout in progress or up next, this week or the last 7
   days, recent PRs, achievements
 - Programs and workouts with how long each takes, start a session from a

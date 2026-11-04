@@ -65,7 +65,24 @@ terminal with `harbour-ironstack 2>&1 | tee /tmp/ironstack.log`.
   estimates on programs and the time left in training mode, the trainer
   switches on the coaching page, and a recipe the assistant suggests.
 
+- [ ] **Standalone mode on the phone** (0.10.0): "Use without a server",
+  a program copied from a template, a workout with its PR notification,
+  history, records, Progress and the cover; restart in the middle of a
+  workout; Settings > Back up shared to another app; the dimmed parts and
+  hiding them.
+
 ## 2. Development possible now
+
+- [ ] **Standalone mode, the next sections** ([STANDALONE.md](STANDALONE.md)):
+  body tracking, activities and stretching (`body.js`, `stretching.js`:
+  measurements and the 14-day reminder, guided stretching, the
+  cool-down); then nutrition (`food.js`, `goals.js`, `dietplans.js`,
+  ported from IronStack's nutrition services including the diet plan
+  builder). Each moves its feature out of `Features.LATER`.
+- [ ] **Moving standalone data to a server**, once IronStack #52 lets a
+  session keep its real times: `TransferPage`, a resumable id map, built-in
+  rows matched by name, a check at the end (STANDALONE.md "Moving the data
+  to a server").
 
 - [ ] **Swedish, Estonian, Italian and Russian checked by a native
   speaker.** About half of their strings are the web's own translations;
@@ -83,11 +100,14 @@ stay hidden. When the release is out:
 - [ ] Note its version in COMPATIBILITY.md and README.md in place of "dev
   branch", and try the five against the real server on the phone.
 - [ ] Once the app can require that version: drop the 1.31 fallbacks -
-  `weekRange` in `DashboardPage.qml`, the 404 messages in
-  `ExercisePage.qml` and `SessionController.qml`, and (#47) the app's copy
-  of the web's catalog: `Store.contentName`'s fallback, `content.js`,
-  `content_texts.js` and `tools/content-i18n/` (old offline caches then
-  show English until refreshed).
+  `weekRange` in `DashboardPage.qml` and the 404 messages in
+  `ExercisePage.qml` and `SessionController.qml`. Keep the app's copy of
+  the web's catalog (`content.js`, `content_texts.js`): standalone mode
+  translates built-in names with it.
+
+#52 (open, 2026-11-04): sessions and stretch sessions created with their
+real start and end times - what moving standalone mode's data to a server
+needs (docs/STANDALONE.md).
 
 ## 4. Housekeeping
 

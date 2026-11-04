@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>Achievements</name>
+    <message>
+        <source>Longest streak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation>
+            <numerusform>%n day</numerusform>
+            <numerusform>%n days</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Workouts completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n workout(s)</source>
+        <translation>
+            <numerusform>%n workout</numerusform>
+            <numerusform>%n workouts</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n PR(s)</source>
+        <translation>
+            <numerusform>%n PR</numerusform>
+            <numerusform>%n PRs</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Total weight lifted</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ActivitiesPage</name>
     <message>
         <source>New activity type</source>
@@ -184,6 +224,18 @@
     </message>
     <message>
         <source>Can&apos;t read that image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The data on this phone isn&apos;t ready yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Something went wrong with the data on this phone. The app log has the details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Can&apos;t save that image on this phone.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1081,6 +1133,10 @@
     </message>
     <message>
         <source>This week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this phone</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2178,6 +2234,85 @@
     </message>
 </context>
 <context>
+    <name>Local</name>
+    <message>
+        <source>This field may not be blank.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a valid choice.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Built-in exercises can&apos;t be changed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images of built-in exercises can&apos;t be changed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No file was submitted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A valid number is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Built-in templates can&apos;t be changed - copy one first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a program you can change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not an exercise you can use.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ensure this value is greater than or equal to 1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max reps can&apos;t be below min reps.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RPE goes from 1 to 10.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a workout you can change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not available without a server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not a workout you can start.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This workout has already ended.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not your workout session.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A valid integer is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This field is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LogPage</name>
     <message>
         <source>Share app log</source>
@@ -2299,6 +2434,18 @@
     </message>
     <message>
         <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No server?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The app also works on its own, keeping everything on this phone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3531,6 +3678,97 @@
     </message>
 </context>
 <context>
+    <name>Progression</name>
+    <message>
+        <source>No completed history for this exercise yet - starting at the prescribed target.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual progression - you control the next weight and target.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Missed the target %1 sessions in a row at %2 kg - even maintenance loading should come down, to %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maintenance - keeping the same load.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hit every rep last session at %1 kg - adding %2 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Missed target reps %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Missed target reps last session at %1 kg - try the same weight again before increasing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range on every set at %1 kg - adding %2 kg and resetting to the bottom of the range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Still within your rep range at %1 kg - repeat the same weight and aim for more reps next time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hit the top of your rep range for %1 sessions in a row at %2 kg - adding %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Within your rep range at %1 kg - keep working toward the top of the range before increasing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No percentage target configured on this prescription.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No 1RM available yet - log a set first, or enter your 1RM manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>your latest estimated-1RM PR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>a live estimate from your most recent set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1% of %2 kg (%3) = %4 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No RIR logged against a target yet - log sets with RIR to use this method.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - more in reserve than planned, adding %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - notably closer to failure than planned, easing back to %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target RIR %1, actual %2 - close enough to plan, hold the weight.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range %1 sessions in a row at %2 kg - recommending a deload to %3 kg.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Missed the bottom of your rep range last session at %1 kg - try the same weight again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QuantityDialog</name>
     <message>
         <source>Save</source>
@@ -3673,6 +3911,33 @@
     </message>
 </context>
 <context>
+    <name>Records</name>
+    <message>
+        <source>Max weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rep PR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rep-specific PR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Estimated 1RM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RecordsPage</name>
     <message>
         <source>Personal records</source>
@@ -3749,6 +4014,64 @@
     </message>
     <message>
         <source>Rest (seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeatureLabel</name>
+    <message>
+        <source>Not without a server yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Needs an IronStack server</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ServerFeaturePage</name>
+    <message>
+        <source>Add friends on your IronStack server, message them and form groups to train together.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ask a personal trainer to coach you, take the programs and diet plans they share - or coach others yourself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ask the AI assistant about your training and food. It can make you a program, a diet plan or a recipe.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The guided tours of IronStack&apos;s web pages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>See who else on your IronStack server has been training lately.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find foods in Open Food Facts by name or barcode, with their nutrition.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Body measurements with their trends, activities like running or cycling, and guided stretching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A food diary, your foods and recipes, calorie and macro goals, diet plans and statistics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This part isn&apos;t in the app&apos;s offline mode yet; it comes in a later version. It works now when the app is connected to an IronStack server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This needs an IronStack server: it&apos;s about other people, or done on the server. Moving the data on this phone to a server comes in a later version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To hide what needs a server, turn off &quot;Show what needs a server&quot; in Settings.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4034,6 +4357,46 @@
         <source>Show app log</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Back up the data on this phone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this phone only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show what needs a server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends, coaching, the AI assistant and the parts not yet in this mode, dimmed. Off hides them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use a server instead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What you&apos;ve logged stays on this phone but isn&apos;t shown while the app uses a server. Moving it to a server comes in a later version.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
@@ -4185,6 +4548,29 @@
     </message>
     <message>
         <source>No groups yet. Pull down to start one or join with an invite code.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StandaloneDialog</name>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use without a server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Everything you log is kept on this phone only. Back it up now and then: there&apos;s no copy anywhere else.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Training works as with a server: IronStack&apos;s exercises and program templates, your own programs, training mode with weight suggestions, history, records and progress. Body tracking and nutrition come to this mode in later versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friends and groups, coaching, the AI assistant and food search need an IronStack server. They&apos;re shown dimmed so you know they&apos;re there; Settings can hide them.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -22,7 +22,8 @@ build)
     # A shadow build, like tools/build.sh.
     mkdir -p "$HOME/build-$ARCH"
     cd "$HOME/build-$ARCH"
-    mb2 -t "$TARGET" build "$SRC"
+    # The version is VERSION's, not one mb2 derives from a git tag.
+    mb2 -t "$TARGET" --no-fix-version build "$SRC"
     mkdir -p /share/out
     cp RPMS/harbour-ironstack-*."$ARCH".rpm /share/out/
     ls -l /share/out

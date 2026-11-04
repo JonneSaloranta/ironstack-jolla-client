@@ -5,6 +5,17 @@ is the repo-root `VERSION` file; bumping it on master publishes a
 release (docs/RELEASING.md). A release's notes on GitHub are this file's
 section for it, followed by every commit since the previous release.
 
+## [0.10.0] - 2026-11-04
+
+- Use the app without a server: "Use without a server" on the login page
+  keeps everything on the phone. Training works as with a server -
+  IronStack's exercises and program templates, your own programs and
+  exercises, training mode with weight suggestions, records and their
+  notification, history, Progress and achievements. Body tracking,
+  activities, stretching and nutrition come to this mode later.
+- What needs a server is shown dimmed there, with what it would do;
+  Settings can hide it, and backs up the phone's data as a JSON file.
+
 ## [0.9.1] - 2026-11-04
 
 - An AI assistant suggestion of a kind the app doesn't know yet is shown

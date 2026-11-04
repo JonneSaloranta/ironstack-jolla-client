@@ -26,7 +26,7 @@ Item {
     function load() {
         clients = []
         updateAvailable = false
-        if (!own || planId < 0)
+        if (!own || planId < 0 || settings.standalone)
             return
         api.request("GET", "coaching/clients/", null, function(ok, status, data) {
             if (ok)

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/store.js" as Store
+import "../js/features.js" as Features
 
 Page {
     id: page
@@ -91,10 +92,11 @@ Page {
         })
 
         // Not counted for the spinner, like a card that's only extra.
-        api.request("GET", "analytics/recently-active/", null, function(ok, status, data) {
-            if (ok)
-                page.recentlyActive = data || []
-        })
+        if (Features.enabled(settings, "recently_active"))
+            api.request("GET", "analytics/recently-active/", null, function(ok, status, data) {
+                if (ok)
+                    page.recentlyActive = data || []
+            })
 
         api.request("GET", "analytics/achievements/", null, function(ok, status, data, error) {
             if (ok) {
@@ -265,7 +267,7 @@ Page {
 
             PageHeader {
                 title: "IronStack"
-                description: settings.baseUrl.replace(/^https?:\/\//, "")
+                description: settings.standalone ? qsTr("On this phone") : settings.baseUrl.replace(/^https?:\/\//, "")
             }
 
             ErrorBanner {
@@ -530,8 +532,22 @@ Page {
             }
 
             SectionHeader {
-                visible: page.recentlyActive.length > 0
+                visible: page.recentlyActive.length > 0 || recentlyActiveDimmed.visible
                 text: qsTr("Recently active")
+            }
+            // Standalone mode: what the list would show with a server.
+            BackgroundItem {
+                id: recentlyActiveDimmed
+                visible: Features.state(settings, "recently_active") === "dimmed"
+                height: Theme.itemSizeSmall
+                onClicked: pageStack.push(Qt.resolvedUrl("ServerFeaturePage.qml"),
+                                          { feature: "recently_active", title: qsTr("Recently active") })
+                ServerFeatureLabel {
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    feature: "recently_active"
+                }
             }
             Repeater {
                 model: page.recentlyActive
