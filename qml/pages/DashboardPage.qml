@@ -117,16 +117,21 @@ Page {
         })
     }
 
-    // analytics/summary/ offers 7d, 30d and all; tapping the heading
-    // moves to the next.
+    // analytics/summary/ offers 7d, 30d and all, and "week" (Monday
+    // through today, the web's "this week") on a server that answers with
+    // the `range` it covered (IronStack #49) - an older one reads "week"
+    // as all time. Tapping the heading moves to the next.
     property string summaryRange: "7d"
-    readonly property var summaryRanges: ["7d", "30d", "all"]
+    property bool weekRange: false
+    readonly property var summaryRanges: weekRange ? ["week", "7d", "30d", "all"] : ["7d", "30d", "all"]
 
     function loadSummary(done) {
         api.request("GET", "analytics/summary/?range=" + summaryRange, null, function(ok, status, data, error) {
-            if (ok)
+            if (ok) {
                 page.summary = data
-            else
+                if (data.range)
+                    page.weekRange = true
+            } else
                 page.failed(status, error)
             if (done)
                 done()
@@ -383,7 +388,8 @@ Page {
                 }
                 SectionHeader {
                     id: summaryHeader
-                    text: page.summaryRange === "7d" ? qsTr("Last 7 days")
+                    text: page.summaryRange === "week" ? qsTr("This week")
+                          : page.summaryRange === "7d" ? qsTr("Last 7 days")
                           : page.summaryRange === "30d" ? qsTr("Last 30 days") : qsTr("All time")
                 }
             }
