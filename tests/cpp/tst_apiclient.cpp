@@ -1,4 +1,6 @@
 #include <QHash>
+#include <QImage>
+#include <QImageReader>
 #include <QJSValue>
 #include <QQmlEngine>
 #include <QSignalSpy>
@@ -634,6 +636,80 @@ private slots:
         const QUrl url(QStringLiteral("https://example.org/api/v1/diary-entries/?date=2026-11-04"));
         QCOMPARE(ApiClient::logPath(url, false), QStringLiteral("diary-entries/"));
         QCOMPARE(ApiClient::logPath(url, true), QStringLiteral("diary-entries/?date=2026-11-04"));
+    }
+
+    void uploadImageScalesLargePhotos()
+    {
+        QTemporaryDir dir;
+        const QString large = dir.path() + QStringLiteral("/large.jpg");
+        QImage photo(3200, 1800, QImage::Format_RGB32);
+        photo.fill(Qt::darkGreen);
+        QVERIFY(photo.save(large, "JPEG"));
+
+        QString name;
+        QString type;
+        const QByteArray data = ApiClient::uploadImage(QStringLiteral("file://") + large, &name, &type);
+        QCOMPARE(type, QStringLiteral("image/jpeg"));
+        QCOMPARE(name, QStringLiteral("image.jpg"));
+        const QImage sent = QImage::fromData(data);
+        QCOMPARE(sent.size(), QSize(1600, 900));
+    }
+
+    void uploadImageKeepsSmallOnes()
+    {
+        QTemporaryDir dir;
+        const QString small = dir.path() + QStringLiteral("/Holiday photo.png");
+        QImage drawing(400, 300, QImage::Format_ARGB32);
+        drawing.fill(Qt::transparent);
+        QVERIFY(drawing.save(small, "PNG"));
+        QFile file(small);
+        QVERIFY(file.open(QIODevice::ReadOnly));
+
+        QString name;
+        QString type;
+        QCOMPARE(ApiClient::uploadImage(small, &name, &type), file.readAll());
+        QCOMPARE(type, QStringLiteral("image/png"));
+        // The phone's own file name isn't sent.
+        QCOMPARE(name, QStringLiteral("image.png"));
+
+        QVERIFY(ApiClient::uploadImage(dir.path() + QStringLiteral("/missing.jpg"), &name, &type).isEmpty());
+    }
+
+    void uploadSendsMultipart()
+    {
+        m_server->status = 201;
+        m_server->body = "{\"id\": 5}";
+        QTemporaryDir dir;
+        const QString path = dir.path() + QStringLiteral("/small.png");
+        QImage image(10, 10, QImage::Format_RGB32);
+        image.fill(Qt::red);
+        QVERIFY(image.save(path, "PNG"));
+
+        QVariantMap fields;
+        fields.insert(QStringLiteral("caption"), QStringLiteral("Start position"));
+        m_api->upload(QStringLiteral("exercises/7/images/"), QStringLiteral("image"), path,
+                      m_engine->toScriptValue(fields), makeCallback());
+        WAIT_FOR_RESULT();
+
+        QCOMPARE(result().property("ok").toBool(), true);
+        QCOMPARE(result().property("data").property("id").toInt(), 5);
+        const QByteArray request = m_server->requests.first();
+        QVERIFY(request.startsWith("POST /api/v1/exercises/7/images/ HTTP/1.1"));
+        QVERIFY(request.contains("Authorization: Bearer isk_saved"));
+        QVERIFY(request.contains("Content-Type: multipart/form-data; boundary="));
+        QVERIFY(request.contains("name=\"caption\"\r\n\r\nStart position"));
+        QVERIFY(request.contains("name=\"image\"; filename=\"image.png\""));
+        QVERIFY(request.contains("Content-Type: image/png"));
+    }
+
+    void uploadUnreadableFile()
+    {
+        m_api->upload(QStringLiteral("exercises/7/images/"), QStringLiteral("image"),
+                      QStringLiteral("/nonexistent/photo.jpg"), QJSValue(), makeCallback());
+        WAIT_FOR_RESULT();
+        QCOMPARE(result().property("ok").toBool(), false);
+        QCOMPARE(result().property("status").toInt(), 0);
+        QVERIFY(m_server->requests.isEmpty());
     }
 };
 

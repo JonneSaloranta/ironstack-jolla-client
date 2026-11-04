@@ -1,7 +1,6 @@
 TEMPLATE = app
 TARGET = tst-cpp
-QT += testlib network qml
-QT -= gui
+QT += testlib network qml gui
 CONFIG += warn_on testcase c++11
 
 INCLUDEPATH += ../../src

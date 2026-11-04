@@ -4,6 +4,12 @@
 
 #include <QBuffer>
 #include <QDateTime>
+#include <QFile>
+#include <QFileInfo>
+#include <QHttpMultiPart>
+#include <QImage>
+#include <QImageReader>
+#include <QMimeDatabase>
 #include <QLoggingCategory>
 #include <QJsonDocument>
 #include <QLocale>
@@ -16,6 +22,8 @@
 
 namespace {
 const int TimeoutMs = 20000;
+// An image over mobile data takes longer.
+const int UploadTimeoutMs = 120000;
 }
 
 Q_LOGGING_CATEGORY(lcApi, "api")
@@ -84,11 +92,9 @@ QByteArray ApiClient::acceptLanguage(const QLocale &locale)
     return language.toLatin1() + ", en;q=0.5";
 }
 
-void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
-                         const QString &path, const QVariant &body, Handler handler,
-                         const QVariantMap &headers)
+QNetworkRequest ApiClient::buildRequest(const QString &base, const QString &apiKey, const QString &path,
+                                        const QVariantMap &headers) const
 {
-    const QString base = Settings::normalizeBaseUrl(baseUrl);
     const QUrl root(base + QStringLiteral("/api/v1/"));
 
     QUrl url;
@@ -101,11 +107,8 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
         const QUrl link(path);
         const QString linkPath = link.path();
         const int api = linkPath.indexOf(QStringLiteral("/api/v1/"));
-        if (!link.isValid() || api < 0) {
-            if (handler)
-                handler(false, 0, QVariant(), tr("Refused to follow a link to another server."));
-            return;
-        }
+        if (!link.isValid() || api < 0)
+            return QNetworkRequest();
         url = root.resolved(QUrl(linkPath.mid(api + 8)));
         url.setQuery(link.query());
     } else {
@@ -119,6 +122,20 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, false);
     for (auto it = headers.constBegin(); it != headers.constEnd(); ++it)
         req.setRawHeader(it.key().toUtf8(), it.value().toString().toUtf8());
+    return req;
+}
+
+void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
+                         const QString &path, const QVariant &body, Handler handler,
+                         const QVariantMap &headers)
+{
+    const QString base = Settings::normalizeBaseUrl(baseUrl);
+    QNetworkRequest req = buildRequest(base, apiKey, path, headers);
+    if (req.url().isEmpty()) {
+        if (handler)
+            handler(false, 0, QVariant(), tr("Refused to follow a link to another server."));
+        return;
+    }
 
     QByteArray payload;
     if (body.isValid()) {
@@ -132,15 +149,103 @@ void ApiClient::sendWith(const QString &baseUrl, const QString &apiKey, const QS
     buffer->open(QIODevice::ReadOnly);
     QNetworkReply *reply = m_network->sendCustomRequest(req, method.toUpper().toLatin1(), buffer);
     buffer->setParent(reply);
-    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey(), method.toUpper(),
-                                      QDateTime::currentMSecsSinceEpoch() });
+    track(reply, base, apiKey, method, handler, TimeoutMs);
+}
+
+void ApiClient::upload(const QString &path, const QString &field, const QString &filePath,
+                       const QJSValue &fields, const QJSValue &callback)
+{
+    const QString base = Settings::normalizeBaseUrl(m_settings->baseUrl());
+    const QString apiKey = m_settings->apiKey();
+    Handler handler = jsHandler(callback, QStringLiteral("POST ") + logPath(QUrl(path), false));
+    QNetworkRequest req = buildRequest(base, apiKey, path, QVariantMap());
+
+    QString fileName;
+    QString contentType;
+    const QByteArray image = uploadImage(filePath, &fileName, &contentType);
+    if (image.isEmpty()) {
+        qCWarning(lcApi, "Can't read the image to upload (%s)", qPrintable(QFileInfo(filePath).suffix()));
+        if (handler)
+            handler(false, 0, QVariant(), tr("Can't read that image."));
+        return;
+    }
+
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    const QVariantMap extra = fields.toVariant().toMap();
+    for (auto it = extra.constBegin(); it != extra.constEnd(); ++it) {
+        QHttpPart part;
+        part.setHeader(QNetworkRequest::ContentDispositionHeader,
+                       QStringLiteral("form-data; name=\"%1\"").arg(it.key()));
+        part.setBody(it.value().toString().toUtf8());
+        multiPart->append(part);
+    }
+    QHttpPart filePart;
+    filePart.setHeader(QNetworkRequest::ContentTypeHeader, contentType);
+    // The name only says what kind of file it is; the phone's own file
+    // name isn't sent.
+    filePart.setHeader(QNetworkRequest::ContentDispositionHeader,
+                       QStringLiteral("form-data; name=\"%1\"; filename=\"%2\"").arg(field, fileName));
+    filePart.setBody(image);
+    multiPart->append(filePart);
+
+    QNetworkReply *reply = m_network->post(req, multiPart);
+    multiPart->setParent(reply);
+    track(reply, base, apiKey, QStringLiteral("POST"), handler, UploadTimeoutMs);
+}
+
+QByteArray ApiClient::uploadImage(const QString &filePath, QString *fileName, QString *contentType)
+{
+    QString local = filePath;
+    if (local.startsWith(QStringLiteral("file://")))
+        local = QUrl(local).toLocalFile();
+
+    QImageReader reader(local);
+    reader.setAutoTransform(true);
+    const QSize size = reader.size();
+    if (!reader.canRead() || !size.isValid())
+        return QByteArray();
+
+    const QString suffix = QFileInfo(local).suffix().toLower();
+    const bool small = qMax(size.width(), size.height()) <= MaxImageDimension;
+    // Small enough, and with nothing for the EXIF orientation to turn: as it is.
+    if (small && reader.transformation() == QImageIOHandler::TransformationNone) {
+        QFile file(local);
+        if (!file.open(QIODevice::ReadOnly))
+            return QByteArray();
+        *contentType = QMimeDatabase().mimeTypeForFile(local).name();
+        *fileName = QStringLiteral("image.") + (suffix.isEmpty() ? QStringLiteral("jpg") : suffix);
+        return file.readAll();
+    }
+
+    QImage image = reader.read();
+    if (image.isNull())
+        return QByteArray();
+    if (!small)
+        image = image.scaled(MaxImageDimension, MaxImageDimension, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QByteArray data;
+    QBuffer buffer(&data);
+    buffer.open(QIODevice::WriteOnly);
+    // A PNG may be a drawing with transparency; a photo goes as JPEG.
+    const bool png = suffix == QLatin1String("png");
+    if (!image.save(&buffer, png ? "PNG" : "JPEG", png ? -1 : 90))
+        return QByteArray();
+    *contentType = png ? QStringLiteral("image/png") : QStringLiteral("image/jpeg");
+    *fileName = png ? QStringLiteral("image.png") : QStringLiteral("image.jpg");
+    return data;
+}
+
+void ApiClient::track(QNetworkReply *reply, const QString &base, const QString &apiKey, const QString &method,
+                      Handler handler, int timeoutMs)
+{
+    m_pending.insert(reply, Pending { handler, base == m_settings->baseUrl() && apiKey == m_settings->apiKey(),
+                                      method.toUpper(), QDateTime::currentMSecsSinceEpoch() });
     if (m_pending.size() == 1)
         emit busyChanged();
 
     QTimer *timer = new QTimer(reply);
     timer->setSingleShot(true);
     connect(timer, &QTimer::timeout, reply, &QNetworkReply::abort);
-    timer->start(TimeoutMs);
+    timer->start(timeoutMs);
 
     connect(reply, &QNetworkReply::finished, this, [this, reply]() { finish(reply); });
 }

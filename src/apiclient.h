@@ -11,6 +11,7 @@
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QNetworkRequest;
 class QQmlEngine;
 class Settings;
 
@@ -40,6 +41,20 @@ public:
                                  const QString &method, const QString &path,
                                  const QJSValue &body, const QJSValue &callback);
 
+    // POSTs `filePath` (an image) as multipart field `field`, with
+    // `fields` (a JS object of strings) next to it - IronStack's
+    // exercises/<id>/images/. A photo larger than MaxImageDimension is
+    // scaled down and sent as JPEG first, as the server would anyway.
+    Q_INVOKABLE void upload(const QString &path, const QString &field, const QString &filePath,
+                            const QJSValue &fields, const QJSValue &callback);
+
+    static const int MaxImageDimension = 1600;
+    // The image as uploaded: the file as it is when it's small enough,
+    // else scaled to MaxImageDimension (turned upright by its EXIF
+    // orientation) as JPEG. Sets `fileName` and `contentType`; empty on
+    // an unreadable file.
+    static QByteArray uploadImage(const QString &filePath, QString *fileName, QString *contentType);
+
     using Handler = std::function<void(bool ok, int status, const QVariant &data, const QString &error)>;
 
     // C++ entry point (the sync queue uses it). An invalid `body` sends no
@@ -58,6 +73,12 @@ private:
     void sendWith(const QString &baseUrl, const QString &apiKey, const QString &method,
                   const QString &path, const QVariant &body, Handler handler,
                   const QVariantMap &headers = QVariantMap());
+    // The request for `path` with the key and headers, or an invalid
+    // URL when `path` is a link to elsewhere.
+    QNetworkRequest buildRequest(const QString &base, const QString &apiKey, const QString &path,
+                                 const QVariantMap &headers) const;
+    void track(QNetworkReply *reply, const QString &base, const QString &apiKey, const QString &method,
+               Handler handler, int timeoutMs);
     void finish(QNetworkReply *reply);
     Handler jsHandler(const QJSValue &callback, const QString &request);
     static QString errorMessage(int status, const QVariant &data, QNetworkReply *reply,
