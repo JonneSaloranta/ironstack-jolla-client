@@ -91,8 +91,9 @@ stay hidden. When the release is out:
 
 ## 4. Housekeeping
 
-- [ ] **Where it's published**: Harbour, OpenRepos or GitHub. The repo has
-  no git remote yet.
+- [ ] **Where it's published**: Harbour or OpenRepos for the RPM. The
+  source is on GitHub, JonneSaloranta/ironstack-jolla-client (public,
+  branch master, since 2026-11-04).
 - [ ] **Release steps**: bump `Version` in `rpm/harbour-ironstack.spec`
   and add a `%changelog` entry for every package that goes to the phone
   (0.9.1 on 2026-11-04), so `rpm -Uvh` upgrades without `--force`; run
