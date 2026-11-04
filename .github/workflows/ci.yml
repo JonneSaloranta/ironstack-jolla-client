@@ -1,0 +1,129 @@
+name: CI
+
+# Tests and RPMs on every push to master and every pull request into it;
+# a push to master whose VERSION has no release yet also publishes one
+# (docs/RELEASING.md).
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+# Read-only by default; only the release job asks for more.
+permissions:
+  contents: read
+
+# A newer push to the same branch or pull request makes an older run moot -
+# except on master, where every merge may be a release.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+env:
+  # The Sailfish OS SDK the app is built with (docs/EMULATOR.md): its
+  # i486, armv7hl and aarch64 targets, in coderus's SDK image - the
+  # tag pinned by digest, so a moved tag can't change what builds the
+  # release.
+  SFOS_RELEASE: 5.1.0.11
+  SDK_IMAGE: coderus/sailfishos-platform-sdk:5.1.0.11@sha256:31ba115546972af3630f4690acc204a4e09701358ae39be1883ca70e0eadda86
+
+# Every `uses:` is pinned to a full commit SHA (the `# vX` is a label):
+# a tag can be moved to other code later, and the release job can write
+# to the repository.
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Read VERSION
+        id: read
+        run: |
+          version="$(tr -d '[:space:]' < VERSION)"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error file=VERSION::VERSION ('$version') isn't a plain X.Y.Z version."
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: C++, barcode and QML tests in the i486 target
+        run: |
+          docker run --rm --privileged -e SFOS_RELEASE -v "$PWD:/share:ro" "$SDK_IMAGE" \
+            bash /share/tools/ci/sdk.sh test
+
+  build:
+    needs: version
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [aarch64, armv7hl, i486]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Build the ${{ matrix.arch }} RPM
+        run: |
+          mkdir -p out && chmod 777 out
+          docker run --rm --privileged -e SFOS_RELEASE -v "$PWD:/share" "$SDK_IMAGE" \
+            bash /share/tools/ci/sdk.sh build "${{ matrix.arch }}"
+          # The spec reads VERSION; a mismatch would publish the wrong file.
+          ls "out/harbour-ironstack-${{ needs.version.outputs.version }}-1.${{ matrix.arch }}.rpm"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rpm-${{ matrix.arch }}
+          path: out/*.rpm
+          if-no-files-found: error
+
+  # A release once per VERSION: on a push to master when v$VERSION has no
+  # release yet - asking that rather than diffing VERSION against the
+  # previous push means a release whose first run failed still comes
+  # with the next green one, and a push that doesn't bump VERSION never
+  # makes another.
+  release:
+    needs: [version, test, build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # The previous release's tag and the commits since it.
+          fetch-depth: 0
+      - name: Is v${{ needs.version.outputs.version }} released already?
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          if gh release view "v$VERSION" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "v$VERSION is released already - bump VERSION for a new release."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        if: steps.check.outputs.release == 'true'
+        with:
+          pattern: rpm-*
+          path: rpms
+          merge-multiple: true
+      - name: Publish v${{ needs.version.outputs.version }}
+        if: steps.check.outputs.release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          if ! grep -q "^## \[$VERSION\]" CHANGELOG.md; then
+            echo "::warning file=CHANGELOG.md::No section for $VERSION; the notes are the commits only."
+          fi
+          python3 tools/ci/release_notes.py "$VERSION" > notes.md
+          gh release create "v$VERSION" rpms/*.rpm \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "v$VERSION" \
+            --notes-file notes.md
