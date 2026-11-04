@@ -29,6 +29,8 @@ DISTFILES += \
     qml/pages/*.qml \
     qml/components/*.qml \
     qml/js/*.js \
+    qml/js/local/*.js \
+    qml/data/seed.json \
     qml/sounds/*.wav \
     rpm/harbour-ironstack.spec \
     harbour-ironstack.desktop \

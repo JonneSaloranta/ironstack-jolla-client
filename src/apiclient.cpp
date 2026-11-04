@@ -114,6 +114,11 @@ void ApiClient::localRequest(const QString &method, const QString &path, const Q
     });
 }
 
+QString ApiClient::dataUrl() const
+{
+    return m_dataDir.isEmpty() ? QString() : QUrl::fromLocalFile(m_dataDir).toString();
+}
+
 QString ApiClient::readData(const QString &name) const
 {
     // Only a plain file name in the app's own data directory.

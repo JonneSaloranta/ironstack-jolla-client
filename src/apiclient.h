@@ -56,6 +56,8 @@ public:
     Q_INVOKABLE void setLocalBackend(const QJSValue &handler);
     // A bundled data file (seed.json) by plain name; "" if there's none.
     Q_INVOKABLE QString readData(const QString &name) const;
+    // The data directory as a file:// URL, for its images.
+    Q_INVOKABLE QString dataUrl() const;
 
     // POSTs `filePath` (an image) as multipart field `field`, with
     // `fields` (a JS object of strings) next to it - IronStack's
