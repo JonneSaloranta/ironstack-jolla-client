@@ -2,6 +2,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/social.js" as Social
+import "../js/store.js" as Store
 
 // Coaching, like the web's: your coaches and the plans they've shared
 // (import a copy to use it), requests waiting for an answer, and - for a
@@ -247,7 +248,7 @@ Page {
                         Label {
                             width: parent.width
                             truncationMode: TruncationMode.Fade
-                            text: modelData.name
+                            text: Store.shown(modelData)
                         }
                         Label {
                             width: parent.width

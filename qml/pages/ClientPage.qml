@@ -113,7 +113,7 @@ Page {
             Repeater {
                 model: page.client ? page.client.assigned_programs || [] : []
                 delegate: DetailItem {
-                    label: modelData.name
+                    label: Store.shown(modelData)
                     value: modelData.last_session_at
                            ? qsTr("Last trained %1").arg(Format.formatDate(new Date(modelData.last_session_at), Formatter.DateMedium))
                            : qsTr("Not trained yet")

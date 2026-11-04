@@ -30,8 +30,9 @@ function whenIdle(pageStack, action) {
 // English and translates them where they're shown. The API sends the shown
 // name as a `display_*` twin of the stored one (`display_name`,
 // `exercise_display_name`, ...; IronStack 1.31) in the language the app
-// asks for (ApiClient::acceptLanguage). A few rows have no twin yet
-// (IronStack #47), and data cached by an older version neither: for those
+// asks for (ApiClient::acceptLanguage). A few rows have no twin on a 1.31
+// server (IronStack #47, fixed after it), and data cached by an older
+// version neither: for those
 // content.js carries the web's own translations (see
 // tools/content-i18n/generate.py). A name with no translation - a user's
 // own exercise, say - is shown as typed, the same as on the web.
