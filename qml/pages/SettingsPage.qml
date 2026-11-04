@@ -1,7 +1,9 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Sailfish.Share 1.0
 import "../components"
 import "../js/store.js" as Store
+import "../js/local/router.js" as Router
 
 Page {
     id: page
@@ -38,6 +40,23 @@ Page {
             profile = data
             settings.unitSystem = data.unit_system || "metric"
         })
+    }
+
+    // Everything kept on this phone as one JSON file, to keep somewhere
+    // else (standalone mode).
+    function backUp() {
+        shareAction.resources = [{
+            "data": Router.backup(),
+            "name": "ironstack-backup-" + Qt.formatDateTime(new Date(), "yyyyMMdd-HHmm") + ".json",
+            "type": "application/json"
+        }]
+        shareAction.trigger()
+    }
+
+    ShareAction {
+        id: shareAction
+        mimeType: "application/json"
+        title: qsTr("Back up the data on this phone")
     }
 
     function languageIndex(code) {
@@ -98,7 +117,7 @@ Page {
             // The IronStack profile, the same settings as the web's
             // Profile page; units apply here too.
             SectionHeader {
-                text: qsTr("IronStack profile")
+                text: settings.standalone ? qsTr("Profile") : qsTr("IronStack profile")
             }
 
             ErrorBanner {
@@ -128,6 +147,8 @@ Page {
                 }
                 ComboBox {
                     label: qsTr("Language")
+                    // Only meaningful with a server (or not in standalone mode yet).
+                    visible: !settings.standalone
                     description: qsTr("For the IronStack web and texts from the server, like suggestions")
                     currentIndex: page.profile ? page.languageIndex(page.profile.language) : 0
                     menu: ContextMenu {
@@ -142,6 +163,7 @@ Page {
                 }
                 TextField {
                     id: timezoneField
+                    visible: !settings.standalone
                     width: parent.width
                     label: qsTr("Timezone")
                     placeholderText: "Europe/Helsinki"
@@ -171,6 +193,7 @@ Page {
                 }
                 TextSwitch {
                     text: qsTr("Body tracking reminder")
+                    visible: !settings.standalone
                     description: qsTr("Shows a reminder on the home page when you haven't logged a body measurement "
                                       + "in 14 days.")
                     checked: page.profile ? page.profile.body_tracking_reminders_enabled : false
@@ -179,6 +202,7 @@ Page {
                 }
                 TextSwitch {
                     text: qsTr("Guided tours on the web")
+                    visible: !settings.standalone
                     description: qsTr("A short tour the first time you open each part of the IronStack web. The same "
                                       + "tours can be read in the app's Guide.")
                     checked: page.profile ? page.profile.tutorials_enabled : false
@@ -187,6 +211,7 @@ Page {
                 }
                 TextSwitch {
                     text: qsTr("Show BMI")
+                    visible: !settings.standalone
                     description: qsTr("Turns off the BMI card and its category ranges entirely.")
                     checked: page.profile ? page.profile.show_bmi : false
                     automaticCheck: false
@@ -194,6 +219,7 @@ Page {
                 }
                 TextSwitch {
                     text: qsTr("Share my activity")
+                    visible: !settings.standalone
                     description: qsTr("Lets everyone using this instance see your longest streak, "
                                       + "workout count, PRs, total weight lifted, and when you last "
                                       + "trained, in the dashboard's achievements carousel and "
@@ -205,12 +231,14 @@ Page {
                 }
                 TextSwitch {
                     text: qsTr("Allow friend requests")
+                    visible: !settings.standalone
                     checked: page.profile ? page.profile.allow_friend_requests : false
                     automaticCheck: false
                     onClicked: page.save({ allow_friend_requests: !checked })
                 }
                 TextSwitch {
                     text: qsTr("Allow group invites")
+                    visible: !settings.standalone
                     checked: page.profile ? page.profile.allow_group_invites : false
                     automaticCheck: false
                     onClicked: page.save({ allow_group_invites: !checked })
@@ -218,15 +246,49 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Server")
+                text: settings.standalone ? qsTr("Data") : qsTr("Server")
             }
 
             DetailItem {
+                visible: !settings.standalone
                 label: qsTr("Address")
                 value: settings.baseUrl
             }
 
+            // Standalone mode (docs/STANDALONE.md).
+            Column {
+                width: parent.width
+                visible: settings.standalone
+
+                DetailItem {
+                    label: qsTr("Kept")
+                    value: qsTr("On this phone only")
+                }
+                TextSwitch {
+                    text: qsTr("Show what needs a server")
+                    description: qsTr("Friends, coaching, the AI assistant and the parts not yet in this mode, "
+                                      + "dimmed. Off hides them.")
+                    checked: settings.showServerFeatures
+                    automaticCheck: false
+                    onClicked: settings.showServerFeatures = !checked
+                }
+                ButtonLayout {
+                    Button {
+                        text: qsTr("Back up")
+                        onClicked: page.backUp()
+                    }
+                    Button {
+                        text: qsTr("Use a server instead")
+                        onClicked: pageStack.push(Qt.resolvedUrl("LoginPage.qml"), {
+                            note: qsTr("What you've logged stays on this phone but isn't shown while the "
+                                            + "app uses a server. Moving it to a server comes in a later version.")
+                        })
+                    }
+                }
+            }
+
             ButtonLayout {
+                visible: !settings.standalone
                 Button {
                     text: qsTr("Change server or key")
                     onClicked: pageStack.push(Qt.resolvedUrl("LoginPage.qml"))

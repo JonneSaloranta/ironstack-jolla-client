@@ -1,27 +1,57 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
+import "../js/features.js" as Features
 
 // Every part of the app in one list, grouped like IronStack's own menu.
 Page {
     id: page
 
+    // Every part, with what it needs in standalone mode (Features).
+    readonly property var parts: [
+        { section: "training", title: "Exercises", icon: "image://theme/icon-m-levels", target: "ExercisePickerPage.qml", feature: "" },
+        { section: "training", title: "Programs", icon: "image://theme/icon-m-note", target: "ProgramsPage.qml", feature: "" },
+        { section: "training", title: "History", icon: "image://theme/icon-m-history", target: "HistoryPage.qml", feature: "" },
+        { section: "training", title: "Progress", icon: "image://theme/icon-m-diagnostic", target: "ProgressPage.qml", feature: "" },
+        { section: "training", title: "Personal records", icon: "image://theme/icon-m-favorite", target: "RecordsPage.qml", feature: "" },
+        { section: "nutrition", title: "Nutrition", icon: "image://theme/icon-m-health", target: "NutritionPage.qml", feature: "nutrition" },
+        { section: "nutrition", title: "Food diary", icon: "image://theme/icon-m-note", target: "DiaryPage.qml", feature: "nutrition" },
+        { section: "body", title: "Body tracking", icon: "image://theme/icon-m-person", target: "MeasurementsPage.qml", feature: "body" },
+        { section: "body", title: "Activities", icon: "image://theme/icon-m-location", target: "ActivitiesPage.qml", feature: "body" },
+        { section: "body", title: "Stretching", icon: "image://theme/icon-m-gesture", target: "StretchingPage.qml", feature: "body" },
+        { section: "people", title: "Friends and groups", icon: "image://theme/icon-m-chat", target: "SocialPage.qml", feature: "social" },
+        { section: "people", title: "Coaching", icon: "image://theme/icon-m-users", target: "CoachingPage.qml", feature: "coaching" },
+        { section: "people", title: "AI assistant", icon: "image://theme/icon-m-outline-chat", target: "AssistantPage.qml", feature: "assistant" },
+        { section: "app", title: "Guide", icon: "image://theme/icon-m-question", target: "GuidePage.qml", feature: "guide" },
+        { section: "app", title: "Settings", icon: "image://theme/icon-m-setting", target: "SettingsPage.qml", feature: "" }
+    ]
+
     ListModel {
         id: sections
-        ListElement { section: "training"; title: "Exercises"; icon: "image://theme/icon-m-levels"; target: "ExercisePickerPage.qml" }
-        ListElement { section: "training"; title: "Programs"; icon: "image://theme/icon-m-note"; target: "ProgramsPage.qml" }
-        ListElement { section: "training"; title: "History"; icon: "image://theme/icon-m-history"; target: "HistoryPage.qml" }
-        ListElement { section: "training"; title: "Progress"; icon: "image://theme/icon-m-diagnostic"; target: "ProgressPage.qml" }
-        ListElement { section: "training"; title: "Personal records"; icon: "image://theme/icon-m-favorite"; target: "RecordsPage.qml" }
-        ListElement { section: "nutrition"; title: "Nutrition"; icon: "image://theme/icon-m-health"; target: "NutritionPage.qml" }
-        ListElement { section: "nutrition"; title: "Food diary"; icon: "image://theme/icon-m-note"; target: "DiaryPage.qml" }
-        ListElement { section: "body"; title: "Body tracking"; icon: "image://theme/icon-m-person"; target: "MeasurementsPage.qml" }
-        ListElement { section: "body"; title: "Activities"; icon: "image://theme/icon-m-location"; target: "ActivitiesPage.qml" }
-        ListElement { section: "body"; title: "Stretching"; icon: "image://theme/icon-m-gesture"; target: "StretchingPage.qml" }
-        ListElement { section: "people"; title: "Friends and groups"; icon: "image://theme/icon-m-chat"; target: "SocialPage.qml" }
-        ListElement { section: "people"; title: "Coaching"; icon: "image://theme/icon-m-users"; target: "CoachingPage.qml" }
-        ListElement { section: "people"; title: "AI assistant"; icon: "image://theme/icon-m-outline-chat"; target: "AssistantPage.qml" }
-        ListElement { section: "app"; title: "Guide"; icon: "image://theme/icon-m-question"; target: "GuidePage.qml" }
-        ListElement { section: "app"; title: "Settings"; icon: "image://theme/icon-m-setting"; target: "SettingsPage.qml" }
+    }
+
+    // The parts shown: a hidden one (standalone mode, server parts off)
+    // leaves no row, and a section with none left no header.
+    function fill() {
+        sections.clear()
+        parts.forEach(function(part) {
+            var state = Features.state(settings, part.feature)
+            if (state === "hidden")
+                return
+            var row = {}
+            for (var key in part)
+                row[key] = part[key]
+            row.dimmed = state === "dimmed"
+            sections.append(row)
+        })
+    }
+
+    Component.onCompleted: fill()
+
+    Connections {
+        target: settings
+        onStandaloneChanged: page.fill()
+        onShowServerFeaturesChanged: page.fill()
     }
 
     // ListElement can't hold qsTr(); the titles are translated here.
@@ -67,22 +97,37 @@ Page {
         section.delegate: SectionHeader { text: page.sectionText(section) }
 
         delegate: ListItem {
-            contentHeight: Theme.itemSizeSmall
-            onClicked: pageStack.push(Qt.resolvedUrl(model.target))
+            contentHeight: Math.max(Theme.itemSizeSmall, texts.height + 2 * Theme.paddingSmall)
+            // A dimmed part opens what it would do with a server.
+            onClicked: model.dimmed
+                       ? pageStack.push(Qt.resolvedUrl("ServerFeaturePage.qml"),
+                                        { feature: model.feature, title: page.titleText(model.title) })
+                       : pageStack.push(Qt.resolvedUrl(model.target))
             Icon {
                 id: icon
                 anchors.verticalCenter: parent.verticalCenter
                 x: Theme.horizontalPageMargin
                 source: model.icon
+                opacity: model.dimmed ? Theme.opacityLow : 1
             }
-            Label {
+            Column {
+                id: texts
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: icon.right
                 anchors.leftMargin: Theme.paddingMedium
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.horizontalPageMargin
-                truncationMode: TruncationMode.Fade
-                text: page.titleText(model.title)
+                Label {
+                    width: parent.width
+                    truncationMode: TruncationMode.Fade
+                    color: model.dimmed ? Theme.secondaryColor : Theme.primaryColor
+                    text: page.titleText(model.title)
+                }
+                ServerFeatureLabel {
+                    visible: model.dimmed
+                    width: parent.width
+                    feature: model.feature
+                }
             }
         }
 
