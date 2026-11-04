@@ -3,8 +3,9 @@ TARGET = harbour-ironstack
 CONFIG += sailfishapp
 QT += network
 
-# Passed in by the spec file (%qmake5 VERSION=%{version}).
-isEmpty(VERSION): VERSION = 0.0.0
+# Passed in by the spec file (%qmake5 VERSION=%{version}), which reads the
+# repo-root VERSION file; a plain qmake run reads it here.
+isEmpty(VERSION): VERSION = $$cat($$PWD/VERSION)
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 SOURCES += \
