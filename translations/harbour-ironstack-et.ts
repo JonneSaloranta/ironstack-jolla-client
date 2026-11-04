@@ -182,6 +182,10 @@
         <source>Request failed (%1).</source>
         <translation>Päring ebaõnnestus (%1).</translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation>Pilti ei saa lugeda.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -244,6 +248,21 @@
     <message>
         <source>Message</source>
         <translation>Sõnum</translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation>Retsept</translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>Annab %n portsjoni</numerusform>
+            <numerusform>Annab %n portsjonit</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
+        <translation>Portsjonis umbes %1 kcal · valk %2 g · süsivesikud %3 g · rasv %4 g</translation>
     </message>
 </context>
 <context>
@@ -851,6 +870,26 @@
         <source>Your clients</source>
         <translation>Sinu kliendid</translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation>Personaaltreener</translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation>Olen personaaltreener / juhendaja</translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation>Lubab luua trenniprogramme ja toitumiskavu, mille juhendamist teised kasutajad saavad sinult taotleda. Selle väljalülitamine ei lõpeta juba olemasolevaid juhendamissuhteid.</translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation>Võtan vastu uusi juhendamistaotlusi</translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation>Väljas olles ei jõua uued juhendamistaotlused sinuni. Olemasolevad juhendamissuhted ja juba saadud taotlused ei muutu.</translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1035,6 +1074,10 @@
     <message>
         <source>Training now</source>
         <translation>Trenniks praegu</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>See nädal</translation>
     </message>
 </context>
 <context>
@@ -1450,6 +1493,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation>Laadi üles</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lisa pilt</translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation>Pildiallkiri (valikuline)</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1514,6 +1572,18 @@
     <message>
         <source>Personal records</source>
         <translation>Isiklikke rekordeid</translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation>Sinu IronStacki server ei võta veel rakendusest pilte vastu. Uuenda seda või lisa pilt veebis.</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lisa pilt</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation>Kustuta pilt</translation>
     </message>
 </context>
 <context>
@@ -4629,6 +4699,10 @@
         <source>Pull down to add an exercise</source>
         <translation>Tõmba alla, et lisada harjutus</translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation>Aega jäänud</translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4729,6 +4803,14 @@
     <message>
         <source>Pull down to add an exercise</source>
         <translation>Tõmba alla, et lisada harjutus</translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation>Hinnanguline kestus</translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
+        <translation>ligikaudne - andmeid on veel vähe</translation>
     </message>
 </context>
 <context>

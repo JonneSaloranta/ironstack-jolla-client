@@ -184,6 +184,10 @@
         <source>Request failed (%1).</source>
         <translation>Запрос не выполнен (%1).</translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation>Не удаётся прочитать изображение.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -246,6 +250,22 @@
     <message>
         <source>Message</source>
         <translation>Сообщение</translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation>Рецепт</translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>На %n порцию</numerusform>
+            <numerusform>На %n порции</numerusform>
+            <numerusform>На %n порций</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
+        <translation>На порцию примерно %1 ккал · белки %2 г · углеводы %3 г · жиры %4 г</translation>
     </message>
 </context>
 <context>
@@ -853,6 +873,26 @@
         <source>Your clients</source>
         <translation>Ваши клиенты</translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation>Персональный тренер</translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation>Я персональный тренер / коуч</translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation>Позволяет создавать программы тренировок и планы питания, по которым другие пользователи могут попросить вас быть тренером. Отключение этой функции не завершает уже существующие тренерские отношения.</translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation>Принимаю новые запросы на тренировки</translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation>Если отключено, новые запросы на тренировки не будут приходить. Существующие тренерские отношения и уже полученные запросы не изменятся.</translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1037,6 +1077,10 @@
     <message>
         <source>Training now</source>
         <translation>Тренируется сейчас</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>Эта неделя</translation>
     </message>
 </context>
 <context>
@@ -1452,6 +1496,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation>Загрузить</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Добавить изображение</translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation>Подпись (необязательно)</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1516,6 +1575,18 @@
     <message>
         <source>Personal records</source>
         <translation>Личных рекордов</translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation>Ваш сервер IronStack пока не принимает изображения из приложения. Обновите его или добавьте изображение в веб-версии.</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Добавить изображение</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation>Удалить изображение</translation>
     </message>
 </context>
 <context>
@@ -4645,6 +4716,10 @@
         <source>Pull down to add an exercise</source>
         <translation>Потяните вниз, чтобы добавить упражнение</translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation>Осталось времени</translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4745,6 +4820,14 @@
     <message>
         <source>Pull down to add an exercise</source>
         <translation>Потяните вниз, чтобы добавить упражнение</translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation>Примерная длительность</translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
+        <translation>грубо - пока мало данных</translation>
     </message>
 </context>
 <context>

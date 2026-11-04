@@ -182,6 +182,10 @@
         <source>Request failed (%1).</source>
         <translation>Richiesta non riuscita (%1).</translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation>Impossibile leggere l&apos;immagine.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -244,6 +248,21 @@
     <message>
         <source>Message</source>
         <translation>Messaggio</translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation>Ricetta</translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>Per %n porzione</numerusform>
+            <numerusform>Per %n porzioni</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
+        <translation>Per porzione circa %1 kcal · proteine %2 g · carboidrati %3 g · grassi %4 g</translation>
     </message>
 </context>
 <context>
@@ -851,6 +870,26 @@
         <source>Your clients</source>
         <translation>I tuoi clienti</translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation>Personal trainer</translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation>Sono un personal trainer / coach</translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation>Ti permette di creare programmi in palestra e piani alimentari che altri utenti possono chiederti di seguire come coach. Disattivarlo non termina le relazioni di coaching già esistenti.</translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation>Accetto nuove richieste di coaching</translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation>Se disattivato, le nuove richieste di coaching non ti raggiungeranno più. Le relazioni di coaching esistenti e le richieste già ricevute non sono interessate.</translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1035,6 +1074,10 @@
     <message>
         <source>Training now</source>
         <translation>Si sta allenando ora</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>Questa settimana</translation>
     </message>
 </context>
 <context>
@@ -1450,6 +1493,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation>Carica</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Aggiungi immagine</translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation>Didascalia (facoltativa)</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1514,6 +1572,18 @@
     <message>
         <source>Personal records</source>
         <translation>Record personali</translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation>Il tuo server IronStack non accetta ancora immagini dall&apos;app. Aggiornalo o aggiungi l&apos;immagine dal web.</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Aggiungi immagine</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation>Elimina immagine</translation>
     </message>
 </context>
 <context>
@@ -4629,6 +4699,10 @@
         <source>Pull down to add an exercise</source>
         <translation>Trascina in basso per aggiungere un esercizio</translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation>Tempo rimanente</translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4729,6 +4803,14 @@
     <message>
         <source>Pull down to add an exercise</source>
         <translation>Trascina in basso per aggiungere un esercizio</translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation>Durata stimata</translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
+        <translation>approssimativa - ancora pochi dati</translation>
     </message>
 </context>
 <context>

@@ -182,6 +182,10 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation>Tältä API-avaimelta puuttuu tarvittava oikeus: %1 - %2. Lisää se IronStackissa kohdassa Profiili &gt; API-avaimet.</translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation>Kuvaa ei voi lukea.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -244,6 +248,21 @@
     <message>
         <source>Message</source>
         <translation>Viesti</translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation>Resepti</translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>Riittää %n annokseen</numerusform>
+            <numerusform>Riittää %n annokseen</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
+        <translation>Annoksessa noin %1 kcal · proteiini %2 g · hiilihydraatit %3 g · rasva %4 g</translation>
     </message>
 </context>
 <context>
@@ -851,6 +870,26 @@
         <source>Your clients</source>
         <translation>Asiakkaasi</translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation>Personal trainer</translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation>Olen personal trainer / valmentaja</translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation>Antaa sinun rakentaa kuntosaliohjelmia ja ruokavaliosuunnitelmia, joihin muut käyttäjät voivat pyytää valmennustasi. Tämän pois kytkeminen ei päätä olemassa olevia valmennussuhteitasi.</translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation>Otan vastaan uusia valmennuspyyntöjä</translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation>Pois päältä estää uusien valmennuspyyntöjen saapumisen sinulle. Olemassa olevat valmennussuhteet ja jo saamasi pyynnöt eivät muutu.</translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1035,6 +1074,10 @@
     <message>
         <source>Training now</source>
         <translation>Treenaa juuri nyt</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>Tämä viikko</translation>
     </message>
 </context>
 <context>
@@ -1450,6 +1493,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation>Lähetä</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lisää kuva</translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation>Kuvateksti (valinnainen)</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1514,6 +1572,18 @@
     <message>
         <source>Personal records</source>
         <translation>Ennätykset</translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation>IronStack-palvelimesi ei vielä ota vastaan kuvia sovelluksesta. Päivitä se tai lisää kuva webissä.</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lisää kuva</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation>Poista kuva</translation>
     </message>
 </context>
 <context>
@@ -4629,6 +4699,10 @@
         <source>No connection. Sets are saved on this phone and sent later.</source>
         <translation>Ei yhteyttä. Sarjat tallennetaan puhelimeen ja lähetetään myöhemmin.</translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation>Aikaa jäljellä</translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4729,6 +4803,14 @@
     <message>
         <source>Pull down to add an exercise</source>
         <translation>Lisää liike vetämällä alas</translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation>Arvioitu kesto</translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
+        <translation>karkea - dataa on vielä vähän</translation>
     </message>
 </context>
 <context>

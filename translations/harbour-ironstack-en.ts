@@ -182,6 +182,10 @@
         <source>This API key does not have the permission it needs: %1 - %2. Add it in IronStack under Profile &gt; API keys.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -243,6 +247,21 @@
     </message>
     <message>
         <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>Makes %n serving</numerusform>
+            <numerusform>Makes %n servings</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -851,6 +870,26 @@
         <source>Your clients</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1034,6 +1073,10 @@
     </message>
     <message>
         <source>Training now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This week</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1450,6 +1493,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1513,6 +1571,18 @@
     </message>
     <message>
         <source>Personal records</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete image</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4629,6 +4699,10 @@
         <source>No connection. Sets are saved on this phone and sent later.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4728,6 +4802,14 @@
     </message>
     <message>
         <source>Pull down to add an exercise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

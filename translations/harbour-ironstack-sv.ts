@@ -182,6 +182,10 @@
         <source>Request failed (%1).</source>
         <translation>Begäran misslyckades (%1).</translation>
     </message>
+    <message>
+        <source>Can&apos;t read that image.</source>
+        <translation>Det går inte att läsa bilden.</translation>
+    </message>
 </context>
 <context>
     <name>AssistantChatPage</name>
@@ -244,6 +248,21 @@
     <message>
         <source>Message</source>
         <translation>Meddelande</translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation>Recept</translation>
+    </message>
+    <message numerus="yes">
+        <source>Makes %n serving(s)</source>
+        <translation>
+            <numerusform>Räcker till %n portion</numerusform>
+            <numerusform>Räcker till %n portioner</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Per serving about %1 kcal · protein %2 g · carbs %3 g · fat %4 g</source>
+        <translation>Per portion cirka %1 kcal · protein %2 g · kolhydrater %3 g · fett %4 g</translation>
     </message>
 </context>
 <context>
@@ -851,6 +870,26 @@
         <source>Your clients</source>
         <translation>Dina klienter</translation>
     </message>
+    <message>
+        <source>Personal trainer</source>
+        <translation>Personlig tränare</translation>
+    </message>
+    <message>
+        <source>I&apos;m a personal trainer / coach</source>
+        <translation>Jag är en personlig tränare / coach</translation>
+    </message>
+    <message>
+        <source>Lets you build gym programs and diet plans other users can request you coach them on. Turning this off doesn&apos;t end any coaching relationship you already have.</source>
+        <translation>Låter dig bygga gymprogram och kostplaner som andra användare kan be dig coacha dem i. Att stänga av det avslutar inte något coachningsförhållande du redan har.</translation>
+    </message>
+    <message>
+        <source>Accepting new coaching requests</source>
+        <translation>Tar emot nya coachningsförfrågningar</translation>
+    </message>
+    <message>
+        <source>Off stops new coaching requests from reaching you. Existing coaching relationships, and any request you already received, are unaffected.</source>
+        <translation>Av stoppar nya coachningsförfrågningar från att nå dig. Befintliga coachningsförhållanden och förfrågningar du redan fått påverkas inte.</translation>
+    </message>
 </context>
 <context>
     <name>CooldownCard</name>
@@ -1035,6 +1074,10 @@
     <message>
         <source>Training now</source>
         <translation>Tränar just nu</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>Den här veckan</translation>
     </message>
 </context>
 <context>
@@ -1450,6 +1493,21 @@
     </message>
 </context>
 <context>
+    <name>ExerciseImageDialog</name>
+    <message>
+        <source>Upload</source>
+        <translation>Ladda upp</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lägg till bild</translation>
+    </message>
+    <message>
+        <source>Caption (optional)</source>
+        <translation>Bildtext (valfri)</translation>
+    </message>
+</context>
+<context>
     <name>ExercisePage</name>
     <message>
         <source>Compound</source>
@@ -1514,6 +1572,18 @@
     <message>
         <source>Personal records</source>
         <translation>Personliga rekord</translation>
+    </message>
+    <message>
+        <source>Your IronStack server can&apos;t take images from the app yet. Update it, or add the image on the web.</source>
+        <translation>Din IronStack-server kan inte ta emot bilder från appen ännu. Uppdatera den eller lägg till bilden på webben.</translation>
+    </message>
+    <message>
+        <source>Add image</source>
+        <translation>Lägg till bild</translation>
+    </message>
+    <message>
+        <source>Delete image</source>
+        <translation>Ta bort bilden</translation>
     </message>
 </context>
 <context>
@@ -4629,6 +4699,10 @@
         <source>Pull down to add an exercise</source>
         <translation>Dra ner för att lägga till en övning</translation>
     </message>
+    <message>
+        <source>Time left</source>
+        <translation>Tid kvar</translation>
+    </message>
 </context>
 <context>
     <name>UserSearchPage</name>
@@ -4729,6 +4803,14 @@
     <message>
         <source>Pull down to add an exercise</source>
         <translation>Dra ner för att lägga till en övning</translation>
+    </message>
+    <message>
+        <source>Estimated duration</source>
+        <translation>Uppskattad tid</translation>
+    </message>
+    <message>
+        <source>rough - little data yet</source>
+        <translation>grov - lite data än</translation>
     </message>
 </context>
 <context>
