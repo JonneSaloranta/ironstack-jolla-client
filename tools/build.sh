@@ -32,5 +32,7 @@ fi
 OUT="$(dirname "$ROOT")/build-ironstack-$ARCH"
 mkdir -p "$OUT"
 cd "$OUT"
-"$SDK/bin/sfdk" -c target="$TARGET" build "$@" "$ROOT"
+# The version is the repo-root VERSION file, not one sfdk derives from
+# the latest git tag (docs/RELEASING.md).
+"$SDK/bin/sfdk" -c target="$TARGET" -c no-fix-version build "$@" "$ROOT"
 ls -t "$OUT"/RPMS/harbour-ironstack-*."$ARCH".rpm | head -1
