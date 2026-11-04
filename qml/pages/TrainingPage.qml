@@ -143,6 +143,8 @@ Page {
             PageHeader {
                 title: controller.title
                 description: Store.formatDuration(page.elapsed)
+                             + (controller.inProgress && Store.estimateText(controller.remaining)
+                                ? " · " + qsTr("Time left") + " " + Store.estimateText(controller.remaining) : "")
             }
 
             ErrorBanner {

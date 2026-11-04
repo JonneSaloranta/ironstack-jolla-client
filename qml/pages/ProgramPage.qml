@@ -250,6 +250,8 @@ Page {
                     text: qsTr("%n exercise(s)", "", modelData.prescriptions.length)
                           + (Store.present(modelData.scheduled_weekday)
                              ? " - " + page.weekdayName(modelData.scheduled_weekday) : "")
+                          + (Store.estimateText(modelData.estimate)
+                             ? " - " + Store.estimateText(modelData.estimate) : "")
                 }
             }
         }

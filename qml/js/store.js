@@ -397,6 +397,19 @@ function formatMinutes(seconds) {
     return "<1min"
 }
 
+// A workout's duration `estimate` ({low, high, rough} in seconds, IronStack
+// #50) as the web shows it: "~45min ± 5min", the middle and half the
+// range in whole minutes, at least one. "" without one (an empty workout,
+// or a server from before the estimate).
+function estimateText(estimate) {
+    if (!estimate || isNaN(estimate.low) || isNaN(estimate.high))
+        return ""
+    function minutes(seconds) {
+        return formatMinutes(Math.max(Math.round(seconds / 60), 1) * 60)
+    }
+    return "~" + minutes((estimate.low + estimate.high) / 2) + " ± " + minutes((estimate.high - estimate.low) / 2)
+}
+
 // The web's summary of one type's activities: count, total seconds, and
 // total meters and calories - null when none of them has one.
 function activitySummary(activities) {

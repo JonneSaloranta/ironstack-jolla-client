@@ -349,7 +349,8 @@ Page {
                         font.pixelSize: Theme.fontSizeSmall
                         color: Theme.secondaryColor
                         text: page.upNext
-                              ? [Store.shown(page.upNext.program), page.dayText(page.upNext.day)]
+                              ? [Store.shown(page.upNext.program), page.dayText(page.upNext.day),
+                                 Store.estimateText(page.upNext.workout.estimate)]
                                 .filter(function(part) { return part }).join(" · ")
                               : ""
                     }

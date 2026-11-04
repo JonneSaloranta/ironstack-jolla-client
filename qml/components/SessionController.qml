@@ -29,6 +29,12 @@ QtObject {
     readonly property string pendingEnd: Store.pendingSessionEnd(syncQueue.items, sessionId)
     readonly property bool inProgress: session !== null && session.is_in_progress && pendingEnd === ""
 
+    // sessions/<id>/remaining-estimate/'s `estimate` - what's left, as in
+    // the web's training mode (IronStack #50); null when nothing is left
+    // or the server has no such endpoint.
+    property var remaining: null
+    property bool remainingSupported: true
+
     signal ended(string status)
 
     function load() {
@@ -58,6 +64,7 @@ QtObject {
             if (data.is_in_progress) {
                 loadPrevious()
                 loadSuggestions()
+                loadRemaining()
             }
             if (data.workout) {
                 api.request("GET", "workouts/" + data.workout + "/", null, function(ok2, status2, workout) {
@@ -71,6 +78,17 @@ QtObject {
                 syncCover()
                 save()
             }
+        })
+    }
+
+    function loadRemaining() {
+        if (!remainingSupported)
+            return
+        api.request("GET", "sessions/" + sessionId + "/remaining-estimate/", null, function(ok, status, data) {
+            if (ok)
+                remaining = data.estimate || null
+            else if (status === 404)
+                remainingSupported = false
         })
     }
 

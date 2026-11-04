@@ -165,6 +165,19 @@ Page {
                 color: Theme.secondaryHighlightColor
                 text: page.workout ? (page.workout.notes || "") : ""
             }
+            // How long it takes, from the server's own set timings (#50).
+            Label {
+                visible: text.length > 0
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryHighlightColor
+                text: page.workout && Store.estimateText(page.workout.estimate)
+                      ? qsTr("Estimated duration") + ": " + Store.estimateText(page.workout.estimate)
+                        + (page.workout.estimate.rough ? " (" + qsTr("rough - little data yet") + ")" : "")
+                      : ""
+            }
         }
 
         delegate: ListItem {

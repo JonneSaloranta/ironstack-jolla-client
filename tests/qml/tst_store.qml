@@ -184,6 +184,15 @@ TestCase {
         compare(Store.formatMinutes(NaN), "")
     }
 
+    function test_estimateText() {
+        compare(Store.estimateText({ low: 2400, high: 3000, rough: false }), "~45min ± 5min")
+        compare(Store.estimateText({ low: 3600, high: 4200, rough: true }), "~1h 5min ± 5min")
+        // A spread under a minute is still shown as one, like the web.
+        compare(Store.estimateText({ low: 600, high: 610, rough: false }), "~10min ± 1min")
+        compare(Store.estimateText(null), "")
+        compare(Store.estimateText(undefined), "")
+    }
+
     function test_activitySummary() {
         var summary = Store.activitySummary([
             { duration: "00:30:00", distance: "5000.00", calories: null },
