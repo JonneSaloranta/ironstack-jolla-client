@@ -60,6 +60,13 @@ with a wrong check digit must read as nothing.
   measurement changes.
 - `tst_nutrition.qml` and `tst_calculators.qml`: nutrition maths and the
   calculators.
+- `tst_local_db.qml`, `tst_local_training.qml`, `tst_local_perf.qml` and
+  `tst_features.qml`: standalone mode's local backend through the same
+  `Router.handle()` ApiClient calls - its schema and built-in content,
+  every training endpoint (records after edits, the progression methods,
+  up next, analytics, pagination), five years of sets within a time
+  budget, and what's dimmed or hidden without a server
+  ([STANDALONE.md](STANDALONE.md)).
 - `tst_social.qml` and `tst_assistant.qml`: merging polled messages,
   unread counts, request direction; the assistant's reply states and its
   Markdown as Silica's StyledText.
