@@ -98,14 +98,20 @@ Page {
                 // New foods may have come with it.
                 Nutrition.changed = true
                 pageStack.push(Qt.resolvedUrl("RecipePage.qml"), { recipeId: data.created_id })
-            } else {
+            } else if (data.kind === "diet_plan") {
                 pageStack.push(Qt.resolvedUrl("DietPlanPage.qml"), { planId: data.created_id })
             }
         })
     }
 
+    // The kinds the app can show and open. IronStack may add more within
+    // API v1 (it added recipes so); one the app doesn't know is shown by
+    // its title, to create on the web.
+    readonly property var knownKinds: ["diet_plan", "program", "recipe"]
+
     function kindText(kind) {
-        return kind === "program" ? qsTr("Program") : kind === "recipe" ? qsTr("Recipe") : qsTr("Diet plan")
+        return kind === "program" ? qsTr("Program") : kind === "recipe" ? qsTr("Recipe")
+             : kind === "diet_plan" ? qsTr("Diet plan") : ""
     }
 
     function recipeText(payload) {
@@ -206,7 +212,16 @@ Page {
                         width: parent.width
                         wrapMode: Text.Wrap
                         color: Theme.highlightColor
-                        text: page.kindText(modelData.kind) + ": " + modelData.title
+                        text: (page.kindText(modelData.kind) ? page.kindText(modelData.kind) + ": " : "")
+                              + modelData.title
+                    }
+                    Label {
+                        visible: Assistant.isOpen(modelData) && page.knownKinds.indexOf(modelData.kind) < 0
+                        width: parent.width
+                        wrapMode: Text.Wrap
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryHighlightColor
+                        text: qsTr("This app can't create this suggestion yet. Create it in the assistant on the web.")
                     }
                     // A recipe's servings and calories, as on the web's card.
                     Label {
@@ -226,6 +241,7 @@ Page {
                     ButtonLayout {
                         visible: Assistant.isOpen(modelData)
                         Button {
+                            visible: page.knownKinds.indexOf(modelData.kind) >= 0
                             text: qsTr("Create")
                             onClicked: page.proposal(modelData.id, "accept")
                         }
